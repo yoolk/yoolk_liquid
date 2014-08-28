@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'liquid-template-inheritance', github: 'locomotivecms/liquid-template-inheritance'
 gem 'liquid-rails',                github: 'yoolk/liquid-rails'
+gem 'liquid-template-inheritance', github: 'locomotivecms/liquid-template-inheritance'
 
 gem 'rake',         '~> 10.1.0'
 gem 'thin',         '~> 1.6.1'

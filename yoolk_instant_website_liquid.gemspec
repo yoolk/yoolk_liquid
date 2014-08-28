@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ['Chamnap Chhorn']
   s.email       = ['chamnapchhorn@gmail.com']
   s.homepage    = 'https://github.com/yoolk/yoolk_instant_website_liquid'
-  s.summary     = 'liquid filters and tags to be used inside Yoolk Instant Website'
+  s.summary     = 'Liquid filters and tags to be used inside Yoolk Instant Website'
   s.description = 'A Rails Engine that contains liquid filters and tags to be used inside Yoolk Instant Website'
 
   s.files       = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
