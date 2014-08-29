@@ -32,6 +32,16 @@ module Yoolk
             expect(::Liquid::Variable.new("value | default: 'hello'").render(@context)).to eq('value')
           end
         end
+
+        it '#date' do
+          @context['value'] = '2014-08-29 08:04:02 UTC'
+          expect(::Liquid::Variable.new("value | date: '%d/%m/%Y %H:%M'").render(@context)).to eq('29/08/2014 08:04')
+        end
+
+        it '#json' do
+          @context['listing'] = { name: 'Listing A' }
+          expect(::Liquid::Variable.new("listing | json").render(@context)).to eq(%|{"name":"Listing A"}|)
+        end
       end
     end
   end

@@ -1,3 +1,6 @@
+require 'time'
+require 'json'
+
 module Yoolk
   module InstantWebsite
     module Liquid
@@ -14,6 +17,14 @@ module Yoolk
 
         def random(input)
           rand(input.to_i)
+        end
+
+        def date(input, format)
+          Time.parse(input).strftime(format)
+        end
+
+        def json(object)
+          JSON.dump(object)
         end
       end
     end
