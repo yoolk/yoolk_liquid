@@ -7,5 +7,6 @@ end
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
 load 'rails/tasks/engine.rake'
 
+Yoolk::InstantWebsite::Liquid::Engine.load_tasks
 
-Bundler::GemHelper.install_tasks
+task :default => "app:spec"

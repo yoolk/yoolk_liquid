@@ -181,5 +181,6 @@ DEPENDENCIES
   quiet_assets
   rake (~> 10.1.0)
   rspec-rails (~> 2.14.1)
+  simplecov (~> 0.9.0)
   thin (~> 1.6.1)
   yoolk_instant_website_liquid!
