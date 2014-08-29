@@ -2,7 +2,7 @@ module Yoolk
   module InstantWebsite
     module Liquid
       module UrlFilter
-        def theme_asset_path(input)
+        def asset_path(input)
           @context.registers['helper'].asset_path("#{@context['current_theme']}/#{input}")
         end
 
@@ -111,3 +111,5 @@ module Yoolk
     end
   end
 end
+
+Liquid::Template.register_filter Yoolk::InstantWebsite::Liquid::UrlFilter

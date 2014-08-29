@@ -8,6 +8,3 @@ module Yoolk
 end
 
 Dir[File.dirname(__FILE__) + '/liquid/{tags,filters,drops}/*.rb'].each { |f| require f }
-
-# register filters
-Liquid::Template.register_filter Yoolk::InstantWebsite::Liquid::UrlFilter
