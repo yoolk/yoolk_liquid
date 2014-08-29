@@ -14,34 +14,37 @@ module Yoolk
           %(<link href="#{url}" rel="stylesheet" type="text/css" media="#{media}" />)
         end
 
-        def link_to(link, url, title='')
-          %|<a href="#{url}" title="#{title}">#{link}</a>|
+        def link_to(link, url, title='', class_name='')
+          %|<a href="#{url}" title="#{title}" class="#{class_name}">#{link}</a>|
         end
 
-        def img_tag(url, alt='')
+        def image_tag(url, alt='')
           %|<img src="#{url}" alt="#{alt}" />|
         end
 
-        def link_to_home
-          link_to t(:'links.home'), root_path, toggle_class_name('active', home_controller?)
+        # If condition is true, the class_name is returned. Otherwise, it returns nil.
+        # class_name: css class name
+        # condition: boolean
+        def toggle_class_name(class_name, condition)
+          condition ? class_name : nil
+        end
+
+        def link_to_home(value)
+          link_to value, root_path, value, toggle_class_name('active', current_page?(:root))
         end
 
         def root_path
           '/'
         end
 
+        # Return true if the input is the current page
+        # value: could be 'root', 'foods', 'products', 'services', 'contact_us', 'about_us'
         def current_page?(value)
           value = value.to_sym
           if value == :root
-            request.fullpath == root_url
+            @context.registers['controller'].request.fullpath == root_path
           end
         end
-
-        private
-
-          def t(name)
-            @context.registers['helper'].t(name)
-          end
       end
     end
   end
