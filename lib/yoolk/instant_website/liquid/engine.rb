@@ -1,3 +1,6 @@
+require 'themes_on_rails'
+require 'liquid-rails'
+
 module Yoolk
   module InstantWebsite
     module Liquid

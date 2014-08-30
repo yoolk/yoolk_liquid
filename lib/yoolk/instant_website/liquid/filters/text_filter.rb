@@ -22,11 +22,6 @@ module Yoolk
           input.to_s.gsub(' ', '-').gsub('/', '-').dasherize
         end
 
-        # alias newline_to_br
-        def multi_line(input)
-          input.to_s.gsub("\n", '<br/>')
-        end
-
         def concat(input, *args)
           result = input.to_s
           args.flatten.each { |a| result << a.to_s }

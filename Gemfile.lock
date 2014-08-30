@@ -12,6 +12,14 @@ GIT
       liquid (~> 3.0.0.rc1)
       rails (>= 3.2)
 
+GIT
+  remote: git://github.com/yoolk/themes_on_rails.git
+  revision: 11a7b288ed02c0d2f82839a301ffe7dac2fa42c9
+  branch: liquid
+  specs:
+    themes_on_rails (0.3.0)
+      rails (>= 3.2)
+
 PATH
   remote: .
   specs:
@@ -182,5 +190,6 @@ DEPENDENCIES
   rake (~> 10.1.0)
   rspec-rails (~> 2.14.1)
   simplecov (~> 0.9.0)
+  themes_on_rails!
   thin (~> 1.6.1)
   yoolk_instant_website_liquid!

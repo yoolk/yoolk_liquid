@@ -3,7 +3,10 @@ module Yoolk
     module Liquid
       module UrlFilter
         def asset_path(input)
-          @context.registers['helper'].asset_path("#{@context['current_theme']}/#{input}")
+          theme = "#{@context['current_theme']}"
+          input = "#{theme}/#{input}" unless input.to_s.start_with?("#{theme}/")
+
+          @context.registers[:helper].asset_path(input)
         end
 
         def script_tag(url)
@@ -20,13 +23,6 @@ module Yoolk
 
         def image_tag(url, alt='')
           %|<img src="#{url}" alt="#{alt}" />|
-        end
-
-        # If condition is true, the class_name is returned. Otherwise, it returns nil.
-        # class_name: css class name
-        # condition: boolean
-        def toggle_class_name(class_name, condition)
-          condition ? class_name : nil
         end
 
         # Navigation links

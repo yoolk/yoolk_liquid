@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'themes_on_rails',             github: 'yoolk/themes_on_rails', branch: 'liquid'
 gem 'liquid-rails',                github: 'yoolk/liquid-rails'
 gem 'liquid-template-inheritance', github: 'locomotivecms/liquid-template-inheritance'
 

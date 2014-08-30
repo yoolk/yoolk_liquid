@@ -1,4 +1,3 @@
-require 'time'
 require 'json'
 
 module Yoolk
@@ -11,20 +10,19 @@ module Yoolk
           array.at(position) if array.respond_to?(:at)
         end
 
-        def default(input, value)
-          input.blank? ? value : input
-        end
-
         def random(input)
           rand(input.to_i)
         end
 
-        def date(input, format)
-          Time.parse(input).strftime(format)
-        end
-
         def json(object)
           JSON.dump(object)
+        end
+
+        # If condition is true, the class_name is returned. Otherwise, it returns nil.
+        # class_name: css class name
+        # condition: boolean
+        def toggle_class_name(class_name, condition)
+          condition ? class_name : nil
         end
       end
     end
