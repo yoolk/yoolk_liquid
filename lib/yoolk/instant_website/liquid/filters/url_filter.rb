@@ -21,8 +21,8 @@ module Yoolk
           %|<a href="#{url}" title="#{title}" class="#{class_name}">#{link}</a>|
         end
 
-        def image_tag(url, alt='')
-          %|<img src="#{url}" alt="#{alt}" />|
+        def image_tag(url, alt='', class_name='')
+          %|<img src="#{url}" alt="#{alt}" class="#{class_name}" />|
         end
 
         # Navigation links
@@ -98,10 +98,26 @@ module Yoolk
           link_to value, map_path, value, toggle_class_name('active', current_page?(map_path))
         end
 
+        def about_us_path
+          '/about_us'
+        end
+
+        def link_to_about_us(value)
+          link_to value, about_us_path, value, toggle_class_name('active', current_page?(about_us_path))
+        end
+
+        def contact_us_path
+          '/contact_us'
+        end
+
+        def link_to_contact_us(value)
+          link_to value, contact_us_path, value, toggle_class_name('active', current_page?(contact_us_path))
+        end
+
         # Return true if the input is the current page
         # path: could be 'home_path', 'foods_path', 'products_path', 'services_path', 'contact_us_path', 'about_us_path'
         def current_page?(path)
-          @context.registers['controller'].request.fullpath == path
+          @context.registers[:controller].request.fullpath == path
         end
       end
     end

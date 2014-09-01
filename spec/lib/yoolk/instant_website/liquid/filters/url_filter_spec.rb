@@ -32,7 +32,7 @@ module Yoolk
           it '#image_tag' do
             context['url'] = 'https://www.google.com.kh/images/srpr/logo11w.png'
 
-            expect(::Liquid::Variable.new('url | image_tag').render(context)).to eq(%|<img src="https://www.google.com.kh/images/srpr/logo11w.png" alt="" />|)
+            expect(::Liquid::Variable.new('url | image_tag').render(context)).to eq(%|<img src="https://www.google.com.kh/images/srpr/logo11w.png" alt="" class="" />|)
           end
         end
 
@@ -97,6 +97,18 @@ module Yoolk
             context.registers['controller'].stub_chain(:request, :fullpath).and_return('/map')
 
             expect(::Liquid::Variable.new("'Map' | link_to_map").render(context)).to eq(%|<a href="/map" title="Map" class="active">Map</a>|)
+          end
+
+          it '#link_to_about_us' do
+            context.registers['controller'].stub_chain(:request, :fullpath).and_return('/about_us')
+
+            expect(::Liquid::Variable.new("'About Us' | link_to_about_us").render(context)).to eq(%|<a href="/about_us" title="About Us" class="active">About Us</a>|)
+          end
+
+          it '#link_to_contact_us' do
+            context.registers['controller'].stub_chain(:request, :fullpath).and_return('/contact_us')
+
+            expect(::Liquid::Variable.new("'Contact Us' | link_to_contact_us").render(context)).to eq(%|<a href="/contact_us" title="Contact Us" class="active">Contact Us</a>|)
           end
         end
       end
