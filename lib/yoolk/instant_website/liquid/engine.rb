@@ -1,5 +1,10 @@
 require 'themes_on_rails'
 require 'liquid-rails'
+require 'uglifier'
+require 'sass-rails'
+require 'bootstrap-sass'
+require 'therubyracer'
+require 'jquery-rails'
 
 module Yoolk
   module InstantWebsite

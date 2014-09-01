@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   private
 
     def theme_resolver
-      @current_theme ||= params[:theme] || 'theme_a'
+      @current_theme ||= (params[:theme] || 'theme_a')
     end
 end
