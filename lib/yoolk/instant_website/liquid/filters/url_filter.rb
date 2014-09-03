@@ -72,6 +72,10 @@ module Yoolk
           link_to(value, announcements_path, default_class_options(announcements_path, options))
         end
 
+        def link_to_brochures(value, options={})
+          link_to(value, brochures_path, default_class_options(brochures_path, options))
+        end
+
         def link_to_map(value, options={})
           link_to(value, map_path, default_class_options(map_path, options))
         end
