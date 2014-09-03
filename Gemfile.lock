@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/yoolk/liquid-rails.git
-  revision: a61fc04fd22d66be1fa9c572a3ad3942903945b1
+  revision: ae1363f4e3d70033c002e14ffb2f7607e1ad666a
   specs:
     liquid-rails (0.1.0)
       liquid (~> 3.0.0.rc1)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/yoolk/themes_on_rails.git
-  revision: 11a7b288ed02c0d2f82839a301ffe7dac2fa42c9
+  revision: fde714319bf9d169ec07b9d8de6850d6ef9fc9a7
   branch: liquid
   specs:
     themes_on_rails (0.3.0)
