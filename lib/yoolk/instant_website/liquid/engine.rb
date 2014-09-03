@@ -1,5 +1,5 @@
-require 'themes_on_rails'
 require 'liquid-rails'
+require 'themes_on_rails'
 require 'uglifier'
 require 'sass-rails'
 require 'bootstrap-sass'

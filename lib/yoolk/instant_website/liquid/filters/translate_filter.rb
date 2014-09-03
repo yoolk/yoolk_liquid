@@ -3,7 +3,7 @@ module Yoolk
     module Liquid
       module TranslateFilter
         def translate(key, locale = nil, scope = nil)
-          locale ||= I18n.locale.to_s
+          locale ||= ::I18n.locale.to_s
           scope    = if scope.blank?
             @context['current_theme']
           else

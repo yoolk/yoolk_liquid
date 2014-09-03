@@ -2,123 +2,95 @@ module Yoolk
   module InstantWebsite
     module Liquid
       module UrlFilter
-        def asset_path(input)
-          theme = "#{@context['current_theme']}"
-          input = "#{theme}/#{input}" unless input.to_s.start_with?("#{theme}/")
 
-          @context.registers[:helper].asset_path(input)
-        end
+        delegate \
+                  :root_path,
 
-        def script_tag(url)
-          %(<script src="#{url}" type="text/javascript"></script>)
-        end
+                  :galleries_path,
+                  :gallery_path,
 
-        def stylesheet_tag(url, media='all')
-          %(<link href="#{url}" rel="stylesheet" type="text/css" media="#{media}" />)
-        end
+                  :people_path,
+                  :person_path,
 
-        def link_to(link, url, title='', class_name='')
-          %|<a href="#{url}" title="#{title}" class="#{class_name}">#{link}</a>|
-        end
+                  :products_path,
+                  :product_path,
 
-        def image_tag(url, alt='', class_name='')
-          %|<img src="#{url}" alt="#{alt}" class="#{class_name}" />|
-        end
+                  :services_path,
+                  :service_path,
 
-        # Navigation links
+                  :foods_path,
+                  :food_path,
+
+                  :announcements_path,
+                  :announcement_path,
+
+                  :map_path,
+                  :about_us_path,
+                  :contact_us_path,
+
+                  to: :url_helpers
+
         def office_path
           '/office'
         end
 
-        def link_to_office(value)
-          link_to value, office_path, value
-        end
-
         def home_path
-          '/'
+          root_path
         end
 
-        def link_to_home(value)
-          link_to value, home_path, value, toggle_class_name('active', current_page?(home_path))
+        def link_to_office(value, options={})
+          link_to(value, office_path, options)
         end
 
-        def galleries_path
-          '/galleries'
+        def link_to_home(value, options={})
+          link_to(value, home_path, default_class_options(home_path, options))
         end
 
-        def link_to_galleries(value)
-          link_to value, galleries_path, value, toggle_class_name('active', current_page?(galleries_path))
+        def link_to_galleries(value, options={})
+          link_to(value, galleries_path, default_class_options(galleries_path, options))
         end
 
-        def people_path
-          '/people'
+        def link_to_people(value, options={})
+          link_to(value, people_path, default_class_options(people_path, options))
         end
 
-        def link_to_people(value)
-          link_to value, people_path, value, toggle_class_name('active', current_page?(people_path))
+        def link_to_products(value, options={})
+          link_to(value, products_path, default_class_options(products_path, options))
         end
 
-        def products_path
-          '/products'
+        def link_to_services(value, options={})
+          link_to(value, services_path, default_class_options(services_path, options))
         end
 
-        def link_to_products(value)
-          link_to value, products_path, value, toggle_class_name('active', current_page?(products_path))
+        def link_to_foods(value, options={})
+          link_to(value, foods_path, default_class_options(foods_path, options))
         end
 
-        def services_path
-          '/services'
+        def link_to_announcements(value, options={})
+          link_to(value, announcements_path, default_class_options(announcements_path, options))
         end
 
-        def link_to_services(value)
-          link_to value, services_path, value, toggle_class_name('active', current_page?(services_path))
+        def link_to_map(value, options={})
+          link_to(value, map_path, default_class_options(map_path, options))
         end
 
-        def foods_path
-          '/foods'
+        def link_to_about_us(value, options={})
+          link_to(value, about_us_path, default_class_options(about_us_path, options))
         end
 
-        def link_to_foods(value)
-          link_to value, foods_path, value, toggle_class_name('active', current_page?(foods_path))
+        def link_to_contact_us(value, options={})
+          link_to(value, contact_us_path, default_class_options(contact_us_path, options))
         end
 
-        def announcements_path
-          '/announcements'
-        end
+        private
 
-        def link_to_announcements(value)
-          link_to value, announcements_path, value, toggle_class_name('active', current_page?(announcements_path))
-        end
+          def url_helpers
+            @url_helpers ||= Rails.application.routes.url_helpers
+          end
 
-        def map_path
-          '/map'
-        end
-
-        def link_to_map(value)
-          link_to value, map_path, value, toggle_class_name('active', current_page?(map_path))
-        end
-
-        def about_us_path
-          '/about_us'
-        end
-
-        def link_to_about_us(value)
-          link_to value, about_us_path, value, toggle_class_name('active', current_page?(about_us_path))
-        end
-
-        def contact_us_path
-          '/contact_us'
-        end
-
-        def link_to_contact_us(value)
-          link_to value, contact_us_path, value, toggle_class_name('active', current_page?(contact_us_path))
-        end
-
-        # Return true if the input is the current page
-        # path: could be 'home_path', 'foods_path', 'products_path', 'services_path', 'contact_us_path', 'about_us_path'
-        def current_page?(path)
-          @context.registers[:controller].request.fullpath == path
-        end
+          def default_class_options(current_path, options={})
+            { 'class' => toggle_class_name('active', current_page?(current_path)) }.reverse_merge(options)
+          end
       end
     end
   end

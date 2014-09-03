@@ -18,18 +18,6 @@ module Yoolk
           end
         end
 
-        context '#default' do
-          it 'returns default value when input is blank' do
-            context['value'] = nil
-            expect(::Liquid::Variable.new("value | default: 'hello'").render(context)).to eq('hello')
-          end
-
-          it 'returns default value when input is blank' do
-            context['value'] = 'value'
-            expect(::Liquid::Variable.new("value | default: 'hello'").render(context)).to eq('value')
-          end
-        end
-
         it '#json' do
           context['listing'] = { name: 'Listing A' }
           expect(::Liquid::Variable.new("listing | json").render(context)).to eq(%|{"name":"Listing A"}|)
