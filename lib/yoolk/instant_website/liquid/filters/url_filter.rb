@@ -24,6 +24,8 @@ module Yoolk
                   :announcements_path,
                   :announcement_path,
 
+                  :brochures_path,
+
                   :map_path,
                   :about_us_path,
                   :contact_us_path,
