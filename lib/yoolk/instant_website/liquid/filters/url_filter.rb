@@ -91,11 +91,13 @@ module Yoolk
         private
 
           def url_helpers
-            @url_helpers ||= Rails.application.routes.url_helpers
+            @url_helpers ||= @context.registers[:controller]
           end
 
           def default_class_options(current_path, options={})
-            { 'class' => toggle_class_name('active', current_page?(current_path)) }.reverse_merge(options)
+            default_class_name = toggle_class_name('active', current_page?(current_path))
+            options['class']   = "#{default_class_name} #{options['class']}".strip
+            options
           end
       end
     end
