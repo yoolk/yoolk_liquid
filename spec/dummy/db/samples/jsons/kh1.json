@@ -1,5 +1,5 @@
 {
-  "id": 1,
+  "id": "1",
   "alias_id": "kh1",
   "name": "Yellow Tower",
   "address": "No. 191, Tonle Sap (Rd.), Village 1, Sangkat Chroy Changva, 12110 Phnom Penh",
@@ -10,84 +10,119 @@
   "created_at": "2014-08-13 08:59:54 UTC",
   "updated_at": "2014-08-13 08:59:54 UTC",
   "business_type": {
-    "id": 1,
+    "id": "1",
     "name": "Business Listing",
     "display_order": 1
   },
   "country": {
-    "id": 1,
+    "id": "1",
     "name": "Cambodia"
   },
   "location": {
-    "id": 1,
+    "id": "1",
     "alias_id": "kh1",
     "name": "Phnom Penh",
     "priority": 1
   },
   "portal": {
-    "id": 1,
+    "id": "1",
     "domain_name": "yellowpages-cambodia.dev",
     "abbreviation": "kh",
     "created_at": "2014-08-13 08:59:54 UTC",
     "updated_at": "2014-08-13 08:59:54 UTC",
     "language": {
-      "id": 1,
+      "id": "1",
       "name": "English",
       "two_code": "en"
     }
   },
+  "listing_categories": [
+    {
+      "id": "1",
+      "alias_id": "kh1",
+      "name": "Office Rental Services",
+      "short_name": "Office Rental Services",
+      "keyword": "",
+      "description": "",
+      "display_on_web": true,
+      "subcategories_count": 0,
+      "listings_count": 1,
+      "level": 1,
+      "short_description": {
+        "text": "• Fresh and Clean Air\n• Constant Breeze\n• Lots of Natural Light\n• Surrounded by Nature\n• Open office Space Plan\n• Minimum Traffic \n• Parking Space\n• IT Friendly\n• ...and a Great View",
+        "categories": [
+          {
+            "id": "1",
+            "text": "• Fresh and Clean Air\n• Constant Breeze\n• Lots of Natural Light\n• Surrounded by Nature\n• Open office Space Plan\n• Minimum Traffic \n• Parking Space\n• IT Friendly\n• ...and a Great View"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "alias_id": "kh2",
+      "name": "Business Centres",
+      "short_name": "Business Centres",
+      "keyword": "",
+      "description": "",
+      "display_on_web": true,
+      "subcategories_count": 0,
+      "listings_count": 1,
+      "level": 1
+    }
+  ],
   "keyphrases": [
     {
-      "id": 1,
+      "id": "1",
       "text": "Shopping Centres",
       "position": 1,
       "created_at": "2014-08-13 08:59:54 UTC",
       "updated_at": "2014-08-13 08:59:54 UTC"
     },
     {
-      "id": 2,
+      "id": "2",
       "text": "Oil Filters",
       "position": 2,
       "created_at": "2014-08-13 08:59:54 UTC",
       "updated_at": "2014-08-13 08:59:54 UTC"
     },
     {
-      "id": 3,
+      "id": "3",
       "text": "Range Rover",
       "position": 3,
       "created_at": "2014-08-13 08:59:54 UTC",
       "updated_at": "2014-08-13 08:59:54 UTC"
     },
     {
-      "id": 4,
+      "id": "4",
       "text": "Car",
       "position": 4,
       "created_at": "2014-08-13 08:59:54 UTC",
       "updated_at": "2014-08-13 08:59:54 UTC"
     },
     {
-      "id": 5,
+      "id": "5",
       "text": "Automobile",
       "position": 5,
       "created_at": "2014-08-13 08:59:54 UTC",
       "updated_at": "2014-08-13 08:59:54 UTC"
     },
     {
-      "id": 6,
+      "id": "6",
       "text": "Vehicle Service",
       "position": 6,
       "created_at": "2014-08-13 08:59:54 UTC",
       "updated_at": "2014-08-13 08:59:54 UTC"
     },
     {
-      "id": 7,
+      "id": "7",
       "text": "Generators Leasing",
       "position": 7,
       "created_at": "2014-08-13 08:59:54 UTC",
       "updated_at": "2014-08-13 08:59:54 UTC"
     },
     {
-      "id": 8,
+      "id": "8",
       "text": "Generator Service",
       "position": 8,
       "created_at": "2014-08-13 08:59:54 UTC",
