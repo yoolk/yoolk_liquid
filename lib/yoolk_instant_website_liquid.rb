@@ -1,1 +1,0 @@
-require 'yoolk/instant_website/liquid'
