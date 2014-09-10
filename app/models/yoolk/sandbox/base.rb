@@ -10,7 +10,7 @@ module Yoolk
 
       def to_liquid
         class_name = self.class.name.gsub(/^Yoolk::Sandbox/, 'Yoolk::Liquid')
-        "#{class_name}Drop".safe_constantize.dropify(self)
+        "#{class_name}Drop".safe_constantize.new(self)
       end
     end
   end

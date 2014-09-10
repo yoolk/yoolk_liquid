@@ -7,7 +7,7 @@ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
-require "yoolk_instant_website_liquid"
+require "yoolk_liquid"
 
 module Dummy
   class Application < Rails::Application
