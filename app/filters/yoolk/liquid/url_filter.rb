@@ -112,43 +112,43 @@ module Yoolk
         end
 
         def galleries_page?
-          request.fullpath.start_with?(galleries_path)
+          request.fullpath.start_with?(galleries_path.split('?')[0])
         end
 
         def people_page?
-          request.fullpath.start_with?(people_path)
+          request.fullpath.start_with?(people_path.split('?')[0])
         end
 
         def brochures_page?
-          request.fullpath.start_with?(brochures_path)
+          request.fullpath.start_with?(brochures_path.split('?')[0])
         end
 
         def map_page?
-          request.fullpath.start_with?(map_path)
+          request.fullpath.start_with?(map_path.split('?')[0])
         end
 
         def about_us_page?
-          request.fullpath.start_with?(about_us_path)
+          request.fullpath.start_with?(about_us_path.split('?')[0])
         end
 
         def contact_us_page?
-          request.fullpath.start_with?(contact_us_path)
+          request.fullpath.start_with?(contact_us_path.split('?')[0])
         end
 
         def products_page?
-          request.fullpath.start_with?(products_path)
+          request.fullpath.start_with?(products_path.split('?')[0])
         end
 
         def services_page?
-          request.fullpath.start_with?(services_path)
+          request.fullpath.start_with?(services_path.split('?')[0])
         end
 
         def menu_page?
-          request.fullpath.start_with?(menu_path)
+          request.fullpath.start_with?(menu_path.split('?')[0])
         end
 
         def announcements_page?
-          request.fullpath.start_with?(announcements_path)
+          request.fullpath.start_with?(announcements_path.split('?')[0])
         end
 
         def request
