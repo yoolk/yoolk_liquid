@@ -7,6 +7,7 @@ require 'therubyracer'
 require 'jquery-rails'
 
 require 'virtus'
+require 'oj'
 
 module Yoolk
   module Liquid

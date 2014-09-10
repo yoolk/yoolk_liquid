@@ -23,4 +23,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'bootstrap-sass',  '~> 3.2.0'
   s.add_dependency 'therubyracer',    '~> 0.12.1'
   s.add_dependency 'virtus',          '~> 1.0.3'
+  s.add_dependency 'oj',              '~> 2.10.2'
 end
