@@ -4,13 +4,13 @@ module Yoolk
       include Virtus.model
       include ::Liquid::Rails::Droppable
 
-      def read_attribute_for_serialization(name)
-        attributes[name]
+      def self.drop_class
+        class_name = self.name.gsub(/^Yoolk::Sandbox/, 'Yoolk::Liquid')
+        "#{class_name}Drop".safe_constantize
       end
 
-      def to_liquid
-        class_name = self.class.name.gsub(/^Yoolk::Sandbox/, 'Yoolk::Liquid')
-        "#{class_name}Drop".safe_constantize.new(self)
+      def read_attribute_for_serialization(name)
+        attributes[name]
       end
     end
   end
