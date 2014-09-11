@@ -7,7 +7,13 @@
 RSpec::Matchers.define :include_module do |expected|
 
   match do |actual|
-    expected.in? actual.class.included_modules
+    klass = if actual.is_a?(Class)
+      actual
+    else
+      actual.class
+    end
+
+    expected.in? klass.included_modules
   end
 
   description do
