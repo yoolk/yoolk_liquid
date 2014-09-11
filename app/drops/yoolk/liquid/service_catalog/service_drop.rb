@@ -4,7 +4,7 @@ module Yoolk
       class ServiceDrop < BaseDrop
         attributes :id, :name, :description, :properties
 
-        has_many   :photos, with: 'Yoolk::Liquid::Attachment'
+        has_many   :photos, with: 'Yoolk::Liquid::AttachmentDrop'
       end
     end
   end

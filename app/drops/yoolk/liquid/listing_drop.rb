@@ -17,6 +17,9 @@ module Yoolk
 
       has_many    :services,              with: 'Yoolk::Liquid::ServiceCatalog::ServiceDrop'
       has_many    :service_categories,    with: 'Yoolk::Liquid::ServiceCatalog::CategoryDrop'
+
+      has_many    :products,    with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
+      has_many    :product_categories,    with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
     end
   end
 end
