@@ -20,6 +20,7 @@ module Yoolk
       attribute :extra_communications,    Array[Yoolk::Sandbox::Listing::ExtraCommunication]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]
+      attribute :product_categories,      Array[Yoolk::Sandbox::ProductCatalog::Category]
 
       def self.find(alias_id)
         path       = Rails.root.join('db', 'samples', 'jsons', "#{alias_id}.json")
