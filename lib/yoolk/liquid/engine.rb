@@ -1,3 +1,6 @@
+require 'kaminari'
+
+# views
 require 'liquid-rails'
 require 'themes_on_rails'
 require 'uglifier'
@@ -6,6 +9,7 @@ require 'bootstrap-sass'
 require 'therubyracer'
 require 'jquery-rails'
 
+# sandbox
 require 'virtus'
 require 'oj'
 

@@ -8,10 +8,6 @@ module Yoolk
         class_name = self.name.gsub(/^Yoolk::Sandbox/, 'Yoolk::Liquid')
         "#{class_name}Drop".safe_constantize
       end
-
-      def read_attribute_for_serialization(name)
-        attributes[name]
-      end
     end
   end
 end

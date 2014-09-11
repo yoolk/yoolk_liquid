@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Yoolk
   module Sandbox
-    describe Listing do
+    describe Listing, 'model' do
       it 'has :id attribute' do
         expect(described_class).to have_attribute(:id).of_type(String)
       end
@@ -31,8 +31,24 @@ module Yoolk
         expect(described_class).to have_attribute(:zoom_level).of_type(Integer)
       end
 
+      it 'has :headline attribute' do
+        expect(described_class).to have_attribute(:headline).of_type(String)
+      end
+
+      it 'has :postal_code attribute' do
+        expect(described_class).to have_attribute(:postal_code).of_type(String)
+      end
+
+      it 'has :description attribute' do
+        expect(described_class).to have_attribute(:description).of_type(String)
+      end
+
       it 'has :is_active attribute' do
         expect(described_class).to have_attribute(:is_active)
+      end
+
+      it 'has :show_map_on_web attribute' do
+        expect(described_class).to have_attribute(:show_map_on_web)
       end
 
       it 'has :created_at attribute' do
@@ -66,6 +82,10 @@ module Yoolk
       it 'has :service_categories attribute' do
         expect(described_class).to have_attribute(:service_categories).of_type(Array, member_type: Yoolk::Sandbox::ServiceCatalog::Category)
       end
+    end
+
+    describe Listing, 'methods' do
+      it { should respond_to(:services) }
     end
   end
 end
