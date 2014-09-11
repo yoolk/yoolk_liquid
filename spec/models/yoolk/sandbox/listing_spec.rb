@@ -62,6 +62,10 @@ module Yoolk
       it 'has :listing_categories attribute' do
         expect(described_class).to have_attribute(:listing_categories).of_type(Array, member_type: Yoolk::Sandbox::Listing::Category)
       end
+
+      it 'has :service_categories attribute' do
+        expect(described_class).to have_attribute(:service_categories).of_type(Array, member_type: Yoolk::Sandbox::ServiceCatalog::Category)
+      end
     end
   end
 end

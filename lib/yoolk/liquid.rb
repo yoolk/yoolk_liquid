@@ -5,4 +5,4 @@ module Yoolk
   end
 end
 
-Dir["#{Yoolk::Liquid::Engine.root}/app/{tags,filters,drops}/*.rb"].each { |f| require f }
+Dir["#{Yoolk::Liquid::Engine.root}/app/{tags,filters}/**/*.rb"].each { |f| require f }
