@@ -103,7 +103,8 @@ module Yoolk
 
         def default_class_options(is_current_page, options={})
           default_class_name = toggle_class_name('active', is_current_page)
-          options['class']   = "#{default_class_name} #{options['class']}".strip
+          options['class']   = "#{default_class_name} #{options['class']}".strip.presence || nil
+
           options
         end
 

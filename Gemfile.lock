@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/yoolk/liquid-rails.git
-  revision: c9fe88cd9c0cddd54d6003a43d1a4bd7952ccca5
+  revision: 35c0cd0d2b748b50b457346370bbddf2704e61b4
   specs:
     liquid-rails (0.1.0)
       liquid (~> 3.0.0.rc1)
@@ -175,7 +175,7 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.0)
-    rspec-virtus (1.0.0)
+    rspec-virtus (1.0.1)
       rspec (>= 3.0)
       virtus (>= 1.0)
     sass (3.2.19)
@@ -237,7 +237,7 @@ DEPENDENCIES
   quiet_assets
   rake (~> 10.3.1)
   rspec-rails (~> 3.1.0)
-  rspec-virtus (~> 1.0.0)
+  rspec-virtus (~> 1.0.1)
   simplecov (~> 0.9.0)
   themes_on_rails!
   thin (~> 1.6.1)
