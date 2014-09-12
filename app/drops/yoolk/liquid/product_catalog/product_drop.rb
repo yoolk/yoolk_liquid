@@ -4,7 +4,12 @@ module Yoolk
       class ProductDrop < BaseDrop
         attributes :id, :name, :description, :delivery, :created_at, :updated_at, :features, :brand
 
-        has_many :photos, with: 'Yoolk::Liquid::AttachmentDrop'
+        belongs_to :category, class_name: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+        has_many   :photos, with: 'Yoolk::Liquid::AttachmentDrop'
+
+        def url
+          product_url(self)
+        end
       end
     end
   end

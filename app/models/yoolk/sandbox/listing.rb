@@ -43,6 +43,11 @@ module Yoolk
             service.category = service_category
           end
         end
+        product_categories.each do |product_category|
+          product_category.products.each do |product|
+            product.category = product_category
+          end
+        end
         food_categories.each do |food_category|
           food_category.foods.each do |food|
             food.category = food_category
