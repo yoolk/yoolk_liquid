@@ -1,45 +1,9 @@
 require 'rails_helper'
 
-class UrlFilterClass
-  include Yoolk::Liquid::UrlFilter
-
-  def initialize(view)
-    @context = ::Liquid::Context.new
-    @context.registers[:controller] = view.controller
-  end
-end
-
 module Yoolk
   module Liquid
-    describe UrlFilterClass do
+    describe UrlFilter do
       before  { setup_view_and_controller }
-      subject { UrlFilterClass.new(view) }
-
-      it { should delegate(:root_path).to(:controller) }
-      it { should delegate(:galleries_path).to(:controller) }
-      it { should delegate(:gallery_path).to(:controller) }
-      it { should delegate(:people_path).to(:controller) }
-      it { should delegate(:person_path).to(:controller) }
-      it { should delegate(:brochures_path).to(:controller) }
-      it { should delegate(:map_path).to(:controller) }
-      it { should delegate(:about_us_path).to(:controller) }
-      it { should delegate(:contact_us_path).to(:controller) }
-      it { should delegate(:products_path).to(:controller) }
-      it { should delegate(:products_category_path).to(:controller) }
-      it { should delegate(:services_path).to(:controller) }
-      it { should delegate(:services_category_path).to(:controller) }
-      it { should delegate(:menu_path).to(:controller) }
-      it { should delegate(:menu_category_path).to(:controller) }
-      it { should delegate(:announcements_path).to(:controller) }
-      it { should delegate(:announcement_path).to(:controller) }
-
-      it '#root_path' do
-        expect(subject.office_path).to eq('/office')
-      end
-
-      it '#home_path' do
-        expect(subject.home_path).to eq('/')
-      end
 
       it '#link_to_office' do
         expect_template_result("{{ 'Office' | link_to_office }}", "<a href=\"/office\">Office</a>")
