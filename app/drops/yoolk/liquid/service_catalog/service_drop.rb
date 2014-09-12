@@ -11,10 +11,6 @@ module Yoolk
         def url
           service_path(self)
         end
-
-        def to_param
-          object.to_param
-        end
       end
     end
   end
