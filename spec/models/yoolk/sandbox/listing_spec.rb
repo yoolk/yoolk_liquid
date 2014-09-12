@@ -82,10 +82,15 @@ module Yoolk
       it 'has :service_categories attribute' do
         expect(described_class).to have_attribute(:service_categories).of_type(Array, member_type: Yoolk::Sandbox::ServiceCatalog::Category)
       end
+
+      it 'has :food_categories attribute' do
+        expect(described_class).to have_attribute(:food_categories).of_type(Array, member_type: Yoolk::Sandbox::Menu::Category)
+      end
     end
 
     describe Listing, 'methods' do
       it { should respond_to(:services) }
+      it { should respond_to(:foods) }
     end
   end
 end

@@ -7,6 +7,9 @@ module Yoolk
 
         has_many    :services, with: 'Yoolk::Liquid::ServiceCatalog::ServiceDrop'
 
+        def url
+          services_category_url(self)
+        end
       end
     end
   end

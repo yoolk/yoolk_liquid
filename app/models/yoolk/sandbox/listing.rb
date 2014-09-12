@@ -24,6 +24,7 @@ module Yoolk
       attribute :extra_communications,    Array[Yoolk::Sandbox::Listing::ExtraCommunication]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]
+      attribute :food_categories,         Array[Yoolk::Sandbox::Menu::Category]
 
       def self.find(alias_id)
         path       = Rails.root.join('db', 'samples', 'jsons', "#{alias_id}.json")
@@ -34,15 +35,26 @@ module Yoolk
 
       def initialize(attributes={})
         super
+
+        # set inverse relation btw service_category & service
         service_categories.each do |service_category|
           service_category.services.each do |service|
             service.category = service_category
+          end
+        end
+        food_categories.each do |food_category|
+          food_category.foods.each do |food|
+            food.category = food_category
           end
         end
       end
 
       def services
         @services ||= initialize_collection(service_categories.map(&:services).flatten.sort_by(&:updated_at).reverse)
+      end
+
+      def foods
+        @foods    ||= initialize_collection(food_categories.map(&:foods).flatten.sort_by(&:updated_at).reverse)
       end
 
       def telephone

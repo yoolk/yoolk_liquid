@@ -45,7 +45,7 @@ module Yoolk
         end
 
         it 'has :services attribute' do
-          expect(described_class).to have_attribute(:services).of_type(Array, with_memeber: Yoolk::Sandbox::ServiceCatalog::Service)
+          expect(described_class).to have_attribute(:services).of_type(Array, member_type: Yoolk::Sandbox::ServiceCatalog::Service)
         end
       end
     end

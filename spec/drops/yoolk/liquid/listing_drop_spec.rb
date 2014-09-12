@@ -28,6 +28,9 @@ module Yoolk
 
       it { should have_many(:services).with('Yoolk::Liquid::ServiceCatalog::ServiceDrop') }
       it { should have_many(:service_categories).with('Yoolk::Liquid::ServiceCatalog::CategoryDrop') }
+
+      it { should have_many(:foods).with('Yoolk::Liquid::Menu::FoodDrop') }
+      it { should have_many(:food_categories).with('Yoolk::Liquid::Menu::CategoryDrop') }
     end
   end
 end

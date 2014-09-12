@@ -13,6 +13,17 @@ module Yoolk
 
         it { should have_many(:services).with('Yoolk::Liquid::ServiceCatalog::ServiceDrop') }
       end
+
+      describe CategoryDrop, 'methods' do
+        let(:category)  { Yoolk::Sandbox::ServiceCatalog::Category.new(id: 1, name: 'Rental Services') }
+        let(:drop)      { category.to_liquid }
+
+        it '#url' do
+          expect(drop).to receive(:services_category_url).with(drop)
+
+          drop.url
+        end
+      end
     end
   end
 end
