@@ -7,9 +7,6 @@ module Yoolk
 
         has_many    :services, with: 'Yoolk::Liquid::ServiceCatalog::ServiceDrop'
 
-        def to_param
-          object.to_param
-        end
       end
     end
   end

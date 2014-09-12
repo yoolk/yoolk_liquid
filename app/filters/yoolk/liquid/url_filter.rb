@@ -2,53 +2,43 @@ module Yoolk
   module Liquid
     module UrlFilter
 
-      delegate \
-                :root_path,
-
-                :galleries_path,
-                :gallery_path,
-
-                :people_path,
-                :person_path,
-
-                :brochures_path,
-
-                :map_path,
-                :about_us_path,
-                :contact_us_path,
-
-                :products_path,
-                :products_category_path,
-
-                :services_path,
-                :services_category_path,
-
-                :menu_path,
-                :menu_category_path,
-
-                :announcements_path,
-                :announcement_path,
-
-                to: :controller
-
-      def office_path
-        '/office'
+      def gallery_url(gallery)
+        controller.gallery_path(gallery)
       end
 
-      def home_path
-        root_path
-      end
-
-      def product_path(product)
+      def product_url(product)
         controller.product_path(product.category, product)
       end
 
-      def service_path(service)
+      def products_category_url(product_category)
+        controller.products_category_path(product_category)
+      end
+
+      def service_url(service)
         controller.service_path(service.category, service)
       end
 
-      def menu_food_path(food)
+      def services_category_url(service_category)
+        controller.services_category_path(service_category)
+      end
+
+      def menu_food_url(food)
         controller.menu_food_path(food.category, food)
+      end
+
+      def menu_category_url(food_category)
+        controller.menu_category_path(food_category)
+      end
+
+      def announcement_url(announcement)
+        controller.announcement_path(announcement)
+      end
+
+      # Returns the attachment of any attachment objects
+      # Usage:
+      # {{ product.photos[0] | attachment_url: "medium" }}
+      def attachment_url(object, style)
+        object.url(style)
       end
 
       def link_to_office(value, options={})
@@ -56,7 +46,7 @@ module Yoolk
       end
 
       def link_to_home(value, options={})
-        link_to(value, home_path, default_class_options(home_page?, options))
+        link_to(value, root_path, default_class_options(home_page?, options))
       end
 
       def link_to_galleries(value, options={})
@@ -101,6 +91,15 @@ module Yoolk
 
       private
 
+        delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_path,
+                  :about_us_path, :contact_us_path, :products_path, :services_path,
+                  :menu_path, :menu_category_path, :announcements_path,
+                  to: :controller
+
+        def office_path
+          '/office'
+        end
+
         def default_class_options(is_current_page, options={})
           default_class_name = toggle_class_name('active', is_current_page)
           options['class']   = "#{default_class_name} #{options['class']}".strip.presence || nil
@@ -109,7 +108,7 @@ module Yoolk
         end
 
         def home_page?
-          request.fullpath.split('?')[0] == home_path
+          request.fullpath.split('?')[0] == root_path
         end
 
         def galleries_page?

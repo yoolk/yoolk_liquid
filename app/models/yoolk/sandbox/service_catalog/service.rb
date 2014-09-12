@@ -3,7 +3,7 @@ module Yoolk
     module ServiceCatalog
       class Service < Yoolk::Sandbox::Base
 
-        attribute :id,            String
+        attribute :id,            Integer
         attribute :name,          String
         attribute :description,   String
         attribute :properties,    Array

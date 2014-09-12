@@ -9,11 +9,7 @@ module Yoolk
         has_many    :photos, with: 'Yoolk::Liquid::AttachmentDrop'
 
         def url
-          service_path(self)
-        end
-
-        def to_param
-          object.to_param
+          service_url(self)
         end
       end
     end
