@@ -12,7 +12,7 @@ module Yoolk
       end
 
       it 'has :categories attribute' do
-        expect(described_class).to have_attribute(:categories).of_type(Array, with_member: Yoolk::Sandbox::Listing::Category)
+        expect(described_class).to have_attribute(:categories).of_type(Array, member_type: Yoolk::Sandbox::Listing::Category)
       end
     end
   end

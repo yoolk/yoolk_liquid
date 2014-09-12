@@ -20,6 +20,9 @@ module Yoolk
 
       has_many    :products,    with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
       has_many    :product_categories,    with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+
+      has_many    :foods,                 with: 'Yoolk::Liquid::Menu::FoodDrop'
+      has_many    :food_categories,       with: 'Yoolk::Liquid::Menu::CategoryDrop'
     end
   end
 end
