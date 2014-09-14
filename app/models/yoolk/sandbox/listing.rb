@@ -23,6 +23,7 @@ module Yoolk
       attribute :communications,          Array[Yoolk::Sandbox::Listing::Communication]
       attribute :extra_communications,    Array[Yoolk::Sandbox::Listing::ExtraCommunication]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
+      attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]
       attribute :food_categories,         Array[Yoolk::Sandbox::Menu::Category]
 
@@ -49,12 +50,16 @@ module Yoolk
         end
       end
 
+      def gallery_images
+        @gallery_images ||= initialize_collection(image_galleries.map(&:gallery_images).flatten.sort_by(&:display_order))
+      end
+
       def services
-        @services ||= initialize_collection(service_categories.map(&:services).flatten.sort_by(&:updated_at).reverse)
+        @services       ||= initialize_collection(service_categories.map(&:services).flatten.sort_by(&:updated_at).reverse)
       end
 
       def foods
-        @foods    ||= initialize_collection(food_categories.map(&:foods).flatten.sort_by(&:updated_at).reverse)
+        @foods          ||= initialize_collection(food_categories.map(&:foods).flatten.sort_by(&:updated_at).reverse)
       end
 
       def telephone
@@ -64,6 +69,10 @@ module Yoolk
       def email
         communications[-1]
       end
+
+      ## Alias Method
+      alias_method :galleries, :image_galleries
+      alias_method :images,    :gallery_images
 
       private
 

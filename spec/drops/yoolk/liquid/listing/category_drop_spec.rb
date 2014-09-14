@@ -14,7 +14,7 @@ module Yoolk
       it { should have_attribute(:sub_categories_count) }
       it { should have_attribute(:level) }
 
-      it { should belongs_to(:short_description).class_name('Yoolk::Liquid::Listing::ShortDescription') }
+      it { should belongs_to(:short_description).class_name('Yoolk::Liquid::Listing::ShortDescriptionDrop') }
     end
   end
 end

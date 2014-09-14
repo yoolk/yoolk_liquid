@@ -16,8 +16,7 @@ module Yoolk
       end
 
       describe ServiceDrop, 'methods' do
-        let(:service)   { Yoolk::Sandbox::ServiceCatalog::Service.new(id: 1, name: 'Renting Service') }
-        let(:drop)      { service.to_liquid }
+        let(:drop)      { described_class.new(double) }
 
         it '#url' do
           expect(drop).to receive(:service_url).with(drop)

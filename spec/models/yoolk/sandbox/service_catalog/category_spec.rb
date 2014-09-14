@@ -47,6 +47,8 @@ module Yoolk
         it 'has :services attribute' do
           expect(described_class).to have_attribute(:services).of_type(Array, member_type: Yoolk::Sandbox::ServiceCatalog::Service)
         end
+
+        it { should respond_to(:to_param) }
       end
     end
   end
