@@ -4,10 +4,14 @@ module Yoolk
 
       attribute :id,          Integer
       attribute :text,        String
-      attribute :image,       Hash
       attribute :created_at,  DateTime
       attribute :updated_at,  DateTime
 
+      attribute :image,       Yoolk::Sandbox::Attachment
+
+      def to_param
+        id.to_s
+      end
     end
   end
 end

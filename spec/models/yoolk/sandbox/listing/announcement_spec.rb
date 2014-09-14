@@ -12,7 +12,7 @@ module Yoolk
       end
 
       it 'has :image attribute' do
-        expect(described_class).to have_attribute(:image).of_type(Hash)
+        expect(described_class).to have_attribute(:image).of_type(Yoolk::Sandbox::Attachment)
       end
 
       it 'has :created_at attribute' do
@@ -22,6 +22,8 @@ module Yoolk
       it 'has :updated_at attribute' do
         expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
       end
+
+      it { should respond_to(:to_param) }
     end
   end
 end
