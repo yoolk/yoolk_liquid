@@ -6,6 +6,10 @@ module Yoolk
         controller.gallery_path(gallery)
       end
 
+      def announcement_url(announcement)
+        controller.announcement_path(announcement)
+      end
+
       def product_url(product)
         controller.product_path(product.category, product)
       end
@@ -28,10 +32,6 @@ module Yoolk
 
       def menu_category_url(food_category)
         controller.menu_category_path(food_category)
-      end
-
-      def announcement_url(announcement)
-        controller.announcement_path(announcement)
       end
 
       # Returns the attachment of any attachment objects

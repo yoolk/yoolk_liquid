@@ -23,6 +23,10 @@ module Yoolk
       attribute :communications,          Array[Yoolk::Sandbox::Listing::Communication]
       attribute :extra_communications,    Array[Yoolk::Sandbox::Listing::ExtraCommunication]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
+      attribute :catalog_items,           Array[Yoolk::Sandbox::Listing::CatalogItem]
+      attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
+      attribute :artworks,                Array[Yoolk::Sandbox::Listing::Artwork]
+
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]
       attribute :product_categories,      Array[Yoolk::Sandbox::ProductCatalog::Category]
       attribute :food_categories,         Array[Yoolk::Sandbox::Menu::Category]
@@ -38,7 +42,12 @@ module Yoolk
       def initialize(attributes={})
         super
 
-        # set inverse relation btw service_category & service
+        # set inverse relation for: images, services, products, foods
+        image_galleries.each do |image_gallery|
+          image_gallery.gallery_images.each do |gallery_image|
+            gallery_image.image_gallery = image_gallery
+          end
+        end
         service_categories.each do |service_category|
           service_category.services.each do |service|
             service.category = service_category
@@ -56,12 +65,16 @@ module Yoolk
         end
       end
 
+      def gallery_images
+        @gallery_images ||= initialize_collection(image_galleries.map(&:gallery_images).flatten.sort_by(&:display_order))
+      end
+
       def services
-        @services ||= initialize_collection(service_categories.map(&:services).flatten.sort_by(&:updated_at).reverse)
+        @services       ||= initialize_collection(service_categories.map(&:services).flatten.sort_by(&:updated_at).reverse)
       end
 
       def foods
-        @foods    ||= initialize_collection(food_categories.map(&:foods).flatten.sort_by(&:updated_at).reverse)
+        @foods          ||= initialize_collection(food_categories.map(&:foods).flatten.sort_by(&:updated_at).reverse)
       end
 
       def telephone
@@ -71,6 +84,11 @@ module Yoolk
       def email
         communications[-1]
       end
+
+      ## Alias Method
+      alias_method :galleries, :image_galleries
+      alias_method :images,    :gallery_images
+      alias_method :brochures, :artworks
 
       private
 

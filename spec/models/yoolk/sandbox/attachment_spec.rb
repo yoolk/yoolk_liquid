@@ -14,6 +14,11 @@ module Yoolk
       it 'has :attachment_meta attribute' do
         expect(described_class).to have_attribute(:attachment_meta).of_type(Hash)
       end
+
+      it { should respond_to(:width) }
+      it { should respond_to(:height) }
+      it { should respond_to(:size) }
+      it { should respond_to(:url) }
     end
   end
 end
