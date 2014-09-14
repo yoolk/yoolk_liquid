@@ -25,6 +25,8 @@ module Yoolk
       it { should have_many(:extra_communications).class_name('Yoolk::Liquid::Listing::ExtraCommunicationsDrop').with('Yoolk::Liquid::Listing::ExtraCommunicationDrop') }
       it { should have_many(:listing_categories).with('Yoolk::Liquid::Listing::CategoryDrop') }
 
+      it { should have_many(:catalog_items).with('Yoolk::Liquid::Listing::CatalogItemDrop') }
+
       it { should have_many(:galleries).with('Yoolk::Liquid::Listing::ImageGalleryDrop') }
       it { should have_many(:images).with('Yoolk::Liquid::Listing::GalleryImageDrop') }
 

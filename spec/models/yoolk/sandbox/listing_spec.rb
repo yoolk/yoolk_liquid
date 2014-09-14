@@ -79,6 +79,10 @@ module Yoolk
         expect(described_class).to have_attribute(:listing_categories).of_type(Array, member_type: Yoolk::Sandbox::Listing::Category)
       end
 
+      it ' has :catalog_items attribute' do
+        expect(described_class).to have_attribute(:catalog_items).of_type(Array, member_type: Yoolk::Sandbox::Listing::CatalogItem)
+      end
+
       it ' has :image_galleries attribute' do
         expect(described_class).to have_attribute(:image_galleries).of_type(Array, member_type: Yoolk::Sandbox::Listing::ImageGallery)
       end

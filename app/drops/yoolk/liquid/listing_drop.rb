@@ -14,6 +14,7 @@ module Yoolk
       has_many    :extra_communications,  class_name: 'Yoolk::Liquid::Listing::ExtraCommunicationsDrop',
                                           with: 'Yoolk::Liquid::Listing::ExtraCommunicationDrop'
       has_many    :listing_categories,    with: 'Yoolk::Liquid::Listing::CategoryDrop'
+      has_many    :catalog_items,         with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
       has_many    :galleries,             with: 'Yoolk::Liquid::Listing::ImageGalleryDrop'
       has_many    :images,                with: 'Yoolk::Liquid::Listing::GalleryImageDrop'
 

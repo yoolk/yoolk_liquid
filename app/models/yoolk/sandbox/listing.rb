@@ -23,6 +23,7 @@ module Yoolk
       attribute :communications,          Array[Yoolk::Sandbox::Listing::Communication]
       attribute :extra_communications,    Array[Yoolk::Sandbox::Listing::ExtraCommunication]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
+      attribute :catalog_items,           Array[Yoolk::Sandbox::Listing::CatalogItem]
       attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]
       attribute :food_categories,         Array[Yoolk::Sandbox::Menu::Category]
@@ -37,7 +38,12 @@ module Yoolk
       def initialize(attributes={})
         super
 
-        # set inverse relation btw service_category & service
+        # set inverse relation for: images, services, products, foods
+        image_galleries.each do |image_gallery|
+          image_gallery.gallery_images.each do |gallery_image|
+            gallery_image.image_gallery = image_gallery
+          end
+        end
         service_categories.each do |service_category|
           service_category.services.each do |service|
             service.category = service_category

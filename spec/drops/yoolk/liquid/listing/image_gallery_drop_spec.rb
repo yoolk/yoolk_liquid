@@ -10,7 +10,7 @@ module Yoolk
       it { should have_attribute(:created_at) }
       it { should have_attribute(:updated_at) }
 
-      it { should have_many(:images).class_name('Yoolk::Liquid::Listing::GalleryImageDrop') }
+      it { should have_many(:images).with('Yoolk::Liquid::Listing::GalleryImageDrop') }
     end
 
     describe Listing::ImageGalleryDrop, 'methods' do
