@@ -91,6 +91,10 @@ module Yoolk
         expect(described_class).to have_attribute(:artworks).of_type(Array, member_type: Yoolk::Sandbox::Listing::Artwork)
       end
 
+      it 'has :product_categories attribute' do
+        expect(described_class).to have_attribute(:product_categories).of_type(Array, member_type: Yoolk::Sandbox::ProductCatalog::Category)
+      end
+
       it 'has :service_categories attribute' do
         expect(described_class).to have_attribute(:service_categories).of_type(Array, member_type: Yoolk::Sandbox::ServiceCatalog::Category)
       end
@@ -101,6 +105,7 @@ module Yoolk
     end
 
     describe Listing, 'methods' do
+      it { should respond_to(:products) }
       it { should respond_to(:services) }
       it { should respond_to(:foods) }
       it { should respond_to(:gallery_images) }

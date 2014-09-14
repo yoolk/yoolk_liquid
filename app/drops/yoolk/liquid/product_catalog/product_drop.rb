@@ -2,13 +2,18 @@ module Yoolk
   module Liquid
     module ProductCatalog
       class ProductDrop < BaseDrop
-        attributes :id, :name, :description, :delivery, :created_at, :updated_at, :features, :brand
+        attributes  :id, :name, :description, :delivery, :features, :brand, :to_param,
+                    :created_at, :updated_at
 
-        belongs_to :category, class_name: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
-        has_many   :photos, with: 'Yoolk::Liquid::AttachmentDrop'
+        belongs_to  :category,  class_name: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+        has_many    :photos,    with: 'Yoolk::Liquid::AttachmentDrop'
 
         def url
           product_url(self)
+        end
+
+        def cover_photo
+          photos[0]
         end
       end
     end

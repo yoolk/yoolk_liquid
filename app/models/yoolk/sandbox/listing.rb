@@ -69,6 +69,10 @@ module Yoolk
         @gallery_images ||= initialize_collection(image_galleries.map(&:gallery_images).flatten.sort_by(&:display_order))
       end
 
+      def products
+        @products       ||= initialize_collection(product_categories.map(&:products).flatten.sort_by(&:updated_at).reverse)
+      end
+
       def services
         @services       ||= initialize_collection(service_categories.map(&:services).flatten.sort_by(&:updated_at).reverse)
       end

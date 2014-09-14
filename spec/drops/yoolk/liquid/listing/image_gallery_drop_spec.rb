@@ -14,13 +14,13 @@ module Yoolk
     end
 
     describe Listing::ImageGalleryDrop, 'methods' do
-        let(:drop)      { described_class.new(double) }
+      let(:drop)      { described_class.new(double) }
 
-        it '#url' do
-          expect(drop).to receive(:gallery_url).with(drop)
+      it '#url' do
+        expect(drop).to receive(:gallery_url).with(drop)
 
-          drop.url
-        end
+        drop.url
       end
+    end
   end
 end

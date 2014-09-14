@@ -5,7 +5,7 @@ module Yoolk
     module ProductCatalog
       describe Category do
         it 'has :id attribute' do
-          expect(described_class).to have_attribute(:id).of_type(String)
+          expect(described_class).to have_attribute(:id).of_type(Integer)
         end
 
         it 'has :name attribute' do
@@ -16,9 +16,19 @@ module Yoolk
           expect(described_class).to have_attribute(:name_path).of_type(String)
         end
 
+        it 'has :created_at attribute' do
+          expect(described_class).to have_attribute(:created_at).of_type(DateTime)
+        end
+
+        it 'has :updated_at attribute' do
+          expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
+        end
+
         it 'has :products attribute' do
           expect(described_class).to have_attribute(:products).of_type(Array, member_type: Yoolk::Sandbox::ProductCatalog::Product)
         end
+
+        it { should respond_to(:to_param) }
       end
     end
   end

@@ -3,17 +3,17 @@ module Yoolk
     module ProductCatalog
       class Product < Yoolk::Sandbox::Base
 
-        attribute :id,                String
+        attribute :id,                Integer
         attribute :name,              String
         attribute :description,       String
         attribute :delivery,          Boolean
+        attribute :features,          Array
         attribute :created_at,        DateTime
         attribute :updated_at,        DateTime
-        attribute :features,          Array
 
-        attribute :brand,             Hash[Symbol=>String]
-        attribute :photos,            Array[Yoolk::Sandbox::Attachment]
+        attribute :brand,             Hash
         attribute :category,          Yoolk::Sandbox::ProductCatalog::Category
+        attribute :photos,            Array[Yoolk::Sandbox::Attachment]
 
         def to_param
           "#{id}-#{name.parameterize}"

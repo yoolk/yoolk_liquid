@@ -15,8 +15,7 @@ module Yoolk
       end
 
       describe CategoryDrop, 'methods' do
-        let(:category)  { Yoolk::Sandbox::ServiceCatalog::Category.new(id: 1, name: 'Rental Services') }
-        let(:drop)      { category.to_liquid }
+        let(:drop)      { described_class.new(double) }
 
         it '#url' do
           expect(drop).to receive(:services_category_url).with(drop)
