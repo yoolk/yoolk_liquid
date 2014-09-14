@@ -25,6 +25,8 @@ module Yoolk
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
       attribute :catalog_items,           Array[Yoolk::Sandbox::Listing::CatalogItem]
       attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
+      attribute :artworks,                Array[Yoolk::Sandbox::Listing::Artwork]
+
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]
       attribute :food_categories,         Array[Yoolk::Sandbox::Menu::Category]
 
@@ -79,6 +81,7 @@ module Yoolk
       ## Alias Method
       alias_method :galleries, :image_galleries
       alias_method :images,    :gallery_images
+      alias_method :brochures, :artworks
 
       private
 

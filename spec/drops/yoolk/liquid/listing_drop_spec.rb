@@ -26,9 +26,9 @@ module Yoolk
       it { should have_many(:listing_categories).with('Yoolk::Liquid::Listing::CategoryDrop') }
 
       it { should have_many(:catalog_items).with('Yoolk::Liquid::Listing::CatalogItemDrop') }
-
       it { should have_many(:galleries).with('Yoolk::Liquid::Listing::ImageGalleryDrop') }
       it { should have_many(:images).with('Yoolk::Liquid::Listing::GalleryImageDrop') }
+      it { should have_many(:brochures).with('Yoolk::Liquid::Listing::ArtworkDrop') }
 
       it { should have_many(:services).with('Yoolk::Liquid::ServiceCatalog::ServiceDrop') }
       it { should have_many(:service_categories).with('Yoolk::Liquid::ServiceCatalog::CategoryDrop') }

@@ -17,6 +17,7 @@ module Yoolk
       has_many    :catalog_items,         with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
       has_many    :galleries,             with: 'Yoolk::Liquid::Listing::ImageGalleryDrop'
       has_many    :images,                with: 'Yoolk::Liquid::Listing::GalleryImageDrop'
+      has_many    :brochures,             with: 'Yoolk::Liquid::Listing::ArtworkDrop'
 
       has_many    :services,              with: 'Yoolk::Liquid::ServiceCatalog::ServiceDrop'
       has_many    :service_categories,    with: 'Yoolk::Liquid::ServiceCatalog::CategoryDrop'

@@ -79,12 +79,16 @@ module Yoolk
         expect(described_class).to have_attribute(:listing_categories).of_type(Array, member_type: Yoolk::Sandbox::Listing::Category)
       end
 
-      it ' has :catalog_items attribute' do
+      it 'has :catalog_items attribute' do
         expect(described_class).to have_attribute(:catalog_items).of_type(Array, member_type: Yoolk::Sandbox::Listing::CatalogItem)
       end
 
-      it ' has :image_galleries attribute' do
+      it 'has :image_galleries attribute' do
         expect(described_class).to have_attribute(:image_galleries).of_type(Array, member_type: Yoolk::Sandbox::Listing::ImageGallery)
+      end
+
+      it 'has :artworks attribute' do
+        expect(described_class).to have_attribute(:artworks).of_type(Array, member_type: Yoolk::Sandbox::Listing::Artwork)
       end
 
       it 'has :service_categories attribute' do
@@ -103,6 +107,7 @@ module Yoolk
 
       it { should alias_from(:image_galleries).to(:galleries) }
       it { should alias_from(:gallery_images).to(:images) }
+      it { should alias_from(:artworks).to(:brochures) }
     end
   end
 end
