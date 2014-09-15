@@ -3,7 +3,7 @@ module Yoolk
     class Nationality < Yoolk::Sandbox::Base
 
       attribute   :id,           String
-      attribute   :name,           String
+      attribute   :name,         String
 
     end
   end
