@@ -9,6 +9,8 @@ module Yoolk
       belongs_to  :telephone,             class_name: 'Yoolk::Liquid::Listing::CommunicationDrop'
       belongs_to  :email,                 class_name: 'Yoolk::Liquid::Listing::CommunicationDrop'
       belongs_to  :website,               class_name: 'Yoolk::Liquid::Listing::CommunicationDrop'
+      belongs_to  :logo,                  class_name: 'Yoolk::Liquid::Listing::LogoDrop'
+
       has_many    :communications,        class_name: 'Yoolk::Liquid::Listing::CommunicationsDrop',
                                           with: 'Yoolk::Liquid::Listing::CommunicationDrop'
       has_many    :extra_communications,  class_name: 'Yoolk::Liquid::Listing::ExtraCommunicationsDrop',

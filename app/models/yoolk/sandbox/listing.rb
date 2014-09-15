@@ -20,6 +20,7 @@ module Yoolk
       # relations
       attribute :location,                Yoolk::Sandbox::Location
       attribute :country,                 Yoolk::Sandbox::Country
+      attribute :logo,                    Yoolk::Sandbox::Listing::Logo
       attribute :communications,          Array[Yoolk::Sandbox::Listing::Communication]
       attribute :extra_communications,    Array[Yoolk::Sandbox::Listing::ExtraCommunication]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]

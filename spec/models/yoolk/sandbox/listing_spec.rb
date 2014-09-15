@@ -67,6 +67,10 @@ module Yoolk
         expect(described_class).to have_attribute(:country).of_type(Yoolk::Sandbox::Country)
       end
 
+      it 'has :logo attribute' do
+        expect(described_class).to have_attribute(:logo).of_type(Yoolk::Sandbox::Listing::Logo)
+      end
+
       it 'has :communications attribute' do
         expect(described_class).to have_attribute(:communications).of_type(Array, member_type: Yoolk::Sandbox::Listing::Communication)
       end
