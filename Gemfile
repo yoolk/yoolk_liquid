@@ -11,6 +11,7 @@ gem 'coveralls',        require: false
 gem 'rspec-rails',      '~> 3.1.0'
 gem 'rspec-virtus',     '~> 1.0.1'
 gem 'guard-rspec',      '~> 4.3.1'
+gem 'ammeter',          '~> 1.1.2'
 gem 'quiet_assets'
 
 gemspec
