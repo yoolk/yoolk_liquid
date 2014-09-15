@@ -30,6 +30,8 @@ module Yoolk
 
       has_many    :foods,                 with: 'Yoolk::Liquid::Menu::FoodDrop'
       has_many    :food_categories,       with: 'Yoolk::Liquid::Menu::CategoryDrop'
+
+      has_many    :people,                with: 'Yoolk::Liquid::Listing::PersonDrop'
     end
   end
 end
