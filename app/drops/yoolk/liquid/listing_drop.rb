@@ -33,6 +33,7 @@ module Yoolk
 
       has_many    :people,                with: 'Yoolk::Liquid::Listing::PersonDrop'
       has_many    :medias,                with: 'Yoolk::Liquid::Listing::MediaDrop'
+      has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
     end
   end
 end
