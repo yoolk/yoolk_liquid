@@ -36,6 +36,10 @@ module Yoolk
       has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
       has_many    :alias_names,           with: 'Yoolk::Liquid::Listing::AliasNameDrop'
+
+      belongs_to  :menu_pdf,              with: 'Yoolk::Liquid::AttachmentDrop'
+      belongs_to  :service_catalog_pdf,   with: 'Yoolk::Liquid::AttachmentDrop'
+      belongs_to  :product_catalog_pdf,   with: 'Yoolk::Liquid::AttachmentDrop'
     end
   end
 end
