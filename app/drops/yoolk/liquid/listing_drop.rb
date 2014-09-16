@@ -40,6 +40,7 @@ module Yoolk
       belongs_to  :menu_pdf,              with: 'Yoolk::Liquid::AttachmentDrop'
       belongs_to  :service_catalog_pdf,   with: 'Yoolk::Liquid::AttachmentDrop'
       belongs_to  :product_catalog_pdf,   with: 'Yoolk::Liquid::AttachmentDrop'
+      belongs_to  :business_type,         with: 'Yoolk::Liquid::BusinessTypeDrop'
     end
   end
 end
