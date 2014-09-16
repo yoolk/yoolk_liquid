@@ -35,6 +35,7 @@ module Yoolk
       attribute :people,                  Array[Yoolk::Sandbox::Listing::Person]
       attribute :medias,                  Array[Yoolk::Sandbox::Listing::Media]
       attribute :business_photos,         Array[Yoolk::Sandbox::Listing::BusinessPhoto]
+      attribute :keyphrases,              Array[Yoolk::Sandbox::Listing::Keyphrase]
 
       def self.find(alias_id)
         path       = Rails.root.join('db', 'samples', 'jsons', "#{alias_id}.json")
