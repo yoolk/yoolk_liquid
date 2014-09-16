@@ -40,6 +40,7 @@ module Yoolk
       attribute :menu_pdf,                Yoolk::Sandbox::Attachment
       attribute :service_catalog_pdf,     Yoolk::Sandbox::Attachment
       attribute :product_catalog_pdf,     Yoolk::Sandbox::Attachment
+      attribute :business_type,           Yoolk::Sandbox::BusinessType
 
       def self.find(alias_id)
         path       = Rails.root.join('db', 'samples', 'jsons', "#{alias_id}.json")
