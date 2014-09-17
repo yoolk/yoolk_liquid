@@ -5,9 +5,12 @@ module Yoolk
     describe Listing::CommunicationDrop do
       it { should have_attribute(:id) }
       it { should have_attribute(:type) }
+      it { should have_attribute(:label) }
       it { should have_attribute(:value) }
       it { should have_attribute(:is_first_line) }
       it { should have_attribute(:image_url) }
+      it { should have_attribute(:created_at) }
+      it { should have_attribute(:updated_at) }
     end
   end
 end

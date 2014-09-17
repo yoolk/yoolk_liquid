@@ -12,6 +12,8 @@ module Yoolk
       attribute :listings_count,        Integer
       attribute :sub_categories_count,  Integer
       attribute :level,                 Integer
+      attribute :created_at,            DateTime
+      attribute :updated_at,            DateTime
 
       attribute :short_description,     Yoolk::Sandbox::Listing::ShortDescription
     end

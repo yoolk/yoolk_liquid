@@ -72,11 +72,11 @@ module Yoolk
       end
 
       it 'has :communications attribute' do
-        expect(described_class).to have_attribute(:communications).of_type(Array, member_type: Yoolk::Sandbox::Listing::Communication)
+        expect(described_class).to have_attribute(:communications).of_type(Yoolk::Sandbox::Listing::Communications, member_type: Yoolk::Sandbox::Listing::Communication)
       end
 
       it 'has :extra_communications attribute' do
-        expect(described_class).to have_attribute(:extra_communications).of_type(Array, member_type: Yoolk::Sandbox::Listing::ExtraCommunication)
+        expect(described_class).to have_attribute(:extra_communications).of_type(Yoolk::Sandbox::Listing::Communications, member_type: Yoolk::Sandbox::Listing::ExtraCommunication)
       end
 
       it 'has :listing_categories attribute' do
@@ -113,6 +113,16 @@ module Yoolk
       it { should respond_to(:services) }
       it { should respond_to(:foods) }
       it { should respond_to(:gallery_images) }
+
+      it { should respond_to(:telephones) }
+      it { should respond_to(:emails) }
+      it { should respond_to(:websites) }
+      it { should respond_to(:telephone) }
+      it { should respond_to(:email) }
+      it { should respond_to(:website) }
+      it { should respond_to(:telephone?) }
+      it { should respond_to(:email?) }
+      it { should respond_to(:website?) }
 
       it { should alias_from(:image_galleries).to(:galleries) }
       it { should alias_from(:gallery_images).to(:images) }

@@ -46,6 +46,14 @@ module Yoolk
       it 'has :short_description attribute' do
         expect(described_class).to have_attribute(:short_description).of_type(Yoolk::Sandbox::Listing::ShortDescription)
       end
+
+      it 'has :created_at attribute' do
+        expect(described_class).to have_attribute(:created_at).of_type(DateTime)
+      end
+
+      it 'has :updated_at attribute' do
+        expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
+      end
     end
   end
 end
