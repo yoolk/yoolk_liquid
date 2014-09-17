@@ -32,7 +32,7 @@ module Yoolk
       has_many    :food_categories,       with: 'Yoolk::Liquid::Menu::CategoryDrop'
 
       has_many    :people,                class_name: 'Yoolk::Liquid::Listing::PeopleDrop',
-                                          with: 'Yoolk::Liquid::Listing::PersonDrop'
+                                         with: 'Yoolk::Liquid::Listing::PersonDrop'
       has_many    :medias,                with: 'Yoolk::Liquid::Listing::MediaDrop'
       has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
@@ -42,6 +42,10 @@ module Yoolk
       belongs_to  :service_catalog_pdf,   with: 'Yoolk::Liquid::AttachmentDrop'
       belongs_to  :product_catalog_pdf,   with: 'Yoolk::Liquid::AttachmentDrop'
       belongs_to  :business_type,         with: 'Yoolk::Liquid::BusinessTypeDrop'
+
+      # def people
+      #   Yoolk::Liquid::Listing::PeopleDrop.new(object.people)
+      # end
     end
   end
 end
