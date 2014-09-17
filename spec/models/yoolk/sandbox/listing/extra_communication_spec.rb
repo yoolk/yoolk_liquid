@@ -27,5 +27,11 @@ module Yoolk
         expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
       end
     end
+
+    describe Listing::ExtraCommunication do
+      it { should respond_to(:email?) }
+      it { should respond_to(:website?) }
+      it { should respond_to(:telephone?) }
+    end
   end
 end
