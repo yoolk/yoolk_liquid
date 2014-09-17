@@ -24,6 +24,10 @@ module Yoolk
 
       it { should have_many(:communications).class_name('Yoolk::Liquid::Listing::CommunicationsDrop').with('Yoolk::Liquid::Listing::CommunicationDrop') }
       it { should have_many(:extra_communications).class_name('Yoolk::Liquid::Listing::ExtraCommunicationsDrop').with('Yoolk::Liquid::Listing::ExtraCommunicationDrop') }
+      it { should have_many(:telephones).with('Yoolk::Liquid::Listing::CommunicationDrop') }
+      it { should have_many(:emails).with('Yoolk::Liquid::Listing::CommunicationDrop') }
+      it { should have_many(:websites).with('Yoolk::Liquid::Listing::CommunicationDrop') }
+
       it { should have_many(:listing_categories).with('Yoolk::Liquid::Listing::CategoryDrop') }
 
       it { should have_many(:catalog_items).with('Yoolk::Liquid::Listing::CatalogItemDrop') }

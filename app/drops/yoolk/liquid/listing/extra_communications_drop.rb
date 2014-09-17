@@ -1,8 +1,7 @@
 module Yoolk
   module Liquid
-    class Listing::CommunicationsDrop < ::Liquid::Rails::CollectionDrop
+    class Listing::ExtraCommunicationsDrop < ::Liquid::Rails::CollectionDrop
       scope :telephones, :emails, :websites
-
     end
   end
 end

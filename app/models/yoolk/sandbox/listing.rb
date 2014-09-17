@@ -21,8 +21,8 @@ module Yoolk
       attribute :location,                Yoolk::Sandbox::Location
       attribute :country,                 Yoolk::Sandbox::Country
       attribute :logo,                    Yoolk::Sandbox::Listing::Logo
-      attribute :communications,          Array[Yoolk::Sandbox::Listing::Communication]
-      attribute :extra_communications,    Array[Yoolk::Sandbox::Listing::ExtraCommunication]
+      attribute :communications,          Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::Communication]
+      attribute :extra_communications,    Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::ExtraCommunication]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
       attribute :catalog_items,           Array[Yoolk::Sandbox::Listing::CatalogItem]
       attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
@@ -75,28 +75,44 @@ module Yoolk
         end
       end
 
+      %w(telephone email website).each do |module_name|
+        singularize_method = module_name
+        pluralize_method   = module_name.pluralize
+
+        # telephones
+        define_method(pluralize_method) do
+          if instance_variable_get("@#{pluralize_method}")
+            instance_variable_get("@#{pluralize_method}")
+          else
+            instance_variable_set("@#{pluralize_method}", paginate_array(communications.send(pluralize_method) + extra_communications.send(pluralize_method)))
+          end
+        end
+
+        # telephone
+        define_method(singularize_method) do
+          send(pluralize_method).first
+        end
+
+        # telephone?
+        define_method("#{singularize_method}?") do
+          send(singularize_method).present?
+        end
+      end
+
       def gallery_images
-        @gallery_images ||= initialize_collection(image_galleries.map(&:gallery_images).flatten.sort_by(&:display_order))
+        @gallery_images ||= paginate_array(image_galleries.map(&:gallery_images).flatten.sort_by(&:display_order))
       end
 
       def products
-        @products       ||= initialize_collection(product_categories.map(&:products).flatten.sort_by(&:updated_at).reverse)
+        @products       ||= paginate_array(product_categories.map(&:products).flatten.sort_by(&:updated_at).reverse)
       end
 
       def services
-        @services       ||= initialize_collection(service_categories.map(&:services).flatten.sort_by(&:updated_at).reverse)
+        @services       ||= paginate_array(service_categories.map(&:services).flatten.sort_by(&:updated_at).reverse)
       end
 
       def foods
-        @foods          ||= initialize_collection(food_categories.map(&:foods).flatten.sort_by(&:updated_at).reverse)
-      end
-
-      def telephone
-        communications[0]
-      end
-
-      def email
-        communications[-1]
+        @foods          ||= paginate_array(food_categories.map(&:foods).flatten.sort_by(&:updated_at).reverse)
       end
 
       ## Alias Method
@@ -106,7 +122,7 @@ module Yoolk
 
       private
 
-        def initialize_collection(value)
+        def paginate_array(value)
           if value.count.zero?
             Yoolk::Sandbox::Collection.new(value)
           else
