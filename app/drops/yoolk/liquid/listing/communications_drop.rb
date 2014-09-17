@@ -1,7 +1,7 @@
 module Yoolk
   module Liquid
-    class Listing::CommunicationsDrop < CollectionDrop
-      scope :emails
+    class Listing::CommunicationsDrop < ::Liquid::Rails::CollectionDrop
+
     end
   end
 end

@@ -8,6 +8,8 @@ module Yoolk
       it { should have_attribute(:value) }
       it { should have_attribute(:is_first_line) }
       it { should have_attribute(:image_url) }
+      it { should have_attribute(:created_at) }
+      it { should have_attribute(:updated_at) }
     end
   end
 end

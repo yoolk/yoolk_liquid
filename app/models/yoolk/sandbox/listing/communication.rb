@@ -6,6 +6,8 @@ module Yoolk
       attribute :value,         String
       attribute :is_first_line, Boolean
       attribute :image_url,     String
+      attribute :created_at,    DateTime
+      attribute :updated_at,    DateTime
     end
   end
 end

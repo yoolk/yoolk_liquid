@@ -5,7 +5,7 @@ require 'generators/instant_website/theme_generator'
 
 describe InstantWebsite::Generators::ThemeGenerator do
   # Tell the generator where to put its output (what it thinks of as Rails.root)
-  destination File.expand_path("../../../../../spec/dummy/tmp", __FILE__)
+  destination "#{Rails.root}/tmp"
 
   before do
     prepare_destination
