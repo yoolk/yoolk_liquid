@@ -1,6 +1,6 @@
 module Yoolk
   module Sandbox
-    class Country < Base
+    class Country < Yoolk::Sandbox::Base
 
       attribute :id,            String
       attribute :name,          String
