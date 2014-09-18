@@ -2,6 +2,7 @@ module Yoolk
   module Sandbox
     class Portal < Yoolk::Sandbox::Base
 
+      attribute :id,                String
       attribute :abbreviation,      String
       attribute :domain_name,       String
       attribute :description,       String
