@@ -7,6 +7,8 @@ module Yoolk
       attribute :is_live,               Boolean
       attribute :is_active,             Boolean
       attribute :free_plan,             Boolean
+      attribute :created_at,            DateTime
+      attribute :updated_at,            DateTime
 
       attribute :favicon,               Yoolk::Sandbox::Attachment
       attribute :template,              Yoolk::Sandbox::InstantWebsite::Template
