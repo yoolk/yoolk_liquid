@@ -15,12 +15,18 @@ module Yoolk
       it { should have_attribute(:address) }
       it { should have_attribute(:show_map_on_web) }
       it { should have_attribute(:is_active) }
+      it { should belongs_to(:business_type).class_name('Yoolk::Liquid::BusinessTypeDrop') }
       it { should belongs_to(:location).class_name('Yoolk::Liquid::LocationDrop') }
       it { should belongs_to(:country).class_name('Yoolk::Liquid::CountryDrop') }
       it { should belongs_to(:telephone).class_name('Yoolk::Liquid::Listing::CommunicationDrop') }
       it { should belongs_to(:email).class_name('Yoolk::Liquid::Listing::CommunicationDrop') }
       it { should belongs_to(:website).class_name('Yoolk::Liquid::Listing::CommunicationDrop') }
       it { should belongs_to(:logo).class_name('Yoolk::Liquid::Listing::LogoDrop') }
+      it { should belongs_to(:product_catalog_pdf).class_name('Yoolk::Liquid::AttachmentDrop') }
+      it { should belongs_to(:service_catalog_pdf).class_name('Yoolk::Liquid::AttachmentDrop') }
+      it { should belongs_to(:menu_pdf).class_name('Yoolk::Liquid::AttachmentDrop') }
+      it { should belongs_to(:instant_website).class_name('Yoolk::Liquid::InstantWebsite::WebsiteDrop') }
+      it { should belongs_to(:portal).class_name('Yoolk::Liquid::PortalDrop') }
 
       it { should have_many(:communications).class_name('Yoolk::Liquid::Listing::CommunicationsDrop').with('Yoolk::Liquid::Listing::CommunicationDrop') }
       it { should have_many(:extra_communications).class_name('Yoolk::Liquid::Listing::ExtraCommunicationsDrop').with('Yoolk::Liquid::Listing::ExtraCommunicationDrop') }
@@ -29,6 +35,11 @@ module Yoolk
       it { should have_many(:websites).with('Yoolk::Liquid::Listing::CommunicationDrop') }
 
       it { should have_many(:listing_categories).with('Yoolk::Liquid::Listing::CategoryDrop') }
+      it { should have_many(:people).class_name('Yoolk::Liquid::Listing::PeopleDrop').with('Yoolk::Liquid::Listing::PersonDrop') }
+      it { should have_many(:medias).with('Yoolk::Liquid::Listing::MediaDrop') }
+      it { should have_many(:business_photos).with('Yoolk::Liquid::Listing::BusinessPhotoDrop') }
+      it { should have_many(:keyphrases).with('Yoolk::Liquid::Listing::KeyphraseDrop') }
+      it { should have_many(:alias_names).with('Yoolk::Liquid::Listing::AliasNameDrop') }
 
       it { should have_many(:catalog_items).with('Yoolk::Liquid::Listing::CatalogItemDrop') }
       it { should have_many(:galleries).with('Yoolk::Liquid::Listing::ImageGalleryDrop') }

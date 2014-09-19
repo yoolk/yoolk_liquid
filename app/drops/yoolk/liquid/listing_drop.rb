@@ -34,6 +34,22 @@ module Yoolk
 
       has_many    :foods,                 with: 'Yoolk::Liquid::Menu::FoodDrop'
       has_many    :food_categories,       with: 'Yoolk::Liquid::Menu::CategoryDrop'
+
+      has_many    :people,                class_name: 'Yoolk::Liquid::Listing::PeopleDrop',
+                                          with: 'Yoolk::Liquid::Listing::PersonDrop'
+      has_many    :medias,                with: 'Yoolk::Liquid::Listing::MediaDrop'
+      has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
+      has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
+      has_many    :alias_names,           with: 'Yoolk::Liquid::Listing::AliasNameDrop'
+
+      belongs_to  :menu_pdf,              class_name: 'Yoolk::Liquid::AttachmentDrop'
+      belongs_to  :service_catalog_pdf,   class_name: 'Yoolk::Liquid::AttachmentDrop'
+      belongs_to  :product_catalog_pdf,   class_name: 'Yoolk::Liquid::AttachmentDrop'
+      belongs_to  :business_type,         class_name: 'Yoolk::Liquid::BusinessTypeDrop'
+
+      belongs_to  :portal,                class_name: 'Yoolk::Liquid::PortalDrop'
+      belongs_to  :instant_website,       class_name: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
+
     end
   end
 end

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get         'menu/:category_id/:id',      to: 'menu/foods#show',            as: :menu_food
   get         'menu/:category_id',          to: 'menu/categories#show',       as: :menu_category
 
+
   resources   :announcements,               only: [:index, :show]
 
   get         'map',                        to: 'map#index'
@@ -24,4 +25,8 @@ Rails.application.routes.draw do
   post        'contact_us',                 to: 'contact_us#create'
   get         'about_us',                   to: 'about_us#index'
   post        'about_us',                   to: 'about_us#create'
+  get         'reservation',                to: 'reservation#index'
+  post        'reservation',                to: 'reservation#create'
+  get         'feedback',                   to: 'feedback#index'
+  post        'feedback',                   to: 'feedback#create'
 end

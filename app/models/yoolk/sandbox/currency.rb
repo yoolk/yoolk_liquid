@@ -1,9 +1,9 @@
 module Yoolk
   module Sandbox
-    class Country < Yoolk::Sandbox::Base
+    class Currency < Yoolk::Sandbox::Base
 
       attribute :id,            String
-      attribute :name,          String
+      attribute :code,          String
 
     end
   end
