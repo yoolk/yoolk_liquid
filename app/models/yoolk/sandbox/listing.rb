@@ -18,6 +18,8 @@ module Yoolk
       attribute :updated_at,              DateTime
 
       # relations
+      attribute :portal,                  Yoolk::Sandbox::Portal
+      attribute :business_type,           Yoolk::Sandbox::BusinessType
       attribute :location,                Yoolk::Sandbox::Location
       attribute :country,                 Yoolk::Sandbox::Country
       attribute :logo,                    Yoolk::Sandbox::Listing::Logo
@@ -40,8 +42,6 @@ module Yoolk
       attribute :menu_pdf,                Yoolk::Sandbox::Attachment
       attribute :service_catalog_pdf,     Yoolk::Sandbox::Attachment
       attribute :product_catalog_pdf,     Yoolk::Sandbox::Attachment
-      attribute :business_type,           Yoolk::Sandbox::BusinessType
-      attribute :portal,                  Yoolk::Sandbox::Portal
       attribute :instant_website,         Yoolk::Sandbox::InstantWebsite::Website
 
       def self.find(alias_id)

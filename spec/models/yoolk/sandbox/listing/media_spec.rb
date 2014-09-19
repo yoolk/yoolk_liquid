@@ -4,6 +4,10 @@ module Yoolk
   module Sandbox
     describe Listing::Media do
 
+      it 'has :id attribute' do
+        expect(described_class).to have_attribute(:id).of_type(String)
+      end
+
       it 'has :embed_script attribute' do
         expect(described_class).to have_attribute(:embed_script).of_type(String)
       end

@@ -31,10 +31,6 @@ module Yoolk
         expect(described_class).to have_attribute(:time_zone).of_type(String)
       end
 
-      it 'has :listings_count attribute' do
-        expect(described_class).to have_attribute(:listings_count).of_type(Integer)
-      end
-
       it 'has :country attribute' do
         expect(described_class).to have_attribute(:country).of_type(Yoolk::Sandbox::Country)
       end

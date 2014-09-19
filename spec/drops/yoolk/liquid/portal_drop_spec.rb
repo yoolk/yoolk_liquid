@@ -10,7 +10,6 @@ module Yoolk
       it { should have_attribute(:official_name) }
       it { should have_attribute(:keywords) }
       it { should have_attribute(:time_zone) }
-      it { should have_attribute(:listings_count) }
       it { should have_attribute(:created_at) }
       it { should have_attribute(:updated_at) }
 

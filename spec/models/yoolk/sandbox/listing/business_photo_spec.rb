@@ -19,11 +19,11 @@ module Yoolk
         expect(described_class).to have_attribute(:description).of_type(String)
       end
 
-      it 'has :created_at .of_type(DateTime)attribute' do
+      it 'has :created_at attribute' do
         expect(described_class).to have_attribute(:created_at).of_type(DateTime)
       end
 
-      it 'has :updated_at .of_type(DateTime)attribute' do
+      it 'has :updated_at attribute' do
         expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
       end
     end

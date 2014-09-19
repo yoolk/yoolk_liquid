@@ -2,9 +2,9 @@ require 'rails_helper'
 
 module Yoolk
   module Liquid
-    describe CurrencyDrop do
+    describe NationalityDrop do
       it { should have_attribute(:id) }
-      it { should have_attribute(:code) }
+      it { should have_attribute(:name) }
     end
   end
 end
