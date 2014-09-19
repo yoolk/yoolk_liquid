@@ -10,7 +10,7 @@ module Yoolk
 
       attribute :favicon,               Yoolk::Sandbox::Attachment
       attribute :template,              Yoolk::Sandbox::InstantWebsite::Template
-      # has_many  :cover_photos,          Array[Yoolk::Sandbox::InstantWebsite::WebsiteCoverPhoto]
+      attribute :cover_photos,          Array[Yoolk::Sandbox::InstantWebsite::WebsiteCoverPhoto]
       # has_many  :domains,               Array[Yoolk::Sandbox::InstantWebsite::Domain]
     end
   end
