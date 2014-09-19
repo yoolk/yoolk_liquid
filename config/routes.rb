@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   post        'contact_us',                 to: 'contact_us#create'
   get         'about_us',                   to: 'about_us#index'
   post        'about_us',                   to: 'about_us#create'
+  get         'reservation',                to: 'reservation#index'
+  get         'feedback',                   to: 'feedback#index'
 end
