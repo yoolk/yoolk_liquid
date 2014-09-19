@@ -47,6 +47,9 @@ module Yoolk
       belongs_to  :product_catalog_pdf,   with: 'Yoolk::Liquid::AttachmentDrop'
       belongs_to  :business_type,         with: 'Yoolk::Liquid::BusinessTypeDrop'
 
+      belongs_to  :portal,                with: 'Yoolk::Liquid::PortalDrop'
+      belongs_to  :instant_website,       with: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
+
       # def people
       #   Yoolk::Liquid::Listing::PeopleDrop.new(object.people)
       # end
