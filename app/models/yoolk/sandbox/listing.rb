@@ -18,11 +18,14 @@ module Yoolk
       attribute :updated_at,              DateTime
 
       # relations
+      attribute :portal,                  Yoolk::Sandbox::Portal
+      attribute :business_type,           Yoolk::Sandbox::BusinessType
       attribute :location,                Yoolk::Sandbox::Location
       attribute :country,                 Yoolk::Sandbox::Country
       attribute :logo,                    Yoolk::Sandbox::Listing::Logo
       attribute :communications,          Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::Communication]
       attribute :extra_communications,    Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::ExtraCommunication]
+      attribute :people,                  Yoolk::Sandbox::Listing::People[Yoolk::Sandbox::Listing::Person]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
       attribute :catalog_items,           Array[Yoolk::Sandbox::Listing::CatalogItem]
       attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
@@ -32,6 +35,14 @@ module Yoolk
       attribute :product_categories,      Array[Yoolk::Sandbox::ProductCatalog::Category]
       attribute :food_categories,         Array[Yoolk::Sandbox::Menu::Category]
       attribute :announcements,           Array[Yoolk::Sandbox::Listing::Announcement]
+      attribute :medias,                  Array[Yoolk::Sandbox::Listing::Media]
+      attribute :business_photos,         Array[Yoolk::Sandbox::Listing::BusinessPhoto]
+      attribute :keyphrases,              Array[Yoolk::Sandbox::Listing::Keyphrase]
+      attribute :alias_names,             Array[Yoolk::Sandbox::Listing::AliasName]
+      attribute :menu_pdf,                Yoolk::Sandbox::Attachment
+      attribute :service_catalog_pdf,     Yoolk::Sandbox::Attachment
+      attribute :product_catalog_pdf,     Yoolk::Sandbox::Attachment
+      attribute :instant_website,         Yoolk::Sandbox::InstantWebsite::Website
 
       def self.find(alias_id)
         path       = Rails.root.join('db', 'samples', 'jsons', "#{alias_id}.json")

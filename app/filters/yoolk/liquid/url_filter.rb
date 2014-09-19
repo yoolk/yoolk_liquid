@@ -89,11 +89,20 @@ module Yoolk
         link_to(value, contact_us_path, default_class_options(contact_us_page?, options))
       end
 
+      def link_to_reservation(value, options={})
+        link_to(value, reservation_path, default_class_options(reservation_page?, options))
+      end
+
+      def link_to_feedback(value, options={})
+        link_to(value, feedback_path, default_class_options(feedback_page?, options))
+      end
+
       private
 
         delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_path,
                   :about_us_path, :contact_us_path, :products_path, :services_path,
-                  :menu_path, :menu_category_path, :announcements_path,
+                  :menu_path, :menu_category_path, :announcements_path, :reservation_path,
+                  :feedback_path,
                   to: :controller
 
         def office_path
@@ -149,6 +158,14 @@ module Yoolk
 
         def announcements_page?
           request.fullpath.start_with?(announcements_path.split('?')[0])
+        end
+
+        def reservation_page?
+          request.fullpath.start_with?(reservation_path.split('?')[0])
+        end
+
+        def feedback_page?
+          request.fullpath.start_with?(feedback_path.split('?')[0])
         end
 
         def request
