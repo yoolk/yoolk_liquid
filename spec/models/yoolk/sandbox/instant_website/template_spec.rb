@@ -35,6 +35,14 @@ module Yoolk
       it 'has :updated_at attribute' do
         expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
       end
+
+      it 'has :thumbnail attribute' do
+        expect(described_class).to have_attribute(:thumbnail).of_type(Yoolk::Sandbox::Attachment)
+      end
+
+      it 'has :cover_photo attribute' do
+        expect(described_class).to have_attribute(:cover_photo).of_type(Yoolk::Sandbox::InstantWebsite::TemplateCoverPhoto)
+      end
     end
   end
 end
