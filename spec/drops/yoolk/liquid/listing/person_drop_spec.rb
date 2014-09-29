@@ -16,6 +16,8 @@ module Yoolk
       it { should belongs_to(:position_level).with('Yoolk::Liquid::PositionLevelDrop') }
       it { should belongs_to(:photo).with('Yoolk::Liquid::AttachmentDrop') }
 
+      it { should have_many(:communications).with('Yoolk::Liquid::Listing::CommunicationDrop') }
+      it { should have_many(:languages).with('Yoolk::Liquid::LanguageDrop') }
     end
   end
 end

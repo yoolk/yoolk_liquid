@@ -9,7 +9,6 @@ module Yoolk
       attribute :official_name,     String
       attribute :keywords,          String
       attribute :time_zone,         String
-      attribute :listings_count,    Integer
 
       attribute :country,           Yoolk::Sandbox::Country
       attribute :language,          Yoolk::Sandbox::Language

@@ -71,6 +71,30 @@ module Yoolk
         expect(described_class).to have_attribute(:logo).of_type(Yoolk::Sandbox::Listing::Logo)
       end
 
+      it 'has :business_type attribute' do
+        expect(described_class).to have_attribute(:business_type).of_type(Yoolk::Sandbox::BusinessType)
+      end
+
+      it 'has :portal attribute' do
+        expect(described_class).to have_attribute(:portal).of_type(Yoolk::Sandbox::Portal)
+      end
+
+      it 'has :instant_website attribute' do
+        expect(described_class).to have_attribute(:instant_website).of_type(Yoolk::Sandbox::InstantWebsite::Website)
+      end
+
+      it 'has :service_catalog_pdf attribute' do
+        expect(described_class).to have_attribute(:service_catalog_pdf).of_type(Yoolk::Sandbox::Attachment)
+      end
+
+      it 'has :product_catalog_pdf attribute' do
+        expect(described_class).to have_attribute(:product_catalog_pdf).of_type(Yoolk::Sandbox::Attachment)
+      end
+
+      it 'has :menu_pdf attribute' do
+        expect(described_class).to have_attribute(:menu_pdf).of_type(Yoolk::Sandbox::Attachment)
+      end
+
       it 'has :communications attribute' do
         expect(described_class).to have_attribute(:communications).of_type(Yoolk::Sandbox::Listing::Communications, member_type: Yoolk::Sandbox::Listing::Communication)
       end
@@ -105,6 +129,22 @@ module Yoolk
 
       it 'has :food_categories attribute' do
         expect(described_class).to have_attribute(:food_categories).of_type(Array, member_type: Yoolk::Sandbox::Menu::Category)
+      end
+
+      it 'has :medias attribute' do
+        expect(described_class).to have_attribute(:medias).of_type(Array, member_type: Yoolk::Sandbox::Listing::Media)
+      end
+
+      it 'has :business_photos attribute' do
+        expect(described_class).to have_attribute(:business_photos).of_type(Array, member_type: Yoolk::Sandbox::Listing::BusinessPhoto)
+      end
+
+      it 'has :keyphrases attribute' do
+        expect(described_class).to have_attribute(:keyphrases).of_type(Array, member_type: Yoolk::Sandbox::Listing::Keyphrase)
+      end
+
+      it 'has :alias_names attribute' do
+        expect(described_class).to have_attribute(:alias_names).of_type(Array, member_type: Yoolk::Sandbox::Listing::AliasName)
       end
     end
 
