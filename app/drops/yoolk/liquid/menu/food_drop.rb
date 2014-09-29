@@ -15,6 +15,15 @@ module Yoolk
         def cover_photo
           photos[0]
         end
+
+        def properties
+          keys, result = ["name", "value"], []
+          object.properties.each do |property|
+            result.push Hash[keys.zip(property.to_a.flatten)]
+          end
+          result
+        end
+
       end
     end
   end

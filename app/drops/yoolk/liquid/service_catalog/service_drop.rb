@@ -12,9 +12,9 @@ module Yoolk
           service_url(self)
         end
 
-        def read_properties
+        def properties
           keys, result = ["name", "value"], []
-          properties.each do |property|
+          object.properties.each do |property|
             result.push Hash[keys.zip(property.to_a.flatten)]
           end
           result
