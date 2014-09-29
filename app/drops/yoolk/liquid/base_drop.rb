@@ -11,6 +11,7 @@ module Yoolk
       def to_param
         object.to_param
       end
+
     end
   end
 end
