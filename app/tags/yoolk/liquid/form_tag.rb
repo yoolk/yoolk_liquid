@@ -6,8 +6,14 @@ module Yoolk
          @url = markup
       end
       def render(context)
-        "<form accept-charset='UTF-8' method='post' #{@url}> <input name='form_type' type='hidden' value='customer_login' /><input name='utf8' type='hidden' value='✓' />" + super + "</form>"
+        @token ||= context.registers[:view].form_authenticity_token
+        "<form accept-charset='UTF-8' method='post' #{@url}>
+        <div style='margin:0;padding:0;display:inline'>
+        <input name='utf8' type='hidden' value='✓'>
+        <input name='authenticity_token' type='hidden' value='#{@token}'>
+        </div>" + super + "</form>"
       end
+
     end
   end
 end
