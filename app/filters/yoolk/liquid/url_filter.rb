@@ -36,9 +36,15 @@ module Yoolk
 
       # Returns the attachment of any attachment objects
       # Usage:
+      # For catalog_item, brochure, announcement, you don't need to pass attachment object.
+      # {{ catalog_item | attachment_url: "medium" }}
       # {{ product.photos[0] | attachment_url: "medium" }}
       def attachment_url(object, style)
-        object.url(style)
+        if object.respond_to?(:image) && object.image.is_a?(Yoolk::Liquid::AttachmentDrop)
+          object.image.url(style)
+        else
+          object.url(style)
+        end
       end
 
       def link_to_office(value, options={})
