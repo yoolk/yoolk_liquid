@@ -16,16 +16,15 @@ module Yoolk
       def render(context)
         @csrf_token  = context.registers[:view].form_authenticity_token
         @flash       = context.registers[:view].flash[:notice]
-        contact_from = context[@variable_name]
         context.stack do
           context['form'] = {
             'errors' => @flash
           }
-          form_builder(contact_from, render_all(@nodelist, context))
+          form_builder(render_all(@nodelist, context))
         end
       end
 
-      def form_builder(contact_from, input)
+      def form_builder(input)
         %Q{
           <form accept-charset='UTF-8' method='post' class='contact-form' id='contact-form' action=''>
             <div style='margin:0;padding:0;display:inline'>
