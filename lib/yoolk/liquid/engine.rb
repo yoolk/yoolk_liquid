@@ -1,6 +1,5 @@
-require 'kaminari'
-
 # views
+require 'kaminari'
 require 'liquid-rails'
 require 'themes_on_rails'
 require 'uglifier'
