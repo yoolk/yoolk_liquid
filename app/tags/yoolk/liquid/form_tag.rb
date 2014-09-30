@@ -8,7 +8,6 @@ module Yoolk
 
         if markup =~ Syntax
           @variable_name = $1
-          @attributes    = {}
         else
           raise SyntaxError.new("Syntax Error - Valid syntax: {% form contact %}")
         end
