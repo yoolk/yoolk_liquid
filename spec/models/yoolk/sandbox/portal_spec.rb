@@ -38,6 +38,8 @@ module Yoolk
       it 'has :language attribute' do
         expect(described_class).to have_attribute(:language).of_type(Yoolk::Sandbox::Language)
       end
+
+      it { should respond_to(:labs?) }
     end
   end
 end
