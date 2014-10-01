@@ -146,6 +146,10 @@ module Yoolk
       it 'has :alias_names attribute' do
         expect(described_class).to have_attribute(:alias_names).of_type(Array, member_type: Yoolk::Sandbox::Listing::AliasName)
       end
+
+      it 'has :facebook_page attribute' do
+        expect(described_class).to have_attribute(:facebook_page).of_type(Yoolk::Sandbox::Facebook::Page)
+      end
     end
 
     describe Listing, 'methods' do
