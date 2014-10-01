@@ -44,7 +44,7 @@ module Yoolk
         if object.respond_to?(:image) && object.image.is_a?(Yoolk::Liquid::AttachmentDrop)
           object.image.url(style)
         else
-          object.url(style)
+          object.url(style) if object
         end
       end
 
