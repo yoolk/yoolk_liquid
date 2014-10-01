@@ -41,6 +41,7 @@ module Yoolk
       has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
       has_many    :alias_names,           with: 'Yoolk::Liquid::Listing::AliasNameDrop'
+      belongs_to  :facebook_page,         with: 'Yoolk::Liquid::Facebook::PageDrop'
 
       belongs_to  :menu_pdf,              class_name: 'Yoolk::Liquid::AttachmentDrop'
       belongs_to  :service_catalog_pdf,   class_name: 'Yoolk::Liquid::AttachmentDrop'
