@@ -41,10 +41,16 @@ module Yoolk
       # {{ catalog_item | attachment_url: "medium" }}
       # {{ product.photos[0] | attachment_url: "medium" }}
       def attachment_url(object, style)
-        if object.respond_to?(:image) && object.image.is_a?(Yoolk::Liquid::AttachmentDrop)
-          object.image.url(style)
+        return nil if object.nil?
+
+        if object.respond_to?(:image)
+          image = object.image
+
+          if image.present? && image.is_a?(Yoolk::Liquid::AttachmentDrop)
+            image.url(style)
+          end
         else
-          object.url(style) if object
+          object.url(style)
         end
       end
 
@@ -184,7 +190,7 @@ module Yoolk
         end
 
         def default_url_options
-          controller.default_url_options
+          controller.send(:default_url_options)
         end
 
         def url_helpers
