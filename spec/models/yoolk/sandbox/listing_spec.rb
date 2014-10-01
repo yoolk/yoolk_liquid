@@ -150,6 +150,10 @@ module Yoolk
       it 'has :facebook_page attribute' do
         expect(described_class).to have_attribute(:facebook_page).of_type(Yoolk::Sandbox::Facebook::Page)
       end
+
+      it 'has :twitter_account attribute' do
+        expect(described_class).to have_attribute(:twitter_account).of_type(Yoolk::Sandbox::Twitter::Account)
+      end
     end
 
     describe Listing, 'methods' do
