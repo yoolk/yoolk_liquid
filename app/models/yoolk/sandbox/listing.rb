@@ -44,6 +44,7 @@ module Yoolk
       attribute :product_catalog_pdf,     Yoolk::Sandbox::Attachment
       attribute :instant_website,         Yoolk::Sandbox::InstantWebsite::Website
       attribute :facebook_page,           Yoolk::Sandbox::Facebook::Page
+      attribute :twitter_account,         Yoolk::Sandbox::Twitter::Account
 
       def self.find(alias_id)
         path       = Rails.root.join('db', 'samples', 'jsons', "#{alias_id}.json")
