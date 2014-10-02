@@ -3,11 +3,10 @@ module Yoolk
     module LoginLinkFilter
 
       def login_link(text)
-
         if @context.registers[:controller].params[:login].present?
           link_to image_tag(asset_path('sample/male-office.png'), class: "office-img").safe_concat("My Office"), nil, class: "office-account"
         else
-          link_to "signin", "/office", class: "office-account"
+          link_to text, "/office", class: "office-account"
         end
       end
     end
