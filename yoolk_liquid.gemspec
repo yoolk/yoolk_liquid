@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails',           '~> 4.0.10'
   s.add_dependency 'activemodel',     '~> 4.0.10'
+  s.add_dependency 'virtus',          '~> 1.0.3'
   s.add_dependency 'kaminari',        '~> 0.16.1'
 
   # views
@@ -28,6 +29,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'therubyracer',    '~> 0.12.1'
 
   # sandbox
-  s.add_dependency 'virtus',          '~> 1.0.3'
   s.add_dependency 'oj',              '~> 2.10.2'
 end
