@@ -2,6 +2,31 @@ module Yoolk
   module Liquid
     module UrlFilter
 
+      # These three belows use url_helpers to avoid conflict in the real app.
+      def product_url(product)
+        url_helpers.product_path(product.category, product, default_url_options)
+      end
+
+      def service_url(service)
+        url_helpers.service_path(service.category, service, default_url_options)
+      end
+
+      def menu_food_url(food)
+        url_helpers.menu_food_path(food.category, food, default_url_options)
+      end
+
+      def products_category_url(product_category)
+        controller.products_category_path(product_category)
+      end
+
+      def services_category_url(service_category)
+        controller.services_category_path(service_category)
+      end
+
+      def menu_category_url(food_category)
+        controller.menu_category_path(food_category)
+      end
+
       def gallery_url(gallery)
         controller.gallery_path(gallery)
       end
@@ -10,38 +35,20 @@ module Yoolk
         controller.announcement_path(announcement)
       end
 
-      def product_url(product)
-        controller.product_path(product.category, product)
-      end
-
-      def products_category_url(product_category)
-        controller.products_category_path(product_category)
-      end
-
-      def service_url(service)
-        controller.service_path(service.category, service)
-      end
-
-      def services_category_url(service_category)
-        controller.services_category_path(service_category)
-      end
-
-      def menu_food_url(food)
-        controller.menu_food_path(food.category, food)
-      end
-
-      def menu_category_url(food_category)
-        controller.menu_category_path(food_category)
-      end
-
       # Returns the attachment of any attachment objects
       # Usage:
       # For catalog_item, brochure, announcement, you don't need to pass attachment object.
       # {{ catalog_item | attachment_url: "medium" }}
       # {{ product.photos[0] | attachment_url: "medium" }}
       def attachment_url(object, style)
-        if object.respond_to?(:image) && object.image.is_a?(Yoolk::Liquid::AttachmentDrop)
-          object.image.url(style)
+        return nil if object.nil?
+
+        if object.respond_to?(:image)
+          image = object.image
+
+          if image.present? && image.is_a?(Yoolk::Liquid::AttachmentDrop)
+            image.url(style)
+          end
         else
           object.url(style)
         end
@@ -72,7 +79,7 @@ module Yoolk
       end
 
       def link_to_menu(value, options={})
-        link_to(value, menu_path, default_class_options(menu_page?, options))
+        link_to(value, menu_index_path, default_class_options(menu_page?, options))
       end
 
       def link_to_announcements(value, options={})
@@ -84,7 +91,7 @@ module Yoolk
       end
 
       def link_to_map(value, options={})
-        link_to(value, map_path, default_class_options(map_page?, options))
+        link_to(value, map_index_path, default_class_options(map_page?, options))
       end
 
       def link_to_about_us(value, options={})
@@ -96,19 +103,19 @@ module Yoolk
       end
 
       def link_to_reservation(value, options={})
-        link_to(value, reservation_path, default_class_options(reservation_page?, options))
+        link_to(value, reservation_index_path, default_class_options(reservation_page?, options))
       end
 
       def link_to_feedback(value, options={})
-        link_to(value, feedback_path, default_class_options(feedback_page?, options))
+        link_to(value, feedback_index_path, default_class_options(feedback_page?, options))
       end
 
       private
 
-        delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_path,
+        delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
                   :about_us_path, :contact_us_path, :products_path, :services_path,
-                  :menu_path, :menu_category_path, :announcements_path, :reservation_path,
-                  :feedback_path,
+                  :menu_index_path, :menu_category_path, :announcements_path, :reservation_index_path,
+                  :feedback_index_path,
                   to: :controller
 
         def office_path
@@ -139,7 +146,7 @@ module Yoolk
         end
 
         def map_page?
-          request.fullpath.start_with?(map_path.split('?')[0])
+          request.fullpath.start_with?(map_index_path.split('?')[0])
         end
 
         def about_us_page?
@@ -159,7 +166,7 @@ module Yoolk
         end
 
         def menu_page?
-          request.fullpath.start_with?(menu_path.split('?')[0])
+          request.fullpath.start_with?(menu_index_path.split('?')[0])
         end
 
         def announcements_page?
@@ -167,11 +174,11 @@ module Yoolk
         end
 
         def reservation_page?
-          request.fullpath.start_with?(reservation_path.split('?')[0])
+          request.fullpath.start_with?(reservation_index_path.split('?')[0])
         end
 
         def feedback_page?
-          request.fullpath.start_with?(feedback_path.split('?')[0])
+          request.fullpath.start_with?(feedback_index_path.split('?')[0])
         end
 
         def request
@@ -180,6 +187,14 @@ module Yoolk
 
         def controller
           @context.registers[:controller]
+        end
+
+        def default_url_options
+          controller.send(:default_url_options)
+        end
+
+        def url_helpers
+          Rails.application.routes.url_helpers
         end
     end
   end
