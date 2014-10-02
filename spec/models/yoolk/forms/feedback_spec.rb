@@ -15,13 +15,9 @@ module Yoolk
         expect(described_class).to have_attribute(:body).of_type(String)
       end
 
-      it "allow_value 'abc@yoolk.com' attribute" do
-        should allow_value('abc@yoolk.com').for(:sender)
-      end
+      it { should allow_value("abc@yoolk.com").for(:sender) }
 
-      it "allow_value 'yoolk.com' attribute" do
-        should_not allow_value('yoolk.com').for(:sender)
-      end
+      it { should_not allow_value("yoolk.com").for(:sender) }
 
       [:sender, :body].each do |field|
         it "validates #{field}" do

@@ -2,7 +2,23 @@ require 'rails_helper'
 
 module Yoolk
   module Form
-    describe Contact do
+    describe Reservation do
+      it 'has :check_in attribute' do
+        expect(described_class).to have_attribute(:check_in).of_type(String)
+      end
+
+      it 'has :check_out attribute' do
+        expect(described_class).to have_attribute(:check_out).of_type(String)
+      end
+
+      it 'has :guests attribute' do
+        expect(described_class).to have_attribute(:guests).of_type(String)
+      end
+
+      it 'has :room_types attribute' do
+        expect(described_class).to have_attribute(:room_types).of_type(String)
+      end
+
       it 'has :name attribute' do
         expect(described_class).to have_attribute(:name).of_type(String)
       end
@@ -25,10 +41,10 @@ module Yoolk
 
       [:sender, :body].each do |field|
         it "validates #{field}" do
-          contact = described_class.new("#{field}" => nil)
-          contact.valid?
+          reservation = Reservation.new("#{field}" => nil)
+          reservation.valid?
 
-          expect(contact.errors[field]).to include("You can't leave this empty")
+          expect(reservation.errors[field]).to include("You can't leave this empty")
         end
       end
     end

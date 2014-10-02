@@ -52,6 +52,8 @@ module Yoolk
             @context.registers[:controller].contact_us_path
           elsif @object.is_a?(Yoolk::Form::Feedback)
             @context.registers[:controller].feedback_index_path
+          elsif @object.is_a?(Yoolk::Form::Reservation)
+            @context.registers[:controller].reservation_index_path
           end
         end
 
@@ -60,6 +62,8 @@ module Yoolk
             'comment-form'
           elsif @object.is_a?(Yoolk::Form::Feedback)
             'feedback-form'
+          elsif @object.is_a?(Yoolk::Form::Reservation)
+            'reservation-form'
           end
         end
 
