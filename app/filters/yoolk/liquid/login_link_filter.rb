@@ -4,7 +4,7 @@ module Yoolk
 
       def login_link(text)
         if @context.registers[:controller].params[:login].present?
-          link_to image_tag(asset_path('sample/male-office.png'), class: "office-img").safe_concat("My Office"), nil, class: "office-account"
+          link_to image_tag(asset_path('sample/male-office.png'), class: "office-img").safe_concat("My Office"), "/office/signin", class: "office-account"
         else
           link_to text, "/office", class: "office-account"
         end
