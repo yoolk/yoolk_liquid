@@ -1,3 +1,7 @@
+# models
+require 'active_model'
+require 'virtus'
+
 # views
 require 'kaminari'
 require 'liquid-rails'
@@ -9,7 +13,6 @@ require 'therubyracer'
 require 'jquery-rails'
 
 # sandbox
-require 'virtus'
 require 'oj'
 
 module Yoolk
