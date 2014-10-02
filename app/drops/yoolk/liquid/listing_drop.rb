@@ -52,6 +52,13 @@ module Yoolk
       belongs_to  :portal,                class_name: 'Yoolk::Liquid::PortalDrop'
       belongs_to  :instant_website,       class_name: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
 
+      def facebook_page_link
+        facebook_page.try(:link)
+      end
+
+      def twitter_link
+        twitter_account.try(:link)
+      end
     end
   end
 end

@@ -17,7 +17,8 @@ GIT
 PATH
   remote: .
   specs:
-    yoolk_liquid (1.0.0.alpha3)
+    yoolk_liquid (4.0.0.alpha3)
+      autoprefixer-rails (~> 3.1.0.20140911)
       bootstrap-sass (~> 3.2.0)
       coffee-rails (~> 4.0.1)
       jquery-rails (~> 3.1.2)
@@ -61,6 +62,8 @@ GEM
       railties (>= 3.0)
       rspec-rails (>= 2.2)
     arel (4.0.2)
+    autoprefixer-rails (3.1.0.20140911)
+      execjs
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -116,7 +119,7 @@ GEM
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    libv8 (3.16.14.5)
+    libv8 (3.16.14.7)
     liquid (3.0.0.rc1)
     listen (2.7.9)
       celluloid (>= 0.15.2)

@@ -6,9 +6,7 @@ module Yoolk
       it { should have_attribute(:id) }
       it { should have_attribute(:username) }
       it { should have_attribute(:email) }
-      it { should have_attribute(:published) }
-      it { should have_attribute(:profile_url) }
-
+      it { should have_attribute(:link) }
     end
   end
 end
