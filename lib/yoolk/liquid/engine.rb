@@ -19,6 +19,9 @@ module Yoolk
   module Liquid
     class Engine < ::Rails::Engine
       isolate_namespace Yoolk::Liquid
+
+      config.i18n.fallbacks = [:en]
+      config.i18n.load_path += Dir[root.join("config", "locales", "**", "*.{rb,yml}").to_s]
     end
   end
 end

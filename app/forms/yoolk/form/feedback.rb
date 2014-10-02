@@ -1,15 +1,14 @@
 module Yoolk
   module Form
-    class Contact
+    class Feedback
       include Virtus.model
-      include ::ActiveModel::Conversion
-      include ::ActiveModel::Validations
-      extend  ::ActiveModel::Naming
+      include ActiveModel::Conversion
+      include ActiveModel::Validations
+      extend  ActiveModel::Naming
 
-      EMAIL_REG = /([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+      EMAIL_REG = /[a-zA-Z0-9._%-]+@(?:[a-zA-Z0-9-]+\.)+(com|net|org|info|biz|me|edu|gov)/i
 
       attribute           :name,      String
-      attribute           :phone,     String
       attribute           :sender,    String
       attribute           :body,      String
 

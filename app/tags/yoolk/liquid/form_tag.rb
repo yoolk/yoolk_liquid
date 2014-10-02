@@ -22,6 +22,7 @@ module Yoolk
 
         context.stack do
           context['form'] = {
+            'posted_successfully?' => @object.errors.blank? && flash.present?,
             'errors' => @object.errors.blank? ? nil : ActiveModel::ErrorsDrop.new(@object.errors)
           }
           @object.attributes.each do |field, message|
@@ -49,16 +50,16 @@ module Yoolk
         def action_path
           if @object.is_a?(Yoolk::Form::Contact)
             @context.registers[:controller].contact_us_path
+          elsif @object.is_a?(Yoolk::Form::Feedback)
+            @context.registers[:controller].feedback_index_path
           end
-        end
-
-        def error_notification
-          'error_notification'
         end
 
         def class_name
           if @object.is_a?(Yoolk::Form::Contact)
             'comment-form'
+          elsif @object.is_a?(Yoolk::Form::Feedback)
+            'feedback-form'
           end
         end
 
