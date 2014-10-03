@@ -17,5 +17,11 @@ module Yoolk
       it { should have_many(:cover_photos).with('Yoolk::Liquid::InstantWebsite::WebsiteCoverPhotoDrop') }
       it { should have_many(:domains).with('Yoolk::Liquid::InstantWebsite::DomainDrop') }
     end
+
+    describe InstantWebsite::WebsiteDrop do
+      subject { described_class.new(double) }
+
+      it { should respond_to(:office_url) }
+    end
   end
 end

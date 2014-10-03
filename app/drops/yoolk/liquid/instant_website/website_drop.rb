@@ -11,6 +11,9 @@ module Yoolk
         has_many    :cover_photos,  with: 'Yoolk::Liquid::InstantWebsite::WebsiteCoverPhotoDrop'
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
+        def office_url
+          office_path
+        end
       end
     end
   end
