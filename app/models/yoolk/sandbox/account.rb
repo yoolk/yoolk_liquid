@@ -1,8 +1,12 @@
 module Yoolk
   module Sandbox
     class Account < Yoolk::Sandbox::Base
-      attribute :id,        String
-      attribute :person,    Yoolk::Sandbox::Account::Person
+      attribute :id,        Integer
+      attribute :person,    Yoolk::Sandbox::Person
+
+      ## Delegate
+      delegate   :avatar,   to: :person,
+                            allow_nil: true
 
       def self.find(name)
         path       = Rails.root.join('db', 'samples', 'jsons', "#{name}.json")

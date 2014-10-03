@@ -110,8 +110,8 @@ module Yoolk
         link_to(value, feedback_index_path, default_class_options(feedback_page?, options))
       end
 
-      def sign_in_link(text)
-        link_to text, "/office", class: "office-account"
+      def link_to_sign_in(value)
+        link_to value, office_path
       end
 
       private

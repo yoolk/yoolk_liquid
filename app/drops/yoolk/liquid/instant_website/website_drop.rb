@@ -11,7 +11,7 @@ module Yoolk
       has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
       def office_url
-        '/office'
+        office_path
       end
     end
   end

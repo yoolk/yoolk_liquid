@@ -52,6 +52,10 @@ module Yoolk
       it '#link_to_contact_us' do
         expect_template_result("{{ 'Contact us' | link_to_contact_us }}", "<a href=\"/contact_us\">Contact us</a>")
       end
+
+      it '#link_to_sign_in' do
+        expect_template_result("{{ 'Sign in' | link_to_sign_in }}", "<a href=\"/office\">Sign in</a>")
+      end
     end
   end
 end
