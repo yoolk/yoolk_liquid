@@ -41,6 +41,8 @@ module Yoolk
       has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
       has_many    :alias_names,           with: 'Yoolk::Liquid::Listing::AliasNameDrop'
+      belongs_to  :facebook_page,         with: 'Yoolk::Liquid::Facebook::PageDrop'
+      belongs_to  :twitter_account,       with: 'Yoolk::Liquid::Twitter::AccountDrop'
 
       belongs_to  :menu_pdf,              class_name: 'Yoolk::Liquid::AttachmentDrop'
       belongs_to  :service_catalog_pdf,   class_name: 'Yoolk::Liquid::AttachmentDrop'
@@ -50,6 +52,13 @@ module Yoolk
       belongs_to  :portal,                class_name: 'Yoolk::Liquid::PortalDrop'
       belongs_to  :instant_website,       class_name: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
 
+      def facebook_page_link
+        facebook_page.try(:link)
+      end
+
+      def twitter_link
+        twitter_account.try(:link)
+      end
     end
   end
 end
