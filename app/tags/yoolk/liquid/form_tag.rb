@@ -59,7 +59,7 @@ module Yoolk
 
         def class_name
           if @object.is_a?(Yoolk::Form::Contact)
-            'comment-form'
+            'contact-form'
           elsif @object.is_a?(Yoolk::Form::Feedback)
             'feedback-form'
           elsif @object.is_a?(Yoolk::Form::Reservation)
