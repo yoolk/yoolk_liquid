@@ -110,6 +110,10 @@ module Yoolk
         link_to(value, feedback_index_path, default_class_options(feedback_page?, options))
       end
 
+      def sign_in_link(text)
+        link_to text, "/office", class: "office-account"
+      end
+
       private
 
         delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
