@@ -134,7 +134,7 @@ module Yoolk
         end
 
         def home_page?
-          request.fullpath.split('?')[0] == root_path
+          request.fullpath == root_path
         end
 
         def galleries_page?
