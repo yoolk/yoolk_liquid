@@ -12,6 +12,7 @@ module Yoolk
       attribute :headline,                String
       attribute :postal_code,             String
       attribute :description,             String
+      attribute :locale,                  String
       attribute :show_map_on_web,         Boolean
       attribute :is_active,               Boolean
       attribute :created_at,              DateTime

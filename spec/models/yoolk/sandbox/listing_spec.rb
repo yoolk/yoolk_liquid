@@ -43,6 +43,10 @@ module Yoolk
         expect(described_class).to have_attribute(:description).of_type(String)
       end
 
+      it 'has :locale attribute' do
+        expect(described_class).to have_attribute(:locale).of_type(String)
+      end
+
       it 'has :is_active attribute' do
         expect(described_class).to have_attribute(:is_active)
       end
