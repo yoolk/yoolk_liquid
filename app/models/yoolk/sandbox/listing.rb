@@ -49,8 +49,9 @@ module Yoolk
 
       def self.find(alias_id)
         path       = Rails.root.join('db', 'samples', 'jsons', "#{alias_id}.json")
-        attributes = Oj.load(File.read(path))
+        return nil unless File.exists? path
 
+        attributes = Oj.load(File.read(path))
         new(attributes)
       end
 
