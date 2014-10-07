@@ -6,13 +6,9 @@ module Yoolk
       def initialize(tag_name, markup, options)
         super
 
-        if markup =~ Syntax
-          @variable_name = $1
-          unless @variable_name.match(/\.(png|jpg|gif)$/)
-            raise ArgumentError, 'Invalid parameter file extension.'
-          end
-        else
-          raise SyntaxError.new("Syntax Error - Valid syntax: {% draft_stamp 'draft.png' %}")
+        @variable_name = (markup =~ Syntax)? $1 : 'draft.png'
+        unless @variable_name.match(/\.(png|jpg|gif)$/)
+          raise ArgumentError, 'Invalid parameter\'s file extension.'
         end
       end
 
