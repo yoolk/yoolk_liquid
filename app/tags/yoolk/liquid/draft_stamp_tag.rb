@@ -23,7 +23,7 @@ module Yoolk
 
     private
       def draft_stamp?
-        !is_live? && current_domain.try(:type) != "subdomain"
+        !is_live? && current_domain && current_domain.try(:type) != "subdomain"
       end
 
       def is_live?
@@ -31,14 +31,13 @@ module Yoolk
       end
 
       def current_domain
-        domains = @context["listing"].instant_website.domains.select do |domain|
+        domain = @context["listing"].instant_website.domains.find do |domain|
           domain.name == @context.registers[:controller].request.host
         end
-        return nil if domains.nil?
+        return nil if domain.nil?
 
-        domains.first
+        domain
       end
-
     end
   end
 end
