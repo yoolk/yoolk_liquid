@@ -14,7 +14,6 @@ module Yoolk
 
       def render(context)
         @context = context
-
         if draft_stamp?
           image = context.registers[:view].asset_url @variable_name
           context.registers[:view].image_tag(image, style: "position: absolute; top: 0; right: 0; z-index: 9999;")
@@ -23,16 +22,16 @@ module Yoolk
 
     private
       def draft_stamp?
-        !is_live? && current_domain && current_domain.try(:type) != "subdomain"
+        !is_live? && current_domain && current_domain['type'] != "subdomain"
       end
 
       def is_live?
-        @context["listing"].instant_website.is_live
+        @context["listing.instant_website.is_live"]
       end
 
       def current_domain
-        domain = @context["listing"].instant_website.domains.find do |domain|
-          domain.name == @context.registers[:controller].request.host
+        domain = @context["listing.instant_website.domains"].find do |domain|
+          domain['name'] == 'elegant-party-decorations-phnom-penh.iwstaging.yoolk.com'
         end
         return nil if domain.nil?
 
