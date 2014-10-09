@@ -31,7 +31,7 @@ module Yoolk
 
       def current_domain
         domain = @context["listing.instant_website.domains"].find do |domain|
-          domain['name'] == 'elegant-party-decorations-phnom-penh.iwstaging.yoolk.com'
+          domain['name'] == @context.registers[:controller].request.host
         end
         return nil if domain.nil?
 
