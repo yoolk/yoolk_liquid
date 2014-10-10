@@ -15,7 +15,7 @@ module Yoolk
                         'is_live'=>false,
                         'domains'=> [{
                           'type'=> 'pointed',
-                          'name'=> 'elegant-party-decorations-phnom-penh.iwstaging.yoolk.com'
+                          'name'=> 'test.host'
                         }]
                       }
                     }
@@ -32,7 +32,7 @@ module Yoolk
                         'is_live'=>false,
                         'domains'=> [{
                           'type'=> 'subdomain',
-                          'name'=> 'elegant-party-decorations-phnom-penh.iwstaging.yoolk.com'
+                          'name'=> 'test.host'
                         }]
                       }
                     }
@@ -48,7 +48,7 @@ module Yoolk
                         'is_live'=>false,
                         'domains'=> [{
                           'type'=> 'pointed',
-                          'name'=> 'elegant-party-decorations-phnom-penh.iwstaging.yoolk.com'
+                          'name'=> 'test.host'
                         }]
                       }
                     }
