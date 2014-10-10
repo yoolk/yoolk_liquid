@@ -8,7 +8,7 @@ module Yoolk
         expect_template_result('{% draft_stamp %}', '', {'listing'=>{'instant_website'=>{'is_live'=>true}}})
       end
 
-      it '#draft_stamp_tag render default draft image when instant is not live and type is not subdomain' do
+      it '#draft_stamp_tag render default draft image when instant_website is not live and is not subdomain' do
         listing = {
                     'listing'=> {
                       'instant_website'=> {
@@ -25,7 +25,7 @@ module Yoolk
         expect_template_result('{% draft_stamp %}', expected_result, listing)
       end
 
-      it '#draft_stamp_tag not render when instant is not live and type is subdomain' do
+      it '#draft_stamp_tag not render when instant_website is not live and type is subdomain' do
         listing = {
                     'listing'=> {
                       'instant_website'=> {
