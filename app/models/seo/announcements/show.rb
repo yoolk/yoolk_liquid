@@ -1,0 +1,15 @@
+class Seo::Announcements::Show < Seo::Base
+
+  def title
+    "#{I18n.t(:'announcements.on')} #{I18n.localize(announcement.created_at, format: :long)} - #{listing.name}"
+  end
+
+  def description
+    "#{announcement.text.gsub(/<\/?[a-z][^>]*>/, " ").squeeze(" ").strip}"
+  end
+
+  def announcement
+    object
+  end
+
+end
