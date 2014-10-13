@@ -15,6 +15,10 @@ module Yoolk
         attribute :template,              Yoolk::Sandbox::InstantWebsite::Template
         attribute :cover_photos,          Array[Yoolk::Sandbox::InstantWebsite::WebsiteCoverPhoto]
         attribute :domains,               Array[Yoolk::Sandbox::InstantWebsite::Domain]
+
+        def primary_domain
+          domains.find{ |domain| domain.is_primary == true }
+        end
       end
     end
   end
