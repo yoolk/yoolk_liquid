@@ -27,6 +27,10 @@ class Seo::Base
     listing.logo.present? ? listing.logo.url(:small) : ""
   end
 
+  def social_url
+    'social-url.com'
+  end
+
   private
 
     def listing_name
@@ -34,7 +38,7 @@ class Seo::Base
     end
 
     def category_name
-      listing.categories.first.try(:name)
+      listing.listing_categories.first.try(:name)
     end
 
     def category_names
