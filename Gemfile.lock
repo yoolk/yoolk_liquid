@@ -1,8 +1,9 @@
 GIT
   remote: git://github.com/yoolk/liquid-rails.git
-  revision: 5d235f814abc40c8b136ba4f6c0a3369ac041c78
+  revision: 04fdb1a58c30cdbe0eb8e32e9aea8ac782e340a2
   specs:
     liquid-rails (0.1.0)
+      kaminari (~> 0.16.1)
       liquid (~> 3.0.0.rc1)
       rails (>= 3.2)
 
@@ -130,7 +131,7 @@ GEM
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
-    mime-types (2.3)
+    mime-types (2.4.1)
     minitest (4.7.5)
     multi_json (1.10.1)
     netrc (0.7.7)
@@ -207,10 +208,10 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.1.4)
+    sprockets-rails (2.2.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
-      sprockets (~> 2.8)
+      sprockets (>= 2.8, < 4.0)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
     therubyracer (0.12.1)
