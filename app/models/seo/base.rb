@@ -28,7 +28,7 @@ class Seo::Base
   end
 
   def social_url
-    'social-url.com'
+    listing.instant_website.primary_domain.name
   end
 
   private
