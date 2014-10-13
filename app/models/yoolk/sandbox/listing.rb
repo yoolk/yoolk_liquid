@@ -121,6 +121,10 @@ module Yoolk
         @foods          ||= paginate_array(food_categories.map(&:foods).flatten.sort_by(&:updated_at).reverse)
       end
 
+      def categories
+        @categories     ||= paginate_array(listing_categories.map(&:category).compact)
+      end
+
       ## Alias Method
       alias_method :galleries, :image_galleries
       alias_method :images,    :gallery_images
