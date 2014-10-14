@@ -14,12 +14,24 @@ module Yoolk
       end
 
       describe CategoryDrop, 'methods' do
-        let(:drop)      { described_class.new(double) }
+        subject { described_class.new(double(id: 12)) }
 
         it '#url' do
-          expect(drop).to receive(:menu_category_url).with(drop)
+          expect(subject).to receive(:menu_category_url).with(subject)
 
-          drop.url
+          subject.url
+        end
+
+        it '#current? returns true' do
+          @context.registers[:controller].params[:category_id] = '12-drink'
+
+          expect(subject.current?).to eq(true)
+        end
+
+        it '#current? returns false' do
+          @context.registers[:controller].params[:category_id] = '112-sea-food'
+
+          expect(subject.current?).to eq(false)
         end
       end
     end
