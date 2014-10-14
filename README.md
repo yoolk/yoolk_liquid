@@ -9,5 +9,5 @@ It was originally developed by [Chamnap Chhorn](http://github.com/chamnap), and 
 This engine depends on:
 
 1. [liquid](https://github.com/Shopify/liquid) from Shopify
-2. [liquid-rails](https://github.com/yoolk/liquid)
+2. [liquid-rails](https://github.com/yoolk/liquid-rails)
 3. [themes_on_rails](https://github.com/yoolk/themes_on_rails)
