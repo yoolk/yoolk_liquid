@@ -1,9 +1,4 @@
-en:
-  yoolk:
-    form:
-      messages:
-        invalid:                "You can't leave this empty"
-        invalid_email:          "Email is invalid"
+km:
   seo:
     in:                     "in"
     is_located_in:          "is located in"
@@ -12,4 +7,4 @@ en:
     contact_info:           "For more information, please contact us directly by"
     visit_address:          "or visit us by this address"
     photo_gallery_of:       "Photo Gallery of"
-    by:                     "by"
+    by:                     "តាមរយៈ"
