@@ -1,4 +1,6 @@
 km:
+  links:
+    about_us:                "អំពីយើង"
   yoolk:
     form:
       messages:
