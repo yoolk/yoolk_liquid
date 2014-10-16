@@ -1,4 +1,11 @@
 km:
+  links:
+    about_us:                "អំពីយើង"
+  yoolk:
+    form:
+      messages:
+        invalid:                "You can't leave this empty"
+        invalid_email:          "Email is invalid"
   seo:
     in:                     "in"
     is_located_in:          "is located in"
