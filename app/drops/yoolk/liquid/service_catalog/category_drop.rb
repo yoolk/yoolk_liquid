@@ -10,6 +10,10 @@ module Yoolk
         def url
           services_category_url(self)
         end
+
+        def current?
+          @context.registers[:controller].params[:category_id].to_s.start_with?(object.alias_id)
+        end
       end
     end
   end

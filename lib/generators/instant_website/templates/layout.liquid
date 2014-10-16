@@ -2,8 +2,8 @@
 <html>
 <head>
   <title><%= theme_name.humanize %></title>
-  {{ '<%= "#{theme_name}/all" %>' | javascript_include_tag }}
-  {{ '<%= "#{theme_name}/all" %>' | stylesheet_link_tag }}
+  {{ '<%= "#{theme_name}/all.js" %>' | javascript_include_tag }}
+  {{ '<%= "#{theme_name}/all.css" %>' | stylesheet_link_tag }}
   {{ content_for_header }}
 </head>
 <body>
