@@ -9,6 +9,10 @@ module Yoolk
         def url
           menu_category_url(self)
         end
+
+        def current?
+          @context.registers[:controller].params[:category_id].to_i == object.id
+        end
       end
     end
   end

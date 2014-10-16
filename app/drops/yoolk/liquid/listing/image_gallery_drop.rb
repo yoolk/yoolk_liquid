@@ -8,6 +8,10 @@ module Yoolk
       def url
         gallery_url(self)
       end
+
+      def current?
+        @context.registers[:controller].params[:id].to_i == object.id
+      end
     end
   end
 end
