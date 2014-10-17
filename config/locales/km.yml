@@ -1,12 +1,16 @@
 km:
-  links:
-    about_us:                "អំពីយើង"
   yoolk:
     form:
       messages:
-        invalid:                "You can't leave this empty"
-        invalid_email:          "Email is invalid"
+        invalid:            "You can't leave this empty"
+        invalid_email:      "Email is invalid"
   seo:
+    about_us:               "About Us"
+    announcements:          "Announcements"
+    brochures:              "Brochures"
+    contact_us:             "Contact Us"
+    feedback:               "Feedback"
+    galleries:              "Galleries"
     in:                     "in"
     is_located_in:          "is located in"
     and_classified_as:      "and classified as"
@@ -14,4 +18,6 @@ km:
     contact_info:           "For more information, please contact us directly by"
     visit_address:          "or visit us by this address"
     photo_gallery_of:       "Photo Gallery of"
-    by:                     "តាមរយៈ"
+    by:                     "by"
+    announcements_on:       "Announcement on"
+    feedback_quote:         "We'd love to hear what your thoughts. Your valuable feedback will help us to improve and upgrade our business."

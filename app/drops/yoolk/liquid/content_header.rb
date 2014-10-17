@@ -11,12 +11,14 @@ module Yoolk
       end
 
       def to_s
-        [ csrf_meta_tags,
-          google_analytics,
-          meta_twitter,
-          meta_og,
+        [
           meta_base,
-          meta_itemscope ].compact.join("\n")
+          meta_og,
+          meta_twitter,
+          meta_itemscope,
+          csrf_meta_tags,
+          google_analytics
+        ].compact.join("\n")
       end
 
       def csrf_meta_tags
@@ -49,7 +51,7 @@ module Yoolk
         %Q{
           <meta content='#{listing.name}'        itemscope='name'>
           <meta content='#{seo.description}'     itemscope='description'>
-          <meta content='#{seo.social_image}'    itemscope='image'>"
+          <meta content='#{seo.social_image}'    itemscope='image'>
         }
       end
 
@@ -68,14 +70,14 @@ module Yoolk
           <meta content='#{seo.description}'         property='og:description'>
           <meta content='website'                    property='og:type'>
           <meta content='#{seo.social_image}'        property='og:image'>
-          <meta content='http://#{seo.social_url}/'  property='og:url'>"
+          <meta content='http://#{seo.social_url}/'  property='og:url'>
         }
       end
 
       def meta_base
         %Q{
           <meta charset='utf-8'>
-          <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>"
+          <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
           <meta content='#{seo.description}'                      name='description'>
           <meta content='#{seo.keywords}'                         name='keywords'>
           <meta content='width=device-width, initial-scale=1.0'   name='viewport'>
