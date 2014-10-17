@@ -1,15 +1,24 @@
 module Yoolk
   module Liquid
     class ContentHeader
-      attr_reader :listing, :view_context
 
-      def initialize(listing, view_context)
+      attr_reader :listing, :view_context, :seo
+
+      def initialize(listing, view_context, seo)
         @listing      = listing
         @view_context = view_context
+        @seo          = seo
       end
 
       def to_s
-        [csrf_meta_tags, google_analytics].compact.join("\n")
+        [
+          meta_base,
+          meta_og,
+          meta_twitter,
+          meta_itemscope,
+          csrf_meta_tags,
+          google_analytics
+        ].compact.join("\n")
       end
 
       def csrf_meta_tags
@@ -36,6 +45,44 @@ module Yoolk
         else
           nil
         end
+      end
+
+      def meta_itemscope
+        %Q{
+          <meta content='#{listing.name}'        itemscope='name'>
+          <meta content='#{seo.description}'     itemscope='description'>
+          <meta content='#{seo.social_image}'    itemscope='image'>
+        }
+      end
+
+      def meta_twitter
+        %Q{
+          <meta content='http://#{seo.social_url}/' name='twitter:url'>
+          <meta content='#{seo.title}'              name='twitter:title'>
+          <meta content='#{seo.description}'        name='twitter:description'>
+          <meta content='#{seo.social_image}'       name='twitter:image'>
+        }
+      end
+
+      def meta_og
+        %Q{
+          <meta content='#{seo.title}'               property='og:title'>
+          <meta content='#{seo.description}'         property='og:description'>
+          <meta content='website'                    property='og:type'>
+          <meta content='#{seo.social_image}'        property='og:image'>
+          <meta content='http://#{seo.social_url}/'  property='og:url'>
+        }
+      end
+
+      def meta_base
+        %Q{
+          <meta charset='utf-8'>
+          <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+          <meta content='#{seo.description}'                      name='description'>
+          <meta content='#{seo.keywords}'                         name='keywords'>
+          <meta content='width=device-width, initial-scale=1.0'   name='viewport'>
+          <meta content='index, follow'                           name='robots'>
+        }
       end
 
       private
