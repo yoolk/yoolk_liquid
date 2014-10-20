@@ -57,6 +57,7 @@ module Yoolk
       it { should have_many(:food_categories).with('Yoolk::Liquid::Menu::CategoryDrop') }
       it { should belongs_to(:facebook_page).with('Yoolk::Liquid::Facebook::PageDrop') }
       it { should belongs_to(:twitter_account).with('Yoolk::Liquid::Twitter::AccountDrop') }
+      it { should have_many(:opening_hours).with('Yoolk::Liquid::Listing::OpeningHourDrop') }
     end
   end
 end
