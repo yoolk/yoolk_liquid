@@ -9,11 +9,10 @@ module Yoolk
         width      = options["width"]  || 222
         height     = options["height"] || 222
 
-        render_map(lat, long, zoom_level, width, height, options)
+        render_map(lat, long, zoom_level, width, height)
       end
 
-      def render_map(lat, long, zoom_level, width, height, options={})
-        options[:alt] ||= "google map"
+      def render_map(lat, long, zoom_level, width, height)
 
         map_options = {
           center:   "#{lat},#{long}",
@@ -25,7 +24,7 @@ module Yoolk
         }
         map_url = "http://maps.googleapis.com/maps/api/staticmap"
 
-        image_tag "#{map_url}?#{CGI.unescape(map_options.to_query)}", options
+        static_image_url = "#{map_url}?#{CGI.unescape(map_options.to_query)}"
       end
 
     end
