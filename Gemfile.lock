@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/yoolk/assets-rails.git
+  revision: 0beaa9dd295c5974813bf0d5da5ae90cc177a6ba
+  specs:
+    assets-rails (0.1.0)
+      railties (>= 3.2)
+
+GIT
   remote: git://github.com/yoolk/liquid-rails.git
   revision: 4c3ed73206f6344a8ea4fd061492d922b8c46987
   specs:
@@ -241,6 +248,7 @@ PLATFORMS
 
 DEPENDENCIES
   ammeter (~> 1.1.2)
+  assets-rails!
   coveralls
   guard-rspec (~> 4.3.1)
   liquid-rails!
