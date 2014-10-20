@@ -41,6 +41,7 @@ module Yoolk
       has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
       has_many    :alias_names,           with: 'Yoolk::Liquid::Listing::AliasNameDrop'
+      has_many    :opening_hours,         with: 'Yoolk::Liquid::Listing::OpeningHourDrop'
       belongs_to  :facebook_page,         with: 'Yoolk::Liquid::Facebook::PageDrop'
       belongs_to  :twitter_account,       with: 'Yoolk::Liquid::Twitter::AccountDrop'
 
