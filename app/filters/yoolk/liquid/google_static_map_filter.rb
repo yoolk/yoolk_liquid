@@ -1,8 +1,8 @@
 module Yoolk
   module Liquid
-    module GoogleStaticImageTagFilter
+    module GoogleStaticMapFilter
 
-      def google_static_image_tag(listing, options={})
+      def google_static_map(listing, options={})
         lat        = listing.lat
         long       = listing.long
         zoom_level = listing.zoom_level
@@ -31,4 +31,4 @@ module Yoolk
   end
 end
 
-Liquid::Template.register_filter Yoolk::Liquid::GoogleStaticImageTagFilter
+Liquid::Template.register_filter Yoolk::Liquid::GoogleStaticMapFilter
