@@ -18,6 +18,11 @@ module Yoolk
         def office_url
           office_path
         end
+
+        def cover_photos
+          object.cover_photos.presence || [object.template.cover_photo] 
+        end
+
       end
     end
   end
