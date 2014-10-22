@@ -2,6 +2,15 @@ module Yoolk
   module Liquid
     module UrlFilter
 
+      delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
+                :products_path, :services_path, :menu_index_path, :announcements_path,
+                :about_us_path, :contact_us_path, :reservation_index_path, :feedback_index_path,
+                to: :controller
+
+      def office_path
+        '/office'
+      end
+
       # These three belows use url_helpers to avoid conflict in the real app.
       def product_url(product)
         url_helpers.product_path(product.category, product, default_url_options)
@@ -115,16 +124,6 @@ module Yoolk
       end
 
       private
-
-        delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
-                  :about_us_path, :contact_us_path, :products_path, :services_path,
-                  :menu_index_path, :menu_category_path, :announcements_path, :reservation_index_path,
-                  :feedback_index_path,
-                  to: :controller
-
-        def office_path
-          '/office'
-        end
 
         def default_class_options(is_current_page, options={})
           default_class_name = toggle_class_name('active', is_current_page)
