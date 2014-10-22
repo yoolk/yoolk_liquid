@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Yoolk
   module Liquid
-    describe Listing::OpeningHourDrop do
+    describe Listing::BusinessHourDrop do
       it { should have_attribute(:id) }
       it { should have_attribute(:day) }
       it { should have_attribute(:created_at) }
