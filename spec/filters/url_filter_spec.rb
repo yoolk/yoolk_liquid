@@ -3,8 +3,6 @@ require 'rails_helper'
 module Yoolk
   module Liquid
     describe UrlFilter do
-      before  { setup_view_and_controller }
-
       it '#link_to_office' do
         expect_template_result("{{ 'Office' | link_to_office }}", "<a href=\"/office\">Office</a>")
       end
