@@ -63,6 +63,10 @@ module Yoolk
         expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
       end
 
+      it 'has :multilingual_ids attribute' do
+        expect(described_class).to have_attribute(:multilingual_ids).of_type(Array)
+      end
+
       it 'has :location attribute' do
         expect(described_class).to have_attribute(:location).of_type(Yoolk::Sandbox::Location)
       end
