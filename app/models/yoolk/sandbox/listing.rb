@@ -17,6 +17,7 @@ module Yoolk
       attribute :is_active,               Boolean
       attribute :created_at,              DateTime
       attribute :updated_at,              DateTime
+      attribute :multilingual_ids,        Array[String]
 
       # relations
       attribute :portal,                  Yoolk::Sandbox::Portal
