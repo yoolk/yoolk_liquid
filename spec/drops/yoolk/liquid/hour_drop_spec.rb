@@ -17,7 +17,7 @@ module Yoolk
       it { should respond_to(:to_time) }
 
       it "#to_time" do
-        expect(hour_drop.to_time).to eq("05:30 PM")
+        expect(hour_drop.to_time).to eq(Time.parse("#{hour_drop.hour}:#{hour_drop.minute}"))
       end
     end
   end

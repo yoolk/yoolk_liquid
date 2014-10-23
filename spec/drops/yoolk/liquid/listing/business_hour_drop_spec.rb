@@ -17,8 +17,11 @@ module Yoolk
       let(:business_hour_drop) { Yoolk::Liquid::Listing::BusinessHourDrop.new(business_hour)}
 
       it "#to_time, 12-hour based clock" do
-        expect(business_hour_drop.open.to_time).to eq("07:20 AM")
-        expect(business_hour_drop.close.to_time).to eq("01:20 PM")
+        open_time = "#{business_hour_drop.open.hour}:#{business_hour_drop.open.minute}"
+        close_time = "#{business_hour_drop.close.hour}:#{business_hour_drop.close.minute}"
+
+        expect(business_hour_drop.open.to_time).to eq(Time.parse(open_time))
+        expect(business_hour_drop.close.to_time).to eq(Time.parse(close_time))
       end
     end
   end
