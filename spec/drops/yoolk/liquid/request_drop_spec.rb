@@ -8,6 +8,10 @@ module Yoolk
         expect(subject.root_path).to eq('/')
       end
 
+      it '#office_path' do
+        expect(subject.office_path).to eq('/office')
+      end
+
       it '#galleries_path' do
         expect(subject.galleries_path).to eq('/galleries')
       end
