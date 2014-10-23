@@ -15,6 +15,7 @@ module Yoolk
       it { should have_attribute(:address) }
       it { should have_attribute(:show_map_on_web) }
       it { should have_attribute(:is_active) }
+      it { should have_attribute(:multilingual_ids) }
       it { should belongs_to(:business_type).class_name('Yoolk::Liquid::BusinessTypeDrop') }
       it { should belongs_to(:location).class_name('Yoolk::Liquid::LocationDrop') }
       it { should belongs_to(:country).class_name('Yoolk::Liquid::CountryDrop') }
