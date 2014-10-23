@@ -159,8 +159,8 @@ module Yoolk
         expect(described_class).to have_attribute(:twitter_account).of_type(Yoolk::Sandbox::Twitter::Account)
       end
 
-      it 'has :business_hours attribute' do
-        expect(described_class).to have_attribute(:business_hours).of_type(Array, member_type: Yoolk::Sandbox::Listing::BusinessHour)
+      it 'has :opening_hours attribute' do
+        expect(described_class).to have_attribute(:opening_hours).of_type(Array, member_type: Yoolk::Sandbox::Listing::OpeningHour)
       end
     end
 

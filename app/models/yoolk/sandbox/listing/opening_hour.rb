@@ -1,6 +1,6 @@
 module Yoolk
   module Sandbox
-    class Listing::BusinessHour < Yoolk::Sandbox::Base
+    class Listing::OpeningHour < Yoolk::Sandbox::Base
       attribute :id,          Integer
       attribute :day,         Integer
       attribute :open,        Yoolk::Sandbox::Hour
