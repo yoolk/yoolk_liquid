@@ -6,7 +6,7 @@ module Yoolk
       def to_time
         t  = "#{hour}:#{minute}"
 
-        Time.parse(t).strftime("%I:%M %p")
+        Time.parse(t)
       end
     end
   end
