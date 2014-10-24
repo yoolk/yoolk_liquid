@@ -60,6 +60,26 @@ module Yoolk
       def twitter_link
         twitter_account.try(:link)
       end
+
+      def language
+        portal.language
+      end
+
+      def multilinguals
+        paths = Rails.root.join('db', 'samples', 'jsons/*')
+        selections = []
+
+        Dir[paths].each do |listing|
+          return nil unless File.exists? listing
+          attributes = Oj.load(File.read(listing))
+
+          sandbox = Yoolk::Sandbox::Listing.new(attributes)
+          selections << sandbox if multilingual_ids.include?(sandbox.id)
+        end
+        selections.compact.map { |listing| listing.to_liquid }
+      end
+
+
     end
   end
 end
