@@ -60,10 +60,19 @@ module Yoolk
       it { should belongs_to(:twitter_account).with('Yoolk::Liquid::Twitter::AccountDrop') }
       it { should have_many(:business_hours).with('Yoolk::Liquid::Listing::BusinessHourDrop') }
 
+    end
+
+    describe ListingDrop, 'methods' do
+      let(:drop)      { described_class.new(double({"multilingual_ids"=> ["292D51B2-76C8-465D-BEF1-13300DEC90FA"]})) }
+
       it { should respond_to(:language, :multilinguals, :person_attr?) }
-      it "return a collection of listing drop instances" do
-        should be_kind_of(Yoolk::Liquid::ListingDrop)
+
+      it "#multilingual_ids returns given value back while #multilinguals returns [] because cannot load JSON data" do
+
+        expect(drop.multilingual_ids).to eql(["292D51B2-76C8-465D-BEF1-13300DEC90FA"])
+        expect(drop.multilinguals).to eql([])
       end
     end
+
   end
 end
