@@ -60,7 +60,10 @@ module Yoolk
       it { should belongs_to(:twitter_account).with('Yoolk::Liquid::Twitter::AccountDrop') }
       it { should have_many(:business_hours).with('Yoolk::Liquid::Listing::BusinessHourDrop') }
 
-      it { should respond_to(:language) }
+      it { should respond_to(:language, :multilinguals, :person_attr?) }
+      it "return a collection of listing drop instances" do
+        should be_kind_of(Yoolk::Liquid::ListingDrop)
+      end
     end
   end
 end
