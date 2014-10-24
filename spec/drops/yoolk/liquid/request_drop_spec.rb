@@ -3,13 +3,13 @@ require 'rails_helper'
 module Yoolk
   module Liquid
     describe RequestDrop do
-      delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
-                :products_path, :services_path, :menu_index_path, :announcements_path,
-                :about_us_path, :contact_us_path, :reservation_index_path, :feedback_index_path,
-                to: :controller
 
       it '#root_path' do
         expect(subject.root_path).to eq('/')
+      end
+
+      it '#office_path' do
+        expect(subject.office_path).to eq('/office')
       end
 
       it '#galleries_path' do

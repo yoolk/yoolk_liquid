@@ -162,6 +162,10 @@ module Yoolk
       it 'has :twitter_account attribute' do
         expect(described_class).to have_attribute(:twitter_account).of_type(Yoolk::Sandbox::Twitter::Account)
       end
+
+      it 'has :opening_hours attribute' do
+        expect(described_class).to have_attribute(:opening_hours).of_type(Array, member_type: Yoolk::Sandbox::Listing::OpeningHour)
+      end
     end
 
     describe Listing, 'methods' do

@@ -47,6 +47,7 @@ module Yoolk
       attribute :instant_website,         Yoolk::Sandbox::InstantWebsite::Website
       attribute :facebook_page,           Yoolk::Sandbox::Facebook::Page
       attribute :twitter_account,         Yoolk::Sandbox::Twitter::Account
+      attribute :opening_hours,           Array[Yoolk::Sandbox::Listing::OpeningHour]
 
       def self.find(alias_id)
         path       = Rails.root.join('db', 'samples', 'jsons', "#{alias_id}.json")
