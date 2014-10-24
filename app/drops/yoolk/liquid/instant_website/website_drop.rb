@@ -20,9 +20,12 @@ module Yoolk
         end
 
         def cover_photos
-          object.cover_photos.presence || [object.template.cover_photo] 
+          object.cover_photos.presence || [object.template.cover_photo]
         end
 
+        def primary_domain
+          domains.find{ |domain| domain.is_primary == true }
+        end
       end
     end
   end

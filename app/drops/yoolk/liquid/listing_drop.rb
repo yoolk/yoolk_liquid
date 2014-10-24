@@ -73,12 +73,18 @@ module Yoolk
           return nil unless File.exists? listing
           attributes = Oj.load(File.read(listing))
 
-          sandbox = Yoolk::Sandbox::Listing.new(attributes)
-          selections << sandbox if multilingual_ids.include?(sandbox.id)
+          unless person_attr? attributes
+            sandbox = Yoolk::Sandbox::Listing.new(attributes)
+            selections << sandbox.to_liquid if multilingual_ids.include?(sandbox.id)
+          end
         end
-        selections.compact.map { |listing| listing.to_liquid }
+
+        selections.compact
       end
 
+      def person_attr?(attributes)
+        attributes["id"] =~ /^\d$/
+      end
 
     end
   end
