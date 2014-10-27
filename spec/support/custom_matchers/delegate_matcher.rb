@@ -50,7 +50,7 @@ RSpec::Matchers.define :delegate do |method|
   end
 
   chain(:to) { |receiver| @to = receiver }
-  chain(:with_prefix) { |prefix| @prefix = prefix || @to }
+  chain(:with_prefix) { |prefix=nil| @prefix = prefix || @to }
 
   def receiver_double(method)
     double('receiver').tap do |receiver|
