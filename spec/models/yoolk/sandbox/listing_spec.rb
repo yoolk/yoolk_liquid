@@ -43,10 +43,6 @@ module Yoolk
         expect(described_class).to have_attribute(:description).of_type(String)
       end
 
-      it 'has :locale attribute' do
-        expect(described_class).to have_attribute(:locale).of_type(String)
-      end
-
       it 'has :is_active attribute' do
         expect(described_class).to have_attribute(:is_active)
       end
@@ -61,6 +57,10 @@ module Yoolk
 
       it 'has :updated_at attribute' do
         expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
+      end
+
+      it 'has :multilingual_ids attribute' do
+        expect(described_class).to have_attribute(:multilingual_ids).of_type(Array)
       end
 
       it 'has :location attribute' do
@@ -179,11 +179,15 @@ module Yoolk
       it { should respond_to(:telephone?) }
       it { should respond_to(:email?) }
       it { should respond_to(:website?) }
+      it { should respond_to(:multilinguals) }
 
       it { should alias_from(:image_galleries).to(:galleries) }
       it { should alias_from(:gallery_images).to(:images) }
       it { should alias_from(:artworks).to(:brochures) }
       it { should alias_from(:opening_hours).to(:business_hours) }
+
+      it { should delegate(:language).to(:portal) }
+      it { should delegate(:locale).to(:portal) }
     end
   end
 end

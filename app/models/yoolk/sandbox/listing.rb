@@ -12,11 +12,11 @@ module Yoolk
       attribute :headline,                String
       attribute :postal_code,             String
       attribute :description,             String
-      attribute :locale,                  String
       attribute :show_map_on_web,         Boolean
       attribute :is_active,               Boolean
       attribute :created_at,              DateTime
       attribute :updated_at,              DateTime
+      attribute :multilingual_ids,        Array
 
       # relations
       attribute :portal,                  Yoolk::Sandbox::Portal
@@ -48,13 +48,7 @@ module Yoolk
       attribute :twitter_account,         Yoolk::Sandbox::Twitter::Account
       attribute :opening_hours,           Array[Yoolk::Sandbox::Listing::OpeningHour]
 
-      def self.find(alias_id)
-        path       = Rails.root.join('db', 'samples', 'jsons', "#{alias_id}.json")
-        return nil unless File.exists? path
-
-        attributes = Oj.load(File.read(path))
-        new(attributes)
-      end
+      delegate  :locale, :language,       to: :portal
 
       def initialize(attributes={})
         super
@@ -124,6 +118,10 @@ module Yoolk
 
       def categories
         @categories     ||= paginate_array(listing_categories.map(&:category).compact)
+      end
+
+      def multilinguals
+        @multilinguals  ||= multilingual_ids.map { |alias_id| Yoolk::Sandbox::Listing.find(alias_id) }
       end
 
       ## Alias Method
