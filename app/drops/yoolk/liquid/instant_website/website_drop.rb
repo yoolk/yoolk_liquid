@@ -20,9 +20,26 @@ module Yoolk
         end
 
         def cover_photos
-          object.cover_photos.presence || [object.template.cover_photo] 
-        end
 
+          # website_cover_photos.presence || [object.template.cover_photo]
+          binding.pry
+        end
+        private
+
+          def website_cover_photos
+            if template.try(:cover_photo).present?
+              object.cover_photos.select do |cover|
+                (cover.to_liquid.dimension_width == template.cover_photo.width) && \
+                (cover.to_liquid.dimension_height == template.cover_photo.height)
+              end
+            else
+              []
+            end
+          end
+
+          def current_host
+            request.host.to_s.gsub(/^www\./, '')
+          end
       end
     end
   end
