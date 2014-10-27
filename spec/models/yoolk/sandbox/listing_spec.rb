@@ -187,6 +187,7 @@ module Yoolk
       it { should alias_from(:image_galleries).to(:galleries) }
       it { should alias_from(:gallery_images).to(:images) }
       it { should alias_from(:artworks).to(:brochures) }
+      it { should alias_from(:opening_hours).to(:business_hours) }
     end
   end
 end

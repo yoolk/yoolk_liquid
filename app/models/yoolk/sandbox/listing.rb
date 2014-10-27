@@ -128,9 +128,10 @@ module Yoolk
       end
 
       ## Alias Method
-      alias_method :galleries, :image_galleries
-      alias_method :images,    :gallery_images
-      alias_method :brochures, :artworks
+      alias_method :galleries,      :image_galleries
+      alias_method :images,         :gallery_images
+      alias_method :brochures,      :artworks
+      alias_method :business_hours, :opening_hours
 
       private
 
