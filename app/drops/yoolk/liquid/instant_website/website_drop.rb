@@ -3,7 +3,7 @@ module Yoolk
     module InstantWebsite
       class WebsiteDrop < BaseDrop
         attributes  :id, :google_analytics_key, :is_live, :is_active, :free_plan, :template_name,
-                    :created_at, :updated_at
+                    :primary_domain, :created_at, :updated_at
 
         belongs_to  :favicon,       with: 'Yoolk::Liquid::AttachmentDrop'
         belongs_to  :template,      with: 'Yoolk::Liquid::InstantWebsite::TemplateDrop'
@@ -21,10 +21,6 @@ module Yoolk
 
         def cover_photos
           object.cover_photos.presence || [object.template.cover_photo]
-        end
-
-        def primary_domain
-          domains.find{ |domain| domain.is_primary == true }
         end
       end
     end

@@ -17,7 +17,7 @@ module Yoolk
         attribute :domains,               Array[Yoolk::Sandbox::InstantWebsite::Domain]
 
         def primary_domain
-          domains.find{ |domain| domain.is_primary == true }
+          domains.find { |domain| domain.is_primary == true }
         end
       end
     end

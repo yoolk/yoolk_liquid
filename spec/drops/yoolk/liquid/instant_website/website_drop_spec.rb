@@ -8,6 +8,7 @@ module Yoolk
       it { should have_attribute(:is_live) }
       it { should have_attribute(:is_active) }
       it { should have_attribute(:free_plan) }
+      it { should have_attribute(:primary_domain) }
       it { should have_attribute(:created_at) }
       it { should have_attribute(:updated_at) }
 
