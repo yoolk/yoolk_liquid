@@ -10,6 +10,10 @@ module Yoolk
         attribute :is_primary,            Boolean
         attribute :created_at,            DateTime
         attribute :updated_at,            DateTime
+
+        def url
+          "http://#{name}"
+        end
       end
     end
   end

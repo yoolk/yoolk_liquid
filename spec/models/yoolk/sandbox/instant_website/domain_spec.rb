@@ -28,4 +28,8 @@ describe Yoolk::Sandbox::InstantWebsite::Domain do
   it 'has :updated_at attribute' do
     expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
   end
+
+  it 'respond_to :url' do
+    expect(subject).to respond_to(:url)
+  end
 end
