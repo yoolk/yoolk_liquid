@@ -15,7 +15,6 @@ module Yoolk
       it { should have_attribute(:address) }
       it { should have_attribute(:show_map_on_web) }
       it { should have_attribute(:is_active) }
-      it { should have_attribute(:multilingual_ids) }
       it { should belongs_to(:business_type).class_name('Yoolk::Liquid::BusinessTypeDrop') }
       it { should belongs_to(:location).class_name('Yoolk::Liquid::LocationDrop') }
       it { should belongs_to(:country).class_name('Yoolk::Liquid::CountryDrop') }
@@ -59,20 +58,7 @@ module Yoolk
       it { should belongs_to(:facebook_page).with('Yoolk::Liquid::Facebook::PageDrop') }
       it { should belongs_to(:twitter_account).with('Yoolk::Liquid::Twitter::AccountDrop') }
       it { should have_many(:business_hours).with('Yoolk::Liquid::Listing::BusinessHourDrop') }
-
+      it { should have_many(:multilinguals).with('Yoolk::Liquid::ListingDrop') }
     end
-
-    describe ListingDrop, 'methods' do
-      let(:drop)      { described_class.new(double({"multilingual_ids"=> ["292D51B2-76C8-465D-BEF1-13300DEC90FA"]})) }
-
-      it { should respond_to(:language, :multilinguals, :person_attr?) }
-
-      it "#multilingual_ids returns given value back while #multilinguals returns [] because cannot load JSON data" do
-
-        expect(drop.multilingual_ids).to eql(["292D51B2-76C8-465D-BEF1-13300DEC90FA"])
-        expect(drop.multilinguals).to eql([])
-      end
-    end
-
   end
 end

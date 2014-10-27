@@ -6,7 +6,7 @@ module Yoolk
       it { should have_attribute(:id) }
       it { should have_attribute(:facebook_id) }
       it { should have_attribute(:name) }
-      it { should have_attribute(:link) }
+      it { should have_attribute(:url) }
       it { should have_attribute(:cover_photo_url) }
     end
   end

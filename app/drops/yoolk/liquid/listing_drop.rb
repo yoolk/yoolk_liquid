@@ -2,9 +2,10 @@ module Yoolk
   module Liquid
     class ListingDrop < BaseDrop
       attributes  :id, :alias_id, :name, :headline, :postal_code, :description,
-                  :multilingual_ids, :lat, :long, :zoom_level, :address, :show_map_on_web, :is_active
+                  :lat, :long, :zoom_level, :address, :show_map_on_web, :is_active
 
       belongs_to  :location,              class_name: 'Yoolk::Liquid::LocationDrop'
+      belongs_to  :language,              class_name: 'Yoolk::Liquid::LanguageDrop'
       belongs_to  :country,               class_name: 'Yoolk::Liquid::CountryDrop'
       belongs_to  :telephone,             class_name: 'Yoolk::Liquid::Listing::CommunicationDrop'
       belongs_to  :email,                 class_name: 'Yoolk::Liquid::Listing::CommunicationDrop'
@@ -42,6 +43,7 @@ module Yoolk
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
       has_many    :alias_names,           with: 'Yoolk::Liquid::Listing::AliasNameDrop'
       has_many    :business_hours,        with: 'Yoolk::Liquid::Listing::BusinessHourDrop'
+      has_many    :multilinguals,         with: 'Yoolk::Liquid::ListingDrop'
       belongs_to  :facebook_page,         with: 'Yoolk::Liquid::Facebook::PageDrop'
       belongs_to  :twitter_account,       with: 'Yoolk::Liquid::Twitter::AccountDrop'
 
@@ -53,37 +55,12 @@ module Yoolk
       belongs_to  :portal,                class_name: 'Yoolk::Liquid::PortalDrop'
       belongs_to  :instant_website,       class_name: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
 
-      def facebook_page_link
-        facebook_page.try(:link)
+      def facebook_page_url
+        facebook_page.try(:url)
       end
 
-      def twitter_link
-        twitter_account.try(:link)
-      end
-
-      def language
-        portal.language
-      end
-
-      def multilinguals
-        paths = Rails.root.join('db', 'samples', 'jsons/*')
-        selections = []
-
-        Dir[paths].each do |listing|
-          return nil unless File.exists? listing
-          attributes = Oj.load(File.read(listing))
-
-          unless person_attr? attributes
-            sandbox = Yoolk::Sandbox::Listing.new(attributes)
-            selections << sandbox.to_liquid if multilingual_ids.include?(sandbox.id)
-          end
-        end
-
-        selections.compact
-      end
-
-      def person_attr?(attributes)
-        attributes["id"] =~ /^\d$/
+      def twitter_url
+        twitter_account.try(:url)
       end
 
     end
