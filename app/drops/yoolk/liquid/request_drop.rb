@@ -19,10 +19,6 @@ module Yoolk
       def feedback_path
         feedback_index_path
       end
-
-      def office_path
-        '/office'
-      end
     end
   end
 end

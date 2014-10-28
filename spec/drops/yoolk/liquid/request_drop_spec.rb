@@ -9,7 +9,7 @@ module Yoolk
       end
 
       it '#office_path' do
-        expect(subject.office_path).to eq('/office')
+        expect(subject.office_path).to eq('/office_v1')
       end
 
       it '#galleries_path' do
