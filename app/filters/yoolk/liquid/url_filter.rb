@@ -8,7 +8,7 @@ module Yoolk
                 to: :controller
 
       def office_path
-        '/office'
+        '/office_v1'
       end
 
       # These three belows use url_helpers to avoid conflict in the real app.
