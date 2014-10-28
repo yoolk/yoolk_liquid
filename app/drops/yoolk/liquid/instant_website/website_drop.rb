@@ -23,84 +23,83 @@ module Yoolk
           website_cover_photos.presence || template_cover_photos
         end
 
-
-          def website_cover_photos
-            if template.try(:cover_photo).present?
-              object.cover_photos.select do |cover|
-                (cover.to_liquid.dimension_width == template.cover_photo.width) && \
-                (cover.to_liquid.dimension_height == template.cover_photo.height)
-              end
-            else
-              []
+        def website_cover_photos
+          if template.try(:cover_photo).present?
+            object.cover_photos.select do |cover|
+              (cover.to_liquid.dimension_width == template.cover_photo.width) && \
+              (cover.to_liquid.dimension_height == template.cover_photo.height)
             end
+          else
+            []
           end
+        end
 
-          def template_cover_photos
-            if preview_mode?
-              template_sandbox = Yoolk::Sandbox::InstantWebsite::Template.new(current_template)
+        def template_cover_photos
+          if preview_mode?
+            template_sandbox = Yoolk::Sandbox::InstantWebsite::Template.new(current_template)
 
-              iw = object.template.clone
-              iw = template_sandbox
-              [iw.to_liquid.cover_photo].compact
-            elsif template.present?
-              [template.cover_photo].compact
-            else
-              []
-            end
+            iw = object.template.clone
+            iw = template_sandbox
+            [iw.to_liquid.cover_photo].compact
+          elsif template.present?
+            [template.cover_photo].compact
+          else
+            []
           end
+        end
 
-          def current_template
-            current_theme = {}
+        def current_template
+          current_theme = {}
 
-            if request.params[:theme].present?
-              template_path = Rails.root.join('db', 'samples', 'jsons', 'templates/*')
+          if request.params[:theme].present?
+            template_path = Rails.root.join('db', 'samples', 'jsons', 'templates/*')
 
-              Dir[template_path].each do |file|
-                return nil unless File.exists? file
-
-                attributes = Oj.load(File.read(file))
-                current_theme = attributes if attributes["name"] == request.params[:theme]
-              end
-            end
-            current_theme
-          end
-
-          def current_host
-            request.host.to_s.gsub(/^www\./, '')
-          end
-
-          def preview_mode?
-            current_host != current_domain.name && request.params[:alias_id].present?
-          end
-
-          def current_domain
-            current_domain = if request.params[:alias_id]
-
-              listing = Yoolk::Sandbox::Listing.find(request.params[:alias_id]).to_liquid
-              if listing.instant_website.try(:primary_domain).present?
-                listing.instant_website.primary_domain
-              else
-                OpenStruct.new(name: "", listing: listing, website: OpenStruct.new(template_name: ""))
-              end
-            else
-              domain_with_no_params
-            end
-          end
-
-          def domain_with_no_params
-            domain_path = Rails.root.join('db', 'samples', 'jsons', 'domains/*')
-            sandbox = {}
-
-            Dir[domain_path].each do |file|
+            Dir[template_path].each do |file|
               return nil unless File.exists? file
-              attributes = Oj.load(File.read(file))
 
-              if attributes["name"] == current_host
-                sandbox = Yoolk::Sandbox::InstantWebsite::Domain.new(attributes)
-              end
+              attributes = Oj.load(File.read(file))
+              current_theme = attributes if attributes["name"] == request.params[:theme]
             end
-            Yoolk::Liquid::InstantWebsite::DomainDrop.new(sandbox)
           end
+          current_theme
+        end
+
+        def current_host
+          request.host.to_s.gsub(/^www\./, '')
+        end
+
+        def preview_mode?
+          current_host != current_domain.name && request.params[:alias_id].present?
+        end
+
+        def current_domain
+          current_domain = if request.params[:alias_id]
+
+            listing = Yoolk::Sandbox::Listing.find(request.params[:alias_id]).to_liquid
+            if listing.instant_website.try(:primary_domain).present?
+              listing.instant_website.primary_domain
+            else
+              OpenStruct.new(name: "", listing: listing, website: OpenStruct.new(template_name: ""))
+            end
+          else
+            domain_with_no_params
+          end
+        end
+
+        def domain_with_no_params
+          domain_path = Rails.root.join('db', 'samples', 'jsons', 'domains/*')
+          sandbox = {}
+
+          Dir[domain_path].each do |file|
+            return nil unless File.exists? file
+            attributes = Oj.load(File.read(file))
+
+            if attributes["name"] == current_host
+              sandbox = Yoolk::Sandbox::InstantWebsite::Domain.new(attributes)
+            end
+          end
+          Yoolk::Liquid::InstantWebsite::DomainDrop.new(sandbox)
+        end
 
       end
     end
