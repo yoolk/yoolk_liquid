@@ -23,7 +23,6 @@ module Yoolk
           website_cover_photos.presence || template_cover_photos
         end
 
-        private
 
           def website_cover_photos
             if template.try(:cover_photo).present?
@@ -40,8 +39,9 @@ module Yoolk
             if preview_mode?
               template_sandbox = Yoolk::Sandbox::InstantWebsite::Template.new(current_template)
 
-              object.template = template_sandbox if current_template.present?
-              [object.template.to_liquid.cover_photo].compact
+              iw = object.template.clone
+              iw = template_sandbox
+              [iw.to_liquid.cover_photo].compact
             elsif template.present?
               [template.cover_photo].compact
             else
