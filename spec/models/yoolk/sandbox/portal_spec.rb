@@ -40,6 +40,7 @@ module Yoolk
       end
 
       it { should respond_to(:labs?) }
+      it { should respond_to(:locale) }
     end
   end
 end

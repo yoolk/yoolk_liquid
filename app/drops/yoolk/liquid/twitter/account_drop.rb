@@ -2,9 +2,9 @@ module Yoolk
   module Liquid
     module Twitter
       class AccountDrop < BaseDrop
-        attributes  :id, :username, :email, :link
+        attributes  :id, :username, :email, :url
 
-        def link
+        def url
           object.profile_url
         end
       end

@@ -13,6 +13,10 @@ module Yoolk
       attribute :country,           Yoolk::Sandbox::Country
       attribute :language,          Yoolk::Sandbox::Language
 
+      def locale
+        language.try(:two_code) || 'en'
+      end
+
       def labs?
         domain_name == 'labs.yoolk.com'
       end

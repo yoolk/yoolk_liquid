@@ -27,6 +27,20 @@ module Yoolk
         expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
       end
 
+      it 'respond_to :full_day?' do
+        expect(subject).to respond_to(:full_day?)
+      end
+
+      it 'respond_to :closed?' do
+        expect(subject).to respond_to(:closed?)
+      end
+    end
+
+    describe Listing::OpeningHour do
+      it { should delegate(:hour).to(:open).with_prefix }
+      it { should delegate(:minute).to(:open).with_prefix }
+      it { should delegate(:hour).to(:close).with_prefix }
+      it { should delegate(:minute).to(:close).with_prefix }
     end
   end
 end
