@@ -83,13 +83,12 @@ module Yoolk
         end
 
         def domain_with_no_params
-          sandbox, drop = {}, {}
-          domain = Yoolk::InstantWebsite::Domain.find_by name: current_host
+          sandbox = {}
+          domain  = Yoolk::InstantWebsite::Domain.find_by(name: current_host)
           if domain.present?
             sandbox = Yoolk::Sandbox::InstantWebsite::Domain.new(domain.as_json)
-            drop = Yoolk::Liquid::InstantWebsite::DomainDrop.new(sandbox)
           end
-          drop
+          sandbox.to_liquid
         end
 
       end
