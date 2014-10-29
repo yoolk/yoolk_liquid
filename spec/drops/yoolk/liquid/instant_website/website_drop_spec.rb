@@ -23,6 +23,8 @@ module Yoolk
       subject { described_class.new(double) }
 
       it { should respond_to(:office_url) }
+      it { should respond_to(:website_cover_photos) }
+      it { should respond_to(:template_cover_photos) }
     end
   end
 end
