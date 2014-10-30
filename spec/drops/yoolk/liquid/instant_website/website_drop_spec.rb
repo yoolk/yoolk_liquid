@@ -14,8 +14,6 @@ module Yoolk
 
       it { should belongs_to(:favicon).with('Yoolk::Liquid::AttachmentDrop') }
       it { should belongs_to(:template).with('Yoolk::Liquid::InstantWebsite::TemplateDrop') }
-
-      it { should have_many(:cover_photos).with('Yoolk::Liquid::InstantWebsite::WebsiteCoverPhotoDrop') }
       it { should have_many(:domains).with('Yoolk::Liquid::InstantWebsite::DomainDrop') }
     end
 
@@ -26,24 +24,20 @@ module Yoolk
 
       it { should respond_to(:office_url) }
 
-      context '#website_cover_photos' do
-        it 'returns the cover_photos that matches its template' do
-          cover_photos = drop.website_cover_photos
+      context '#cover_photos' do
+        it 'returns an instance of Liquid::Rails::CollectionDrop' do
+          expect(drop.cover_photos).to be_instance_of(::Liquid::Rails::CollectionDrop)
+        end
 
-          expect(cover_photos.length).to eq(1)
-          expect(cover_photos[0].dimension).to eq(template.cover_photo.dimension)
+        it 'returns the cover_photos that matches its template' do
+          expect(drop.cover_photos.length).to eq(1)
+          expect(drop.cover_photos[0].dimension).to eq(template.cover_photo.dimension)
         end
 
         it 'returns empty array when template doesn\'t have cover_photo' do
           template.cover_photo = nil
 
-          expect(drop.website_cover_photos).to eq([])
-        end
-      end
-
-      context '#cover_photos' do
-        it 'returns an instance of Liquid::Rails::CollectionDrop' do
-          expect(drop.cover_photos).to be_instance_of(::Liquid::Rails::CollectionDrop)
+          expect(drop.cover_photos.length).to eq(0)
         end
       end
     end
