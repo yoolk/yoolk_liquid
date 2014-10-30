@@ -16,28 +16,17 @@ module Yoolk
         end
 
         def cover_photos
-          value = website_cover_photos.presence || template_cover_photos
-          ::Liquid::Rails::Drop.dropify(value)
-        end
-
-        ## during preview mode, website doesn't have template.
-        def website_cover_photos
-          if template.try(:cover_photo).present?
+          value = if template.try(:cover_photo).present?
             object.cover_photos.select do |cover_photo|
               cover_photo.dimension  == template.cover_photo.dimension
             end
           else
             []
           end
+
+          ::Liquid::Rails::Drop.dropify(value)
         end
 
-        def template_cover_photos
-          if @context['request'].preview_mode?
-            [@context['current_template'].try(:cover_photo).object].compact
-          else
-            [template.try(:cover_photo)].compact
-          end
-        end
       end
     end
   end
