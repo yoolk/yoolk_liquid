@@ -20,9 +20,32 @@ module Yoolk
     end
 
     describe InstantWebsite::WebsiteDrop do
-      subject { described_class.new(double) }
+      let(:website)   { Yoolk::Sandbox::InstantWebsite::Website.new(template: template, cover_photos: [ {dimension: '200x400'}, {dimension: '400x200'} ]) }
+      let(:template)  { Yoolk::Sandbox::InstantWebsite::Template.new(name: 'sample', cover_photo: { dimension: '200x400'}) }
+      let(:drop)      { website.to_liquid }
 
       it { should respond_to(:office_url) }
+
+      context '#website_cover_photos' do
+        it 'returns the cover_photos that matches its template' do
+          cover_photos = drop.website_cover_photos
+
+          expect(cover_photos.length).to eq(1)
+          expect(cover_photos[0].dimension).to eq(template.cover_photo.dimension)
+        end
+
+        it 'returns empty array when template doesn\'t have cover_photo' do
+          template.cover_photo = nil
+
+          expect(drop.website_cover_photos).to eq([])
+        end
+      end
+
+      context '#cover_photos' do
+        it 'returns an instance of Liquid::Rails::CollectionDrop' do
+          expect(drop.cover_photos).to be_instance_of(::Liquid::Rails::CollectionDrop)
+        end
+      end
     end
   end
 end

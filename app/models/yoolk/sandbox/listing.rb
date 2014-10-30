@@ -74,6 +74,7 @@ module Yoolk
             food.category = food_category
           end
         end
+        instant_website.listing = self if instant_website.present?
       end
 
       %w(telephone email website).each do |module_name|

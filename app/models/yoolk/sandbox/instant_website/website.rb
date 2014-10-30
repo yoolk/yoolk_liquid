@@ -13,8 +13,19 @@ module Yoolk
 
         attribute :favicon,               Yoolk::Sandbox::Attachment
         attribute :template,              Yoolk::Sandbox::InstantWebsite::Template
+        attribute :listing,               Yoolk::Sandbox::Listing
         attribute :cover_photos,          Array[Yoolk::Sandbox::InstantWebsite::WebsiteCoverPhoto]
         attribute :domains,               Array[Yoolk::Sandbox::InstantWebsite::Domain]
+
+        delegate  :name,                  to: :template, prefix: true
+
+        def initialize(attributes={})
+          super
+
+          domains.each do |domain|
+            domain.instant_website = self
+          end
+        end
 
         def primary_domain
           domains.find { |domain| domain.is_primary == true }

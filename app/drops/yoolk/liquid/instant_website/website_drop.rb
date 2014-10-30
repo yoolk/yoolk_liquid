@@ -11,16 +11,32 @@ module Yoolk
         has_many    :cover_photos,  with: 'Yoolk::Liquid::InstantWebsite::WebsiteCoverPhotoDrop'
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
-        def template_name
-          template.name
-        end
-
         def office_url
           office_path
         end
 
         def cover_photos
-          object.cover_photos.presence || [object.template.cover_photo]
+          value = website_cover_photos.presence || template_cover_photos
+          ::Liquid::Rails::Drop.dropify(value)
+        end
+
+        ## during preview mode, website doesn't have template.
+        def website_cover_photos
+          if template.try(:cover_photo).present?
+            object.cover_photos.select do |cover_photo|
+              cover_photo.dimension  == template.cover_photo.dimension
+            end
+          else
+            []
+          end
+        end
+
+        def template_cover_photos
+          if @context['request'].preview_mode?
+            [@context['current_template'].try(:cover_photo).object].compact
+          else
+            [template.try(:cover_photo)].compact
+          end
         end
       end
     end

@@ -25,6 +25,10 @@ describe Yoolk::Sandbox::InstantWebsite::Domain do
     expect(described_class).to have_attribute(:created_at).of_type(DateTime)
   end
 
+  it 'has :instant_website attribute' do
+    expect(described_class).to have_attribute(:instant_website).of_type(Yoolk::Sandbox::InstantWebsite::Website)
+  end
+
   it 'has :updated_at attribute' do
     expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
   end
