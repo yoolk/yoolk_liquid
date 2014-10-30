@@ -8,7 +8,6 @@ module Yoolk
         belongs_to  :favicon,       with: 'Yoolk::Liquid::AttachmentDrop'
         belongs_to  :template,      with: 'Yoolk::Liquid::InstantWebsite::TemplateDrop'
 
-        has_many    :cover_photos,  with: 'Yoolk::Liquid::InstantWebsite::WebsiteCoverPhotoDrop'
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
         def office_url
@@ -16,7 +15,7 @@ module Yoolk
         end
 
         def cover_photos
-          value = if template.try(:cover_photo).present?
+          value = if template.cover_photo.present?
             object.cover_photos.select do |cover_photo|
               cover_photo.dimension  == template.cover_photo.dimension
             end
