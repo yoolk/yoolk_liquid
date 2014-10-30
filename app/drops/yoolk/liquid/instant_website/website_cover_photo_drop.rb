@@ -6,14 +6,6 @@ module Yoolk
                     :created_at, :updated_at
 
         belongs_to  :image,       with: 'Yoolk::Liquid::AttachmentDrop'
-
-        def dimension_width
-          dimension.split("x")[0].to_i
-        end
-
-        def dimension_height
-          dimension.split("x")[1].to_i
-        end
       end
     end
   end

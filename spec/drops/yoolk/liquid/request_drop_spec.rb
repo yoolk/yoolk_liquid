@@ -59,6 +59,33 @@ module Yoolk
       it '#feedback_path' do
         expect(subject.feedback_path).to eq('/feedback')
       end
+
+      context '#preview_mode?' do
+        it 'returns true' do
+          allow(subject.send(:request)).to receive(:host).and_return('iw.yoolk.com')
+          allow(subject.send(:request)).to receive(:params).and_return({ alias_id: 'kh2' })
+
+          expect(subject.preview_mode?).to be_truthy
+        end
+
+        it 'returns false' do
+          expect(subject.preview_mode?).to be_falsy
+        end
+      end
+
+      context '#host' do
+        it 'returns the rails\'s request host ' do
+          allow(subject.send(:request)).to receive(:host).and_return('localhost.com')
+
+          expect(subject.host).to eq('localhost.com')
+        end
+
+        it 'returns the rails\'s request host without www.' do
+          allow(subject.send(:request)).to receive(:host).and_return('www.localhost.com')
+
+          expect(subject.host).to eq('localhost.com')
+        end
+      end
     end
   end
 end
