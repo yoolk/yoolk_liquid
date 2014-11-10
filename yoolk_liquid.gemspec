@@ -26,7 +26,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-rails',        '~> 3.1.2'
   s.add_dependency 'coffee-rails',        '~> 4.0.1'
   s.add_dependency 'sass-rails',          '~> 4.0.2'
-  s.add_dependency 'bootstrap-sass',      '~> 3.2.0'
   s.add_dependency 'autoprefixer-rails',  '~> 3.1.0.20140911'
 
   # sandbox
