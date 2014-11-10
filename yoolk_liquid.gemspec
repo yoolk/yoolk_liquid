@@ -28,6 +28,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'sass-rails',          '~> 4.0.2'
   s.add_dependency 'autoprefixer-rails',  '~> 3.1.0.20140911'
 
+  # themes
+  s.add_dependency 'themes_on_rails',     '~> 0.3.0'
+  s.add_dependency 'liquid-rails',        '~> 0.1.0'
+  s.add_dependency 'assets-rails',        '~> 0.1.0'
+
   # sandbox
   s.add_dependency 'oj',                  '~> 2.10.2'
 end

@@ -11,6 +11,11 @@ require 'sass-rails'
 require 'therubyracer'
 require 'jquery-rails'
 
+# themes
+require 'themes_on_rails'
+require 'liquid-rails'
+require 'assets-rails'
+
 # sandbox
 require 'oj'
 
