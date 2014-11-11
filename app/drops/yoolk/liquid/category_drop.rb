@@ -1,7 +1,7 @@
 module Yoolk
   module Liquid
     class CategoryDrop < BaseDrop
-      attributes :id, :text
+      attributes :id, :name
     end
   end
 end
