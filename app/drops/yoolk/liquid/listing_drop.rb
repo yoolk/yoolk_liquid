@@ -36,6 +36,7 @@ module Yoolk
       has_many    :foods,                 with: 'Yoolk::Liquid::Menu::FoodDrop'
       has_many    :food_categories,       with: 'Yoolk::Liquid::Menu::CategoryDrop'
 
+      has_many    :short_descriptions,    with: 'Yoolk::Liquid::Listing::ShortDescriptionDrop'
       has_many    :people,                class_name: 'Yoolk::Liquid::Listing::PeopleDrop',
                                           with: 'Yoolk::Liquid::Listing::PersonDrop'
       has_many    :medias,                with: 'Yoolk::Liquid::Listing::MediaDrop'

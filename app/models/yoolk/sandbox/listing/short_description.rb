@@ -4,7 +4,7 @@ module Yoolk
       attribute :id,            String
       attribute :text,          String
 
-      attribute :categories,    Array[Yoolk::Sandbox::Listing::Category]
+      attribute :categories,    Array[Yoolk::Sandbox::Category]
     end
   end
 end
