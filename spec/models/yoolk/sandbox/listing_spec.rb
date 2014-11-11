@@ -169,6 +169,7 @@ module Yoolk
       it { should respond_to(:services) }
       it { should respond_to(:foods) }
       it { should respond_to(:gallery_images) }
+      it { should respond_to(:short_descriptions) }
 
       it { should respond_to(:telephones) }
       it { should respond_to(:emails) }
