@@ -20,18 +20,17 @@ Gem::Specification.new do |s|
   s.add_dependency 'virtus',              '~> 1.0.3'
   s.add_dependency 'kaminari',            '~> 0.16.1'
 
-  # views
-  s.add_dependency 'uglifier',            '>= 1.3.0'
-  s.add_dependency 'therubyracer',        '~> 0.12.1'
-  s.add_dependency 'jquery-rails',        '~> 3.1.2'
-  s.add_dependency 'coffee-rails',        '~> 4.0.1'
-  s.add_dependency 'sass-rails',          '~> 4.0.2'
-  s.add_dependency 'autoprefixer-rails',  '~> 3.1.0.20140911'
-
   # themes
   s.add_dependency 'themes_on_rails',     '~> 0.3.0'
   s.add_dependency 'liquid-rails',        '~> 0.1.0'
   s.add_dependency 'assets-rails',        '~> 0.1.0'
+
+  # views
+  s.add_dependency 'uglifier',            '>= 1.3.0'
+  s.add_dependency 'therubyracer',        '~> 0.12.1'
+  s.add_dependency 'coffee-rails',        '~> 4.0.1'
+  s.add_dependency 'sass-rails',          '~> 4.0.2'
+  s.add_dependency 'autoprefixer-rails',  '~> 3.1.0.20140911'
 
   # sandbox
   s.add_dependency 'oj',                  '~> 2.10.2'
