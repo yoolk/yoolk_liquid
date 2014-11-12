@@ -25,7 +25,12 @@ module Yoolk
         else
           controller.params['controller']
         end
-        eval "#{path}_category_url(obj.first.category)"
+
+        if path != 'galleries'
+          eval "#{path}_category_url(obj.first.category)"
+        else
+          obj.first.name
+        end
       end
 
       def item_detail?
@@ -47,8 +52,12 @@ module Yoolk
         controller.controller_path.split("/")[0]
       end
 
-      def announcement?
+      def announcements?
         controller.params['controller'] == 'announcements'
+      end
+
+      def galleries?
+        controller.params['controller'] == 'galleries'
       end
 
       def url
