@@ -1,35 +1,44 @@
 module Yoolk
   module Liquid
-    class RequestCategoryDrop < BaseDrop
-      attr_reader :context, :obj
-      def initialize(context)
-        @context = context
-        controller_name = controller.params['controller'].split("/")[0]
-        controller_name = if controller_name == 'menu'
-                      'foods'
-                    else
-                      controller_name
-                    end
-        collection = "listing.#{controller_name}"
 
-        @obj = @context[collection].select{|coll| coll.id.to_i == controller.params["id"].to_i}
+    class RequestBase < BaseDrop
+      attr_reader :context, :controller_name, :object
+
+      def initialize(context)
+        @context ||= context
+        controller_base_name = controller.params['controller'].split("/")[0]
+        @controller_name =  if controller_base_name == 'menu'
+                              'foods'
+                            else
+                              controller_base_name
+                            end
+
+        collection = "listing.#{controller_name}"
+        @object = @context[collection].select do |coll|
+          coll.id.to_i == controller.params["id"].to_i
+        end
+
       end
+    end
+
+
+    class RequestCategoryDrop < RequestBase
 
       def name
         controller.params["category_id"] || controller.params["id"]
       end
 
       def url
-        path = if controller.params['controller'] == "menu/foods"
-          "menu"
-        else
-          controller.params['controller']
-        end
+        path =  if controller.params['controller'] == "menu/foods"
+                  "menu"
+                else
+                  controller.params['controller']
+                end
 
         if path != 'galleries'
-          eval "#{path}_category_url(obj.first.category)"
+          eval "#{path}_category_url(object.first.category)"
         else
-          obj.first.name
+          object.first.name
         end
       end
 
@@ -38,15 +47,11 @@ module Yoolk
       end
 
       def item_detail
-        controller.params['controller'].split("/")[0] != 'announcements' ? obj.first.name : obj.first.id
+        controller.params['controller'].split("/")[0] != 'announcements' ? object.first.name : object.first.id
       end
     end
 
-    class RequestCollectionDrop < BaseDrop
-      attr_reader :context
-      def initialize(context)
-        @context = context
-      end
+    class RequestCollectionDrop < RequestBase
 
       def name
         controller.controller_path.split("/")[0]
