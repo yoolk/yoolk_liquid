@@ -28,6 +28,10 @@ module Yoolk
         expect(described_class).to have_attribute(:pages).of_type(Array)
       end
 
+      it 'has :styles attribute' do
+        expect(described_class).to have_attribute(:styles).of_type(Array)
+      end
+
       it 'has :created_at attribute' do
         expect(described_class).to have_attribute(:created_at).of_type(DateTime)
       end
