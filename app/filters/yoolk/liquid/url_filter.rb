@@ -123,82 +123,81 @@ module Yoolk
         link_to value, office_path
       end
 
-      private
 
-        def default_class_options(is_current_page, options={})
-          default_class_name = toggle_class_name('active', is_current_page)
-          options['class']   = "#{default_class_name} #{options['class']}".strip.presence || nil
+      def default_class_options(is_current_page, options={})
+        default_class_name = toggle_class_name('active', is_current_page)
+        options['class']   = "#{default_class_name} #{options['class']}".strip.presence || nil
 
-          options
-        end
+        options
+      end
 
-        def home_page?
-          request.fullpath == root_path
-        end
+      def home_page?
+        request.fullpath == root_path
+      end
 
-        def galleries_page?
-          request.fullpath.start_with?(galleries_path.split('?')[0])
-        end
+      def galleries_page?
+        request.fullpath.start_with?(galleries_path.split('?')[0])
+      end
 
-        def people_page?
-          request.fullpath.start_with?(people_path.split('?')[0])
-        end
+      def people_page?
+        request.fullpath.start_with?(people_path.split('?')[0])
+      end
 
-        def brochures_page?
-          request.fullpath.start_with?(brochures_path.split('?')[0])
-        end
+      def brochures_page?
+        request.fullpath.start_with?(brochures_path.split('?')[0])
+      end
 
-        def map_page?
-          request.fullpath.start_with?(map_index_path.split('?')[0])
-        end
+      def map_page?
+        request.fullpath.start_with?(map_index_path.split('?')[0])
+      end
 
-        def about_us_page?
-          request.fullpath.start_with?(about_us_path.split('?')[0])
-        end
+      def about_us_page?
+        request.fullpath.start_with?(about_us_path.split('?')[0])
+      end
 
-        def contact_us_page?
-          request.fullpath.start_with?(contact_us_path.split('?')[0])
-        end
+      def contact_us_page?
+        request.fullpath.start_with?(contact_us_path.split('?')[0])
+      end
 
-        def products_page?
-          request.fullpath.start_with?(products_path.split('?')[0])
-        end
+      def products_page?
+        request.fullpath.start_with?(products_path.split('?')[0])
+      end
 
-        def services_page?
-          request.fullpath.start_with?(services_path.split('?')[0])
-        end
+      def services_page?
+        request.fullpath.start_with?(services_path.split('?')[0])
+      end
 
-        def menu_page?
-          request.fullpath.start_with?(menu_index_path.split('?')[0])
-        end
+      def menu_page?
+        request.fullpath.start_with?(menu_index_path.split('?')[0])
+      end
 
-        def announcements_page?
-          request.fullpath.start_with?(announcements_path.split('?')[0])
-        end
+      def announcements_page?
+        request.fullpath.start_with?(announcements_path.split('?')[0])
+      end
 
-        def reservation_page?
-          request.fullpath.start_with?(reservation_index_path.split('?')[0])
-        end
+      def reservation_page?
+        request.fullpath.start_with?(reservation_index_path.split('?')[0])
+      end
 
-        def feedback_page?
-          request.fullpath.start_with?(feedback_index_path.split('?')[0])
-        end
+      def feedback_page?
+        request.fullpath.start_with?(feedback_index_path.split('?')[0])
+      end
 
-        def request
-          controller.request
-        end
+      def request
+        controller.request
+      end
 
-        def controller
-          @context.registers[:controller]
-        end
+      def controller
+        @context.registers[:controller]
+      end
 
-        def default_url_options
-          controller.send(:default_url_options)
-        end
+      def default_url_options
+        controller.send(:default_url_options)
+      end
 
-        def url_helpers
-          Rails.application.routes.url_helpers
-        end
+      def url_helpers
+        Rails.application.routes.url_helpers
+      end
     end
   end
 end
