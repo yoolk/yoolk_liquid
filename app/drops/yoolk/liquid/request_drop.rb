@@ -72,6 +72,10 @@ module Yoolk
         request.params[:theme]
       end
 
+      def theme_style_url
+        controller.theme_style_url
+      end
+
       def style_name
         request.params[:style]
       end
