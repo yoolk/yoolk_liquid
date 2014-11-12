@@ -20,7 +20,12 @@ module Yoolk
       end
 
       def url
-        eval "#{controller.params['controller'].singularize.split("/").join("_")}_url(obj.first)"
+        path = if controller.params['controller'] == "menu/foods"
+          "menu"
+        else
+          controller.params['controller']
+        end
+        eval "#{path}_category_url(obj.first.category)"
       end
 
       def item_detail?
@@ -28,7 +33,7 @@ module Yoolk
       end
 
       def item_detail
-        obj.first.name
+        controller.params['controller'].split("/")[0] != 'announcements' ? obj.first.name : obj.first.id
       end
     end
 
@@ -40,6 +45,10 @@ module Yoolk
 
       def name
         controller.controller_path.split("/")[0]
+      end
+
+      def announcement?
+        controller.params['controller'] == 'announcements'
       end
 
       def url
