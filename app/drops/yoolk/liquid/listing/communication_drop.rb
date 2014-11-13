@@ -3,18 +3,14 @@ module Yoolk
     class Listing::CommunicationDrop < BaseDrop
       attributes :id, :type, :label, :value, :is_first_line, :image_url, :created_at, :updated_at
 
-      def type_downcase
-        type.downcase
-      end
-
       def li
-        if type_downcase.in?(["branch office", "department"])
+        if type.downcase.in?(["branch office", "department"])
           branch_office
         elsif value.blank?
           h.content_tag :span, label
         elsif object.email?
           email_li
-        elsif object.website? || type_downcase.in?(["facebook", "twitter"])
+        elsif object.website? || type.downcase.in?(["facebook", "twitter"])
           website_link(social_network_value, value_with_http)
         else
           list_item
@@ -69,9 +65,9 @@ module Yoolk
         end
 
         def social_network_value
-          if type_downcase == "facebook"
+          if type.downcase == "facebook"
             value.gsub(/^.*facebook.com\/(?:pages\/)?([^\/]*)(\/.*)?$/, '\1')
-          elsif type_downcase == "twitter"
+          elsif type.downcase == "twitter"
             value.gsub(/^.*twitter.com\/([^\/]*)(\/.*)?$/, '\1')
           else
             value

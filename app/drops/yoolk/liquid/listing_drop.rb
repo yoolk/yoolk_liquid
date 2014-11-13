@@ -15,7 +15,7 @@ module Yoolk
       has_many    :communications,        class_name: 'Yoolk::Liquid::Listing::CommunicationsDrop',
                                           with: 'Yoolk::Liquid::Listing::CommunicationDrop'
       has_many    :extra_communications,  class_name: 'Yoolk::Liquid::Listing::ExtraCommunicationsDrop',
-                                          with: 'Yoolk::Liquid::Listing::ExtraCommunicationDrop'
+                                          with: 'Yoolk::Liquid::Listing::CommunicationDrop'
       has_many    :telephones,            with: 'Yoolk::Liquid::Listing::CommunicationDrop'
       has_many    :emails,                with: 'Yoolk::Liquid::Listing::CommunicationDrop'
       has_many    :websites,              with: 'Yoolk::Liquid::Listing::CommunicationDrop'
