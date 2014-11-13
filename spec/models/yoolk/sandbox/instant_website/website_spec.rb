@@ -23,6 +23,10 @@ module Yoolk
         expect(described_class).to have_attribute(:free_plan)
       end
 
+      it 'has :style_name attribute' do
+        expect(described_class).to have_attribute(:style_name)
+      end
+
       it 'has :created_at attribute' do
         expect(described_class).to have_attribute(:created_at).of_type(DateTime)
       end

@@ -2,19 +2,16 @@
 require 'active_model'
 require 'virtus'
 
-# views
-require 'kaminari'
-require 'liquid-rails'
-require 'themes_on_rails'
-require 'uglifier'
-require 'sass-rails'
-require 'therubyracer'
-require 'jquery-rails'
-
 # themes
 require 'themes_on_rails'
 require 'liquid-rails'
 require 'assets-rails'
+
+# views
+require 'kaminari'
+require 'uglifier'
+require 'sass-rails'
+require 'therubyracer'
 
 # sandbox
 require 'oj'

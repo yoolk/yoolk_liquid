@@ -9,10 +9,10 @@ module Yoolk
       attribute     :updated_at,  DateTime
 
       ## Delegate
-      delegate      :hour,        to: :open,  prefix: true
-      delegate      :minute,      to: :open,  prefix: true
-      delegate      :hour,        to: :close, prefix: true
-      delegate      :minute,      to: :close, prefix: true
+      delegate      :hour,        to: :open,  prefix: true, allow_nil: true
+      delegate      :minute,      to: :open,  prefix: true, allow_nil: true
+      delegate      :hour,        to: :close, prefix: true, allow_nil: true
+      delegate      :minute,      to: :close, prefix: true, allow_nil: true
 
       def full_day?
         open_hour.to_i == 0 && close_hour.to_i == 23 && open_minute.to_i == 0 && close_minute.to_i == 59

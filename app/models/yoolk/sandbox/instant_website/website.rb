@@ -8,6 +8,7 @@ module Yoolk
         attribute :is_live,               Boolean
         attribute :is_active,             Boolean
         attribute :free_plan,             Boolean
+        attribute :style_name,            String
         attribute :created_at,            DateTime
         attribute :updated_at,            DateTime
 

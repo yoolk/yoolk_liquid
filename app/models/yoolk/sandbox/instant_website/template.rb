@@ -9,6 +9,7 @@ module Yoolk
         attribute :is_responsive,    Boolean
         attribute :industries,       Array
         attribute :pages,            Array
+        attribute :styles,           Array
         attribute :created_at,       DateTime
         attribute :updated_at,       DateTime
 

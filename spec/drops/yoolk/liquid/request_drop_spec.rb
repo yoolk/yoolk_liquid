@@ -3,61 +3,74 @@ require 'rails_helper'
 module Yoolk
   module Liquid
     describe RequestDrop do
+      subject { described_class.new }
 
-      it '#root_path' do
-        expect(subject.root_path).to eq('/')
+      it '#root_url' do
+        expect(subject.root_url).to eq('/')
       end
 
-      it '#office_path' do
-        expect(subject.office_path).to eq('/office_v1')
+      it '#office_url' do
+        expect(subject.office_url).to eq('/office_v1')
       end
 
-      it '#galleries_path' do
-        expect(subject.galleries_path).to eq('/galleries')
+      it '#galleries_url' do
+        expect(subject.galleries_url).to eq('/galleries')
       end
 
-      it '#people_path' do
-        expect(subject.people_path).to eq('/people')
+      it '#people_url' do
+        expect(subject.people_url).to eq('/people')
       end
 
-      it '#brochures_path' do
-        expect(subject.brochures_path).to eq('/brochures')
+      it '#brochures_url' do
+        expect(subject.brochures_url).to eq('/brochures')
       end
 
-      it '#map_path' do
-        expect(subject.map_path).to eq('/map')
+      it '#map_url' do
+        expect(subject.map_url).to eq('/map')
       end
 
-      it '#products_path' do
-        expect(subject.products_path).to eq('/products')
+      it '#products_url' do
+        expect(subject.products_url).to eq('/products')
       end
 
-      it '#services_path' do
-        expect(subject.services_path).to eq('/services')
+      it '#services_url' do
+        expect(subject.services_url).to eq('/services')
       end
 
-      it '#menu_path' do
-        expect(subject.menu_path).to eq('/menu')
+      it '#menu_url' do
+        expect(subject.menu_url).to eq('/menu')
       end
 
-      it '#announcements_path' do
-        expect(subject.announcements_path).to eq('/announcements')
+      it '#announcements_url' do
+        expect(subject.announcements_url).to eq('/announcements')
       end
 
-      it '#about_us_path' do
-        expect(subject.about_us_path).to eq('/about_us')
+      it '#about_us_url' do
+        expect(subject.about_us_url).to eq('/about_us')
       end
 
-      it '#contact_us_path' do
-        expect(subject.contact_us_path).to eq('/contact_us')
+      it '#contact_us_url' do
+        expect(subject.contact_us_url).to eq('/contact_us')
       end
 
-      it '#reservation_path' do
-        expect(subject.reservation_path).to eq('/reservation')
+      it '#reservation_url' do
+        expect(subject.reservation_url).to eq('/reservation')
       end
 
-      it '#feedback_path' do
-        expect(subject.feedback_path).to eq('/feedback')
+      it '#feedback_url' do
+        expect(subject.feedback_url).to eq('/feedback')
+      end
+
+      it '#theme_name' do
+        allow(subject.send(:request)).to receive(:params).and_return(theme: 'sample')
+
+        expect(subject.theme_name).to eq('sample')
+      end
+
+      it '#style_name' do
+        allow(subject.send(:request)).to receive(:params).and_return(style: 'gray')
+
+        expect(subject.style_name).to eq('gray')
       end
 
       context '#preview_mode?' do
