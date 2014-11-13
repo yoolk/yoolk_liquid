@@ -4,6 +4,10 @@ module Yoolk
       def initialize
       end
 
+      def home_url
+        root_path
+      end
+
       def root_url
         root_path
       end
