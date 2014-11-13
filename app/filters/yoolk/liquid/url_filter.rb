@@ -183,21 +183,23 @@ module Yoolk
         request.fullpath.start_with?(feedback_index_path.split('?')[0])
       end
 
-      def request
-        controller.request
-      end
+      private
 
-      def controller
-        @context.registers[:controller]
-      end
+        def request
+          controller.request
+        end
 
-      def default_url_options
-        controller.send(:default_url_options)
-      end
+        def controller
+          @context.registers[:controller]
+        end
 
-      def url_helpers
-        Rails.application.routes.url_helpers
-      end
+        def default_url_options
+          controller.send(:default_url_options)
+        end
+
+        def url_helpers
+          Rails.application.routes.url_helpers
+        end
     end
   end
 end
