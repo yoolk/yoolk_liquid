@@ -101,7 +101,8 @@ module Yoolk
       end
 
       def category_namea
-        controller.params["category_id"] || controller.params["id"]
+        category_id = controller.params["category_id"] || controller.params["id"]
+        category_id[category_id.index("-") + 1..category_id.length]
       end
 
       def item_detail?
