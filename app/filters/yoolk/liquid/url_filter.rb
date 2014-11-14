@@ -55,7 +55,7 @@ module Yoolk
       end
 
       def link_to_office(value, options={})
-        link_to(value, office_path, options)
+        link_to(value, office_path, options.merge({rel: "nofollow"}))
       end
 
       def link_to_home(value, options={})
@@ -112,7 +112,7 @@ module Yoolk
       end
 
       def link_to_sign_in(value)
-        link_to value, office_path
+        link_to value, office_path, rel: "nofollow"
       end
 
       def root_url?
