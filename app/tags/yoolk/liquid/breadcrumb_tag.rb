@@ -32,15 +32,17 @@ module Yoolk
             if collection_category?
               collection_with_category
               if item_detail?
-                category = unless announcements? or galleries?
-                  view.content_tag :li do
+                unless announcements? or galleries?
+                  category = view.content_tag :li do
                     view.link_to category_namea, category_url
                   end
                 end
+
+                list_collection = view.content_tag :li do view.link_to( collection_name, collection_url ) end
                 if category
-                  category.concat( view.content_tag :li, item_detail )
+                  list_home.concat(list_collection.concat(category.concat( view.content_tag :li, item_detail )))
                 else
-                  view.content_tag :li, item_detail
+                  list_home.concat(list_collection.concat view.content_tag :li, item_detail)
                 end
               else
                 collection_with_category.concat(view.content_tag :li, category_namea)
