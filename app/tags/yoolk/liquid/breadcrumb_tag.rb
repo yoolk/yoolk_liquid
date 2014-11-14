@@ -19,8 +19,9 @@ module Yoolk
 
       def render(context)
         @context = context
+
         unless home_page?
-          list_item = if map_page?  then list translate 'map'
+          list_items = if map_page? then list translate 'map'
           elsif about_us_page?      then list translate 'about_us'
           elsif brochures_page?     then list translate 'brochures'
           elsif people_page?        then list translate 'people'
@@ -42,7 +43,7 @@ module Yoolk
                   view.content_tag :li, item_detail
                 end
               else
-                category_namea
+                collection_with_category.concat(view.content_tag :li, category_namea)
               end
             else
               list_home.concat( view.content_tag :li,  collection_name )
@@ -51,7 +52,7 @@ module Yoolk
 
           %Q{
             <ol class="#{ @class_name }">
-            #{ list_item }
+            #{ list_items }
             </ol>
           }
         end
