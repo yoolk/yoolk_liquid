@@ -64,10 +64,6 @@ module Yoolk
         request.host.gsub(/^www\./, '')
       end
 
-      def collection
-        Yoolk::Liquid::RequestCollectionDrop.new(@context)
-      end
-
       def preview_mode?
         host.in?(['iw.yoolk.com', 'iwstaging.yoolk.com', 'localhost']) && request.params[:alias_id].present?
       end
