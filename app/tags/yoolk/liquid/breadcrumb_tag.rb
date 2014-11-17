@@ -3,38 +3,45 @@ module Yoolk
 
     class BreadcrumbTag < ::Liquid::Tag
 
-      Syntax = /(#{::Liquid::QuotedString})\s*class_active\s*=\s*(#{::Liquid::QuotedString})/
+      Syntax_class = /\s*class\s*=\s*(#{::Liquid::QuotedString})/
+      Syntax_sep   = /\s*sep\s*=\s*(#{::Liquid::QuotedString})/
 
       def initialize(tag_name, markup, options)
         super
 
-        if markup =~ Syntax
-          @class_name   = 'breadcrumb'
-          @separator    = $1
-          @class_active = $2
-        else
-          raise SyntaxError.new('Syntax Error - Valid syntax: {% breadcrumb separator="&raquo;" class_active="active" %}')
+        if markup.present?
+
+          unless correct_syntax(markup)
+            raise SyntaxError.new('Syntax Error - Valid syntax: {% breadcrumb class="some-class" sep="&raquo;" %}')
+          end
+
+          @class_name   = $1 if markup =~ Syntax_class
+          @separator    = $1 if markup =~ Syntax_sep
         end
+
+      end
+
+      def correct_syntax markup
       end
 
       def render(context)
         @context = context
 
-        unless home_page?
-          list_items = if map_page? then list translate 'map'
-          elsif about_us_page?      then list translate 'about_us'
-          elsif brochures_page?     then list translate 'brochures'
-          elsif people_page?        then list translate 'people'
-          elsif reservation_page?   then list translate 'reservation'
-          elsif feedback_page?      then list translate 'feedback'
-          elsif contact_us_page?    then list translate 'contact_us'
+        unless request.home_page?
+          list_items = if request.map_page? then list translate 'map'
+          elsif request.about_us_page?      then list translate 'about_us'
+          elsif request.brochures_page?     then list translate 'brochures'
+          elsif request.people_page?        then list translate 'people'
+          elsif request.reservation_page?   then list translate 'reservation'
+          elsif request.feedback_page?      then list translate 'feedback'
+          elsif request.contact_us_page?    then list translate 'contact_us'
           else
             if collection_category?
               collection_with_category
               if item_detail?
                 unless announcements? or galleries?
                   category = view.content_tag :li do
-                    view.link_to category_namea, category_url
+                    view.link_to category_name, category_url
                   end
                 end
 
@@ -45,7 +52,7 @@ module Yoolk
                   list_home.concat(list_collection.concat view.content_tag :li, item_detail)
                 end
               else
-                collection_with_category.concat(view.content_tag :li, category_namea)
+                collection_with_category.concat(view.content_tag :li, category_name)
               end
             else
               list_home.concat( view.content_tag :li,  collection_name )
@@ -53,7 +60,7 @@ module Yoolk
           end
 
           %Q{
-            <ol class="#{ @class_name }">
+            <ol class="#{ @class_name || 'breadcrumb' }">
             #{ list_items }
             </ol>
           }
@@ -100,7 +107,7 @@ module Yoolk
         controller.params['controller'] == 'galleries'
       end
 
-      def category_namea
+      def category_name
         category_id = controller.params["category_id"] || controller.params["id"]
         category_id[category_id.index("-") + 1..category_id.length]
       end
@@ -149,36 +156,8 @@ module Yoolk
 
       private
 
-        def home_page?
-          controller.request.fullpath == view.root_path
-        end
-
-        def map_page?
-          controller.request.fullpath.start_with?(view.map_index_path.split('?')[0])
-        end
-
-        def about_us_page?
-          controller.request.fullpath.start_with?(view.about_us_path.split('?')[0])
-        end
-
-        def brochures_page?
-          controller.request.fullpath.start_with?(view.brochures_path.split('?')[0])
-        end
-
-        def people_page?
-          controller.request.fullpath.start_with?(view.people_path.split('?')[0])
-        end
-
-        def reservation_page?
-          controller.request.fullpath.start_with?(view.reservation_index_path.split('?')[0])
-        end
-
-        def feedback_page?
-          controller.request.fullpath.start_with?(view.feedback_index_path.split('?')[0])
-        end
-
-        def contact_us_page?
-          controller.request.fullpath.start_with?(view.contact_us_path.split('?')[0])
+        def request
+          @context['request']
         end
 
         def collection_category?
