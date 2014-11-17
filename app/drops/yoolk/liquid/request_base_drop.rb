@@ -1,10 +1,12 @@
 module Yoolk
   module Liquid
     class RequestBaseDrop < BaseDrop
-      attr_reader :context, :controller_name, :object
+      attr_reader :context, :controller_name, :object, :view
 
       def initialize(context)
         @context ||= context
+        @view    ||= context.registers[:view]
+
         controller_base_name = controller.params['controller'].split("/")[0]
         @controller_name =  if controller_base_name == 'menu'
                               'foods'

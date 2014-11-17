@@ -3,7 +3,17 @@ module Yoolk
     class RequestCategoryDrop < RequestBaseDrop
 
       def name
+        collection_link.concat view.content_tag(:li, id)
+      end
+
+      def id
         controller.params["category_id"] || controller.params["id"]
+      end
+
+      def collection_link
+        view.content_tag :li do
+          view.link_to collection.name, collection.url
+        end
       end
 
       def url
@@ -25,7 +35,15 @@ module Yoolk
       end
 
       def item_detail
-        controller.params['controller'].split("/")[0] != 'announcements' ? object.first.name : object.first.id
+        detail = announcements_page? ? object.first.name : object.first.name
+        category = view.content_tag :li do
+          view.link_to id, url
+        end
+        collection_link.concat category.concat(view.content_tag :li, detail)
+      end
+
+      def collection
+        ::Yoolk::Liquid::RequestCollectionDrop.new context
       end
     end
   end
