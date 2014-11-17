@@ -12,7 +12,7 @@ module Yoolk
         if markup.present?
 
           unless correct_syntax(markup)
-            raise SyntaxError.new('Syntax Error - Valid syntax: {% breadcrumb class="some-class" sep="&raquo;" %}')
+            raise SyntaxError.new('Syntax Error - Valid syntax: {% breadcrumb [class="some-class"] %}')
           end
 
           @class_name   = $1 if markup =~ Syntax_class
@@ -22,7 +22,7 @@ module Yoolk
       end
 
       def correct_syntax markup
-        true
+        /class\s*=/.match markup
       end
 
       def render(context)
@@ -54,6 +54,7 @@ module Yoolk
             end
           end
 
+          # http://www.danshort.com/HTMLentities/
           %Q{
             <ol class="#{ @class_name || 'breadcrumb' }">
             #{ list_items }
