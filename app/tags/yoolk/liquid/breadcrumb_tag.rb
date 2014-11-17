@@ -36,10 +36,10 @@ module Yoolk
           elsif request.feedback_page?      then list translate 'feedback'
           elsif request.contact_us_page?    then list translate 'contact_us'
           else
-            if collection_category?
+            if collection_with_category?
               collection_with_category
               if item_detail?
-                unless announcements? or galleries?
+                unless request.announcements_page? or request.galleries_page?
                   category = view.content_tag :li do
                     view.link_to category_name, category_url
                   end
@@ -96,15 +96,7 @@ module Yoolk
       end
 
       def item_detail
-        controller.params['controller'].split("/")[0] != 'announcements' ? object.first.name : object.first.id
-      end
-
-      def announcements?
-        controller.params['controller'] == 'announcements'
-      end
-
-      def galleries?
-        controller.params['controller'] == 'galleries'
+        request.announcements_page? ? object.first.name : object.first.id
       end
 
       def category_name
@@ -113,7 +105,7 @@ module Yoolk
       end
 
       def item_detail?
-        !controller.controller_path.ends_with?("categories") and controller.controller_path != 'galleries' and controller.action_name == 'show'
+        !controller.controller_path.ends_with?("categories") and request.galleries_page? and controller.action_name == 'show'
       end
 
       def list_home
@@ -122,7 +114,7 @@ module Yoolk
         end
       end
 
-      def list( text, url = "" )
+      def list(text, url = "")
         list_home.concat view.content_tag :li, text
       end
 
@@ -142,26 +134,26 @@ module Yoolk
         controller.controller_path.split("/")[0]
       end
 
-      def translate key
-        I18n::t "#{controller.request.params[:theme]}.links.#{key}"
-      end
-
-      def controller
-        @context.registers[:controller]
-      end
-
-      def view
-        @context.registers[:view]
-      end
-
       private
+
+        def collection_with_category?
+          controller.action_name != 'index'
+        end
+
+        def controller
+          @context.registers[:controller]
+        end
 
         def request
           @context['request']
         end
 
-        def collection_category?
-          controller.action_name != 'index'
+        def translate key
+          I18n::t "#{controller.request.params[:theme]}.links.#{key}"
+        end
+
+        def view
+          @context.registers[:view]
         end
 
     end
