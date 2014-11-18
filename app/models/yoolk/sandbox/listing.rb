@@ -125,6 +125,10 @@ module Yoolk
         @multilinguals  ||= multilingual_ids.map { |alias_id| Yoolk::Sandbox::Listing.find(alias_id) }
       end
 
+      def short_descriptions
+        @short_descriptions ||= paginate_array(listing_categories.map(&:short_description).compact.uniq)
+      end
+
       ## Alias Method
       alias_method :galleries,      :image_galleries
       alias_method :images,         :gallery_images

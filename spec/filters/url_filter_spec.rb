@@ -4,7 +4,7 @@ module Yoolk
   module Liquid
     describe UrlFilter do
       it '#link_to_office' do
-        expect_template_result("{{ 'Office' | link_to_office }}", "<a href=\"/office_v1\">Office</a>")
+        expect_template_result("{{ 'Office' | link_to_office }}", "<a href=\"/office_v1\" rel=\"nofollow\">Office</a>")
       end
 
       it '#link_to_home' do
@@ -52,7 +52,7 @@ module Yoolk
       end
 
       it '#link_to_sign_in' do
-        expect_template_result("{{ 'Sign in' | link_to_sign_in }}", "<a href=\"/office_v1\">Sign in</a>")
+        expect_template_result("{{ 'Sign in' | link_to_sign_in }}", "<a href=\"/office_v1\" rel=\"nofollow\">Sign in</a>")
       end
     end
   end
