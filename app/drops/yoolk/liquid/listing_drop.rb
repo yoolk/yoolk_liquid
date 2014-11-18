@@ -64,6 +64,10 @@ module Yoolk
         twitter_account.try(:url)
       end
 
+      def multilinguals
+        object.multilinguals.select{ |listing| listing.instant_website.try(:domains).present? }
+      end
+
     end
   end
 end
