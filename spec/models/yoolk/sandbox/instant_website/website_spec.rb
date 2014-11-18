@@ -52,6 +52,7 @@ module Yoolk
       end
 
       it { should delegate(:name).to(:template).with_prefix }
+      it { should respond_to(:domain_name) }
     end
   end
 end
