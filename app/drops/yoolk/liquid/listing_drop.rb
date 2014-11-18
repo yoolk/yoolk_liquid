@@ -44,7 +44,6 @@ module Yoolk
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
       has_many    :alias_names,           with: 'Yoolk::Liquid::Listing::AliasNameDrop'
       has_many    :business_hours,        with: 'Yoolk::Liquid::Listing::BusinessHourDrop'
-      has_many    :multilinguals,         with: 'Yoolk::Liquid::ListingDrop'
       belongs_to  :facebook_page,         with: 'Yoolk::Liquid::Facebook::PageDrop'
       belongs_to  :twitter_account,       with: 'Yoolk::Liquid::Twitter::AccountDrop'
 
@@ -65,10 +64,7 @@ module Yoolk
       end
 
       def multilinguals
-        listings = object.multilinguals.select do |listing|
-          listing.instant_website.try(:domains).present?
-        end
-        ::Liquid::Rails::CollectionDrop.new listings
+        @multilinguals ||= ::Liquid::Rails::CollectionDrop.new(object.multilinguals.select { |listing| listing.instant_website.try(:domain_name).present? })
       end
 
     end
