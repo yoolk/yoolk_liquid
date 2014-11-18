@@ -28,7 +28,7 @@ module Yoolk
       attribute :extra_communications,    Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::ExtraCommunication]
       attribute :people,                  Yoolk::Sandbox::Listing::People[Yoolk::Sandbox::Listing::Person]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
-      attribute :catalog_items,           Array[Yoolk::Sandbox::Listing::CatalogItem]
+      attribute :catalog_items,           Yoolk::Sandbox::Listing::CatalogItems[Yoolk::Sandbox::Listing::CatalogItem]
       attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
       attribute :artworks,                Array[Yoolk::Sandbox::Listing::Artwork]
 

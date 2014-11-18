@@ -21,7 +21,13 @@ module Yoolk
       has_many    :websites,              with: 'Yoolk::Liquid::Listing::CommunicationDrop'
 
       has_many    :listing_categories,    with: 'Yoolk::Liquid::Listing::CategoryDrop'
-      has_many    :catalog_items,         with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
+
+      # has_many    :catalog_items,         scope: :published,
+      #                                     with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
+      has_many    :catalog_items,         scope: :published,
+                                          with: 'Yoolk::Liquid::Listing::CatalogItemDrop',
+                                          class_name: 'Yoolk::Liquid::Listing::CatalogItemsDrop'
+
       has_many    :galleries,             with: 'Yoolk::Liquid::Listing::ImageGalleryDrop'
       has_many    :images,                with: 'Yoolk::Liquid::Listing::GalleryImageDrop'
       has_many    :brochures,             with: 'Yoolk::Liquid::Listing::ArtworkDrop'
