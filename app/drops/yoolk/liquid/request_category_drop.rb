@@ -7,7 +7,8 @@ module Yoolk
       end
 
       def id
-        controller.params["category_id"] || controller.params["id"]
+        category_id = controller.params["category_id"] || controller.params["id"]
+        category_id.index("-").nil? ? category_id : category_id[category_id.index("-") + 1..category_id.length]
       end
 
       def collection_link
