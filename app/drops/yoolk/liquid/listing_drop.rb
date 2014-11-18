@@ -65,7 +65,10 @@ module Yoolk
       end
 
       def multilinguals
-        object.multilinguals.select{ |listing| listing.instant_website.try(:domains).present? }
+        listings = object.multilinguals.select do |listing|
+          listing.instant_website.try(:domains).present?
+        end
+        ::Liquid::Rails::CollectionDrop.new listings
       end
 
     end
