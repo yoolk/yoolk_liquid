@@ -26,7 +26,7 @@ module Yoolk
       end
 
       def google_analytics
-        if Rails.env.production? && !listing.portal.labs?
+        if Rails.env.production? && !listing.portal.labs? && !view_context.preview_mode?
           %{
           <script type="text/javascript">
 
@@ -88,7 +88,7 @@ module Yoolk
       private
 
         def google_analytics_key
-          listing.instant_website.google_analytics_key.presence || 'UA-51188061-1'
+          listing.instant_website.try(:google_analytics_key).presence || 'UA-51188061-1'
         end
     end
   end

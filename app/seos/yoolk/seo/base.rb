@@ -29,7 +29,7 @@ module Yoolk
       end
 
       def social_url
-        listing.instant_website.primary_domain.name
+        listing.instant_website.try(:primary_domain).try(:name)
       end
 
     private
