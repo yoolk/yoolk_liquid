@@ -22,8 +22,6 @@ module Yoolk
 
       has_many    :listing_categories,    with: 'Yoolk::Liquid::Listing::CategoryDrop'
 
-      # has_many    :catalog_items,         scope: :published,
-      #                                     with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
       has_many    :catalog_items,         scope: :published,
                                           with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
 
@@ -44,7 +42,10 @@ module Yoolk
       has_many    :short_descriptions,    with: 'Yoolk::Liquid::Listing::ShortDescriptionDrop'
       has_many    :people,                class_name: 'Yoolk::Liquid::Listing::PeopleDrop',
                                           with: 'Yoolk::Liquid::Listing::PersonDrop'
-      has_many    :medias,                with: 'Yoolk::Liquid::Listing::MediaDrop'
+
+      has_many    :medias,                scope: :actives,
+                                          with: 'Yoolk::Liquid::Listing::MediaDrop'
+
       has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
       has_many    :alias_names,           with: 'Yoolk::Liquid::Listing::AliasNameDrop'

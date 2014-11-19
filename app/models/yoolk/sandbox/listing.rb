@@ -36,7 +36,7 @@ module Yoolk
       attribute :product_categories,      Array[Yoolk::Sandbox::ProductCatalog::Category]
       attribute :food_categories,         Array[Yoolk::Sandbox::Menu::Category]
       attribute :announcements,           Array[Yoolk::Sandbox::Listing::Announcement]
-      attribute :medias,                  Array[Yoolk::Sandbox::Listing::Media]
+      attribute :medias,                  Yoolk::Sandbox::Listing::Medias[Yoolk::Sandbox::Listing::Media]
       attribute :business_photos,         Array[Yoolk::Sandbox::Listing::BusinessPhoto]
       attribute :keyphrases,              Array[Yoolk::Sandbox::Listing::Keyphrase]
       attribute :alias_names,             Array[Yoolk::Sandbox::Listing::AliasName]
