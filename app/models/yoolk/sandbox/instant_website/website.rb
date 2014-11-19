@@ -31,6 +31,10 @@ module Yoolk
         def primary_domain
           domains.find { |domain| domain.is_primary == true }
         end
+
+        def domain_name
+          primary_domain.name
+        end
       end
     end
   end
