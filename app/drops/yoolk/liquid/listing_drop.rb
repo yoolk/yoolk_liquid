@@ -27,7 +27,10 @@ module Yoolk
 
       has_many    :galleries,             with: 'Yoolk::Liquid::Listing::ImageGalleryDrop'
       has_many    :images,                with: 'Yoolk::Liquid::Listing::GalleryImageDrop'
-      has_many    :brochures,             with: 'Yoolk::Liquid::Listing::ArtworkDrop'
+
+      has_many    :brochures,             scope: :actives,
+                                          with: 'Yoolk::Liquid::Listing::ArtworkDrop'
+
       has_many    :announcements,         with: 'Yoolk::Liquid::Listing::AnnouncementDrop'
 
       has_many    :services,              with: 'Yoolk::Liquid::ServiceCatalog::ServiceDrop'

@@ -30,7 +30,7 @@ module Yoolk
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
       attribute :catalog_items,           Yoolk::Sandbox::Listing::CatalogItems[Yoolk::Sandbox::Listing::CatalogItem]
       attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
-      attribute :artworks,                Array[Yoolk::Sandbox::Listing::Artwork]
+      attribute :artworks,                Yoolk::Sandbox::Listing::Artworks[Yoolk::Sandbox::Listing::Artwork]
 
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]
       attribute :product_categories,      Array[Yoolk::Sandbox::ProductCatalog::Category]
