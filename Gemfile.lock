@@ -1,3 +1,26 @@
+GIT
+  remote: git://github.com/yoolk/assets-rails.git
+  revision: 9e87e1ed9f6f6b6cb715d0aec2a64812718398dc
+  specs:
+    assets-rails (0.1.0)
+      railties (>= 3.2)
+
+GIT
+  remote: git://github.com/yoolk/liquid-rails.git
+  revision: 998c199235e5b8d47986fb6ae2480f5ab46098fb
+  specs:
+    liquid-rails (0.1.1)
+      kaminari (~> 0.16.1)
+      liquid (~> 3.0.0)
+      rails (>= 3.2)
+
+GIT
+  remote: git://github.com/yoolk/themes_on_rails.git
+  revision: 094efedc9c6a2af69cf16b39160f86536f2359cc
+  specs:
+    themes_on_rails (0.3.0)
+      rails (>= 3.2)
+
 PATH
   remote: .
   specs:
@@ -48,8 +71,6 @@ GEM
       railties (>= 3.0)
       rspec-rails (>= 2.2)
     arel (4.0.2)
-    assets-rails (0.1.0)
-      railties (>= 3.2)
     autoprefixer-rails (3.1.0.20140911)
       execjs
     axiom-types (0.1.1)
@@ -103,11 +124,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     libv8 (3.16.14.7)
-    liquid (3.0.0.rc1)
-    liquid-rails (0.1.0)
-      kaminari (~> 0.16.1)
-      liquid (~> 3.0.0.rc1)
-      rails (>= 3.2)
+    liquid (3.0.0)
     listen (2.7.9)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -199,8 +216,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
-    themes_on_rails (0.3.0)
-      rails (>= 3.2)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -228,8 +243,10 @@ PLATFORMS
 
 DEPENDENCIES
   ammeter (~> 1.1.2)
+  assets-rails!
   coveralls
   guard-rspec (~> 4.3.1)
+  liquid-rails!
   pry (~> 0.9.12.3)
   quiet_assets
   rake (~> 10.3.1)
@@ -237,5 +254,6 @@ DEPENDENCIES
   rspec-virtus (~> 1.0.1)
   shoulda-matchers (>= 2.7.0)
   simplecov (~> 0.9.0)
+  themes_on_rails!
   thin (~> 1.6.1)
   yoolk_liquid!
