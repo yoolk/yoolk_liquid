@@ -58,5 +58,6 @@ describe InstantWebsite::Generators::ThemeGenerator do
     it { should contain(/\{\{ \'theme_a\/all\' | asset_url | stylesheet_link_tag \}\}/) }
     it { should contain(/\{\{ content_for_header \}\}/) }
     it { should contain(/\{\{ content_for_layout \}\}/) }
+    it { should contain(/\{% draft_stamp %\}/) }
   end
 end
