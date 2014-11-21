@@ -2,20 +2,13 @@ module Yoolk
   module Liquid
     class BreadcrumbTag < ::Liquid::Tag
 
-      Syntax = /\s*class\s*=\s*(#{::Liquid::QuotedString})/
+      Syntax = /(#{::Liquid::QuotedString})/
       def initialize(tag_name, markup, options)
         super
 
         if markup.present?
-          unless correct_syntax(markup)
-            raise SyntaxError.new('Syntax Error - Valid syntax: {% breadcrumb [class="some-class"] %}')
-          end
-          @class_name   = $1 if markup =~ Syntax
+          @class_name   = $1.gsub(/\"|\'/,'') if markup =~ Syntax
         end
-      end
-
-      def correct_syntax markup
-        /class\s*=/.match markup
       end
 
       def render(context)
@@ -95,7 +88,7 @@ module Yoolk
         end
 
         def translate key
-          I18n::t "#{request.theme_name}.links.#{key}"
+          I18n::t "breadcrumb.#{key}"
         end
 
         def view
