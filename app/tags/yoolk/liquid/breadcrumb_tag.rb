@@ -39,7 +39,7 @@ module Yoolk
               list announcement.id
             end
           elsif request.products_url?
-            list view.link_to_if (@context['product_category'] or @context['product']), "products", request.products_path
+            list view.link_to_if (@context['product_category'] || @context['product']), "products", request.products_path
             if product_category = @context['product_category']
               list product_category.name
             end
@@ -48,7 +48,7 @@ module Yoolk
               list product.name
             end
           elsif request.services_url?
-            list view.link_to_if (@context['service_category'] or @context['service']), "services", request.services_path
+            list view.link_to_if (@context['service_category'] || @context['service']), "services", request.services_path
             if service_category = @context['service_category']
               list service_category.name
             end
@@ -57,7 +57,7 @@ module Yoolk
               list service.name
             end
           else
-            list view.link_to_if (@context['food_category'] or @context['food']), "menu", request.menu_index_path
+            list view.link_to_if (@context['food_category'] || @context['food']), "menu", request.menu_index_path
             if food_category = @context['food_category']
               list food_category.name
             end
