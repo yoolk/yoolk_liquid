@@ -20,10 +20,8 @@ module Yoolk
 
       def render(context)
         @context = context
-
         unless request.home_url?
-          # list_items = list_home +
-          if    request.map_url?           then list 'map'
+          if request.map_url?              then list 'map'
           elsif request.about_us_url?      then list 'about_us'
           elsif request.brochures_url?     then list 'brochures'
           elsif request.people_url?        then list 'people'
@@ -31,37 +29,40 @@ module Yoolk
           elsif request.feedback_url?      then list 'feedback'
           elsif request.contact_us_url?    then list 'contact_us'
           elsif request.galleries_url?
-            list request.link_to_galleries 'galleries'
-            if gallery = @context['listing.gallery']
+            list view.link_to_if (@context['gallery']), "galleries", request.galleries_path
+            if gallery = @context['gallery']
               list gallery.name
             end
           elsif request.announcements_url?
-            list link_to_announcements 'announcements'
-            if @context['listing.announcement']
+            list view.link_to_if (@context['announcement']), "announcements", request.announcements_path
+            if announcement = @context['announcement']
               list announcement.id
             end
-          elsif @context['listing.products']
-            list view.link_to('products', products_path)
-            if product_category = @context['listing.product_category']
-              list view.link_to product_category.name, request.services_category_url(product_category)
+          elsif request.products_url?
+            list view.link_to_if (@context['product_category'] or @context['product']), "products", request.products_path
+            if product_category = @context['product_category']
+              list product_category.name
             end
-            if product = @context['listing.product']
+            if product = @context['product']
+              list view.link_to product.category.name, request.products_category_url(product.category)
               list product.name
             end
-          elsif @context['listing.services']
-            list request.link_to_services 'services'
-            if service_category = @context['listing.service_category']
-              list view.link_to service_category.name, request.services_category_url(service_category)
+          elsif request.services_url?
+            list view.link_to_if (@context['service_category'] or @context['service']), "services", request.services_path
+            if service_category = @context['service_category']
+              list service_category.name
             end
-            if service = @context['listing.service']
+            if service = @context['service']
+              list view.link_to service.category.name, request.services_category_url(service.category)
               list service.name
             end
           else
-            list view.link_to('menu', menu_index_path)
-            if food_category = @context['listing.food_category']
-              list view.link_to food_category.name, request.services_category_url(food_category)
+            list view.link_to_if (@context['food_category'] or @context['food']), "menu", request.menu_index_path
+            if food_category = @context['food_category']
+              list food_category.name
             end
-            if food = @context['listing.food']
+            if food = @context['food']
+              list view.link_to food.category.name, request.menu_category_url(food.category)
               list food.name
             end
           end
@@ -69,7 +70,8 @@ module Yoolk
           # http://www.danshort.com/HTMLentities/
           %Q{
             <ol class="#{ @class_name || 'breadcrumb' }">
-            #{ list_items }
+            #{list_home}
+            #{@list_items}
             </ol>
           }
         end
@@ -82,8 +84,8 @@ module Yoolk
       end
 
       def list input
-        binding.pry
-        view.content_tag :li, input
+        @list_items ||= ''
+        @list_items.concat view.content_tag(:li, input)
       end
 
       private
