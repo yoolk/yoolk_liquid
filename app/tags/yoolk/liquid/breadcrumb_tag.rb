@@ -88,7 +88,7 @@ module Yoolk
         end
 
         def translate key
-          I18n::t "breadcrumb.#{key}"
+          I18n::t("#{request.theme_name}.breadcrumb.#{key}", default: I18n::t("breadcrumb.#{key}"))
         end
 
         def view
