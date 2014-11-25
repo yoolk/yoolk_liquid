@@ -6,7 +6,6 @@ module Yoolk
       let(:request_drop) { RequestDrop.new }
 
       before do
-        context.registers[:view].class.send :include, Rails.application.routes.url_helpers
         request_drop.context = context
       end
 

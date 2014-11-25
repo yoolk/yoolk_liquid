@@ -61,12 +61,12 @@ module Yoolk
           end
 
           # http://www.danshort.com/HTMLentities/
-          %Q{
+          <<-EOF.gsub(/^\s+|$\n/, "")
             <ol class="#{ @class_name || 'breadcrumb' }">
             #{list_home}
             #{@list_items}
             </ol>
-          }
+          EOF
         end
       end
 
