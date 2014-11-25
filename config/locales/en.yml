@@ -21,3 +21,6 @@ en:
     by:                     "by"
     announcements_on:       "Announcement on"
     feedback_quote:         "We'd love to hear what your thoughts. Your valuable feedback will help us to improve and upgrade our business."
+  breadcrumb:
+    home:                   "Home"
+    map:                    "Map"
