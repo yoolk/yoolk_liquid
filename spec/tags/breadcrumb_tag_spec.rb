@@ -142,6 +142,21 @@ module Yoolk
         expect_template_result('{% breadcrumb %}', menu_list, { 'request' => request_drop })
       end
 
+      it '#breadcrumb renders inside /menu/category_id' do
+        menu_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/menu">Menu</a></li><li>Ice-cream</li></ol>'
+
+        food_category = ::Yoolk::Sandbox::Menu::Category.new({'name' => 'Ice-cream'})
+        expect_template_result('{% breadcrumb %}', menu_list, { 'request' => request_drop, 'food_category' => food_category })
+      end
+
+      it '#breadcrumb renders inside /menu/category_id/id' do
+        menu_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/menu">Menu</a></li><li><a href="/menu/23-ice-cream">Ice-cream</a></li><li>Florida Strawberry Ice Cream</li></ol>'
+
+        food_category = ::Yoolk::Sandbox::Menu::Category.new({ 'id' => 23, 'name' => 'Ice-cream'})
+        food = ::Yoolk::Sandbox::Menu::Food.new({'category' => food_category, 'name' => 'Florida Strawberry Ice Cream'})
+        expect_template_result('{% breadcrumb %}', menu_list, { 'request' => request_drop, 'food' => food })
+      end
+
     end
   end
 end
