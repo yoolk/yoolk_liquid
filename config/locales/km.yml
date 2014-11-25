@@ -21,3 +21,18 @@ km:
     by:                     "by"
     announcements_on:       "Announcement on"
     feedback_quote:         "We'd love to hear what your thoughts. Your valuable feedback will help us to improve and upgrade our business."
+  breadcrumb:
+    home:                   'ទំព័រដើម'
+    about_us:               'អំពីយើង'
+    contact_us:             'ទំនាក់ទំនងយើង'
+    feedback:               'មតិអ្នកប្រើ'
+    announcement:           'សេចក្តីប្រកាស'
+    announcements:          'សេចក្តីប្រកាស'
+    brochures:              'ខិត្តប័ណ្ណ'
+    photos:                 'រូបថត'
+    map:                    'ផែនទី'
+    menu:                   'ម៉ឺនុយ'
+    people:                 'មនុស្ស'
+    products:               'ផលិតផល'
+    services:               'សេវាកម្ម'
+    reservation:            'ការកក់'
