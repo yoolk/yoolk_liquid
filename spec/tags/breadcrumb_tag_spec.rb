@@ -88,6 +88,43 @@ module Yoolk
         expect_template_result('{% breadcrumb %}', announcement_list, { 'request' => request_drop, 'announcement' => announcement })
       end
 
+      it '#breadcrumb renders inside /products' do
+        allow(request_drop).to receive(:products_url?).and_return(true)
+        products_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li>Products</li></ol>'
+
+        expect_template_result('{% breadcrumb %}', products_list, { 'request' => request_drop })
+      end
+
+      it '#breadcrumb renders inside /products/category_id' do
+        allow(request_drop).to receive(:products_url?).and_return(true)
+        product_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/products">Products</a></li><li>Other Cars</li></ol>'
+
+        product_category = ::Yoolk::Sandbox::ProductCatalog::Category.new({'name' => 'Other Cars'})
+        expect_template_result('{% breadcrumb %}', product_list, { 'request' => request_drop, 'product_category' => product_category })
+      end
+
+      it '#breadcrumb renders inside /products/category_id/id' do
+        allow(request_drop).to receive(:products_url?).and_return(true)
+        product_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/products">Products</a></li><li><a href="/products/112-range-rover">Range Rover</a></li><li>evogue</li></ol>'
+
+        product_category = ::Yoolk::Sandbox::ProductCatalog::Category.new({'id' => 112, 'name' => 'Range Rover'})
+        product = ::Yoolk::Sandbox::ProductCatalog::Product.new({'category' => product_category, 'name' => 'evogue'})
+        expect_template_result('{% breadcrumb %}', product_list, { 'request' => request_drop, 'product' => product })
+      end
+
+      it '#breadcrumb renders inside /services' do
+        allow(request_drop).to receive(:services_url?).and_return(true)
+        services_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li>Services</li></ol>'
+
+        expect_template_result('{% breadcrumb %}', services_list, { 'request' => request_drop })
+      end
+
+      it '#breadcrumb renders inside /menu' do
+        menu_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li>Menu</li></ol>'
+
+        expect_template_result('{% breadcrumb %}', menu_list, { 'request' => request_drop })
+      end
+
     end
   end
 end
