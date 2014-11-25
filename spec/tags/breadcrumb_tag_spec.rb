@@ -73,6 +73,21 @@ module Yoolk
         expect_template_result('{% breadcrumb %}', galleries_list, { 'request' => request_drop, 'gallery' => ig })
       end
 
+      it '#breadcrumb renders inside /announcements' do
+        allow(request_drop).to receive(:announcements_url?).and_return(true)
+        announcements_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li>Announcements</li></ol>'
+
+        expect_template_result('{% breadcrumb %}', announcements_list, { 'request' => request_drop })
+      end
+
+      it '#breadcrumb renders inside /announcements/announcement_id' do
+        allow(request_drop).to receive(:announcements_url?).and_return(true)
+        announcement_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/announcements">Announcements</a></li><li>1237</li></ol>'
+
+        announcement = ::Yoolk::Sandbox::Listing::Announcement.new({ 'id' => 1237 })
+        expect_template_result('{% breadcrumb %}', announcement_list, { 'request' => request_drop, 'announcement' => announcement })
+      end
+
     end
   end
 end
