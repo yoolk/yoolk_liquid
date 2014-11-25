@@ -58,6 +58,21 @@ module Yoolk
         expect_template_result('{% breadcrumb %}', contact_us_list, { 'request' => request_drop })
       end
 
+      it '#breadcrumb renders inside /galleries' do
+        allow(request_drop).to receive(:galleries_url?).and_return(true)
+        galleries_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li>Galleries</li></ol>'
+
+        expect_template_result('{% breadcrumb %}', galleries_list, { 'request' => request_drop })
+      end
+
+      it '#breadcrumb renders inside /galleries/gallery_id' do
+        allow(request_drop).to receive(:galleries_url?).and_return(true)
+        galleries_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/galleries">Galleries</a></li><li>1st Floor Office</li></ol>'
+
+        ig = ::Yoolk::Sandbox::Listing::ImageGallery.new({ 'name' => '1st Floor Office' })
+        expect_template_result('{% breadcrumb %}', galleries_list, { 'request' => request_drop, 'gallery' => ig })
+      end
+
     end
   end
 end
