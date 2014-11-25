@@ -11,8 +11,9 @@ module Yoolk
 
       it '#breadcrumb renders inside /map' do
         allow(request_drop).to receive(:map_url?).and_return(true)
+        map_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li>Map</li></ol>'
 
-        expect_template_result('{% breadcrumb %}', '', { 'request' => request_drop })
+        expect_template_result('{% breadcrumb %}', map_list, { 'request' => request_drop })
       end
     end
   end
