@@ -119,6 +119,23 @@ module Yoolk
         expect_template_result('{% breadcrumb %}', services_list, { 'request' => request_drop })
       end
 
+      it '#breadcrumb renders inside /services/category_id' do
+        allow(request_drop).to receive(:services_url?).and_return(true)
+        service_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/services">Services</a></li><li>Office Rental Services</li></ol>'
+
+        service_category = ::Yoolk::Sandbox::ServiceCatalog::Category.new({'name' => 'Office Rental Services'})
+        expect_template_result('{% breadcrumb %}', service_list, { 'request' => request_drop, 'service_category' => service_category })
+      end
+
+      it '#breadcrumb renders inside /services/category_id/id' do
+        allow(request_drop).to receive(:services_url?).and_return(true)
+        service_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/services">Services</a></li><li><a href="/services/kh1-office-rental-services">Office Rental Services</a></li><li>Rooftop</li></ol>'
+
+        service_category = ::Yoolk::Sandbox::ServiceCatalog::Category.new({ 'alias_id' => 'kh1', 'name' => 'Office Rental Services'})
+        service = ::Yoolk::Sandbox::ServiceCatalog::Service.new({'category' => service_category, 'name' => 'Rooftop'})
+        expect_template_result('{% breadcrumb %}', service_list, { 'request' => request_drop, 'service' => service })
+      end
+
       it '#breadcrumb renders inside /menu' do
         menu_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li>Menu</li></ol>'
 
