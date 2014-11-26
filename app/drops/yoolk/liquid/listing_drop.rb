@@ -21,10 +21,16 @@ module Yoolk
       has_many    :websites,              with: 'Yoolk::Liquid::Listing::CommunicationDrop'
 
       has_many    :listing_categories,    with: 'Yoolk::Liquid::Listing::CategoryDrop'
-      has_many    :catalog_items,         with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
+
+      has_many    :catalog_items,         scope: :published,
+                                          with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
+
       has_many    :galleries,             with: 'Yoolk::Liquid::Listing::ImageGalleryDrop'
       has_many    :images,                with: 'Yoolk::Liquid::Listing::GalleryImageDrop'
-      has_many    :brochures,             with: 'Yoolk::Liquid::Listing::ArtworkDrop'
+
+      has_many    :brochures,             scope: :actives,
+                                          with: 'Yoolk::Liquid::Listing::ArtworkDrop'
+
       has_many    :announcements,         with: 'Yoolk::Liquid::Listing::AnnouncementDrop'
 
       has_many    :services,              with: 'Yoolk::Liquid::ServiceCatalog::ServiceDrop'
@@ -36,14 +42,17 @@ module Yoolk
       has_many    :foods,                 with: 'Yoolk::Liquid::Menu::FoodDrop'
       has_many    :food_categories,       with: 'Yoolk::Liquid::Menu::CategoryDrop'
 
+      has_many    :short_descriptions,    with: 'Yoolk::Liquid::Listing::ShortDescriptionDrop'
       has_many    :people,                class_name: 'Yoolk::Liquid::Listing::PeopleDrop',
                                           with: 'Yoolk::Liquid::Listing::PersonDrop'
-      has_many    :medias,                with: 'Yoolk::Liquid::Listing::MediaDrop'
+
+      has_many    :medias,                scope: :actives,
+                                          with: 'Yoolk::Liquid::Listing::MediaDrop'
+
       has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
       has_many    :alias_names,           with: 'Yoolk::Liquid::Listing::AliasNameDrop'
       has_many    :business_hours,        with: 'Yoolk::Liquid::Listing::BusinessHourDrop'
-      has_many    :multilinguals,         with: 'Yoolk::Liquid::ListingDrop'
       belongs_to  :facebook_page,         with: 'Yoolk::Liquid::Facebook::PageDrop'
       belongs_to  :twitter_account,       with: 'Yoolk::Liquid::Twitter::AccountDrop'
 
@@ -61,6 +70,10 @@ module Yoolk
 
       def twitter_url
         twitter_account.try(:url)
+      end
+
+      def multilinguals
+        @multilinguals ||= ::Liquid::Rails::CollectionDrop.new(object.multilinguals.select { |listing| listing.instant_website.try(:domain_name).present? })
       end
 
     end

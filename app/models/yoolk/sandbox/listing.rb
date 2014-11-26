@@ -28,15 +28,15 @@ module Yoolk
       attribute :extra_communications,    Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::ExtraCommunication]
       attribute :people,                  Yoolk::Sandbox::Listing::People[Yoolk::Sandbox::Listing::Person]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
-      attribute :catalog_items,           Array[Yoolk::Sandbox::Listing::CatalogItem]
+      attribute :catalog_items,           Yoolk::Sandbox::Listing::CatalogItems[Yoolk::Sandbox::Listing::CatalogItem]
       attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
-      attribute :artworks,                Array[Yoolk::Sandbox::Listing::Artwork]
+      attribute :artworks,                Yoolk::Sandbox::Listing::Artworks[Yoolk::Sandbox::Listing::Artwork]
 
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]
       attribute :product_categories,      Array[Yoolk::Sandbox::ProductCatalog::Category]
       attribute :food_categories,         Array[Yoolk::Sandbox::Menu::Category]
       attribute :announcements,           Array[Yoolk::Sandbox::Listing::Announcement]
-      attribute :medias,                  Array[Yoolk::Sandbox::Listing::Media]
+      attribute :medias,                  Yoolk::Sandbox::Listing::Medias[Yoolk::Sandbox::Listing::Media]
       attribute :business_photos,         Array[Yoolk::Sandbox::Listing::BusinessPhoto]
       attribute :keyphrases,              Array[Yoolk::Sandbox::Listing::Keyphrase]
       attribute :alias_names,             Array[Yoolk::Sandbox::Listing::AliasName]
@@ -123,6 +123,10 @@ module Yoolk
 
       def multilinguals
         @multilinguals  ||= multilingual_ids.map { |alias_id| Yoolk::Sandbox::Listing.find(alias_id) }
+      end
+
+      def short_descriptions
+        @short_descriptions ||= paginate_array(listing_categories.map(&:short_description).compact.uniq)
       end
 
       ## Alias Method

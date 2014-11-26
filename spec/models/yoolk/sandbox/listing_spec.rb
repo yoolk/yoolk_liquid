@@ -112,7 +112,7 @@ module Yoolk
       end
 
       it 'has :catalog_items attribute' do
-        expect(described_class).to have_attribute(:catalog_items).of_type(Array, member_type: Yoolk::Sandbox::Listing::CatalogItem)
+        expect(described_class).to have_attribute(:catalog_items).of_type(Yoolk::Sandbox::Listing::CatalogItems, member_type: Yoolk::Sandbox::Listing::CatalogItem)
       end
 
       it 'has :image_galleries attribute' do
@@ -120,7 +120,7 @@ module Yoolk
       end
 
       it 'has :artworks attribute' do
-        expect(described_class).to have_attribute(:artworks).of_type(Array, member_type: Yoolk::Sandbox::Listing::Artwork)
+        expect(described_class).to have_attribute(:artworks).of_type(Yoolk::Sandbox::Listing::Artworks, member_type: Yoolk::Sandbox::Listing::Artwork)
       end
 
       it 'has :product_categories attribute' do
@@ -136,7 +136,7 @@ module Yoolk
       end
 
       it 'has :medias attribute' do
-        expect(described_class).to have_attribute(:medias).of_type(Array, member_type: Yoolk::Sandbox::Listing::Media)
+        expect(described_class).to have_attribute(:medias).of_type(Yoolk::Sandbox::Listing::Medias, member_type: Yoolk::Sandbox::Listing::Media)
       end
 
       it 'has :business_photos attribute' do
@@ -169,6 +169,7 @@ module Yoolk
       it { should respond_to(:services) }
       it { should respond_to(:foods) }
       it { should respond_to(:gallery_images) }
+      it { should respond_to(:short_descriptions) }
 
       it { should respond_to(:telephones) }
       it { should respond_to(:emails) }
