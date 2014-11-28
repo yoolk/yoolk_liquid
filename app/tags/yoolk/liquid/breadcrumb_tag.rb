@@ -26,9 +26,9 @@ module Yoolk
         elsif request.galleries_url?
           append_li li_galleries
           append_li li(gallery.name)     if gallery
-        # elsif request.announcements_url?
-        #   append_li view.link_to_if(announcement, t(:announcements), request.announcements_url)
-        #   append_li announcement.id      if announcement
+        elsif request.announcements_url?
+          append_li li_announcements
+          append_li li(announcement.id)  if announcement
         elsif request.products_url?
           append_li li_products
           append_li li_product_category  if product_category || product
@@ -37,7 +37,7 @@ module Yoolk
           append_li li_services
           append_li li_service_category  if service_category || service
           append_li li(service.name)     if service
-        else
+        elsif request.menu_url?
           append_li li_menu
           append_li li_food_category  if food_category || food
           append_li li(food.name)     if food
@@ -59,6 +59,10 @@ module Yoolk
 
         def li_galleries
           li view.link_to_if(gallery, t(:galleries), request.galleries_url)
+        end
+
+        def li_announcements
+          li view.link_to_if(announcement, t(:announcements), request.announcements_url)
         end
 
         def li_products
@@ -121,6 +125,10 @@ module Yoolk
 
         def food_category
           @food_category ||= food ? food.category : @context['food_category']
+        end
+
+        def announcement
+          @context['announcement']
         end
 
         def request

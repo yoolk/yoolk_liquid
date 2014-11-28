@@ -10,6 +10,7 @@ module Yoolk
       let(:service)          { Yoolk::Sandbox::ServiceCatalog::Service.new(category: service_category, name: 'Rooftop') }
       let(:food_category)    { Yoolk::Sandbox::Menu::Category.new(id: 23, name: 'Ice-cream') }
       let(:food)             { Yoolk::Sandbox::Menu::Food.new(category: food_category, name: 'Florida Strawberry Ice Cream') }
+      let(:announcement)     { Yoolk::Sandbox::Listing::Announcement.new(id: 1237) }
 
       before do
         request_drop.context = context
@@ -79,20 +80,19 @@ module Yoolk
         expect_template_result('{% breadcrumb %}', galleries_list, { 'request' => request_drop, 'gallery' => ig })
       end
 
-      # it '#breadcrumb renders inside /announcements' do
-      #   allow(request_drop).to receive(:announcements_url?).and_return(true)
-      #   announcements_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li>Announcements</li></ol>'
+      it '#breadcrumb renders inside /announcements' do
+        allow(request_drop).to receive(:announcements_url?).and_return(true)
+        announcements_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li>Announcements</li></ol>'
 
-      #   expect_template_result('{% breadcrumb %}', announcements_list, { 'request' => request_drop })
-      # end
+        expect_template_result('{% breadcrumb %}', announcements_list, { 'request' => request_drop })
+      end
 
-      # it '#breadcrumb renders inside /announcements/announcement_id' do
-      #   allow(request_drop).to receive(:announcements_url?).and_return(true)
-      #   announcement_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/announcements">Announcements</a></li><li>1237</li></ol>'
+      it '#breadcrumb renders inside /announcements/announcement_id' do
+        allow(request_drop).to receive(:announcements_url?).and_return(true)
+        announcement_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/announcements">Announcements</a></li><li>1237</li></ol>'
 
-      #   announcement = ::Yoolk::Sandbox::Listing::Announcement.new({ 'id' => 1237 })
-      #   expect_template_result('{% breadcrumb %}', announcement_list, { 'request' => request_drop, 'announcement' => announcement })
-      # end
+        expect_template_result('{% breadcrumb %}', announcement_list, { 'request' => request_drop, 'announcement' => announcement })
+      end
 
       it '#breadcrumb renders inside /products' do
         allow(request_drop).to receive(:products_url?).and_return(true)
@@ -137,18 +137,21 @@ module Yoolk
       end
 
       it '#breadcrumb renders inside /menu' do
+        allow(request_drop).to receive(:menu_url?).and_return(true)
         menu_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li>Menu</li></ol>'
 
         expect_template_result('{% breadcrumb %}', menu_list, { 'request' => request_drop })
       end
 
       it '#breadcrumb renders inside /menu/category_id' do
+        allow(request_drop).to receive(:menu_url?).and_return(true)
         menu_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/menu">Menu</a></li><li>Ice-cream</li></ol>'
 
         expect_template_result('{% breadcrumb %}', menu_list, { 'request' => request_drop, 'food_category' => food_category })
       end
 
       it '#breadcrumb renders inside /menu/category_id/id' do
+        allow(request_drop).to receive(:menu_url?).and_return(true)
         menu_list = '<ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/menu">Menu</a></li><li><a href="/menu/23-ice-cream">Ice-cream</a></li><li>Florida Strawberry Ice Cream</li></ol>'
 
         expect_template_result('{% breadcrumb %}', menu_list, { 'request' => request_drop, 'food' => food })
