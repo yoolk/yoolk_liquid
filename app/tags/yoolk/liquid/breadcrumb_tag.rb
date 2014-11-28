@@ -6,95 +6,134 @@ module Yoolk
       def initialize(tag_name, markup, options)
         super
 
+        @lis = []
         if markup.present?
-          @class_name   = $1.gsub(/\"|\'/,'') if markup =~ Syntax
+          @class_name   = $1.gsub(/\"|\'/, '') if markup =~ Syntax
         end
       end
 
       def render(context)
         @context = context
-        unless request.home_url?
-          if request.map_url?              then list translate('map')
-          elsif request.about_us_url?      then list translate('about_us')
-          elsif request.brochures_url?     then list translate('brochures')
-          elsif request.people_url?        then list translate('people')
-          elsif request.reservation_url?   then list translate('reservation')
-          elsif request.feedback_url?      then list translate('feedback')
-          elsif request.contact_us_url?    then list translate('contact_us')
-          elsif request.galleries_url?
-            list view.link_to_if (@context['gallery']), translate('galleries'), request.galleries_path
-            if gallery = @context['gallery']
-              list gallery.name
-            end
-          elsif request.announcements_url?
-            list view.link_to_if (@context['announcement']), translate('announcements'), request.announcements_path
-            if announcement = @context['announcement']
-              list announcement.id
-            end
-          elsif request.products_url?
-            list view.link_to_if (@context['product_category'] || @context['product']), translate('products'), request.products_path
-            if product_category = @context['product_category']
-              list product_category.name
-            end
-            if product = @context['product']
-              list view.link_to product.category.name, request.products_category_url(product.category)
-              list product.name
-            end
-          elsif request.services_url?
-            list view.link_to_if (@context['service_category'] || @context['service']), translate('services'), request.services_path
-            if service_category = @context['service_category']
-              list service_category.name
-            end
-            if service = @context['service']
-              list view.link_to service.category.name, request.services_category_url(service.category)
-              list service.name
-            end
-          else
-            list view.link_to_if (@context['food_category'] || @context['food']), translate('menu'), request.menu_index_path
-            if food_category = @context['food_category']
-              list food_category.name
-            end
-            if food = @context['food']
-              list view.link_to food.category.name, request.menu_category_url(food.category)
-              list food.name
-            end
-          end
+        @lis    << li_home
 
-          # http://www.danshort.com/HTMLentities/
-          <<-EOF.gsub(/^\s+|$\n/, "")
-            <ol class="#{ @class_name || 'breadcrumb' }">
-            #{list_home}
-            #{@list_items}
-            </ol>
-          EOF
+        if request.map_url?              then append_li li(t(:map))
+        elsif request.about_us_url?      then append_li li(t(:about_us))
+        elsif request.brochures_url?     then append_li li(t(:brochures))
+        elsif request.people_url?        then append_li li(t(:people))
+        elsif request.reservation_url?   then append_li li(t(:reservation))
+        elsif request.feedback_url?      then append_li li(t(:feedback))
+        elsif request.contact_us_url?    then append_li li(t(:contact_us))
+        elsif request.galleries_url?
+          append_li li_galleries
+          append_li li(gallery.name)     if gallery
+        # elsif request.announcements_url?
+        #   append_li view.link_to_if(announcement, t(:announcements), request.announcements_url)
+        #   append_li announcement.id      if announcement
+        elsif request.products_url?
+          append_li li_products
+          append_li li_product_category  if product_category || product
+          append_li li(product.name)     if product
+        elsif request.services_url?
+          append_li li_services
+          append_li li_service_category  if service_category || service
+          append_li li(service.name)     if service
+        else
+          append_li li_menu
+          append_li li_food_category  if food_category || food
+          append_li li(food.name)     if food
         end
-      end
 
-      def list_home
-        view.content_tag :li do
-          view.link_to translate('home'), view.root_path
-        end
-      end
-
-      def list input
-        @list_items ||= ''
-        @list_items.concat view.content_tag(:li, input)
+        # http://www.danshort.com/HTMLentities/
+        <<-EOF.gsub(/^\s+|$\n/, "")
+          <ol class="#{ @class_name || 'breadcrumb' }">
+          #{@lis.join}
+          </ol>
+        EOF
       end
 
       private
+
+        def li_home
+          li view.link_to(t(:home), request.root_url)
+        end
+
+        def li_galleries
+          li view.link_to_if(gallery, t(:galleries), request.galleries_url)
+        end
+
+        def li_products
+          li view.link_to_if(product || product_category, t(:products), request.products_url)
+        end
+
+        def li_product_category
+          li view.link_to_if(product, product_category.name, request.products_category_url(product_category))
+        end
+
+        def li_services
+          li view.link_to_if(service || service_category, t(:services), request.services_url)
+        end
+
+        def li_service_category
+          li view.link_to_if(service, service_category.name, request.services_category_url(service_category))
+        end
+
+        def li_menu
+          li view.link_to_if(food || food_category, t(:menu), request.menu_url)
+        end
+
+        def li_food_category
+          li view.link_to_if(food, food_category.name, request.menu_category_url(food_category))
+        end
+
+        def li(content)
+          view.content_tag :li do
+            content
+          end
+        end
+
+        def append_li(li)
+          @lis << li
+        end
+
+        def gallery
+          @context['gallery']
+        end
+
+        def product
+          @context['product']
+        end
+
+        def product_category
+          @product_category ||= product ? product.category : @context['product_category']
+        end
+
+        def service
+          @context['service']
+        end
+
+        def service_category
+          @service_category ||= service ? service.category : @context['service_category']
+        end
+
+        def food
+          @context['food']
+        end
+
+        def food_category
+          @food_category ||= food ? food.category : @context['food_category']
+        end
 
         def request
           @context['request']
         end
 
-        def translate key
+        def t(key)
           I18n.t("#{request.theme_name}.breadcrumb.#{key}", default: I18n.t("breadcrumb.#{key}"))
         end
 
         def view
           @context.registers[:view]
         end
-
     end
   end
 end
