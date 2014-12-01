@@ -12,7 +12,6 @@ require 'kaminari'
 require 'uglifier'
 require 'sass-rails'
 require 'therubyracer'
-require 'sprockets-derailleur'
 
 # sandbox
 require 'oj'

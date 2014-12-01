@@ -31,7 +31,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'coffee-rails',          '~> 4.0.1'
   s.add_dependency 'sass-rails',            '~> 4.0.2'
   s.add_dependency 'autoprefixer-rails',    '~> 3.1.0.20140911'
-  s.add_dependency 'sprockets-derailleur',  '~> 0.0.9'
 
   # sandbox
   s.add_dependency 'oj',                    '~> 2.10.2'
