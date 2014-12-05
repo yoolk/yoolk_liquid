@@ -104,7 +104,7 @@ module Yoolk
       end
 
       it 'has :extra_communications attribute' do
-        expect(described_class).to have_attribute(:extra_communications).of_type(Yoolk::Sandbox::Listing::Communications, member_type: Yoolk::Sandbox::Listing::ExtraCommunication)
+        expect(described_class).to have_attribute(:extra_communications).of_type(Yoolk::Sandbox::Listing::Communications, member_type: Yoolk::Sandbox::Listing::Communication)
       end
 
       it 'has :listing_categories attribute' do
