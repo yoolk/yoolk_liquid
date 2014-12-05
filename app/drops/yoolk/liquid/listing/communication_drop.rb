@@ -4,13 +4,13 @@ module Yoolk
       attributes :id, :type, :label, :value, :is_first_line, :image_url, :created_at, :updated_at
 
       def li
-        if type.downcase.in?(["branch office", "department"])
+        if type.downcase.in?(['branch office', 'department'])
           branch_office
         elsif value.blank?
           h.content_tag :span, label
         elsif object.email?
           email_li
-        elsif object.website? || type.downcase.in?(["facebook", "twitter"])
+        elsif object.website? || type.downcase.in?(['facebook', 'twitter'])
           website_link(social_network_value, value_with_http)
         else
           list_item
@@ -52,7 +52,7 @@ module Yoolk
 
         def email_li
           list_item do
-            h.content_tag(:a, value, href: "mailto:#{value}", rel: "tooltip", title: value) do
+            h.content_tag(:a, value, href: "mailto:#{value}", rel: 'tooltip', title: value) do
               value
             end
           end
@@ -60,14 +60,14 @@ module Yoolk
 
         def website_link(value, href)
           list_item do
-            h.content_tag(:a, h.truncate(value), href: href, rel: "tooltip", title: value)
+            h.content_tag(:a, h.truncate(value), href: href, rel: 'tooltip', title: value)
           end
         end
 
         def social_network_value
-          if type.downcase == "facebook"
+          if type.downcase == 'facebook'
             value.gsub(/^.*facebook.com\/(?:pages\/)?([^\/]*)(\/.*)?$/, '\1')
-          elsif type.downcase == "twitter"
+          elsif type.downcase == 'twitter'
             value.gsub(/^.*twitter.com\/([^\/]*)(\/.*)?$/, '\1')
           else
             value
