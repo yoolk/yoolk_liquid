@@ -57,7 +57,7 @@ module Yoolk
       it { should have_many(:food_categories).with('Yoolk::Liquid::Menu::CategoryDrop') }
       it { should belongs_to(:facebook_page).with('Yoolk::Liquid::Facebook::PageDrop') }
       it { should belongs_to(:twitter_account).with('Yoolk::Liquid::Twitter::AccountDrop') }
-      it { should have_many(:business_hours).with('Yoolk::Liquid::Listing::BusinessHourDrop') }
+      it { should have_many(:business_hours).class_name('Yoolk::Liquid::Listing::BusinessHoursDrop').with('Yoolk::Liquid::Listing::BusinessHourDrop') }
       it { should have_many(:short_descriptions).with('Yoolk::Liquid::Listing::ShortDescriptionDrop') }
 
       it { should respond_to(:multilinguals) }

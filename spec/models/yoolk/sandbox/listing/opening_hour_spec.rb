@@ -15,8 +15,8 @@ module Yoolk
         expect(described_class).to have_attribute(:open).of_type(Yoolk::Sandbox::Hour)
       end
 
-      it 'has :close attribute' do
-        expect(described_class).to have_attribute(:close).of_type(Yoolk::Sandbox::Hour)
+      it 'has :closed attribute' do
+        expect(described_class).to have_attribute(:closed).of_type(Yoolk::Sandbox::Hour)
       end
 
       it 'has :created_at attribute' do
@@ -27,8 +27,16 @@ module Yoolk
         expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
       end
 
+      it 'respond_to :today?' do
+        expect(subject).to respond_to(:today?)
+      end
+
       it 'respond_to :full_day?' do
         expect(subject).to respond_to(:full_day?)
+      end
+
+      it 'respond_to :open?' do
+        expect(subject).to respond_to(:open?)
       end
 
       it 'respond_to :closed?' do
@@ -39,8 +47,8 @@ module Yoolk
     describe Listing::OpeningHour do
       it { should delegate(:hour).to(:open).with_prefix }
       it { should delegate(:minute).to(:open).with_prefix }
-      it { should delegate(:hour).to(:close).with_prefix }
-      it { should delegate(:minute).to(:close).with_prefix }
+      it { should delegate(:hour).to(:closed).with_prefix }
+      it { should delegate(:minute).to(:closed).with_prefix }
     end
   end
 end

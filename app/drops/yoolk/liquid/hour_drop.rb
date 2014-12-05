@@ -1,10 +1,24 @@
 module Yoolk
   module Liquid
     class HourDrop < BaseDrop
-      attributes  :hour, :minute, :to_s
+      def initialize(value)
+        @value      = value
+        @attributes = {
+          'hour'   => value.to_s.split(':')[0],
+          'minute' => value.to_s.split(':')[1]
+        }
+      end
+
+      def hour
+        @attributes['hour']
+      end
+
+      def minute
+        @attributes['minute']
+      end
 
       def to_s
-        object.to_s
+        @value
       end
 
       def strftime(format)

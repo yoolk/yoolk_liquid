@@ -52,7 +52,8 @@ module Yoolk
       has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
       has_many    :alias_names,           with: 'Yoolk::Liquid::Listing::AliasNameDrop'
-      has_many    :business_hours,        with: 'Yoolk::Liquid::Listing::BusinessHourDrop'
+      has_many    :business_hours,        class_name: 'Yoolk::Liquid::Listing::BusinessHoursDrop',
+                                          with: 'Yoolk::Liquid::Listing::BusinessHourDrop'
       belongs_to  :facebook_page,         with: 'Yoolk::Liquid::Facebook::PageDrop'
       belongs_to  :twitter_account,       with: 'Yoolk::Liquid::Twitter::AccountDrop'
 
@@ -76,6 +77,17 @@ module Yoolk
         @multilinguals ||= ::Liquid::Rails::CollectionDrop.new(object.multilinguals.select { |listing| listing.instant_website.try(:domain_name).present? })
       end
 
+      def summary_business_hours
+        summary  = []
+        group_by = business_hours.select { |item| !item.closed? }.group_by { |item| [item.open.to_s, item.closed.to_s] }
+        group_by.each do |session, business_hours|
+          open   = Yoolk::Liquid::HourDrop.new(session[0])
+          closed = Yoolk::Liquid::HourDrop.new(session[1])
+          summary << Yoolk::Liquid::Listing::SummaryBusinessHourDrop.new(business_hours.map(&:day), open, closed)
+        end
+
+        summary
+      end
     end
   end
 end
