@@ -17,16 +17,6 @@ module Yoolk
         end
       end
 
-      def value_with_http
-        return value if value =~ /^https?:\/\//
-
-        "http://#{value}"
-      end
-
-      def communication
-        object
-      end
-
       private
 
         def list_item(&block)
@@ -72,6 +62,12 @@ module Yoolk
           else
             value
           end
+        end
+
+        def value_with_http
+          return value if value =~ /^https?:\/\//
+
+          "http://#{value}"
         end
 
         def h
