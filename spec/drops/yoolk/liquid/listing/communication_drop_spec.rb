@@ -18,15 +18,35 @@ module Yoolk
 
     end
 
-    describe Listing::CommunicationDrop, "view" do
+    describe Listing::CommunicationDrop do
 
-      let(:communication_drop)   { described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "Branch Office", value: "Yellow Tower - Siem Reap")) }
+      context 'branch office or department' do
 
-      before do
-        communication_drop.context = context
+        it 'branch office returns span of label value when value is not being set' do
+          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "Branch Office", label: "Yellow Tower - Siem Reap"))
+          communication_drop.context = context
+          expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
+        end
+
+        it 'branch office returns li when value is set' do
+          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "Branch Office", value: "Yellow Tower - Siem Reap"))
+          communication_drop.context = context
+          expect(communication_drop.li).to eq("<li><span>Branch Office</span><span title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</span></li>")
+        end
+
+        it 'department returns span of label value when value is not being set' do
+          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "department", label: "Yellow Tower - Siem Reap"))
+          communication_drop.context = context
+          expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
+        end
+
+        it 'department returns li when value is set' do
+          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "department", value: "Yellow Tower - Siem Reap"))
+          communication_drop.context = context
+          expect(communication_drop.li).to eq("<li><span>department</span><span title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</span></li>")
+        end
+
       end
-
-      it { communication_drop.li }
 
     end
   end
