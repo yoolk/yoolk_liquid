@@ -2,6 +2,7 @@ module Yoolk
   module Sandbox
     class Listing::Communication < Base
       attribute :id,            String
+      attribute :label,         String
       attribute :type,          String
       attribute :value,         String
       attribute :is_first_line, Boolean
@@ -10,15 +11,15 @@ module Yoolk
       attribute :updated_at,    DateTime
 
       def email?
-        type_downcase == 'e-mail'
+        type.downcase == 'e-mail'
       end
 
       def website?
-        type_downcase == 'website'
+        type.downcase == 'website'
       end
 
       def telephone?
-        type_downcase.in? ['tel', 'tel & fax', 'fax', 'mobile', 'mobile phone', 'toll free']
+        type.downcase.in? ['tel', 'tel & fax', 'fax', 'mobile', 'mobile phone', 'toll free']
       end
     end
   end

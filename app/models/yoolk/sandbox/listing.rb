@@ -25,7 +25,7 @@ module Yoolk
       attribute :country,                 Yoolk::Sandbox::Country
       attribute :logo,                    Yoolk::Sandbox::Listing::Logo
       attribute :communications,          Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::Communication]
-      attribute :extra_communications,    Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::ExtraCommunication]
+      attribute :extra_communications,    Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::Communication]
       attribute :people,                  Yoolk::Sandbox::Listing::People[Yoolk::Sandbox::Listing::Person]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
       attribute :catalog_items,           Yoolk::Sandbox::Listing::CatalogItems[Yoolk::Sandbox::Listing::CatalogItem]
