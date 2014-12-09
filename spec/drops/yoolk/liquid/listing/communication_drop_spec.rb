@@ -46,10 +46,22 @@ module Yoolk
           expect(communication_drop.li).to eq("<li><span>department</span><span title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</span></li>")
         end
 
-        it ' returns <span>label</span> when type is not branch office or department and value is not set' do
+        it 'returns <span>label</span> when type is not branch office or department and value is not set' do
           communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "e-mail", label: "Yellow Tower - Siem Reap"))
           communication_drop.context = context
           expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
+        end
+
+        it 'returns <span>label</span> when type is not branch office or department and value is not set' do
+          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "e-mail", label: "Yellow Tower - Siem Reap"))
+          communication_drop.context = context
+          expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
+        end
+
+        it 'returns email list item when type is e-mail and value is set' do
+          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "e-mail", value: "Yellow Tower - Siem Reap"))
+          communication_drop.context = context
+          expect(communication_drop.li).to eq("<li><span>e-mail</span><span title=\"Yellow Tower - Siem Reap\"><a href=\"mailto:Yellow Tower - Siem Reap\" rel=\"tooltip\" title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</a></span></li>")
         end
 
       end
