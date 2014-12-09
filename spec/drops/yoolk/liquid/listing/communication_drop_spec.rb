@@ -20,74 +20,70 @@ module Yoolk
 
     describe Listing::CommunicationDrop do
 
-      context 'branch office or department' do
+      it 'branch office returns span of label value when value is not being set' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "Branch Office", label: "Yellow Tower - Siem Reap"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
+      end
 
-        it 'branch office returns span of label value when value is not being set' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "Branch Office", label: "Yellow Tower - Siem Reap"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
-        end
+      it 'branch office returns li when value is set' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "Branch Office", value: "Yellow Tower - Siem Reap"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<li><span>Branch Office</span><span title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</span></li>")
+      end
 
-        it 'branch office returns li when value is set' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "Branch Office", value: "Yellow Tower - Siem Reap"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<li><span>Branch Office</span><span title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</span></li>")
-        end
+      it 'department returns span of label value when value is not being set' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "department", label: "Yellow Tower - Siem Reap"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
+      end
 
-        it 'department returns span of label value when value is not being set' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "department", label: "Yellow Tower - Siem Reap"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
-        end
+      it 'department returns li when value is set' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "department", value: "Yellow Tower - Siem Reap"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<li><span>department</span><span title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</span></li>")
+      end
 
-        it 'department returns li when value is set' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "department", value: "Yellow Tower - Siem Reap"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<li><span>department</span><span title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</span></li>")
-        end
+      it 'returns <span>label</span> when type is not branch office or department and value is not set' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "e-mail", label: "Yellow Tower - Siem Reap"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
+      end
 
-        it 'returns <span>label</span> when type is not branch office or department and value is not set' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "e-mail", label: "Yellow Tower - Siem Reap"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
-        end
+      it 'returns <span>label</span> when type is not branch office or department and value is not set' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "e-mail", label: "Yellow Tower - Siem Reap"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
+      end
 
-        it 'returns <span>label</span> when type is not branch office or department and value is not set' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "e-mail", label: "Yellow Tower - Siem Reap"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<span>Yellow Tower - Siem Reap</span>")
-        end
+      it 'returns email list item when type is e-mail and value is set' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "e-mail", value: "Yellow Tower - Siem Reap"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<li><span>e-mail</span><span title=\"Yellow Tower - Siem Reap\"><a href=\"mailto:Yellow Tower - Siem Reap\" rel=\"tooltip\" title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</a></span></li>")
+      end
 
-        it 'returns email list item when type is e-mail and value is set' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "e-mail", value: "Yellow Tower - Siem Reap"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<li><span>e-mail</span><span title=\"Yellow Tower - Siem Reap\"><a href=\"mailto:Yellow Tower - Siem Reap\" rel=\"tooltip\" title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</a></span></li>")
-        end
+      it 'returns website link when type is website' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "website", value: "www.yellow-tower.com"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<li><span>website</span><span title=\"www.yellow-tower.com\"><a href=\"http://www.yellow-tower.com\" rel=\"tooltip\" title=\"www.yellow-tower.com\">www.yellow-tower.com</a></span></li>")
+      end
 
-        it 'returns website link when type is website' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "website", value: "www.yellow-tower.com"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<li><span>website</span><span title=\"www.yellow-tower.com\"><a href=\"http://www.yellow-tower.com\" rel=\"tooltip\" title=\"www.yellow-tower.com\">www.yellow-tower.com</a></span></li>")
-        end
+      it 'returns facebook link when type is facebook' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "facebook", value: "http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<li><span>facebook</span><span title=\"http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642\"><a href=\"http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642\" rel=\"tooltip\" title=\"Ladder-technology-industrial-sdn-bhd-03-3325-9415\">Ladder-technology-industria...</a></span></li>")
+      end
 
-        it 'returns facebook link when type is facebook' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "facebook", value: "http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<li><span>facebook</span><span title=\"http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642\"><a href=\"http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642\" rel=\"tooltip\" title=\"Ladder-technology-industrial-sdn-bhd-03-3325-9415\">Ladder-technology-industria...</a></span></li>")
-        end
+      it 'returns twitter link when type is twitter' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "twitter", value: "http://www.twitter.com/chamnap"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<li><span>twitter</span><span title=\"http://www.twitter.com/chamnap\"><a href=\"http://www.twitter.com/chamnap\" rel=\"tooltip\" title=\"chamnap\">chamnap</a></span></li>")
+      end
 
-        it 'returns twitter link when type is twitter' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "twitter", value: "http://www.twitter.com/chamnap"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<li><span>twitter</span><span title=\"http://www.twitter.com/chamnap\"><a href=\"http://www.twitter.com/chamnap\" rel=\"tooltip\" title=\"chamnap\">chamnap</a></span></li>")
-        end
-
-        it 'returns simple list item with no link for none of the above condition' do
-          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "mobile phone", value: "016 208 3915"))
-          communication_drop.context = context
-          expect(communication_drop.li).to eq("<li><span>mobile phone</span><span title=\"016 208 3915\">016 208 3915</span></li>")
-        end
-
+      it 'returns simple list item with no link for none of the above condition' do
+        communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "mobile phone", value: "016 208 3915"))
+        communication_drop.context = context
+        expect(communication_drop.li).to eq("<li><span>mobile phone</span><span title=\"016 208 3915\">016 208 3915</span></li>")
       end
 
     end
