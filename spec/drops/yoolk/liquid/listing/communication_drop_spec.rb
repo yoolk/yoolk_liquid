@@ -64,22 +64,28 @@ module Yoolk
           expect(communication_drop.li).to eq("<li><span>e-mail</span><span title=\"Yellow Tower - Siem Reap\"><a href=\"mailto:Yellow Tower - Siem Reap\" rel=\"tooltip\" title=\"Yellow Tower - Siem Reap\">Yellow Tower - Siem Reap</a></span></li>")
         end
 
-        it 'returns ... when type is website' do
+        it 'returns website link when type is website' do
           communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "website", value: "www.yellow-tower.com"))
           communication_drop.context = context
           expect(communication_drop.li).to eq("<li><span>website</span><span title=\"www.yellow-tower.com\"><a href=\"http://www.yellow-tower.com\" rel=\"tooltip\" title=\"www.yellow-tower.com\">www.yellow-tower.com</a></span></li>")
         end
 
-        it 'returns ... when type is facebook' do
+        it 'returns facebook link when type is facebook' do
           communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "facebook", value: "http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642"))
           communication_drop.context = context
           expect(communication_drop.li).to eq("<li><span>facebook</span><span title=\"http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642\"><a href=\"http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642\" rel=\"tooltip\" title=\"Ladder-technology-industrial-sdn-bhd-03-3325-9415\">Ladder-technology-industria...</a></span></li>")
         end
 
-        it 'returns ... when type is twitter' do
+        it 'returns twitter link when type is twitter' do
           communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "twitter", value: "http://www.twitter.com/chamnap"))
           communication_drop.context = context
           expect(communication_drop.li).to eq("<li><span>twitter</span><span title=\"http://www.twitter.com/chamnap\"><a href=\"http://www.twitter.com/chamnap\" rel=\"tooltip\" title=\"chamnap\">chamnap</a></span></li>")
+        end
+
+        it 'returns simple list item with no link for none of the above condition' do
+          communication_drop = described_class.new(Yoolk::Sandbox::Listing::Communication.new(type: "mobile phone", value: "016 208 3915"))
+          communication_drop.context = context
+          expect(communication_drop.li).to eq("<li><span>mobile phone</span><span title=\"016 208 3915\">016 208 3915</span></li>")
         end
 
       end
