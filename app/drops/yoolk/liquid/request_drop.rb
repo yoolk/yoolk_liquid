@@ -83,6 +83,22 @@ module Yoolk
       def style_name
         request.params[:style]
       end
+
+      def js_class_name
+        action = case action_name
+          when 'create' then 'New'
+          when 'update' then 'Edit'
+          else action_name
+        end.camelize
+
+       "Views.#{controller.class.name.gsub('::', '.').gsub(/Controller$/, '')}.#{action.camelize}View"
+      end
+
+      private
+
+        def action_name
+          controller.action_name
+        end
     end
   end
 end
