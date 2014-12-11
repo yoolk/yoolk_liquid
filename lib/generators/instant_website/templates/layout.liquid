@@ -6,9 +6,8 @@
   {{ '<%= "#{theme_name}/all" %>' | stylesheet_link_tag }}
   {{ content_for_header }}
 </head>
-<body>
+<body data-class-name="{{ request.js_class_name }}">
   {% draft_stamp %}
   {{ content_for_layout }}
-
 </body>
 </html>

@@ -73,6 +73,26 @@ module Yoolk
         expect(subject.style_name).to eq('gray')
       end
 
+      context '#js_class_name' do
+        it 'action_name is other than #create and #update' do
+          allow(subject).to receive(:action_name).and_return('index')
+
+          expect(subject.js_class_name).to eq('Views.Application.IndexView')
+        end
+
+        it 'action_name is #create' do
+          allow(subject).to receive(:action_name).and_return('create')
+
+          expect(subject.js_class_name).to eq('Views.Application.NewView')
+        end
+
+        it 'action_name is #update' do
+          allow(subject).to receive(:action_name).and_return('update')
+
+          expect(subject.js_class_name).to eq('Views.Application.EditView')
+        end
+      end
+
       context '#preview_mode?' do
         it 'returns true' do
           allow(subject.send(:request)).to receive(:host).and_return('iw.yoolk.com')
@@ -87,7 +107,7 @@ module Yoolk
       end
 
       context '#host' do
-        it 'returns the rails\'s request host ' do
+        it 'returns the rails\'s request host' do
           allow(subject.send(:request)).to receive(:host).and_return('localhost.com')
 
           expect(subject.host).to eq('localhost.com')
