@@ -36,6 +36,10 @@ module Yoolk
         end
       end
 
+      def blank?
+        false
+      end
+
       def handle_link_tag(name, params)
         args = split_params(params)
         url, size = args.inject([]) do |props, item|
