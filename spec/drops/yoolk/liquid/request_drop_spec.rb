@@ -10,7 +10,7 @@ module Yoolk
       end
 
       it '#office_url' do
-        expect(subject.office_url).to eq('/office_v1')
+        expect(subject.office_url).to eq('/office')
       end
 
       it '#galleries_url' do

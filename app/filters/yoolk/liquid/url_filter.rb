@@ -176,7 +176,7 @@ module Yoolk
                   to: :controller
 
         def office_path
-          '/office_v1'
+          '/office'
         end
 
         def default_class_options(is_current_page, options={})
