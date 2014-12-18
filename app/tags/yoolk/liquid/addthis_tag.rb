@@ -65,17 +65,18 @@ module Yoolk
       # check image, addthis size style
       def link_builder
         @networks.inject("") do |links, li|
+          image_tag = li[:size].present? ? h.image_tag(li[:url], size: li[:size]) : h.image_tag(li[:url])
           case li[:name]
           when 'facebook'
             if li[:url]
-              link = h.content_tag :a, h.image_tag(li[:url]), {"addthis:userid" => facebook_page_name(@context["listing.facebook_page.page_name"]), :class=> "addthis_button_facebook_follow"}
+              link = h.content_tag :a, image_tag, {"addthis:userid" => facebook_page_name(@context["listing.facebook_page.page_name"]), :class=> "addthis_button_facebook_follow"}
               links.concat link
             else
               links.concat(h.content_tag :a, "", {"addthis:userid" => facebook_page_name(@context["listing.facebook_page.page_name"]), :class=> "addthis_button_facebook_follow"})
             end
           when 'twitter'
             if li[:url]
-              link = h.content_tag :a, h.image_tag(li[:url]), { "addthis:userid" => twitter_page_name(@context["listing.twitter_account.profile_url"]), :class=> "addthis_button_twitter_follow" }
+              link = h.content_tag :a, image_tag, { "addthis:userid" => twitter_page_name(@context["listing.twitter_account.profile_url"]), :class=> "addthis_button_twitter_follow" }
               links.concat link
             else
               links.concat(h.content_tag :a, "", {"addthis:userid" => twitter_page_name(@context["listing.twitter_account.profile_url"]), :class=> "addthis_button_twitter_follow"})
