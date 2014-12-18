@@ -67,9 +67,20 @@ module Yoolk
         @networks.inject("") do |links, li|
           case li[:name]
           when 'facebook'
-            links.concat(h.link_to "", "", {"addthis-userid" => facebook_page_name(@context["listing.facebook_page.page_name"]), :class=> "addthis_button_facebook_follow"})
+            if li[:url]
+              link = h.content_tag :a, h.image_tag(li[:url]), {"addthis:userid" => facebook_page_name(@context["listing.facebook_page.page_name"]), :class=> "addthis_button_facebook_follow"}
+              links.concat link
+            else
+              links.concat(h.content_tag :a, "", {"addthis:userid" => facebook_page_name(@context["listing.facebook_page.page_name"]), :class=> "addthis_button_facebook_follow"})
+            end
           when 'twitter'
-            links.concat(h.link_to "", "", {"addthis-userid" => twitter_page_name(@context["listing.twitter_account.profile_url"]), :class=> "addthis_button_twitter_follow"})
+            if li[:url]
+              link = h.content_tag :a, h.image_tag(li[:url]), { "addthis:userid" => twitter_page_name(@context["listing.twitter_account.profile_url"]), :class=> "addthis_button_twitter_follow" }
+              links.concat link
+            else
+              links.concat(h.content_tag :a, "", {"addthis:userid" => twitter_page_name(@context["listing.twitter_account.profile_url"]), :class=> "addthis_button_twitter_follow"})
+            end
+
           end
         end
       end
