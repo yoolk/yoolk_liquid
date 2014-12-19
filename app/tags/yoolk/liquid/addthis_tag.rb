@@ -11,13 +11,11 @@ module Yoolk
         end
 
         @networks = []
+
         @style_size = case @style || 'small'
-        when 'large'
-          '32x32'
-        when 'medium'
-          '20x20'
-        when 'small'
-          '16x16'
+        when 'large'  then '32x32'
+        when 'medium' then '20x20'
+        when 'small'  then '16x16'
         else
           raise ArgumentError.new("Style must be one of large, medium, small")
         end
@@ -25,7 +23,6 @@ module Yoolk
         unless @tool == 'follow'
           raise SyntaxError.new("Syntax Error - Valid syntax: {% addthis tool: 'follow' %}{% endaddthis %}")
         end
-
       end
 
       def unknown_tag(name, params, tokens)
@@ -42,9 +39,11 @@ module Yoolk
 
       def handle_link_tag(name, params)
         args = split_params(params)
+
         url, size = args.inject([]) do |props, item|
           props.push($1.delete("'")) if item =~ /('.*')/
         end
+
         @networks << { name: name, url: url, size: size }
       end
 
@@ -63,41 +62,57 @@ module Yoolk
       end
 
       def link_builder
-        @networks.inject("") do |links, li|
-          image_tag = li[:size].present? ? h.image_tag(li[:url], size: li[:size]) : h.image_tag(li[:url])
-          case li[:name]
-          when 'facebook'
-            if li[:url]
-              link = h.content_tag :a, image_tag, {"addthis:userid" => facebook_page_name(@context["listing.facebook_page.page_name"]), :class=> "addthis_button_facebook_follow"}
-              links.concat link
-            else
-              links.concat(h.content_tag :a, "", {"addthis:userid" => facebook_page_name(@context["listing.facebook_page.page_name"]), :class=> "addthis_button_facebook_follow"})
-            end
-          when 'twitter'
-            if li[:url]
-              link = h.content_tag :a, image_tag, { "addthis:userid" => twitter_page_name(@context["listing.twitter_account.profile_url"]), :class=> "addthis_button_twitter_follow" }
-              links.concat link
-            else
-              links.concat(h.content_tag :a, "", {"addthis:userid" => twitter_page_name(@context["listing.twitter_account.profile_url"]), :class=> "addthis_button_twitter_follow"})
-            end
-
+        @networks.inject("") do |links, option|
+          case option[:name]
+          when 'facebook' then links.concat facebook_link( option )
+          when 'twitter'  then links.concat twitter_link ( option )
           end
         end
       end
 
       private
+
+        def image_tag option
+          option[:size].present? ? h.image_tag(option[:url], size: option[:size]) : h.image_tag(option[:url])
+        end
+
+        def facebook_link( option )
+          opts = {
+                   "addthis:userid" => facebook_page_name,
+                   :class           => "addthis_button_facebook_follow"
+                 }
+
+          h.content_tag(:a, option[:url].present? ? image_tag( option ) : nil, opts)
+        end
+
+        def twitter_link( option )
+          opts = {
+                   "addthis:userid" => twitter_page_name,
+                   :class           => "addthis_button_twitter_follow"
+                 }
+
+          h.content_tag(:a, option[:url].present? ? image_tag( option ) : nil, opts)
+        end
+
         def h
           @context.registers[:helper]
         end
 
-        def facebook_page_name(url)
-          url.gsub(/^.*facebook.com\/(?:pages\/)?([^\/]*)(\/.*)?$/, '\1')
+        def facebook_page_name
+          facebook_page_url.gsub(/^.*facebook.com\/(?:pages\/)?([^\/]*)(\/.*)?$/, '\1')
         end
 
-        def twitter_page_name(url)
-          url.gsub(/^.*twitter.com\/([^\/]*)(\/.*)?$/, '\1')
+        def facebook_page_url
+          @context["listing.facebook_page.page_name"]
         end
 
+        def twitter_page_name
+          twitter_page_url.gsub(/^.*twitter.com\/([^\/]*)(\/.*)?$/, '\1')
+        end
+
+        def twitter_page_url
+          @context["listing.twitter_account.profile_url"]
+        end
     end
   end
 end
