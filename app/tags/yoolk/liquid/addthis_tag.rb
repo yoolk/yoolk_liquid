@@ -11,7 +11,7 @@ module Yoolk
         end
 
         @networks = []
-        @style_size = case @style
+        @style_size = case @style || 'small'
         when 'large'
           '32x32'
         when 'medium'
@@ -60,13 +60,8 @@ module Yoolk
           #{ link_builder }
           </div>
         EOF
-
-        # binding.pry
-        # super.concat("<input>&&&</input>")
-        # '<input>&&&</input>'
       end
 
-      # check image, addthis size style
       def link_builder
         @networks.inject("") do |links, li|
           image_tag = li[:size].present? ? h.image_tag(li[:url], size: li[:size]) : h.image_tag(li[:url])
