@@ -103,7 +103,7 @@ module Yoolk
         end
 
         def facebook_page_url
-          @context["listing.facebook_page.page_name"]
+          @context["listing.facebook_page.name"]
         end
 
         def twitter_page_name
@@ -111,7 +111,7 @@ module Yoolk
         end
 
         def twitter_page_url
-          @context["listing.twitter_account.profile_url"]
+          @context["listing.twitter_account.url"]
         end
     end
   end
