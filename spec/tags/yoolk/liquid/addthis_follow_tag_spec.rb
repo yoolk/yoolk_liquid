@@ -2,31 +2,31 @@ require 'rails_helper'
 
 module Yoolk
   module Liquid
-    describe AddThisTag do
+    describe AddThisFollowTag do
 
-      it 'should have addthis tool = follow ' do
+      it 'should have addthis_follow ' do
         got = "<div class=\"addthis_toolbox addthis_default_style addthis_16x16_style\"></div>"
-        expect_template_result("{% addthis tool: 'follow' %}{% endaddthis %}", got)
+        expect_template_result("{% addthis_follow %}{% endaddthis_follow %}", got)
       end
 
       it 'should render small style ' do
         got = "<div class=\"addthis_toolbox addthis_default_style addthis_16x16_style\"></div>"
-        expect_template_result("{% addthis tool: 'follow', style: 'small' %}{% endaddthis %}", got)
+        expect_template_result("{% addthis_follow, style: 'small' %}{% endaddthis_follow %}", got)
       end
 
       it 'should render medium style ' do
         got = "<div class=\"addthis_toolbox addthis_default_style addthis_20x20_style\"></div>"
-        expect_template_result("{% addthis tool: 'follow', style: 'medium' %}{% endaddthis %}", got)
+        expect_template_result("{% addthis_follow, style: 'medium' %}{% endaddthis_follow %}", got)
       end
 
       it 'should render large style ' do
         got = "<div class=\"addthis_toolbox addthis_default_style addthis_32x32_style\"></div>"
-        expect_template_result("{% addthis tool: 'follow', style: 'large' %}{% endaddthis %}", got)
+        expect_template_result("{% addthis_follow, style: 'large' %}{% endaddthis_follow %}", got)
       end
 
       it 'should have passed option style one of [large, medium, small]' do
         expect {
-          ::Liquid::Template.parse("{% addthis %}{% endaddthis %}")
+          ::Liquid::Template.parse("{% addthis %}{% endaddthis_follow %}")
         }.to raise_error
       end
 
@@ -43,8 +43,8 @@ module Yoolk
                   }
 
         template = ::Liquid::Template.parse multiline_string(<<-END_LIQUID)
-          |  {% addthis tool: 'follow' %}
-          |  {% endaddthis %}
+          |  {% addthis_follow %}
+          |  {% endaddthis_follow %}
           END_LIQUID
 
         context = ::Liquid::Context.new(listing, {}, { helper: @view, view: @view, controller: @controller })
@@ -66,9 +66,9 @@ module Yoolk
                   }
 
         template = ::Liquid::Template.parse multiline_string(<<-END_LIQUID)
-          |  {% addthis tool: 'follow' %}
+          |  {% addthis_follow %}
           |     {% facebook %}
-          |  {% endaddthis %}
+          |  {% endaddthis_follow %}
           END_LIQUID
 
         context = ::Liquid::Context.new(listing, {}, { helper: @view, view: @view, controller: @controller })
@@ -90,9 +90,9 @@ module Yoolk
                   }
 
         template = ::Liquid::Template.parse multiline_string(<<-END_LIQUID)
-          |  {% addthis tool: 'follow' %}
+          |  {% addthis_follow %}
           |     {% facebook image { url: '/path/to/image.png', size: '10x10' } %}
-          |  {% endaddthis %}
+          |  {% endaddthis_follow %}
           END_LIQUID
 
         context = ::Liquid::Context.new(listing, {}, { helper: @view, view: @view, controller: @controller })
@@ -114,9 +114,9 @@ module Yoolk
                   }
 
         template = ::Liquid::Template.parse multiline_string(<<-END_LIQUID)
-          |  {% addthis tool: 'follow' %}
+          |  {% addthis_follow %}
           |     {% facebook image { url: '/path/to/image.png' } %}
-          |  {% endaddthis %}
+          |  {% endaddthis_follow %}
           END_LIQUID
 
         context = ::Liquid::Context.new(listing, {}, { helper: @view, view: @view, controller: @controller })
@@ -138,9 +138,9 @@ module Yoolk
                   }
 
         template = ::Liquid::Template.parse multiline_string(<<-END_LIQUID)
-          |  {% addthis tool: 'follow' %}
+          |  {% addthis_follow %}
           |     {% facebook image { url: {{ 'sample/twitter.png' | image_path }} } %}
-          |  {% endaddthis %}
+          |  {% endaddthis_follow %}
           END_LIQUID
 
         context = ::Liquid::Context.new(listing, {}, { helper: @view, view: @view, controller: @controller })
@@ -162,9 +162,9 @@ module Yoolk
                   }
 
         template = ::Liquid::Template.parse multiline_string(<<-END_LIQUID)
-          |  {% addthis tool: 'follow' %}
+          |  {% addthis_follow %}
           |     {% twitter image { url: "/path/to/image.jpg", size: "10x10" } %}
-          |  {% endaddthis %}
+          |  {% endaddthis_follow %}
           END_LIQUID
 
         context = ::Liquid::Context.new(listing, {}, { helper: @view, view: @view, controller: @controller })
@@ -186,9 +186,9 @@ module Yoolk
                   }
 
         template = ::Liquid::Template.parse multiline_string(<<-END_LIQUID)
-          |  {% addthis tool: 'follow' %}
+          |  {% addthis_follow %}
           |     {% twitter image { url: "/path/to/image.jpg" } %}
-          |  {% endaddthis %}
+          |  {% endaddthis_follow %}
           END_LIQUID
 
         context = ::Liquid::Context.new(listing, {}, { helper: @view, view: @view, controller: @controller })
@@ -210,9 +210,9 @@ module Yoolk
                   }
 
         template = ::Liquid::Template.parse multiline_string(<<-END_LIQUID)
-          |  {% addthis tool: 'follow' %}
+          |  {% addthis_follow %}
           |     {% twitter image { url: {{ 'sample/twitter.png' | image_path }} } %}
-          |  {% endaddthis %}
+          |  {% endaddthis_follow %}
           END_LIQUID
 
         context = ::Liquid::Context.new(listing, {}, { helper: @view, view: @view, controller: @controller })
