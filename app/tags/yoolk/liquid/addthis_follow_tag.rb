@@ -1,27 +1,22 @@
 module Yoolk
   module Liquid
-    class AddThisTag < ::Liquid::Block
+    class AddThisFollowTag < ::Liquid::Block
+      Syntax = /(style)\s*:+\s*'\s*(large|medium|small)\s*'|^\s*$/i
       attr_accessor :networks
 
       def initialize(tag_name, markup, options)
         super
 
-        @tool, @style = markup.split(',').inject([]) do |props, item|
-          props.push($1.delete("'")) if item =~ /('.*')/
-        end
-
         @networks = []
 
-        @style_size = case @style || 'small'
-        when 'large'  then '32x32'
-        when 'medium' then '20x20'
-        when 'small'  then '16x16'
+        if Syntax =~ markup
+          @style_size = case $2 || 'small'
+          when 'large'  then '32x32'
+          when 'medium' then '20x20'
+          when 'small'  then '16x16'
+          end
         else
-          raise ArgumentError.new("Style must be one of large, medium, small")
-        end
-
-        unless @tool == 'follow'
-          raise SyntaxError.new("Syntax Error - Valid syntax: {% addthis tool: 'follow' %}{% endaddthis %}")
+          raise SyntaxError.new("Syntax Error in tag 'addthis_follow' - Valid syntax: {% addthis_follow style: 'large' %}")
         end
       end
 
@@ -117,4 +112,4 @@ module Yoolk
   end
 end
 
-Liquid::Template.register_tag('addthis', Yoolk::Liquid::AddThisTag)
+Liquid::Template.register_tag('addthis_follow', Yoolk::Liquid::AddThisFollowTag)
