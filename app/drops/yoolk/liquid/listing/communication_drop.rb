@@ -17,6 +17,42 @@ module Yoolk
         end
       end
 
+      def mobile_phone?
+        com_type == 'mobile phone'
+      end
+
+      def email?
+        com_type == 'e-mail'
+      end
+
+      def tel?
+        com_type == 'tel'
+      end
+
+      def fax?
+        com_type == 'fax'
+      end
+
+      def website?
+        com_type == 'website'
+      end
+
+      def facebook?
+        com_type == 'facebook'
+      end
+
+      def twitter?
+        com_type == 'twitter'
+      end
+
+      def address?
+        com_type == 'address'
+      end
+
+      def com_type
+        type.strip.to_s.downcase
+      end
+
       private
 
         def list_item(&block)
