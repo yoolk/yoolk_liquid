@@ -57,6 +57,7 @@ module Yoolk
 
       def render(context)
         @context = context
+
         <<-EOF.gsub(/^\s+|$\n/, "")
           <div class="addthis_toolbox addthis_default_style addthis_#{ @style_size }_style">
           #{ link_builder }
@@ -71,18 +72,12 @@ module Yoolk
         end
 
         def facebook_link( option )
-          opts = {
-                   :class   => "addthis_button_facebook"
-                 }
-
+          opts = { :class   => "addthis_button_facebook" }
           h.content_tag(:a, option[:url].present? ? image_tag( option ) : nil, opts)
         end
 
         def twitter_link( option )
-          opts = {
-                   :class   => "addthis_button_twitter"
-                 }
-
+          opts = { :class   => "addthis_button_twitter" }
           h.content_tag(:a, option[:url].present? ? image_tag( option ) : nil, opts)
         end
 

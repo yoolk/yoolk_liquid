@@ -12,7 +12,6 @@ module Yoolk
 
       private
 
-
         def facebook_link( option )
           opts = {
                    "addthis:userid" => facebook_page_name,
