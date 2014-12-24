@@ -10,6 +10,18 @@ module Yoolk
 
       has_many    :communications,  with: 'Yoolk::Liquid::Listing::CommunicationDrop'
       has_many    :languages,       with: 'Yoolk::Liquid::LanguageDrop'
+
+      def male?
+        gender.to_s.strip.downcase == 'male'
+      end
+
+      def female?
+        gender.to_s.strip.downcase == 'female'
+      end
+
+      def fullname
+        "#{ first_name } #{ last_name }"
+      end
     end
   end
 end
