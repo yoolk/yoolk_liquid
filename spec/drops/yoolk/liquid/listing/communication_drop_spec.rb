@@ -96,14 +96,9 @@ module Yoolk
         expect(subject.li).to eq("<li><span>mobile phone</span><span title=\"016 208 3915\">016 208 3915</span></li>")
       end
 
-      it 'mobile_phone? returns true when communication is type of Mobile Phone' do
+      it 'telephone? returns true when communication is type of Mobile Phone' do
         communication.type = "Mobile Phone"
-        expect(subject.mobile_phone?).to eq(true)
-      end
-
-      it 'mobile_phone? returns true when communication is type of Mobile Phone' do
-        communication.type = "Mobile Phone"
-        expect(subject.mobile_phone?).to eq(true)
+        expect(subject.telephone?).to eq(true)
       end
 
       it 'email? returns true when communication is type of E-mail' do
@@ -111,9 +106,9 @@ module Yoolk
         expect(subject.email?).to eq(true)
       end
 
-      it 'tel? returns true when communication is type of Tel' do
+      it 'telephone? returns true when communication is type of Tel' do
         communication.type = "Tel"
-        expect(subject.tel?).to eq(true)
+        expect(subject.telephone?).to eq(true)
       end
 
       it 'fax? returns true when communication is type of Fax' do

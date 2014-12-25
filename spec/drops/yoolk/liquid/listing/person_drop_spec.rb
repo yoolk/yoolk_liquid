@@ -36,11 +36,11 @@ module Yoolk
         expect(subject.female?).to eq(true)
       end
 
-      it 'fullname return first name and last name concatenat with whitespace' do
+      it 'full_name return first name and last name concatenat with whitespace' do
         person.first_name  = 'James'
         person.last_name   = 'Ron'
 
-        expect(subject.fullname).to eq('James Ron')
+        expect(subject.full_name).to eq('James Ron')
       end
 
     end
