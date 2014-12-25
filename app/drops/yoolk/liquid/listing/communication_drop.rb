@@ -17,7 +17,9 @@ module Yoolk
         end
       end
 
-      delegate :email?, :telephone?, :website?, to: :object
+      delegate :email?, :telephone?, :website?, :fax?,
+               :facebook?, :twitter?, :address?,
+               to: :object
 
       private
 

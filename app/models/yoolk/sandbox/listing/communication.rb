@@ -21,6 +21,22 @@ module Yoolk
       def telephone?
         type.downcase.in? ['tel', 'tel & fax', 'fax', 'mobile', 'mobile phone', 'toll free']
       end
+
+      def fax?
+        type.downcase.in? ['tel & fax', 'fax']
+      end
+
+      def facebook?
+        type.downcase == 'facebook'
+      end
+
+      def twitter?
+        type.downcase == 'twitter'
+      end
+
+      def address?
+        type.downcase == 'address'
+      end
     end
   end
 end
