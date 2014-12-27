@@ -78,10 +78,10 @@ module Yoolk
         %Q{
           <meta charset='utf-8'>
           <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
-          <meta content='#{seo.description}'                      name='description'>
-          <meta content='#{seo.keywords}'                         name='keywords'>
-          <meta content='width=device-width, initial-scale=1.0'   name='viewport'>
-          <meta content='index, follow'                           name='robots'>
+          <meta content='#{seo.description}'                                            name='description'>
+          <meta content='#{seo.keywords}'                                               name='keywords'>
+          <meta content='width=device-width, initial-scale=1.0'                         name='viewport'>
+          <meta content="#{ preview_mode? ? 'noindex, nofollow' : 'index, follow' }"    name='robots'>
         }
       end
 
