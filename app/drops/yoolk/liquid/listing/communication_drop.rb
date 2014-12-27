@@ -17,6 +17,10 @@ module Yoolk
         end
       end
 
+      delegate :email?, :telephone?, :website?, :fax?,
+               :facebook?, :twitter?, :address?,
+               to: :object
+
       private
 
         def list_item(&block)

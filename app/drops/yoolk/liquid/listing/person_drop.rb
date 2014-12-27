@@ -10,6 +10,8 @@ module Yoolk
 
       has_many    :communications,  with: 'Yoolk::Liquid::Listing::CommunicationDrop'
       has_many    :languages,       with: 'Yoolk::Liquid::LanguageDrop'
+
+      delegate    :male?, :female?, :full_name, to: :object
     end
   end
 end

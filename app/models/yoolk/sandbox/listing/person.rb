@@ -15,6 +15,18 @@ module Yoolk
       attribute   :photo,           Yoolk::Sandbox::Attachment
       attribute   :communications,  Array[Yoolk::Sandbox::Listing::Communication]
       attribute   :languages,       Array[Yoolk::Sandbox::Language]
+
+      def full_name
+        "#{first_name} #{last_name}".strip
+      end
+
+      def male?
+        gender.to_s.downcase == 'male'
+      end
+
+      def female?
+        gender.to_s.downcase == 'female'
+      end
     end
   end
 end
