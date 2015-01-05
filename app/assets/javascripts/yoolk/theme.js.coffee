@@ -1,5 +1,5 @@
-#= require namespace
-#= require application_view
+#= require yoolk/namespace
+#= require yoolk/application_view
 
 pageLoad = ->
   className = $('body').attr('data-class-name')

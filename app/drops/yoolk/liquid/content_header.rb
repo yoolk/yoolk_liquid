@@ -81,11 +81,15 @@ module Yoolk
           <meta content='#{seo.description}'                                            name='description'>
           <meta content='#{seo.keywords}'                                               name='keywords'>
           <meta content='width=device-width, initial-scale=1.0'                         name='viewport'>
-          <meta content="#{ view_context.preview_mode? ? 'noindex, nofollow' : 'index, follow' }"    name='robots'>
+          <meta content="#{ preview_mode? ? 'noindex, nofollow' : 'index, follow' }" name='robots'>
         }
       end
 
       private
+
+        def preview_mode?
+          view_context.request.host.in?(['iw.yoolk.com', 'iwstaging.yoolk.com', 'localhost']) && view_context.request.params[:alias_id].present?
+        end
 
         def google_analytics_key
           listing.instant_website.try(:google_analytics_key).presence || 'UA-51188061-1'
