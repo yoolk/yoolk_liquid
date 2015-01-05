@@ -1,5 +1,6 @@
 # views
-window.Yoolk.Views ||= {}
+window.Yoolk                            ||= {}
+window.Yoolk.Views                      ||= {}
 window.Yoolk.Views.Announcements        ||= {}
 window.Yoolk.Views.AboutUs              ||= {}
 window.Yoolk.Views.ContactUs            ||= {}
