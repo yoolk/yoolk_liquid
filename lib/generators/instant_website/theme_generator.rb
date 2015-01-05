@@ -3,9 +3,10 @@ require 'rails/generators/base'
 module InstantWebsite
   module Generators
     class ThemeGenerator < ::Rails::Generators::Base
-      source_root File.expand_path("../templates", __FILE__)
-      argument    :theme_name, type: :string
-      desc        "Generates a new blank theme"
+      source_root   File.expand_path("../templates", __FILE__)
+      argument      :theme_name, type: :string
+      class_option  :theme_directory, type: :string, default: 'app/themes', desc: 'Theme Directory'
+      desc          "Generates a new blank theme"
 
      def create_theme_directory
         empty_directory theme_views_layout
@@ -29,7 +30,7 @@ module InstantWebsite
       private
 
         def theme_directory
-          "app/themes/#{theme_name}"
+          "#{options.theme_directory}/#{theme_name}"
         end
 
         def theme_views_layout
