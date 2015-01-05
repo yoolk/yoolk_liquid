@@ -17,8 +17,37 @@ module Yoolk
           meta_twitter,
           meta_itemscope,
           csrf_meta_tags,
-          google_analytics
+          google_analytics,
+          canonical_link,
+          alternate_link
         ].compact.join("\n")
+      end
+
+      def canonical_link
+        url = case view_context.request.fullpath
+        when /^\\?/
+          "http://#{listing.instant_website.primary_domain.name}"
+        when /announcements/
+          view_context.announcements_url
+        when /galleries/
+          view_context.galleries_url
+        when /menu/
+          view_context.menu_index_url
+        when /products/
+          view_context.products_url
+        when /services/
+          view_context.services_url
+        end
+
+        %Q{
+          <link rel="canonical" href="#{ url }" />
+        }
+      end
+
+      def alternate_link
+        listing.multilinguals.inject("") do |result, listing|
+          "<link href='http://#{ listing.instant_website.primary_domain.name }' hreflang='#{ listing.language.two_code }' rel='alternate' />"
+        end
       end
 
       def csrf_meta_tags
