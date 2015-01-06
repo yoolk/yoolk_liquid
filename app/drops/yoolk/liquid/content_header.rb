@@ -24,24 +24,26 @@ module Yoolk
       end
 
       def canonical_link
-        url = case view_context.request.fullpath
-        when /^\\?/
+        url = case view_context.request.path
+        when /^\/$/
           "http://#{listing.instant_website.primary_domain.name}"
-        when /announcements/
+        when /^\/announcements/
           view_context.announcements_url
-        when /galleries/
+        when /^\/galleries/
           view_context.galleries_url
-        when /menu/
+        when /^\/menu/
           view_context.menu_index_url
-        when /products/
+        when /^\/product/
           view_context.products_url
-        when /services/
+        when /^\/service/
           view_context.services_url
         end
 
-        %Q{
-          <link rel="canonical" href="#{ url }" />
-        }
+        if url.present?
+          %Q{
+            <link rel="canonical" href="#{ url }" />
+          }
+        end
       end
 
       def alternate_link
