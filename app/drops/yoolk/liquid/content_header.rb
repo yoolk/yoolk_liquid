@@ -47,8 +47,10 @@ module Yoolk
       end
 
       def alternate_link
-        listing.multilinguals.inject("") do |result, listing|
-          "<link href='http://#{ listing.instant_website.primary_domain.name }' hreflang='#{ listing.language.two_code }' rel='alternate' />"
+        if listing.multilinguals.present?
+          listing.multilinguals.inject("") do |result, listing|
+            "<link href='http://#{ listing.instant_website.primary_domain.url }' hreflang='#{ listing.language.two_code }' rel='alternate' />"
+          end
         end
       end
 
