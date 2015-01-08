@@ -6,6 +6,7 @@ module Yoolk
       def initialize(tag_name, markup, options)
         super
 
+        @position_index ||= 0
         @lis = []
         if markup.present?
           @class_name   = $1.gsub(/\"|\'/, '') if markup =~ Syntax
@@ -54,15 +55,12 @@ module Yoolk
       private
 
         def span(content)
-          view.content_tag :span, content, itemprop: "name"
+          view.content_tag(:span, content, itemprop: "name")
         end
 
         def li_home
           # li view.link_to(t(:home), request.root_url)
-          home = view.link_to(t(:home), request.root_url, itemprop: "item")
-          home.concat meta_position
-
-          li home
+          li view.link_to(t(:home), request.root_url, itemprop: "item")
         end
 
         def li_galleries
@@ -102,12 +100,12 @@ module Yoolk
           #   content
           # end
           view.content_tag :li, itemscope: "", itemprop: "itemListElement", itemtype: "http://schema.org/ListItem" do
-            content
+            content + meta_position
           end
         end
 
         def meta_position
-          view.content_tag :meta, nil, itemprop: "position", content: "1"
+          view.content_tag :meta, nil, itemprop: "position", content: "#{ @position_index += 1 }"
         end
 
         def append_li(li)
