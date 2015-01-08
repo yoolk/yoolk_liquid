@@ -70,7 +70,7 @@ module Yoolk
         end
 
         def li_announcements
-          li view.link_to_if(announcement, t(:announcements), request.announcements_url)
+          li view.link_to_if(announcement, t(:announcements), request.announcements_url, itemprop: "item")
         end
 
         def li_products
@@ -82,19 +82,19 @@ module Yoolk
         end
 
         def li_services
-          li view.link_to_if(service || service_category, t(:services), request.services_url)
+          li view.link_to_if(service || service_category, t(:services), request.services_url, itemprop: "item")
         end
 
         def li_service_category
-          li view.link_to_if(service, span(service_category.name), request.services_category_url(service_category))
+          li view.link_to_if(service, span(service_category.name), request.services_category_url(service_category), itemprop: "item")
         end
 
         def li_menu
-          li view.link_to_if(food || food_category, t(:menu), request.menu_url)
+          li view.link_to_if(food || food_category, t(:menu), request.menu_url, itemprop: "item")
         end
 
         def li_food_category
-          li view.link_to_if(food, span(food_category.name), request.menu_category_url(food_category))
+          li view.link_to_if(food, span(food_category.name), request.menu_category_url(food_category), itemprop: "item")
         end
 
         def li(content)
