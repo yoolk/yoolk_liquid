@@ -16,6 +16,7 @@ window.Yoolk.Views.Services.Categories  ||= {}
 window.Yoolk.Views.Menu                 ||= {}
 window.Yoolk.Views.Menu.Categories      ||= {}
 window.Yoolk.Views.People               ||= {}
+window.Yoolk.Views.Home                 ||= {}
 
 # widgets
 window.Yoolk.Widgets                    ||= {}
