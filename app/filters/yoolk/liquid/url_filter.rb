@@ -78,14 +78,21 @@ module Yoolk
         if preview_mode?
           link_to(value, galleries_path, default_class_options(galleries_url?, options))
         else
-          if @context['listing.images']
+          if @context['listing.images'].present?
             link_to(value, galleries_path, default_class_options(galleries_url?, options))
           end
         end
       end
 
       def link_to_people(value, options={})
-        link_to(value, people_path, default_class_options(people_url?, options))
+
+        if preview_mode?
+          link_to(value, people_path, default_class_options(people_url?, options))
+        else
+          if @context['listing.people'].present?
+            link_to(value, people_path, default_class_options(people_url?, options))
+          end
+        end
       end
 
       def link_to_products(value, options={})
@@ -101,19 +108,47 @@ module Yoolk
       end
 
       def link_to_announcements(value, options={})
-        link_to(value, announcements_path, default_class_options(announcements_url?, options))
+
+        if preview_mode?
+          link_to(value, announcements_path, default_class_options(announcements_url?, options))
+        else
+          if @context['listing.announcements'].present?
+            link_to(value, announcements_path, default_class_options(announcements_url?, options))
+          end
+        end
       end
 
       def link_to_brochures(value, options={})
-        link_to(value, brochures_path, default_class_options(brochures_url?, options))
+
+        if preview_mode?
+          link_to(value, brochures_path, default_class_options(brochures_url?, options))
+        else
+          if @context['listing.brochures'].present?
+            link_to(value, brochures_path, default_class_options(brochures_url?, options))
+          end
+        end
       end
 
       def link_to_map(value, options={})
-        link_to(value, map_index_path, default_class_options(map_url?, options))
+
+        if preview_mode?
+          link_to(value, map_index_path, default_class_options(map_url?, options))
+        else
+          if @context['listing.lat'].present? and @context['listing.long'].present?
+            link_to(value, map_index_path, default_class_options(map_url?, options))
+          end
+        end
       end
 
       def link_to_about_us(value, options={})
-        link_to(value, about_us_path, default_class_options(about_us_url?, options))
+
+        if preview_mode?
+          link_to(value, about_us_path, default_class_options(about_us_url?, options))
+        else
+          if @context['listing.catalog_items'].present?
+            link_to(value, about_us_path, default_class_options(about_us_url?, options))
+          end
+        end
       end
 
       def link_to_contact_us(value, options={})
