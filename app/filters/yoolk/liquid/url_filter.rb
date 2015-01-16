@@ -58,13 +58,30 @@ module Yoolk
         link_to(value, office_path, options.merge({rel: "nofollow"}))
       end
 
+      def host
+        request.host.gsub(/^www\./, '')
+      end
+
+      def preview_mode?
+        host.in?(['iw.yoolk.com', 'iwstaging.yoolk.com', 'localhost']) && request.params[:alias_id].present?
+      end
+
       def link_to_home(value, options={})
         link_to(value, root_path, default_class_options(root_url?, options))
       end
       alias_method :link_to_root, :link_to_home
 
       def link_to_galleries(value, options={})
-        link_to(value, galleries_path, default_class_options(galleries_url?, options))
+        # In preview mode     : show link
+        # Not in preview mode : show link only have collection
+
+        if preview_mode?
+          link_to(value, galleries_path, default_class_options(galleries_url?, options))
+        else
+          if @context['listing.images']
+            link_to(value, galleries_path, default_class_options(galleries_url?, options))
+          end
+        end
       end
 
       def link_to_people(value, options={})
