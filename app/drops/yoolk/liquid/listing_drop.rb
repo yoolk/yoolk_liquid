@@ -50,6 +50,7 @@ module Yoolk
                                           with: 'Yoolk::Liquid::Listing::MediaDrop'
 
       has_many    :links,                 with: 'Yoolk::Liquid::Listing::LinkDrop'
+      has_many    :attachments,           with: 'Yoolk::Liquid::Listing::AttachmentDrop'
 
       has_many    :business_photos,       with: 'Yoolk::Liquid::Listing::BusinessPhotoDrop'
       has_many    :keyphrases,            with: 'Yoolk::Liquid::Listing::KeyphraseDrop'
