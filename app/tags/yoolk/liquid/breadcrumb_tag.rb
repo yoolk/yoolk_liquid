@@ -23,6 +23,7 @@ module Yoolk
         elsif request.reservation_url?   then append_li li(t(:reservation))
         elsif request.feedback_url?      then append_li li(t(:feedback))
         elsif request.contact_us_url?    then append_li li(t(:contact_us))
+        elsif request.links_url?         then append_li li(t(:links))
         elsif request.galleries_url?
           append_li li_galleries
           append_li li(gallery.name)     if gallery
