@@ -163,6 +163,10 @@ module Yoolk
         link_to(value, feedback_index_path, default_class_options(feedback_url?, options))
       end
 
+      def link_to_links(value, options={})
+        link_to(value, links_path, default_class_options(links_url?, options))
+      end
+
       def link_to_sign_in(value)
         link_to value, office_path, rel: "nofollow"
       end
@@ -220,11 +224,16 @@ module Yoolk
         request.fullpath.start_with?(feedback_index_path.split('?')[0])
       end
 
+      def links_url?
+        request.fullpath.start_with?(links_path.split('?')[0])
+      end
+
       private
 
         delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
                   :products_path, :services_path, :menu_index_path, :announcements_path,
                   :about_us_path, :contact_us_path, :reservation_index_path, :feedback_index_path,
+                  :links_path,
                   to: :controller
 
         def office_path
