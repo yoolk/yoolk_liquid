@@ -86,6 +86,10 @@ module Yoolk
        "Views.#{controller.class.name.gsub('::', '.').gsub(/Controller$/, '')}.#{action.camelize}View"
       end
 
+      def page_name
+        controller.controller_path.split("/")[0].gsub("_", "-")
+      end
+
       private
 
         def action_name
