@@ -164,15 +164,36 @@ module Yoolk
       end
 
       def link_to_links(value, options={})
-        link_to(value, links_path, default_class_options(links_url?, options))
+
+        if preview_mode?
+          link_to(value, links_path, default_class_options(links_url?, options))
+        else
+          if @context['listing.links'].present?
+            link_to(value, links_path, default_class_options(links_url?, options))
+          end
+        end
       end
 
       def link_to_videos(value, options={})
-        link_to(value, videos_path, default_class_options(videos_url?, options))
+
+        if preview_mode?
+          link_to(value, videos_path, default_class_options(videos_url?, options))
+        else
+          if @context['listing.medias'].present?
+            link_to(value, videos_path, default_class_options(videos_url?, options))
+          end
+        end
       end
 
       def link_to_downloads(value, options={})
-        link_to(value, downloads_path, default_class_options(downloads_url?, options))
+
+        if preview_mode?
+          link_to(value, downloads_path, default_class_options(downloads_url?, options))
+        else
+          if @context['listing.attachments'].present?
+            link_to(value, downloads_path, default_class_options(downloads_url?, options))
+          end
+        end
       end
 
       def link_to_sign_in(value)
