@@ -27,5 +27,5 @@ Rails.application.routes.draw do
 
   resources   :videos,                      only: [:index]
   resources   :links,                       only: [:index]
-  resources   :downloads,                   only: [:index]
+  resources   :attachments,                   only: [:index]
 end

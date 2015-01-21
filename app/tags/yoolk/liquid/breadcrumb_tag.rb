@@ -25,7 +25,7 @@ module Yoolk
         elsif request.contact_us_url?    then append_li li(t(:contact_us))
         elsif request.links_url?         then append_li li(t(:links))
         elsif request.videos_url?        then append_li li(t(:videos))
-        elsif request.downloads_url?     then append_li li(t(:downloads))
+        elsif request.attachments_url?   then append_li li(t(:attachments))
         elsif request.galleries_url?
           append_li li_galleries
           append_li li(gallery.name)     if gallery

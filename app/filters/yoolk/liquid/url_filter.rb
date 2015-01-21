@@ -185,13 +185,13 @@ module Yoolk
         end
       end
 
-      def link_to_downloads(value, options={})
+      def link_to_attachments(value, options={})
 
         if preview_mode?
-          link_to(value, downloads_path, default_class_options(downloads_url?, options))
+          link_to(value, attachments_path, default_class_options(attachments_url?, options))
         else
           if @context['listing.attachments'].present?
-            link_to(value, downloads_path, default_class_options(downloads_url?, options))
+            link_to(value, attachments_path, default_class_options(attachments_url?, options))
           end
         end
       end
@@ -261,8 +261,8 @@ module Yoolk
         request.fullpath.start_with?(videos_path.split('?')[0])
       end
 
-      def downloads_url?
-        request.fullpath.start_with?(downloads_path.split('?')[0])
+      def attachments_url?
+        request.fullpath.start_with?(attachments_path.split('?')[0])
       end
 
       private
@@ -270,7 +270,7 @@ module Yoolk
         delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
                   :products_path, :services_path, :menu_index_path, :announcements_path,
                   :about_us_path, :contact_us_path, :reservation_index_path, :feedback_index_path,
-                  :links_path, :videos_path, :downloads_path,
+                  :links_path, :videos_path, :attachments_path,
                   to: :controller
 
         def office_path

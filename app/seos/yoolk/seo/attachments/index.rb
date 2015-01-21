@@ -1,6 +1,6 @@
 module Yoolk
   module Seo
-    class Downloads::Index < Yoolk::Seo::Base
+    class Attachments::Index < Yoolk::Seo::Base
       def title
         "#{ I18n.t(:'seo.downloads') } - #{ listing.name }"
       end
