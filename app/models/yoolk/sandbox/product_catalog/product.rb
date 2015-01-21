@@ -11,7 +11,7 @@ module Yoolk
         attribute :created_at,        DateTime
         attribute :updated_at,        DateTime
 
-        attribute :brand,             Hash
+        attribute :brand,             Yoolk::Sandbox::ProductCatalog::Brand
         attribute :category,          Yoolk::Sandbox::ProductCatalog::Category
         attribute :photos,            Array[Yoolk::Sandbox::Attachment]
 

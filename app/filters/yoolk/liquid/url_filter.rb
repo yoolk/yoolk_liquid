@@ -145,7 +145,7 @@ module Yoolk
         if preview_mode?
           link_to(value, about_us_path, default_class_options(about_us_url?, options))
         else
-          if @context['listing.catalog_items'].present?
+          if @context['listing.catalog_items'].present? or @context['listing.business_photos'].present?
             link_to(value, about_us_path, default_class_options(about_us_url?, options))
           end
         end
