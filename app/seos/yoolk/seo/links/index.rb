@@ -2,11 +2,11 @@ module Yoolk
   module Seo
     class Links::Index < Yoolk::Seo::Base
       def title
-        "#{I18n.t(:'seo.links')} - #{listing.name}"
+        "#{ I18n.t(:'seo.links') } - #{ listing.name }"
       end
 
       def description
-        "#{listing.links.first.try(:title)}, #{listing.links.first.description}"
+        "#{ listing.links.map(&:title).compact.to_sentence }"
       end
     end
   end
