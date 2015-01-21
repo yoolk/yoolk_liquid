@@ -17,6 +17,9 @@ window.Yoolk.Views.Menu                 ||= {}
 window.Yoolk.Views.Menu.Categories      ||= {}
 window.Yoolk.Views.People               ||= {}
 window.Yoolk.Views.Home                 ||= {}
+window.Yoolk.Views.Videos               ||= {}
+window.Yoolk.Views.Links                ||= {}
+window.Yoolk.Views.Downloads            ||= {}
 
 # widgets
 window.Yoolk.Widgets                    ||= {}
