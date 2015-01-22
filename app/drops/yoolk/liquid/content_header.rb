@@ -18,37 +18,13 @@ module Yoolk
           meta_itemscope,
           csrf_meta_tags,
           google_analytics,
-          canonical_link,
           alternate_link
         ].compact.join("\n")
       end
 
-      def canonical_link
-        url = case view_context.request.path
-        when /^\/$/
-          "http://#{listing.instant_website.primary_domain.name}"
-        when /^\/announcements/
-          view_context.announcements_url
-        when /^\/galleries/
-          view_context.galleries_url
-        when /^\/menu/
-          view_context.menu_index_url
-        when /^\/product/
-          view_context.products_url
-        when /^\/service/
-          view_context.services_url
-        end
-
-        if url.present?
-          %Q{
-            <link rel="canonical" href="#{ url }" />
-          }
-        end
-      end
-
       def alternate_link
         if listing.multilinguals.present?
-          listing.multilinguals.inject("") do |result, listing|
+          listing.multilinguals.inject('') do |result, listing|
             "<link href='http://#{ listing.instant_website.primary_domain.url }' hreflang='#{ listing.language.two_code }' rel='alternate' />"
           end
         end
