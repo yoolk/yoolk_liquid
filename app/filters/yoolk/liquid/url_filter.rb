@@ -1,6 +1,14 @@
 module Yoolk
   module Liquid
     module UrlFilter
+      include TruncateHtmlHelper
+
+      def truncate(html, options={})
+        truncate_html(html, string_to_symbol_hash_key(options))
+      end
+      def string_to_symbol_hash_key( options )
+         options.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+      end
 
       # These three belows use url_helpers to avoid conflict in the real app.
       def product_url(product)

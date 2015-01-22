@@ -16,6 +16,7 @@ require 'therubyracer'
 
 # sandbox
 require 'oj'
+require 'truncate_html'
 
 module Yoolk
   module Liquid
