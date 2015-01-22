@@ -1,12 +1,9 @@
-#= require namespace
-#= require application_view
-
 pageLoad = ->
   className = $('body').attr('data-class-name')
   window.applicationView = try
-    eval("new #{className}()")
+    eval("new Yoolk.#{className}()")
   catch error
-    new Views.ApplicationView()
+    new Yoolk.Views.ApplicationView()
   window.applicationView.render()
 
 $(document).on 'ready', pageLoad

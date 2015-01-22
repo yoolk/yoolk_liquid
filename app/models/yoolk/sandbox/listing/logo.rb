@@ -9,7 +9,8 @@ module Yoolk
 
       ## Delegate
       delegate      :styles, :width, :height, :size, :url,
-                    to: :image
+                    to: :image,
+                    allow_nil: true
     end
   end
 end

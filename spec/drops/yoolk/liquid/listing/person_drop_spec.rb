@@ -19,5 +19,30 @@ module Yoolk
       it { should have_many(:communications).with('Yoolk::Liquid::Listing::CommunicationDrop') }
       it { should have_many(:languages).with('Yoolk::Liquid::LanguageDrop') }
     end
+
+    describe Listing::PersonDrop, '#methods' do
+      let(:person) { Yoolk::Sandbox::Listing::Person.new }
+      subject      { person.to_liquid }
+
+      it 'male? return true when person gender is Male' do
+        person.gender  = 'Male'
+
+        expect(subject.male?).to eq(true)
+      end
+
+      it 'female? return true when person gender is Female' do
+        person.gender  = 'Female'
+
+        expect(subject.female?).to eq(true)
+      end
+
+      it 'full_name return first name and last name concatenat with whitespace' do
+        person.first_name  = 'James'
+        person.last_name   = 'Ron'
+
+        expect(subject.full_name).to eq('James Ron')
+      end
+
+    end
   end
 end

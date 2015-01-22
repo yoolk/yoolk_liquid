@@ -73,6 +73,11 @@ module Yoolk
         twitter_account.try(:url)
       end
 
+      def people
+        @people ||= object.people.actives.publics
+        ::Yoolk::Liquid::Listing::PeopleDrop.new(@people)
+      end
+
       def multilinguals
         @multilinguals ||= ::Liquid::Rails::CollectionDrop.new(object.multilinguals.select { |listing| listing.instant_website.try(:domain_name).present? })
       end

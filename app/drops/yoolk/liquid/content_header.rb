@@ -17,8 +17,17 @@ module Yoolk
           meta_twitter,
           meta_itemscope,
           csrf_meta_tags,
-          google_analytics
+          google_analytics,
+          alternate_link
         ].compact.join("\n")
+      end
+
+      def alternate_link
+        if listing.multilinguals.present?
+          listing.multilinguals.inject('') do |result, listing|
+            "<link href='http://#{ listing.instant_website.primary_domain.url }' hreflang='#{ listing.language.two_code }' rel='alternate' />"
+          end
+        end
       end
 
       def csrf_meta_tags
@@ -78,14 +87,18 @@ module Yoolk
         %Q{
           <meta charset='utf-8'>
           <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
-          <meta content='#{seo.description}'                      name='description'>
-          <meta content='#{seo.keywords}'                         name='keywords'>
-          <meta content='width=device-width, initial-scale=1.0'   name='viewport'>
-          <meta content='index, follow'                           name='robots'>
+          <meta content='#{seo.description}'                                            name='description'>
+          <meta content='#{seo.keywords}'                                               name='keywords'>
+          <meta content='width=device-width, initial-scale=1.0'                         name='viewport'>
+          <meta content="#{ preview_mode? ? 'noindex, nofollow' : 'index, follow' }" name='robots'>
         }
       end
 
       private
+
+        def preview_mode?
+          view_context.request.host.in?(['iw.yoolk.com', 'iwstaging.yoolk.com', 'localhost']) && view_context.request.params[:alias_id].present?
+        end
 
         def google_analytics_key
           listing.instant_website.try(:google_analytics_key).presence || 'UA-51188061-1'
