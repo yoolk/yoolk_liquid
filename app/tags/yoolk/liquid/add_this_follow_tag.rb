@@ -12,38 +12,30 @@ module Yoolk
 
       private
 
-        def facebook_link( option )
+        def facebook_link(option)
           opts = {
-                   "addthis:userid" => facebook_page_name,
+                   "addthis:userid" => facebook_page_username,
                    :class           => "addthis_button_facebook_follow"
                  }
 
           h.content_tag(:a, option[:url].present? ? image_tag( option ) : nil, opts)
         end
 
-        def twitter_link( option )
+        def twitter_link(option)
           opts = {
-                   "addthis:userid" => twitter_page_name,
+                   "addthis:userid" => twitter_username,
                    :class           => "addthis_button_twitter_follow"
                  }
 
           h.content_tag(:a, option[:url].present? ? image_tag( option ) : nil, opts)
         end
 
-        def facebook_page_name
-          facebook_page_url.gsub(/^.*facebook.com\/(?:pages\/)?([^\/]*)(\/.*)?$/, '\1')
+        def facebook_page_username
+          @context['listing.facebook_page.page_username']
         end
 
-        def facebook_page_url
-          @context["listing.facebook_page.name"]
-        end
-
-        def twitter_page_name
-          twitter_page_url.gsub(/^.*twitter.com\/([^\/]*)(\/.*)?$/, '\1')
-        end
-
-        def twitter_page_url
-          @context["listing.twitter_account.url"]
+        def twitter_username
+          @context['listing.twitter_account.username']
         end
     end
   end

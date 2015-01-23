@@ -19,6 +19,7 @@ module Yoolk
         end
       end
 
+      # http://robots.thoughtbot.com/custom-tags-in-liquid
       def unknown_tag(name, params, tokens)
         if name.in?(['facebook', 'twitter', 'counter'])
           handle_link_tag(name, params)
@@ -27,18 +28,14 @@ module Yoolk
         end
       end
 
+      # https://github.com/Shopify/liquid/issues/265
       def blank?
         false
       end
 
       def handle_link_tag(name, params)
-        args = split_params(params)
-
-        url, size = args.inject([]) do |props, item|
-          props.push($1.delete("'")) if item =~ /('.*')/
-        end
-
-        @networks << { name: name, url: url, size: size }
+        args = split_params(params).map { |args| args.gsub(/\"|\'/, '') }
+        @networks << { name: name, url: args[0], size: args[1] }
       end
 
       def split_params(params)
@@ -46,7 +43,7 @@ module Yoolk
       end
 
       def link_builder
-        @networks.inject("") do |links, option|
+        @networks.inject('') do |links, option|
           case option[:name]
           when 'facebook' then links.concat facebook_link( option )
           when 'twitter'  then links.concat twitter_link ( option )
@@ -67,18 +64,16 @@ module Yoolk
 
       private
 
-        def image_tag option
+        def image_tag(option)
           option[:size].present? ? h.image_tag(option[:url], size: option[:size]) : h.image_tag(option[:url])
         end
 
-        def facebook_link( option )
-          opts = { :class   => "addthis_button_facebook" }
-          h.content_tag(:a, option[:url].present? ? image_tag( option ) : nil, opts)
+        def facebook_link(option)
+          h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_facebook')
         end
 
-        def twitter_link( option )
-          opts = { :class   => "addthis_button_twitter" }
-          h.content_tag(:a, option[:url].present? ? image_tag( option ) : nil, opts)
+        def twitter_link(option)
+          h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_twitter')
         end
 
         def addthis_counter
