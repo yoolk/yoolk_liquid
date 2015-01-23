@@ -31,7 +31,7 @@ module Yoolk
         end
 
         def facebook_page_username
-          @context['listing.facebook_page.page_username']
+          @context['listing.facebook_page.username']
         end
 
         def twitter_username

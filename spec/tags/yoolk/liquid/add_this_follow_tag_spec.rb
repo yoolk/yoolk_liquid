@@ -6,7 +6,7 @@ module Yoolk
       let(:listing) {
                       {
                         'facebook_page'=> {
-                          'page_username' => 'Mkmusics'
+                          'username' => 'Mkmusics'
                         },
                         'twitter_account'=> {
                           'username' => 'Listing_1'
