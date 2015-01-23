@@ -22,6 +22,12 @@ module Yoolk
     class Engine < ::Rails::Engine
       isolate_namespace Yoolk::Liquid
 
+      initializer 'yoolk_liquid.load_tags_and_filters' do
+        ActiveSupport.on_load(:'liquid-rails') do
+          Dir["#{Yoolk::Liquid::Engine.root}/app/{tags,filters}/**/*.rb"].each { |f| require f }
+        end
+      end
+
       config.i18n.fallbacks = [:en]
       config.i18n.default_locale = :en
       config.i18n.enforce_available_locales = true
