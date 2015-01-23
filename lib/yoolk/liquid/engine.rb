@@ -23,9 +23,7 @@ module Yoolk
       isolate_namespace Yoolk::Liquid
 
       initializer 'yoolk_liquid.load_tags_and_filters' do
-        ActiveSupport.on_load(:'liquid-rails') do
-          Dir["#{Yoolk::Liquid::Engine.root}/app/{tags,filters}/**/*.rb"].each { |f| require f }
-        end
+        Dir["#{Yoolk::Liquid::Engine.root}/app/{tags,filters}/**/*.rb"].each { |f| require f }
       end
 
       config.i18n.fallbacks = [:en]
