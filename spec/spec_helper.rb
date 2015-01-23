@@ -14,6 +14,32 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+module RSpec
+  module MultilineString
+    #
+    # used to format multiline strings (prefix lines with |)
+    #
+    # example:
+    #
+    # multiline_template <<-END
+    # |  hello
+    # |  |
+    # |  |
+    # END
+    #
+    # this parses to:
+    # "  hello\n  \n  \n
+    #
+    def multiline_string(string, pipechar = '|')
+      arr = string.split("\n")             # Split into lines
+      arr.map! {|x| x.sub(/^\s*\| /, "")}  # Remove leading characters
+      arr.map! {|x| x.sub(/\|$/,"")}      # Remove ending characters
+      arr.join("\n")                       # Rejoin into a single line
+    end
+  end
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -82,4 +108,5 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.include RSpec::MultilineString
 end
