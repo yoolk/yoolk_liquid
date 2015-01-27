@@ -26,6 +26,6 @@ Rails.application.routes.draw do
   resources   :reservation,                 only: [:index, :create]
 
   resources   :videos,                      only: [:index]
-  resources   :links,                       only: [:index]
-  resources   :attachments,                   only: [:index]
+  resources   :links,                       only: [:index, :show]
+  resources   :attachments,                 only: [:index]
 end
