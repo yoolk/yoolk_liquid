@@ -17,8 +17,17 @@ module Yoolk
           meta_twitter,
           meta_itemscope,
           csrf_meta_tags,
-          google_analytics
+          google_analytics,
+          alternate_link
         ].compact.join("\n")
+      end
+
+      def alternate_link
+        if listing.multilinguals.present?
+          listing.multilinguals.inject('') do |result, listing|
+            "<link href='http://#{ listing.instant_website.primary_domain.url }' hreflang='#{ listing.language.two_code }' rel='alternate' />"
+          end
+        end
       end
 
       def csrf_meta_tags
