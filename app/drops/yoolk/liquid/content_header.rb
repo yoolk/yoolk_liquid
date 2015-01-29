@@ -23,8 +23,8 @@ module Yoolk
       end
 
       def alternate_link
-        if listing.multilinguals.present?
-          listing.multilinguals.inject('') do |result, listing|
+        if listing.to_liquid.multilinguals.present?
+          listing.to_liquid.multilinguals.inject('') do |result, listing|
             "<link href='http://#{ listing.instant_website.primary_domain.url }' hreflang='#{ listing.language.two_code }' rel='alternate' />"
           end
         end
