@@ -11,6 +11,14 @@ module Yoolk
         attribute :updated_at,            DateTime
 
         attribute :image,                 Yoolk::Sandbox::Attachment
+
+        def dimension_width
+          dimension.split("x").first.to_i
+        end
+
+        def dimension_height
+          dimension.split("x").last.to_i
+        end
       end
     end
   end
