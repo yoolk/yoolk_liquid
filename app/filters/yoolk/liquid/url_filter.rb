@@ -42,6 +42,9 @@ module Yoolk
       def announcement_url(announcement)
         controller.announcement_path(announcement)
       end
+      def link_url(link)
+        controller.link_path(link)
+      end
 
       # Returns the attachment of any attachment objects
       # Usage:

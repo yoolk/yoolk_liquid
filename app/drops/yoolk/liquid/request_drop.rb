@@ -36,6 +36,10 @@ module Yoolk
         galleries_path
       end
 
+      def links_url
+        links_path
+      end
+
       def people_url
         people_path
       end
