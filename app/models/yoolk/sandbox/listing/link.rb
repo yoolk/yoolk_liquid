@@ -8,6 +8,10 @@ module Yoolk
       attribute :description, String
       attribute :created_at,  DateTime
       attribute :updated_at,  DateTime
+
+      def to_param
+        "#{id}-#{title.parameterize}"
+      end
     end
   end
 end
