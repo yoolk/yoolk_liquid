@@ -14,6 +14,7 @@ window.Yoolk.Views.Products.Categories  ||= {}
 window.Yoolk.Views.Services             ||= {}
 window.Yoolk.Views.Services.Categories  ||= {}
 window.Yoolk.Views.Menu                 ||= {}
+window.Yoolk.Views.Menu.Foods           ||= {}
 window.Yoolk.Views.Menu.Categories      ||= {}
 window.Yoolk.Views.People               ||= {}
 window.Yoolk.Views.Home                 ||= {}
