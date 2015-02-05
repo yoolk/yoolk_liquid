@@ -68,6 +68,14 @@ module Yoolk
         contact_us_path
       end
 
+      def attachments_url
+        attachments_path
+      end
+
+      def videos_url
+        videos_path
+      end
+
       def theme_name
         request.params[:theme]
       end
