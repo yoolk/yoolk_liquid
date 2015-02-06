@@ -119,7 +119,6 @@ module Yoolk
       end
 
       def link_to_announcements(value, options={})
-
         if preview_mode?
           link_to(value, announcements_path, default_class_options(announcements_url?, options))
         else
