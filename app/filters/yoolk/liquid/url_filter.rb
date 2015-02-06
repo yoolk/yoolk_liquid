@@ -4,10 +4,7 @@ module Yoolk
       include TruncateHtmlHelper
 
       def truncate(html, options={})
-        truncate_html(html, string_to_symbol_hash_key(options))
-      end
-      def string_to_symbol_hash_key( options )
-         options.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+        truncate_html(html, options.with_indifferent_access)
       end
 
       # These three belows use url_helpers to avoid conflict in the real app.
@@ -42,6 +39,7 @@ module Yoolk
       def announcement_url(announcement)
         controller.announcement_path(announcement)
       end
+
       def link_url(link)
         controller.link_path(link)
       end

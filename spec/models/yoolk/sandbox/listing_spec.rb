@@ -162,6 +162,14 @@ module Yoolk
       it 'has :opening_hours attribute' do
         expect(described_class).to have_attribute(:opening_hours).of_type(Array, member_type: Yoolk::Sandbox::Listing::OpeningHour)
       end
+
+      it 'has :links attribute' do
+        expect(described_class).to have_attribute(:links).of_type(Array, member_type: Yoolk::Sandbox::Listing::Link)
+      end
+
+      it 'has :attachments attribute' do
+        expect(described_class).to have_attribute(:attachments).of_type(Array, member_type: Yoolk::Sandbox::Listing::Attachment)
+      end
     end
 
     describe Listing, 'methods' do

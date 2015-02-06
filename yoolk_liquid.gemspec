@@ -35,5 +35,5 @@ Gem::Specification.new do |s|
 
   # sandbox
   s.add_dependency 'oj',                    '~> 2.10.2'
-  s.add_dependency 'truncate_html'
+  s.add_dependency 'truncate_html',         '~> 0.9.3'
 end

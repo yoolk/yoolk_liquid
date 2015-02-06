@@ -25,7 +25,7 @@ module Yoolk
         end
 
         it 'has :brand attribute' do
-          expect(described_class).to have_attribute(:brand).of_type(Hash)
+          expect(described_class).to have_attribute(:brand).of_type(Yoolk::Sandbox::ProductCatalog::Brand)
         end
 
         it 'has :category attribute' do

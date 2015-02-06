@@ -8,6 +8,10 @@ module Yoolk
         expect(described_class).to have_attribute(:id).of_type(String)
       end
 
+      it 'has :title attribute' do
+        expect(described_class).to have_attribute(:title).of_type(String)
+      end
+
       it 'has :embed_script attribute' do
         expect(described_class).to have_attribute(:embed_script).of_type(String)
       end
