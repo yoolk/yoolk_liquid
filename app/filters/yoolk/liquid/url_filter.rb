@@ -1,11 +1,6 @@
 module Yoolk
   module Liquid
     module UrlFilter
-      include TruncateHtmlHelper
-
-      def truncate(html, options={})
-        truncate_html(html, options.with_indifferent_access)
-      end
 
       # These three belows use url_helpers to avoid conflict in the real app.
       def product_url(product)
@@ -67,41 +62,17 @@ module Yoolk
         link_to(value, office_path, options.merge({rel: "nofollow"}))
       end
 
-      def host
-        request.host.gsub(/^www\./, '')
-      end
-
-      def preview_mode?
-        host.in?(['iw.yoolk.com', 'iwstaging.yoolk.com', 'localhost']) && request.params[:alias_id].present?
-      end
-
       def link_to_home(value, options={})
         link_to(value, root_path, default_class_options(root_url?, options))
       end
       alias_method :link_to_root, :link_to_home
 
       def link_to_galleries(value, options={})
-        # In preview mode     : show link
-        # Not in preview mode : show link only have collection
-
-        if preview_mode?
-          link_to(value, galleries_path, default_class_options(galleries_url?, options))
-        else
-          if @context['listing.images'].present?
-            link_to(value, galleries_path, default_class_options(galleries_url?, options))
-          end
-        end
+        link_to(value, galleries_path, default_class_options(galleries_url?, options))
       end
 
       def link_to_people(value, options={})
-
-        if preview_mode?
-          link_to(value, people_path, default_class_options(people_url?, options))
-        else
-          if @context['listing.people'].present?
-            link_to(value, people_path, default_class_options(people_url?, options))
-          end
-        end
+        link_to(value, people_path, default_class_options(people_url?, options))
       end
 
       def link_to_products(value, options={})
@@ -117,46 +88,31 @@ module Yoolk
       end
 
       def link_to_announcements(value, options={})
-        if preview_mode?
-          link_to(value, announcements_path, default_class_options(announcements_url?, options))
-        else
-          if @context['listing.announcements'].present?
-            link_to(value, announcements_path, default_class_options(announcements_url?, options))
-          end
-        end
+        link_to(value, announcements_path, default_class_options(announcements_url?, options))
       end
 
       def link_to_brochures(value, options={})
+        link_to(value, brochures_path, default_class_options(brochures_url?, options))
+      end
 
-        if preview_mode?
-          link_to(value, brochures_path, default_class_options(brochures_url?, options))
-        else
-          if @context['listing.brochures'].present?
-            link_to(value, brochures_path, default_class_options(brochures_url?, options))
-          end
-        end
+      def link_to_links(value, options={})
+        link_to(value, links_path, default_class_options(links_url?, options))
+      end
+
+      def link_to_videos(value, options={})
+        link_to(value, videos_path, default_class_options(videos_url?, options))
+      end
+
+      def link_to_attachments(value, options={})
+        link_to(value, attachments_path, default_class_options(attachments_url?, options))
       end
 
       def link_to_map(value, options={})
-
-        if preview_mode?
-          link_to(value, map_index_path, default_class_options(map_url?, options))
-        else
-          if @context['listing.lat'].present? and @context['listing.long'].present?
-            link_to(value, map_index_path, default_class_options(map_url?, options))
-          end
-        end
+        link_to(value, map_index_path, default_class_options(map_url?, options))
       end
 
       def link_to_about_us(value, options={})
-
-        if preview_mode?
-          link_to(value, about_us_path, default_class_options(about_us_url?, options))
-        else
-          if @context['listing.catalog_items'].present? or @context['listing.business_photos'].present?
-            link_to(value, about_us_path, default_class_options(about_us_url?, options))
-          end
-        end
+        link_to(value, about_us_path, default_class_options(about_us_url?, options))
       end
 
       def link_to_contact_us(value, options={})
@@ -171,41 +127,8 @@ module Yoolk
         link_to(value, feedback_index_path, default_class_options(feedback_url?, options))
       end
 
-      def link_to_links(value, options={})
-
-        if preview_mode?
-          link_to(value, links_path, default_class_options(links_url?, options))
-        else
-          if @context['listing.links'].present?
-            link_to(value, links_path, default_class_options(links_url?, options))
-          end
-        end
-      end
-
-      def link_to_videos(value, options={})
-
-        if preview_mode?
-          link_to(value, videos_path, default_class_options(videos_url?, options))
-        else
-          if @context['listing.medias'].present?
-            link_to(value, videos_path, default_class_options(videos_url?, options))
-          end
-        end
-      end
-
-      def link_to_attachments(value, options={})
-
-        if preview_mode?
-          link_to(value, attachments_path, default_class_options(attachments_url?, options))
-        else
-          if @context['listing.attachments'].present?
-            link_to(value, attachments_path, default_class_options(attachments_url?, options))
-          end
-        end
-      end
-
       def link_to_sign_in(value)
-        link_to value, office_path, rel: "nofollow"
+        link_to value, office_path, rel: 'nofollow'
       end
 
       def root_url?
