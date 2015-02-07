@@ -7,6 +7,8 @@ module Yoolk
       it { should have_attribute(:caption) }
       it { should have_attribute(:dimension) }
       it { should have_attribute(:display_order) }
+      it { should have_attribute(:dimension_width) }
+      it { should have_attribute(:dimension_height) }
       it { should have_attribute(:created_at) }
       it { should have_attribute(:updated_at) }
 

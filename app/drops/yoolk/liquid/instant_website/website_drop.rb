@@ -14,6 +14,9 @@ module Yoolk
           office_path
         end
 
+        ## Returns cover_photos that match the template cover photos
+        ## In preview mode, it compares with previewed_template.
+        ## In normal mode, it compares with its template.
         def cover_photos
           value = if template.cover_photo.present?
             object.cover_photos.select do |cover_photo|

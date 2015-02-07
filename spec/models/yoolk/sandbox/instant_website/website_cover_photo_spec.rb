@@ -31,6 +31,9 @@ module Yoolk
       it 'has :image attribute' do
         expect(described_class).to have_attribute(:image).of_type(Yoolk::Sandbox::Attachment)
       end
+
+      it { should respond_to(:dimension_width) }
+      it { should respond_to(:dimension_height) }
     end
   end
 end
