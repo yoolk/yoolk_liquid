@@ -27,6 +27,14 @@ module Yoolk
         Dir["#{Yoolk::Liquid::Engine.root}/app/{tags,filters}/**/*.rb"].each { |f| require f }
       end
 
+      if defined?(FactoryGirl)
+        initializer "factory_girl.set_factory_paths" do
+          FactoryGirl.definition_file_paths = [
+            Yoolk::Liquid::Engine.root.join('spec', 'factories')
+          ]
+        end
+      end
+
       config.i18n.fallbacks = [:en]
       config.i18n.default_locale = :en
       config.i18n.enforce_available_locales = true

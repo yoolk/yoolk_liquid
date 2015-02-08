@@ -107,6 +107,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.6)
     execjs (2.3.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     ffi (1.9.6)
     formatador (0.2.5)
     guard (2.11.1)
@@ -264,6 +269,7 @@ DEPENDENCIES
   ammeter (~> 1.1.2)
   assets-rails!
   coveralls
+  factory_girl_rails (>= 4.5.0)
   guard-rspec (~> 4.5.0)
   liquid-rails!
   pry (~> 0.9.12.3)

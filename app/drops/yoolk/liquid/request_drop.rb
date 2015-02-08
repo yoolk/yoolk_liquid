@@ -84,6 +84,12 @@ module Yoolk
         host.in?(['iw.yoolk.com', 'iwstaging.yoolk.com', 'localhost']) && request.params[:alias_id].present?
       end
 
+      def previewed_template
+        if preview_mode? && @context['current_template'].present?
+          @context['current_template']
+        end
+      end
+
       def theme_name
         request.params[:theme]
       end

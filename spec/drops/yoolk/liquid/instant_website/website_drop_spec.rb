@@ -18,26 +18,33 @@ module Yoolk
     end
 
     describe InstantWebsite::WebsiteDrop do
-      let(:website)   { Yoolk::Sandbox::InstantWebsite::Website.new(template: template, cover_photos: [ {dimension: '200x400'}, {dimension: '400x200'} ]) }
-      let(:template)  { Yoolk::Sandbox::InstantWebsite::Template.new(name: 'sample', cover_photo: { dimension: '200x400'}) }
-      let(:drop)      { website.to_liquid }
+      let(:template)  { build(:instant_website_template, dimension: '200x400') }
+      let(:website1)  { build(:instant_website_website, :cover_photos, template: template, dimensions: ['200x400', '400x200']) }
+      let(:website2)  { build(:instant_website_website, :cover_photos, template: template, dimensions: ['200x400', '400x200']) }
+      let(:drop1)     { website1.to_liquid }
+      let(:drop2)     { website2.to_liquid }
+
+      before          {
+        drop1.context = context
+        drop2.context = context
+      }
 
       it { should respond_to(:office_url) }
 
       context '#cover_photos' do
-        it 'returns an instance of Liquid::Rails::CollectionDrop' do
-          expect(drop.cover_photos).to be_instance_of(::Liquid::Rails::CollectionDrop)
+        it 'returns an instance of Liquid::Rails::CollectionDrop', :focus do
+          expect(drop1.cover_photos).to be_instance_of(::Liquid::Rails::CollectionDrop)
         end
 
         it 'returns the cover_photos that matches its template' do
-          expect(drop.cover_photos.length).to eq(1)
-          expect(drop.cover_photos[0].dimension).to eq(template.cover_photo.dimension)
+          expect(drop1.cover_photos.length).to eq(1)
+          expect(drop1.cover_photos[0].dimension).to eq(template.cover_photo.dimension)
         end
 
         it 'returns empty array when template doesn\'t have cover_photo' do
           template.cover_photo = nil
 
-          expect(drop.cover_photos.length).to eq(0)
+          expect(drop1.cover_photos.length).to eq(0)
         end
       end
     end
