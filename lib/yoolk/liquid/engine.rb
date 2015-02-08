@@ -16,6 +16,7 @@ require 'therubyracer'
 
 # sandbox
 require 'oj'
+require 'truncate_html'
 
 module Yoolk
   module Liquid
@@ -24,6 +25,14 @@ module Yoolk
 
       initializer 'yoolk_liquid.load_tags_and_filters' do
         Dir["#{Yoolk::Liquid::Engine.root}/app/{tags,filters}/**/*.rb"].each { |f| require f }
+      end
+
+      if defined?(FactoryGirl)
+        initializer "factory_girl.set_factory_paths" do
+          FactoryGirl.definition_file_paths = [
+            Yoolk::Liquid::Engine.root.join('spec', 'factories')
+          ]
+        end
       end
 
       config.i18n.fallbacks = [:en]

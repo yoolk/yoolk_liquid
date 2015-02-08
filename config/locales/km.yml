@@ -21,6 +21,9 @@ km:
     by:                     "by"
     announcements_on:       "Announcement on"
     feedback_quote:         "We'd love to hear what your thoughts. Your valuable feedback will help us to improve and upgrade our business."
+    links:                  'Links'
+    videos:                 'Videos'
+    attachments:            'Downloads'
   breadcrumb:
     home:                   'ទំព័រដើម'
     about_us:               'អំពីយើង'
@@ -37,3 +40,6 @@ km:
     services:               'សេវាកម្ម'
     reservation:            'ការកក់'
     galleries:              'រូបថត'
+    links:                  'Links'
+    videos:                 'Videos'
+    attachments:            'Downloads'

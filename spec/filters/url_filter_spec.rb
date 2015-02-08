@@ -8,6 +8,9 @@ module Yoolk
       end
 
       it '#link_to_home' do
+        allow(controller).to receive(:root_path).and_return('/')
+        allow(controller).to receive_message_chain('request.fullpath').and_return('')
+
         expect_template_result("{{ 'Home' | link_to_home }}", "<a href=\"/\">Home</a>")
       end
 
@@ -37,6 +40,18 @@ module Yoolk
 
       it '#link_to_brochures' do
         expect_template_result("{{ 'Brochures' | link_to_brochures }}", "<a href=\"/brochures\">Brochures</a>")
+      end
+
+      it '#link_to_links' do
+        expect_template_result("{{ 'Links' | link_to_links }}", "<a href=\"/links\">Links</a>")
+      end
+
+      it '#link_to_videos' do
+        expect_template_result("{{ 'Videos' | link_to_videos }}", "<a href=\"/videos\">Videos</a>")
+      end
+
+      it '#link_to_attachments' do
+        expect_template_result("{{ 'Attachments' | link_to_attachments }}", "<a href=\"/attachments\">Attachments</a>")
       end
 
       it '#link_to_map' do

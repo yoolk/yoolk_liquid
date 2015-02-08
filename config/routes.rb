@@ -24,4 +24,8 @@ Rails.application.routes.draw do
   resources   :people,                      only: [:index]
   resources   :map,                         only: [:index]
   resources   :reservation,                 only: [:index, :create]
+
+  resources   :videos,                      only: [:index]
+  resources   :links,                       only: [:index, :show]
+  resources   :attachments,                 only: [:index]
 end

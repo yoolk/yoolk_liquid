@@ -59,6 +59,8 @@ module Yoolk
       it { should belongs_to(:twitter_account).with('Yoolk::Liquid::Twitter::AccountDrop') }
       it { should have_many(:business_hours).class_name('Yoolk::Liquid::Listing::BusinessHoursDrop').with('Yoolk::Liquid::Listing::BusinessHourDrop') }
       it { should have_many(:short_descriptions).with('Yoolk::Liquid::Listing::ShortDescriptionDrop') }
+      it { should have_many(:links).with('Yoolk::Liquid::Listing::LinkDrop') }
+      it { should have_many(:attachments).with('Yoolk::Liquid::Listing::AttachmentDrop') }
 
       it { should respond_to(:multilinguals) }
     end

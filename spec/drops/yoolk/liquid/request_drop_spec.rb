@@ -61,6 +61,18 @@ module Yoolk
         expect(subject.feedback_url).to eq('/feedback')
       end
 
+      it '#links_url' do
+        expect(subject.links_url).to eq('/links')
+      end
+
+      it '#attachments_url' do
+        expect(subject.attachments_url).to eq('/attachments')
+      end
+
+      it '#videos_url' do
+        expect(subject.videos_url).to eq('/videos')
+      end
+
       it '#theme_name' do
         allow(subject.send(:request)).to receive(:params).and_return(theme: 'sample')
 

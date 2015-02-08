@@ -14,18 +14,20 @@ module Yoolk
           office_path
         end
 
+        ## Returns cover_photos that match the template cover photos
+        ## In preview mode, it compares with previewed_template.
+        ## In normal mode, it compares with its template.
         def cover_photos
-          value = if template.cover_photo.present?
-            object.cover_photos.select do |cover_photo|
-              cover_photo.dimension  == template.cover_photo.dimension
+          _cover_photos = if template.cover_photo.present?
+            object.cover_photos.select do |cover|
+              cover.dimension == (@context['request.previewed_template'] || template).cover_photo.dimension
             end
           else
             []
           end
 
-          ::Liquid::Rails::Drop.dropify(value)
+          ::Liquid::Rails::Drop.dropify(_cover_photos)
         end
-
       end
     end
   end

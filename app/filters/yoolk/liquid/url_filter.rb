@@ -35,6 +35,10 @@ module Yoolk
         controller.announcement_path(announcement)
       end
 
+      def link_url(link)
+        controller.link_path(link)
+      end
+
       # Returns the attachment of any attachment objects
       # Usage:
       # For catalog_item, brochure, announcement, you don't need to pass attachment object.
@@ -91,6 +95,18 @@ module Yoolk
         link_to(value, brochures_path, default_class_options(brochures_url?, options))
       end
 
+      def link_to_links(value, options={})
+        link_to(value, links_path, default_class_options(links_url?, options))
+      end
+
+      def link_to_videos(value, options={})
+        link_to(value, videos_path, default_class_options(videos_url?, options))
+      end
+
+      def link_to_attachments(value, options={})
+        link_to(value, attachments_path, default_class_options(attachments_url?, options))
+      end
+
       def link_to_map(value, options={})
         link_to(value, map_index_path, default_class_options(map_url?, options))
       end
@@ -112,7 +128,7 @@ module Yoolk
       end
 
       def link_to_sign_in(value)
-        link_to value, office_path, rel: "nofollow"
+        link_to value, office_path, rel: 'nofollow'
       end
 
       def root_url?
@@ -168,11 +184,24 @@ module Yoolk
         request.fullpath.start_with?(feedback_index_path.split('?')[0])
       end
 
+      def links_url?
+        request.fullpath.start_with?(links_path.split('?')[0])
+      end
+
+      def videos_url?
+        request.fullpath.start_with?(videos_path.split('?')[0])
+      end
+
+      def attachments_url?
+        request.fullpath.start_with?(attachments_path.split('?')[0])
+      end
+
       private
 
         delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
                   :products_path, :services_path, :menu_index_path, :announcements_path,
                   :about_us_path, :contact_us_path, :reservation_index_path, :feedback_index_path,
+                  :links_path, :videos_path, :attachments_path,
                   to: :controller
 
         def office_path

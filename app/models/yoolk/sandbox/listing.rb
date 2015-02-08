@@ -48,6 +48,9 @@ module Yoolk
       attribute :twitter_account,         Yoolk::Sandbox::Twitter::Account
       attribute :opening_hours,           Array[Yoolk::Sandbox::Listing::OpeningHour]
 
+      attribute :links,                   Array[Yoolk::Sandbox::Listing::Link]
+      attribute :attachments,             Array[Yoolk::Sandbox::Listing::Attachment]
+
       delegate  :locale, :language,       to: :portal
 
       def initialize(attributes={})
