@@ -7,9 +7,9 @@ FactoryGirl.define do
 
     attachment_meta {
       {
-        "original": {
-          "width":  width.to_i,
-          "height": height.to_i
+        "original" => {
+          "width"  =>  width.to_i,
+          "height" => height.to_i
         }
       }
     }
