@@ -2,7 +2,7 @@ module Yoolk
   module Sandbox
     class Listing::Link < Yoolk::Sandbox::Base
 
-      attribute :id,          String
+      attribute :id,          Integer
       attribute :title,       String
       attribute :link,        String
       attribute :description, String
