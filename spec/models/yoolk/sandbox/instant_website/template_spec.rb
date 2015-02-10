@@ -12,6 +12,22 @@ module Yoolk
         expect(described_class).to have_attribute(:name).of_type(String)
       end
 
+      it 'has :display_name attribute' do
+        expect(described_class).to have_attribute(:display_name).of_type(String)
+      end
+
+      it 'has :developed_by attribute' do
+        expect(described_class).to have_attribute(:developed_by).of_type(String)
+      end
+
+      it 'has :developer_url attribute' do
+        expect(described_class).to have_attribute(:developer_url).of_type(String)
+      end
+
+      it 'has :demo_website attribute' do
+        expect(described_class).to have_attribute(:demo_website).of_type(String)
+      end
+
       it 'has :description attribute' do
         expect(described_class).to have_attribute(:description).of_type(String)
       end
@@ -28,8 +44,8 @@ module Yoolk
         expect(described_class).to have_attribute(:pages).of_type(Array)
       end
 
-      it 'has :styles attribute' do
-        expect(described_class).to have_attribute(:styles).of_type(Array)
+      it 'has :colors attribute' do
+        expect(described_class).to have_attribute(:colors).of_type(Array)
       end
 
       it 'has :created_at attribute' do

@@ -23,8 +23,8 @@ module Yoolk
         expect(described_class).to have_attribute(:free_plan)
       end
 
-      it 'has :style_name attribute' do
-        expect(described_class).to have_attribute(:style_name)
+      it 'has :color attribute' do
+        expect(described_class).to have_attribute(:color)
       end
 
       it 'has :created_at attribute' do

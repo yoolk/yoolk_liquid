@@ -94,8 +94,13 @@ module Yoolk
         request.params[:theme]
       end
 
+      # theme_style_url is deprecated due to the rename of style to color
       def theme_style_url
-        controller.theme_style_url
+        controller.theme_color_url
+      end
+
+      def theme_color_url
+        controller.theme_color_url
       end
 
       def style_name

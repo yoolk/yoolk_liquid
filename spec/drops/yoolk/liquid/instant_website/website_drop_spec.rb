@@ -4,6 +4,8 @@ module Yoolk
   module Liquid
     describe InstantWebsite::WebsiteDrop do
       it { should have_attribute(:id) }
+      it { should have_attribute(:template_name) }
+      it { should have_attribute(:color) }
       it { should have_attribute(:google_analytics_key) }
       it { should have_attribute(:is_live) }
       it { should have_attribute(:is_active) }

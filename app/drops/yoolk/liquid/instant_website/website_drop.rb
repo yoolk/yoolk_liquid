@@ -2,7 +2,8 @@ module Yoolk
   module Liquid
     module InstantWebsite
       class WebsiteDrop < BaseDrop
-        attributes  :id, :google_analytics_key, :is_live, :is_active, :free_plan, :template_name,
+        attributes  :id, :google_analytics_key, :is_live, :is_active, :free_plan,
+                    :template_name, :color,
                     :primary_domain, :created_at, :updated_at
 
         belongs_to  :favicon,       with: 'Yoolk::Liquid::AttachmentDrop'
