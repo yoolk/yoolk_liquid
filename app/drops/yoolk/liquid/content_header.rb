@@ -59,27 +59,27 @@ module Yoolk
       def meta_itemscope
         %Q{
           <meta content='#{listing.name}'        itemscope='name'>
-          <meta content='#{seo.description}'     itemscope='description'>
+          <meta content='#{CGI.escapeHTML(seo.description)}'     itemscope='description'>
           <meta content='#{seo.social_image}'    itemscope='image'>
         }
       end
 
       def meta_twitter
         %Q{
-          <meta content='http://#{seo.social_url}/' name='twitter:url'>
-          <meta content='#{seo.title}'              name='twitter:title'>
-          <meta content='#{seo.description}'        name='twitter:description'>
-          <meta content='#{seo.social_image}'       name='twitter:image'>
+          <meta content='http://#{seo.social_url}/'           name='twitter:url'>
+          <meta content='#{CGI.escapeHTML(seo.title)}'        name='twitter:title'>
+          <meta content='#{CGI.escapeHTML(seo.description)}'  name='twitter:description'>
+          <meta content='#{seo.social_image}'                 name='twitter:image'>
         }
       end
 
       def meta_og
         %Q{
-          <meta content='#{seo.title}'               property='og:title'>
-          <meta content='#{seo.description}'         property='og:description'>
-          <meta content='website'                    property='og:type'>
-          <meta content='#{seo.social_image}'        property='og:image'>
-          <meta content='http://#{seo.social_url}/'  property='og:url'>
+          <meta content='#{CGI.escapeHTML(seo.title)}'        property='og:title'>
+          <meta content='#{CGI.escapeHTML(seo.description)}'  property='og:description'>
+          <meta content='website'                             property='og:type'>
+          <meta content='#{seo.social_image}'                 property='og:image'>
+          <meta content='http://#{seo.social_url}/'           property='og:url'>
         }
       end
 
@@ -87,9 +87,9 @@ module Yoolk
         %Q{
           <meta charset='utf-8'>
           <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
-          <meta content='#{seo.description}'                                            name='description'>
-          <meta content='#{seo.keywords}'                                               name='keywords'>
-          <meta content='width=device-width, initial-scale=1.0'                         name='viewport'>
+          <meta content='#{CGI.escapeHTML(seo.description)}'                         name='description'>
+          <meta content='#{seo.keywords}'                                            name='keywords'>
+          <meta content='width=device-width, initial-scale=1.0'                      name='viewport'>
           <meta content="#{ preview_mode? ? 'noindex, nofollow' : 'index, follow' }" name='robots'>
         }
       end
