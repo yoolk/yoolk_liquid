@@ -79,10 +79,10 @@ module Yoolk
         expect(subject.theme_name).to eq('sample')
       end
 
-      it '#style_name' do
-        allow(subject.send(:request)).to receive(:params).and_return(style: 'gray')
+      it '#color' do
+        allow(subject.send(:request)).to receive(:params).and_return(color: 'gray')
 
-        expect(subject.style_name).to eq('gray')
+        expect(subject.color).to eq('gray')
       end
 
       context '#js_class_name' do
