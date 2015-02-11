@@ -11,6 +11,10 @@ module Yoolk
 
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
+        def color
+          object.color_name
+        end
+
         def office_url
           office_path
         end
