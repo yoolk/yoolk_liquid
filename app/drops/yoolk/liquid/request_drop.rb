@@ -94,12 +94,22 @@ module Yoolk
         request.params[:theme]
       end
 
+      # theme_style_url is deprecated due to the rename to color
       def theme_style_url
-        controller.theme_style_url
+        theme_color_url
       end
 
+      def theme_color_url
+        controller.theme_color_url
+      end
+
+      # style_name is deprecated due to the rename to color
       def style_name
-        request.params[:style]
+        theme_color
+      end
+
+      def theme_color
+        request.params[:color]
       end
 
       def js_class_name
@@ -112,8 +122,8 @@ module Yoolk
        "Views.#{controller.class.name.gsub('::', '.').gsub(/Controller$/, '')}.#{action.camelize}View"
       end
 
-      def page_name
-        controller.controller_path.split("/")[0].gsub("_", "-")
+      def css_class_name
+        controller.controller_path.split('/')[0].gsub('_', '-')
       end
 
       private

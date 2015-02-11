@@ -5,10 +5,15 @@ module Yoolk
     describe InstantWebsite::TemplateDrop do
       it { should have_attribute(:id) }
       it { should have_attribute(:name) }
+      it { should have_attribute(:theme_name) }
       it { should have_attribute(:description) }
+      it { should have_attribute(:developer_url) }
+      it { should have_attribute(:developed_by) }
+      it { should have_attribute(:demo_website) }
       it { should have_attribute(:is_responsive) }
       it { should have_attribute(:industries) }
       it { should have_attribute(:pages) }
+      it { should have_attribute(:colors) }
       it { should have_attribute(:created_at) }
       it { should have_attribute(:updated_at) }
 
