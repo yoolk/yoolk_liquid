@@ -85,6 +85,8 @@ module Yoolk
 
       def meta_base
         %Q{
+          <title>#{CGI.escapeHTML(seo.title)}</title>
+
           <meta charset='utf-8'>
           <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
           <meta content='#{CGI.escapeHTML(seo.description)}'                         name='description'>
