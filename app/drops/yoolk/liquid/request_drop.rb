@@ -105,10 +105,10 @@ module Yoolk
 
       # style_name is deprecated due to the rename to color
       def style_name
-        color
+        theme_color
       end
 
-      def color
+      def theme_color
         request.params[:color]
       end
 
@@ -122,8 +122,8 @@ module Yoolk
        "Views.#{controller.class.name.gsub('::', '.').gsub(/Controller$/, '')}.#{action.camelize}View"
       end
 
-      def page_name
-        controller.controller_path.split("/")[0].gsub("_", "-")
+      def css_class_name
+        controller.controller_path.split('/')[0].gsub('_', '-')
       end
 
       private
