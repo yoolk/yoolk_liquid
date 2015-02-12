@@ -35,10 +35,6 @@ module Yoolk
         controller.announcement_path(announcement)
       end
 
-      def link_url(link)
-        controller.link_path(link)
-      end
-
       # Returns the attachment of any attachment objects
       # Usage:
       # For catalog_item, brochure, announcement, you don't need to pass attachment object.

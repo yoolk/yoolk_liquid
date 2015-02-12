@@ -26,9 +26,7 @@ module Yoolk
         elsif request.contact_us_url?    then append_li li(t(:contact_us))
         elsif request.videos_url?        then append_li li(t(:videos))
         elsif request.attachments_url?   then append_li li(t(:attachments))
-        elsif request.links_url?
-          append_li li_links
-          append_li li(span link.title)     if link
+        elsif request.links_url?         then append_li li(t(:links))
         elsif request.galleries_url?
           append_li li_galleries
           append_li li(span gallery.name)     if gallery
@@ -66,10 +64,6 @@ module Yoolk
         def li_home
           # li view.link_to(t(:home), request.root_url)
           li view.link_to(t(:home), request.root_url, itemprop: "item")
-        end
-
-        def li_links
-          li view.link_to_if(link, t(:links), request.links_url, itemprop: "item")
         end
 
         def li_galleries
