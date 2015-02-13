@@ -23,15 +23,19 @@ module Yoolk
         ## In preview mode, it compares with previewed_template.
         ## In normal mode, it compares with its template.
         def cover_photos
-          _cover_photos = if template.cover_photo.present?
+          _cover_photos = if _template.cover_photo.present?
             object.cover_photos.select do |cover|
-              cover.dimension == (@context['request.previewed_template'] || template).cover_photo.dimension
+              cover.dimension == _template.cover_photo.dimension
             end
           else
             []
           end
 
           ::Liquid::Rails::Drop.dropify(_cover_photos)
+        end
+
+        def _template
+          @context['request.previewed_template'] || template
         end
       end
     end
