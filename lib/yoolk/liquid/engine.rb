@@ -13,6 +13,7 @@ require 'kaminari'
 require 'uglifier'
 require 'sass-rails'
 require 'therubyracer'
+require 'rails_autolink'
 
 # sandbox
 require 'oj'

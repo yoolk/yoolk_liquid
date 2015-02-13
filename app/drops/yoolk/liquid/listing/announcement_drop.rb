@@ -10,13 +10,15 @@ module Yoolk
         h.auto_link(h.simple_format(object.text))
       end
 
-      def h
-        @context.registers[:helper]
-      end
-
       def url
         announcement_url(self)
       end
+
+      private
+
+        def h
+          @context.registers[:view]
+        end
     end
   end
 end

@@ -11,12 +11,17 @@ module Yoolk
     end
 
     describe Listing::AnnouncementDrop, 'methods' do
-      let(:drop)      { described_class.new(double) }
+      subject            { described_class.new(announcement) }
+      let(:announcement) { double(text: "Go to http://www.rubyonrails.org") }
 
       it '#url' do
-        expect(drop).to receive(:announcement_url).with(drop)
+        expect(subject).to receive(:announcement_url).with(subject)
 
-        drop.url
+        subject.url
+      end
+
+      it '#text' do
+        expect(subject.text).to eq("<p>Go to <a href=\"http://www.rubyonrails.org\">http://www.rubyonrails.org</a></p>")
       end
     end
   end
