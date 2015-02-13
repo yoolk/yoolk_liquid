@@ -32,7 +32,7 @@ module Yoolk
           append_li li(span gallery.name)     if gallery
         elsif request.announcements_url?
           append_li li_announcements
-          append_li li(span announcement.id)  if announcement
+          append_li li(span view.localize(announcement.updated_at, format: :long))  if announcement
         elsif request.products_url?
           append_li li_products
           append_li li_product_category  if product_category || product

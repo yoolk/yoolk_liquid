@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'therubyracer',          '~> 0.12.1'
   s.add_dependency 'coffee-rails',          '~> 4.0.1'
   s.add_dependency 'sass-rails',            '~> 4.0.2'
+  s.add_dependency 'rails_autolink',        '~> 1.1.6'
   s.add_dependency 'autoprefixer-rails',    '~> 3.1.0.20140911'
 
   # sandbox

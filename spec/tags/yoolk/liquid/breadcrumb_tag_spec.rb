@@ -10,7 +10,7 @@ module Yoolk
       let(:service)          { Yoolk::Sandbox::ServiceCatalog::Service.new(category: service_category, name: 'Rooftop') }
       let(:food_category)    { Yoolk::Sandbox::Menu::Category.new(id: 23, name: 'Ice-cream') }
       let(:food)             { Yoolk::Sandbox::Menu::Food.new(category: food_category, name: 'Florida Strawberry Ice Cream') }
-      let(:announcement)     { Yoolk::Sandbox::Listing::Announcement.new(id: 1237) }
+      let(:announcement)     { Yoolk::Sandbox::Listing::Announcement.new(id: 1237, updated_at: DateTime.new(2015, 2, 13, 18, 30)) }
 
       before do
         request_drop.context = context
@@ -89,7 +89,7 @@ module Yoolk
 
       it '#breadcrumb renders inside /announcements/announcement_id' do
         allow(request_drop).to receive(:announcements_url?).and_return(true)
-        announcement_list = '<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta content="1" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/announcements" itemprop="item"><span itemprop="name">Announcements</span></a><meta content="2" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span itemprop="name">1237</span><meta content="3" itemprop="position"></meta></li></ol>'
+        announcement_list = '<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta content="1" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/announcements" itemprop="item"><span itemprop="name">Announcements</span></a><meta content="2" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span itemprop="name">February 13, 2015 18:30</span><meta content="3" itemprop="position"></meta></li></ol>'
 
         expect_template_result('{% breadcrumb %}', announcement_list, { 'request' => request_drop, 'announcement' => announcement })
       end
