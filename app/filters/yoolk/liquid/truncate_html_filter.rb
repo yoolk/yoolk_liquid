@@ -11,10 +11,7 @@ module Yoolk
       # omission: '...'
       # word_boundary: /\S/
       def truncate_html_with_indifferent_access(html, options={})
-        return '' if html.nil?
-
-        html_string = TruncateHtml::HtmlString.new(html)
-        TruncateHtml::HtmlTruncator.new(html_string, options.with_indifferent_access).truncate.html_safe
+        truncate_html_without_indifferent_access(html, options.with_indifferent_access)
       end
       alias_method_chain :truncate_html, :indifferent_access
     end
