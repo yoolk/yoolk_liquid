@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/yoolk/liquid-rails.git
-  revision: 7470940af7bf9e19ff04a98b42af63b32ad9d897
+  revision: 7b26ad98a39424e0a86e44b7d2c4d6fc10a96eb6
   specs:
     liquid-rails (0.1.1)
       kaminari (~> 0.16.1)
