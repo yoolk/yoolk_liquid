@@ -13,11 +13,11 @@ require 'kaminari'
 require 'uglifier'
 require 'sass-rails'
 require 'therubyracer'
+require 'truncate_html'
 require 'rails_autolink'
 
 # sandbox
 require 'oj'
-require 'truncate_html'
 
 module Yoolk
   module Liquid
