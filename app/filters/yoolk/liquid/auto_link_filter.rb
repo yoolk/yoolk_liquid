@@ -3,10 +3,8 @@ module Yoolk
     module AutoLinkFilter
 
       # Truncate html content from the gem `rails_autolink`.
-      # @param [ Hash ] options
-      #
-      # default options:
-      # link: 'all'(default), 'urls', 'email_addresses'
+      # @param [ String ] text
+      # @param [ String ] link, 'all'(default), 'urls', 'email_addresses'
       def auto_link(text, link='all')
         options = {
           link:     link,
