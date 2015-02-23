@@ -48,7 +48,7 @@ module Yoolk
         person.gender  = "Male"
         person.position_level = { "name" => "CEO" }
 
-        expect(subject.photo.url(:medium)).to eq("/default-images/people/medium/male_ceo.png")
+        expect(subject.photo.url(:medium)).to eq("/yoolk/default-images/people/medium/male_ceo.png")
       end
 
     end
