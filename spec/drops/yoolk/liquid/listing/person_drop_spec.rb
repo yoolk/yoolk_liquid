@@ -46,7 +46,7 @@ module Yoolk
       it 'return photo default when object photo null' do
         person.photo   = nil
         person.gender  = "Male"
-        person.position_level = { "name": "CEO" }
+        person.position_level = { "name" => "CEO" }
 
         expect(subject.photo.url(:medium)).to eq("/default-images/people/medium/male_ceo.png")
       end
