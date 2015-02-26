@@ -12,13 +12,13 @@ module Yoolk
         attribute :description,      String
         attribute :is_responsive,    Boolean
         attribute :industries,       Array
-        attribute :pages,            Array
         attribute :colors,           Array
         attribute :created_at,       DateTime
         attribute :updated_at,       DateTime
 
         attribute :thumbnail,        Yoolk::Sandbox::Attachment
         attribute :cover_photo,      Yoolk::Sandbox::InstantWebsite::TemplateCoverPhoto
+        attribute :pages,            Array[Yoolk::Sandbox::InstantWebsite::TemplatePage]
       end
     end
   end
