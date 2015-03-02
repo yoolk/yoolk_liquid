@@ -6,6 +6,17 @@ module Yoolk
 
         belongs_to  :template_page,      with: 'Yoolk::Liquid::InstantWebsite::TemplatePage'
 
+        def name
+          page_name = object.template_page.name
+
+          if object.name =~ /(#{page_name})/
+            key = $1.downcase.gsub ' ', '_'
+            I18n.t("#{@context['request'].theme_name}.links.#{key}", default: page_name)
+          else
+            object.name
+          end
+        end
+
         def url
           page_name = template_page.name.parameterize.underscore
           page = case page_name
