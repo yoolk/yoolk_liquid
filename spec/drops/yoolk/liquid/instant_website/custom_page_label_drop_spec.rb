@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Yoolk
   module Liquid
-    describe InstantWebsite::CustomPageDrop do
+    describe InstantWebsite::CustomPageLabelDrop do
       it { should have_attribute(:id) }
       it { should have_attribute(:name) }
       it { should have_attribute(:created_at) }

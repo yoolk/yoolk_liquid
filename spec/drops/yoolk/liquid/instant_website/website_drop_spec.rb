@@ -17,7 +17,7 @@ module Yoolk
       it { should belongs_to(:favicon).with('Yoolk::Liquid::AttachmentDrop') }
       it { should belongs_to(:template).with('Yoolk::Liquid::InstantWebsite::TemplateDrop') }
       it { should have_many(:domains).with('Yoolk::Liquid::InstantWebsite::DomainDrop') }
-      it { should have_many(:custom_pages).with('Yoolk::Liquid::InstantWebsite::CustomPageDrop') }
+      it { should have_many(:custom_page_labels).with('Yoolk::Liquid::InstantWebsite::CustomPageLabelDrop') }
     end
 
     describe InstantWebsite::WebsiteDrop do
