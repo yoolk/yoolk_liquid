@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'uglifier',              '>= 1.3.0'
   s.add_dependency 'therubyracer',          '~> 0.12.1'
   s.add_dependency 'coffee-rails',          '~> 4.0.1'
-  s.add_dependency 'sass-rails',            '~> 4.0.2'
+  s.add_dependency 'sass-rails',            '~> 5.0.1'
   s.add_dependency 'rails_autolink',        '~> 1.1.6'
   s.add_dependency 'truncate_html',         '~> 0.9.3'
   s.add_dependency 'autoprefixer-rails',    '~> 3.1.0.20140911'
