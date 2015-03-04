@@ -9,7 +9,7 @@ module Yoolk
         def name
           page_name = object.template_page.name
 
-          if object.name =~ /(#{page_name})/
+          if object.name =~ /^(#{page_name})$/i
             key = $1.downcase.gsub ' ', '_'
             I18n.t("#{@context['request'].theme_name}.links.#{key}", default: page_name)
           else
