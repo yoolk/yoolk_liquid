@@ -1,0 +1,98 @@
+en:
+  default_pages_title: &default_pages_title
+    home:                       "หน้าแรก"
+    products:                   "สินค้า"
+    services:                   "การให้บริการ"
+    menu:                       "เมนู"
+    photos:                     "รูปภาพหลายรูป"
+    galleries:                  "รวมอัลบั้มภาพ"
+    about_us:                   "เกี่ยวกับเรา"
+    contact_us:                 "ติดต่อเรา"
+    reservation:                "สำรองที่นั่ง"
+    feedback:                   "ผลตอบรับ"
+    announcement:               "Announcement"
+    announcements:              "ประกาศ"
+    videos:                     "Videos"
+    attachments:                "Downloads"
+    links:                      "Links"
+    people:                     "บุคคลากร"
+    map:                        "แผนที่"
+    brochures:                  "โบรชัวร์"
+
+  yoolk:
+    form:
+      messages:
+        invalid:                "ไม่สามารถเว้นว่างได้"
+        invalid_email:          "อีเมลไม่ถูกต้อง"
+
+  seo:
+    <<: *default_pages_title
+
+    in:                         "ใน"
+    is_located_in:              "ตั้งอยู่ใน"
+    and_classified_as:          "และจัดเป็น"
+    brochures_of:               "โบรชัวร์ของ"
+    contact_info:               "สำหรับข้อมูลเพิ่มเติม กรุณาติดต่อเราโดยตรง"
+    visit_address:              "เยี่ยมชมเราได้ตามที่อยู่นี้"
+    photo_gallery_of:           "อัลบั้มรูปภาพของ"
+    by:                         "โดย"
+    announcements_on:           "ลงประกาศ"
+    feedback_quote:             "เราพร้อมรับฟังทุกความคิดเห็นจากคุณ ทุกความคิดเห็นของคุณมีค่า เพื่อใช้ในการพัฒนา ปรับปรุง และแก้ไขธุรกิจของเราต่อไป"
+
+  breadcrumb:
+    <<: *default_pages_title
+
+  links:
+    <<: *default_pages_title
+    more:                       "More"
+  catalogues:
+    featured_products:          "ลักษณะเฉพาะของสินค้า"
+    latest_products:            "Latest Products"
+    new_products:               "New Products"
+    recent_products:            "Recent Products"
+    recent_images:              "Recent Images"
+    all_products:               "สินค้าทั้งหมด"
+    new_foods:                  "New Foods"
+    brand:                      "ยี่ห้อ"
+    category:                   "หมวดหมู่"
+    categories:                 "รวมหมวดหมู่"
+    description:                "รายละเอียด"
+    download_catalog:           "ดาวน์โหลด แคตตาล๊อค"
+
+  people:
+    directors:                  "Directors"
+    managers:                   "Managers"
+    employees:                  "Employees"
+    our_members:                "Our Members"
+
+  attachments:
+    name:                       "ชื่อ"
+    file_size:                  "File Size"
+    updated_at:                 "Updated At"
+
+  reservation:
+    check_in:                   "ลงทะเบียนเข้า"
+    check_out:                  "ลงทะเบียนออก"
+    comment:                    "ความคิดเห็น"
+    double:                     "ห้องเตียงคู่"
+    guests:                     "แขก"
+    room_types:                 "ประเภทของห้องพัก"
+    send_success:               "ขอบคุณที่สำรองที่พักกับเรา"
+    single:                     "ห้องเตียงเดียว"
+    special_request:            "การขอบริการพิเศษ นอกเหนือจากที่มี"
+    triple:                     "ห้องสำหรับ 3 คน"
+
+  global:
+    business_view:              "มุมมองธุรกิจ"
+    business_hours:             "Business Hours"
+    all_photos:                 "All Photos"
+    follow_us:                  "Follow Us"
+    call_us:                    "Call Us"
+    mail_us:                    "Mail Us"
+    my_office:                  "ออฟฟิศ"
+    sign_in:                    "ลงทะเบียนเข้า"
+    read_more:                  "อ่านรายละเอียดเพิ่มเติม"
+    open:                       "Open"
+    closed:                     "Closed"
+    today:                      "Today"
+    copyright:                  "©สงวนลิขสิทธิ์%{year}. สงวนลิขสิทธิ์"

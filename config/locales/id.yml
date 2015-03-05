@@ -1,0 +1,98 @@
+en:
+  default_pages_title: &default_pages_title
+    home:                       "Halaman Utama"
+    products:                   "Produk"
+    services:                   "Layanan"
+    menu:                       "Menu"
+    photos:                     "Photos"
+    galleries:                  "Galeri"
+    about_us:                   "Tentang Kami"
+    contact_us:                 "Hubungi Kami"
+    reservation:                "Reservasi"
+    feedback:                   "Tanggapan"
+    announcement:               "Announcement"
+    announcements:              "Pengumuman"
+    videos:                     "Videos"
+    attachments:                "Downloads"
+    links:                      "Links"
+    people:                     "Management"
+    map:                        "Peta"
+    brochures:                  "Brosur"
+
+  yoolk:
+    form:
+      messages:
+        invalid:                "Wajib diisi"
+        invalid_email:          "Email tidak valid"
+
+  seo:
+    <<: *default_pages_title
+
+    in:                         "dalam"
+    is_located_in:              "Lokasi"
+    and_classified_as:          "dan diklasifikasikan sebagai"
+    brochures_of:               "Brosur dari"
+    contact_info:               "silahkan menghubungi kami untuk informasi lebih lanjut"
+    visit_address:              "atau kunjungi kami di alamat berikut"
+    photo_gallery_of:           "Galeri Foto dari"
+    by:                         "oleh"
+    announcements_on:           "Pengumuman aktif"
+    feedback_quote:             "Terimakasih Atas Saran dan Masukan Anda. Saran dan Masukan Anda Sangat Berharga Untuk Meningkatkan Kualitas Pelayanan Kami"
+
+  breadcrumb:
+    <<: *default_pages_title
+
+  links:
+    <<: *default_pages_title
+    more:                       "More"
+  catalogues:
+    featured_products:          "Produk utama"
+    latest_products:            "Latest Products"
+    new_products:               "New Products"
+    recent_products:            "Recent Products"
+    recent_images:              "Recent Images"
+    all_products:               "semua Produk"
+    new_foods:                  "New Foods"
+    brand:                      "Merek"
+    category:                   "Kategori"
+    categories:                 "Kategori"
+    description:                "Deskripsi"
+    download_catalog:           "Unduh katalog"
+
+  people:
+    directors:                  "Directors"
+    managers:                   "Managers"
+    employees:                  "Employees"
+    our_members:                "Our Members"
+
+  attachments:
+    name:                       "Nama"
+    file_size:                  "File Size"
+    updated_at:                 "Updated At"
+
+  reservation:
+    check_in:                   "Check-in"
+    check_out:                  "Check-out"
+    comment:                    "Komentar"
+    double:                     "Double"
+    guests:                     "Tamu"
+    room_types:                 "Jenis kamar"
+    send_success:               "Terima kasih atas pemesanan Anda"
+    single:                     "Single"
+    special_request:            "Permintaan khusus"
+    triple:                     "Triple"
+
+  global:
+    business_view:              "Gambaran usaha"
+    business_hours:             "Business Hours"
+    all_photos:                 "All Photos"
+    follow_us:                  "Follow Us"
+    call_us:                    "Call Us"
+    mail_us:                    "Mail Us"
+    my_office:                  "Kantor Saya"
+    sign_in:                    "Masuk"
+    read_more:                  "Selengkapnya"
+    open:                       "Open"
+    closed:                     "Closed"
+    today:                      "Today"
+    copyright:                  "Hak cipta © %{year}. Semua Hak Cipta dilindungi"

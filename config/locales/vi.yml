@@ -1,0 +1,98 @@
+en:
+  default_pages_title: &default_pages_title
+    home:                       "Trang chủ"
+    products:                   "Sản phẩm"
+    services:                   "Dịch vụ"
+    menu:                       "Thực Đơn"
+    photos:                     "Photos"
+    galleries:                  "Thư viện ảnh"
+    about_us:                   "Giới thiệu"
+    contact_us:                 "Liên hệ"
+    reservation:                "Đặt phòng"
+    feedback:                   "Phản hồi"
+    announcement:               "Announcement"
+    announcements:              "Thông báo"
+    videos:                     "Videos"
+    attachments:                "Downloads"
+    links:                      "Links"
+    people:                     "Thành viên"
+    map:                        "Bản đồ"
+    brochures:                  "Brochures"
+
+  yoolk:
+    form:
+      messages:
+        invalid:                "Bạn không thể để trống thông tin này"
+        invalid_email:          "Email không hợp lệ"
+
+  seo:
+    <<: *default_pages_title
+
+    in:                         "trong"
+    is_located_in:              "Tọa lạc ở"
+    and_classified_as:          "Phân loại như là"
+    brochures_of:               "Brochures of"
+    contact_info:               "Để biết thêm chi tiết, xin vui lòng liên hệ trực tiếp với chúng tôi"
+    visit_address:              "hoặc ghé thăm chúng tôi theo địa chỉ này"
+    photo_gallery_of:           "Bộ sưu tập ảnh của"
+    by:                         "Bởi"
+    announcements_on:           "Thông báo về"
+    feedback_quote:             "Những phản hồi từ bạn giúp chúng tôi cải thiện chất lượng dịch vụ tốt hơn"
+
+  breadcrumb:
+    <<: *default_pages_title
+
+  links:
+    <<: *default_pages_title
+    more:                       "More"
+  catalogues:
+    featured_products:          "Tính năng sản phẩm"
+    latest_products:            "Latest Products"
+    new_products:               "New Products"
+    recent_products:            "Recent Products"
+    recent_images:              "Recent Images"
+    all_products:               "Tất cả sản phẩm"
+    new_foods:                  "New Foods"
+    brand:                      "Thương hiệu"
+    category:                   "Category"
+    categories:                 "Categories"
+    description:                "Mô tả chi tiết"
+    download_catalog:           "Tải catalog"
+
+  people:
+    directors:                  "Directors"
+    managers:                   "Managers"
+    employees:                  "Employees"
+    our_members:                "Our Members"
+
+  attachments:
+    name:                       "Tên"
+    file_size:                  "File Size"
+    updated_at:                 "Updated At"
+
+  reservation:
+    check_in:                   "Nhận phòng"
+    check_out:                  "Trả phòng"
+    comment:                    "Bình luận"
+    double:                     "Phòng đôi"
+    guests:                     "Khách"
+    room_types:                 "Loại phòng"
+    send_success:               "Cám ơn bạn đã đăng ký đặt phòng."
+    single:                     "Phòng đơn"
+    special_request:            "Yêu cầu đặc biệt "
+    triple:                     "Phòng ba"
+
+  global:
+    business_view:              "Xem Doanh Nghiệp"
+    business_hours:             "Business Hours"
+    all_photos:                 "All Photos"
+    follow_us:                  "Follow Us"
+    call_us:                    "Call Us"
+    mail_us:                    "Mail Us"
+    my_office:                  "Văn phòng của tôi"
+    sign_in:                    "Đăng nhập"
+    read_more:                  "Xem thêm"
+    open:                       "Open"
+    closed:                     "Closed"
+    today:                      "Today"
+    copyright:                  "Copyright © %{year}. All Rights Reserved"

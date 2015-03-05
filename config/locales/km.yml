@@ -1,45 +1,98 @@
 km:
+  default_pages_title: &default_pages_title
+    home:                       "ទំព័រដើម"
+    products:                   "ផលិតផល"
+    services:                   "សេវាកម្ម"
+    menu:                       "ម៉ឺនុយ"
+    photos:                     "រូបថត"
+    galleries:                  "រូបថត"
+    about_us:                   "អំពីយើង"
+    contact_us:                 "ទំនាក់ទំនងយើង"
+    reservation:                "ការកក់"
+    feedback:                   "មតិអ្នកប្រើ"
+    announcement:               "សេចក្តីប្រកាស"
+    announcements:              "សេចក្តីប្រកាស"
+    videos:                     "Videos"
+    attachments:                "Downloads"
+    links:                      "Links"
+    people:                     "មនុស្ស"
+    map:                        "ផែនទី"
+    brochures:                  "ខិត្តប័ណ្ណ"
+
   yoolk:
     form:
       messages:
-        invalid:            "You can't leave this empty"
-        invalid_email:      "Email is invalid"
+        invalid:                "អ្នកមិនអាចទុកចន្លោះទំនេរ"
+        invalid_email:          "អ៊ីម៉ែលមិនត្រឹមត្រូវ"
+
   seo:
-    about_us:               "About Us"
-    announcements:          "Announcements"
-    brochures:              "Brochures"
-    contact_us:             "Contact Us"
-    feedback:               "Feedback"
-    galleries:              "Galleries"
-    in:                     "in"
-    is_located_in:          "is located in"
-    and_classified_as:      "and classified as"
-    brochures_of:           "Brochures of"
-    contact_info:           "For more information, please contact us directly by"
-    visit_address:          "or visit us by this address"
-    photo_gallery_of:       "Photo Gallery of"
-    by:                     "by"
-    announcements_on:       "Announcement on"
-    feedback_quote:         "We'd love to hear what your thoughts. Your valuable feedback will help us to improve and upgrade our business."
-    links:                  'Links'
-    videos:                 'Videos'
-    attachments:            'Downloads'
+    <<: *default_pages_title
+
+    in:                         "ក្នុង"
+    is_located_in:              "មានទីតាំងក្នុង"
+    and_classified_as:          "ចាត់ថ្នាក់ជា"
+    brochures_of:               "រូបភាពផ្សព្វផ្សាយនៃ"
+    contact_info:               "សំរាប់់ព័ត៌មានបន្ថែម សូមទំនាក់ទំនងមកយើងខ្ញុំដោយផ្ទាល់"
+    visit_address:              "ឬអាចចូលទំព័រយើងខ្ញុំ តាមអាស័យដ្ឋាននេះ"
+    photo_gallery_of:           "បណ្តុំ​រូបភាពនៃ"
+    by:                         "ដោយ"
+    announcements_on:           "សេចក្តីប្រកាសលើ"
+    feedback_quote:             "យើងខ្ញុំពេញចិត្តនឹងអ្វីដែលជាគំនិតរបស់អ្នក។ មតិដ៏មានតម្លៃរបស់អ្នក នឹងជួយអោយអាជីវកម្មយើងខ្ញុំប្រសើរឡើង។"
+
   breadcrumb:
-    home:                   'ទំព័រដើម'
-    about_us:               'អំពីយើង'
-    contact_us:             'ទំនាក់ទំនងយើង'
-    feedback:               'មតិអ្នកប្រើ'
-    announcement:           'សេចក្តីប្រកាស'
-    announcements:          'សេចក្តីប្រកាស'
-    brochures:              'ខិត្តប័ណ្ណ'
-    photos:                 'រូបថត'
-    map:                    'ផែនទី'
-    menu:                   'ម៉ឺនុយ'
-    people:                 'មនុស្ស'
-    products:               'ផលិតផល'
-    services:               'សេវាកម្ម'
-    reservation:            'ការកក់'
-    galleries:              'រូបថត'
-    links:                  'Links'
-    videos:                 'Videos'
-    attachments:            'Downloads'
+    <<: *default_pages_title
+
+  links:
+    <<: *default_pages_title
+    more:                       "More"
+  catalogues:
+    featured_products:          "ផលិតផលពិសេស"
+    latest_products:            "Latest Products"
+    new_products:               "New Products"
+    recent_products:            "Recent Products"
+    recent_images:              "Recent Images"
+    all_products:               "គ្រប់​ផលិតផល"
+    new_foods:                  "New Foods"
+    brand:                      "ម៉ាកផលិតផល"
+    category:                   "សេវាកម្ម"
+    categories:                 "បណ្តាសេវាកម្ម"
+    description:                "ពីពណ៌នា"
+    download_catalog:           "ទាញយករូបភាព"
+
+  people:
+    directors:                  "Directors"
+    managers:                   "Managers"
+    employees:                  "Employees"
+    our_members:                "Our Members"
+
+  attachments:
+    name:                       "ឈ្មោះ"
+    file_size:                  "File Size"
+    updated_at:                 "Updated At"
+
+  reservation:
+    check_in:                   "ចូល"
+    check_out:                  "ចេញ"
+    comment:                    "អធិប្បាយ"
+    double:                     "គ្រែ២"
+    guests:                     "ភ្ញៀវ"
+    room_types:                 "ប្រភេទបន្ទប់"
+    send_success:               "សូមអរគុណអ្នកសំរាប់ការដាក់ស្នើនូវសេវាបំរើ។"
+    single:                     "គ្រែ១"
+    special_request:            "សំណូមពរពិសេស"
+    triple:                     "គ្រែ៣"
+
+  global:
+    business_view:              "មើលឈ្មោះ"
+    business_hours:             "Business Hours"
+    all_photos:                 "All Photos"
+    follow_us:                  "Follow Us"
+    call_us:                    "Call Us"
+    mail_us:                    "Mail Us"
+    my_office:                  "ការិយាល័យ"
+    sign_in:                    "ចូល"
+    read_more:                  "អានបន្ថែម"
+    open:                       "Open"
+    closed:                     "Closed"
+    today:                      "Today"
+    copyright:                  "រក្សា​សិទិ្ធ © %{year}. រក្សា​​សិទ្ធិ​​កែប្រែ​គ្រប់​យ៉ាង"
