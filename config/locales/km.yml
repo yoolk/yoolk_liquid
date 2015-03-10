@@ -58,6 +58,15 @@ km:
     categories:                 "បណ្តាសេវាកម្ម"
     description:                "ពីពណ៌នា"
     download_catalog:           "ទាញយករូបភាព"
+    all_foods:                  "All Foods"
+    foods_from_chef:            "អាហារពីចុងភៅ"
+    chef_recommended:           "ណែនាំរកមេចុងភៅ"
+    foods:                      "អាហារ"
+    food_details:               "លំអិតលើម្ហូបអាហារ"
+    menu_details:               "លំអិតមុខម្ហូប"
+    our_products:               "ផលិិតផលយើងខ្ញុំ"
+    our_services:               "សេវាកម្មយើងខ្ញុំ"
+    our_menu:                   "បញ្ជីរាយមុខម្ហូប"
 
   people:
     directors:                  "Directors"
@@ -82,7 +91,17 @@ km:
     special_request:            "សំណូមពរពិសេស"
     triple:                     "គ្រែ៣"
 
+  contact_us:
+    reset:                      "កំណត់ឡើងវិញ"
+    submit:                     "បញ្ជូន"
+    send:                       "Send"
+    name:                       "ឈ្មោះ"
+    phone:                      "ទូរស័ព្ទ"
+    "*email":                   "*អ៊ីម៉េល"
+    "*message":                 "*សារ"
+
   global:
+    all:                        "ទាំងអស់"
     business_view:              "មើលឈ្មោះ"
     business_hours:             "Business Hours"
     all_photos:                 "All Photos"
@@ -96,3 +115,5 @@ km:
     closed:                     "Closed"
     today:                      "Today"
     copyright:                  "រក្សា​សិទិ្ធ © %{year}. រក្សា​​សិទ្ធិ​​កែប្រែ​គ្រប់​យ៉ាង"
+    activities:                 "សកម្មភាព"
+    price:                      "Price"

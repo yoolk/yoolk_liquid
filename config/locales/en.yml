@@ -58,6 +58,15 @@ en:
     categories:                 "Categories"
     description:                "Description"
     download_catalog:           "Download Catalogue"
+    all_foods:                  "All Foods"
+    foods_from_chef:            "Foods From Our Chef"
+    chef_recommended:           "Chef Recommended"
+    foods:                      "Foods"
+    food_details:               "Food Details"
+    menu_details:               "Menu Details"
+    our_products:               "Our Products"
+    our_services:               "Our Services"
+    our_menu:                   "Our Menu"
 
   people:
     directors:                  "Directors"
@@ -82,7 +91,17 @@ en:
     special_request:            "Special Request"
     triple:                     "Triple"
 
+  contact_us:
+    reset:                      "Reset"
+    submit:                     "Submit"
+    send:                       "Send"
+    name:                       "Name"
+    phone:                      "Phone"
+    "*email":                   "*Email"
+    "*message":                 "*Message"
+
   global:
+    all:                        "All"
     business_view:              "Business View"
     business_hours:             "Business Hours"
     all_photos:                 "All Photos"
@@ -96,3 +115,5 @@ en:
     closed:                     "Closed"
     today:                      "Today"
     copyright:                  "Copyright &copy; %{year}. All Rights Reserved"
+    activities:                 "Activities"
+    price:                      "Price"

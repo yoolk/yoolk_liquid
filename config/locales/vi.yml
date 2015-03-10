@@ -58,6 +58,15 @@ en:
     categories:                 "Categories"
     description:                "Mô tả chi tiết"
     download_catalog:           "Tải catalog"
+    all_foods:                  "All Foods"
+    foods_from_chef:            "Món Ngon"
+    chef_recommended:           "Giới Thiệu Món Ngon"
+    foods:                      "Món Ăn"
+    food_details:               "Chi Tiết Món Ăn"
+    menu_details:               "Chi Tiết Thực Đơn"
+    our_products:               "Sản phẩm"
+    our_services:               "Dịch vụ"
+    our_menu:                   "Thực Đơn"
 
   people:
     directors:                  "Directors"
@@ -82,7 +91,17 @@ en:
     special_request:            "Yêu cầu đặc biệt "
     triple:                     "Phòng ba"
 
+  contact_us:
+    reset:                      "Thiết Lập Lại"
+    submit:                     "Hoàn Tất"
+    send:                       "Send"
+    name:                       "Tên"
+    phone:                      "Điện thoại"
+    "*email":                   "*Email"
+    "*message":                 "*Tin Nhắn"
+
   global:
+    all:                        "Tất Cả"
     business_view:              "Xem Doanh Nghiệp"
     business_hours:             "Business Hours"
     all_photos:                 "All Photos"
@@ -96,3 +115,5 @@ en:
     closed:                     "Closed"
     today:                      "Today"
     copyright:                  "Copyright © %{year}. All Rights Reserved"
+    activities:                 "Kích Hoạt"
+    price:                      "Price"

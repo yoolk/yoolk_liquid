@@ -58,6 +58,15 @@ en:
     categories:                 "Kategori"
     description:                "Deskripsi"
     download_catalog:           "Unduh katalog"
+    all_foods:                  "All Foods"
+    foods_from_chef:            "Makanan Dari Chef kami"
+    chef_recommended:           "rekomendasi chef"
+    foods:                      "makanan"
+    food_details:               "Rincian Makanan"
+    menu_details:               "Rincian menu"
+    our_products:               "Produk kami"
+    our_services:               "Layanan Kami"
+    our_menu:                   "menu kami"
 
   people:
     directors:                  "Directors"
@@ -82,7 +91,17 @@ en:
     special_request:            "Permintaan khusus"
     triple:                     "Triple"
 
+  contact_us:
+    reset:                      "Atur ulang"
+    submit:                     "mengajukan"
+    send:                       "Send"
+    name:                       "Nama"
+    phone:                      "Telepon"
+    "*email":                   "*Email"
+    "*message":                 "*pesan"
+
   global:
+    all:                        "semua"
     business_view:              "Gambaran usaha"
     business_hours:             "Business Hours"
     all_photos:                 "All Photos"
@@ -96,3 +115,5 @@ en:
     closed:                     "Closed"
     today:                      "Today"
     copyright:                  "Hak cipta © %{year}. Semua Hak Cipta dilindungi"
+    activities:                 "kegiatan"
+    price:                      "Price"

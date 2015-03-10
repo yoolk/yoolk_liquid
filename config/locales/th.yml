@@ -58,6 +58,15 @@ en:
     categories:                 "รวมหมวดหมู่"
     description:                "รายละเอียด"
     download_catalog:           "ดาวน์โหลด แคตตาล๊อค"
+    all_foods:                  "All Foods"
+    foods_from_chef:            "รูายการอาหารเชพของเรา"
+    chef_recommended:           "อาหารแนะนำ จากเชฟ"
+    foods:                      "ราบการอาหาร"
+    food_details:               "รายละเอียดของอาหาร"
+    menu_details:               "รายละเอียดเมนู"
+    our_products:               "สินค้าของเรา"
+    our_services:               "บริการของเรา"
+    our_menu:                   "เมนูของเรา"
 
   people:
     directors:                  "Directors"
@@ -82,7 +91,17 @@ en:
     special_request:            "การขอบริการพิเศษ นอกเหนือจากที่มี"
     triple:                     "ห้องสำหรับ 3 คน"
 
+  contact_us:
+    reset:                      "ตั้งใหม่"
+    submit:                     "ยืนยัน"
+    send:                       "Send"
+    name:                       "ชื่อ"
+    phone:                      "เบอร์โทรศัพท์"
+    "*email":                   "*อีเมล"
+    "*message":                 "*ข้อความ"
+
   global:
+    all:                        "ทั้งหมด"
     business_view:              "มุมมองธุรกิจ"
     business_hours:             "Business Hours"
     all_photos:                 "All Photos"
@@ -96,3 +115,5 @@ en:
     closed:                     "Closed"
     today:                      "Today"
     copyright:                  "©สงวนลิขสิทธิ์%{year}. สงวนลิขสิทธิ์"
+    activities:                 "กิจกรรม"
+    price:                      "Price"
