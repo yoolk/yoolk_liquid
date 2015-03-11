@@ -131,6 +131,12 @@ module Yoolk
           expect(subject.host).to eq('localhost.com')
         end
       end
+
+      it '#query_parameters' do
+        allow(subject.send(:request)).to receive(:query_parameters).and_return({'theme' => 'sample'})
+
+        expect(subject.query_parameters).to eq({'theme' => 'sample'})
+      end
     end
   end
 end

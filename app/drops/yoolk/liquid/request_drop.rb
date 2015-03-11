@@ -126,6 +126,10 @@ module Yoolk
         controller.controller_path.split('/')[0].gsub('_', '-')
       end
 
+      def query_parameters
+        request.query_parameters
+      end
+
       private
 
         def action_name
