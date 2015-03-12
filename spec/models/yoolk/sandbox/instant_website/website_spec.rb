@@ -51,8 +51,8 @@ module Yoolk
         expect(described_class).to have_attribute(:domains).of_type(Array, member_type: Yoolk::Sandbox::InstantWebsite::Domain)
       end
 
-      it 'has :custom_page_labels attribute' do
-        expect(described_class).to have_attribute(:custom_page_labels).of_type(Array, member_type: Yoolk::Sandbox::InstantWebsite::CustomPageLabel)
+      it 'has :page_labels attribute' do
+        expect(described_class).to have_attribute(:page_labels).of_type(Array, member_type: Yoolk::Sandbox::InstantWebsite::PageLabel)
       end
 
       it { should delegate(:name).to(:template).with_prefix }

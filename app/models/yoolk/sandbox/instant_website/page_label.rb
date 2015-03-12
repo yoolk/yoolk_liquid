@@ -1,7 +1,7 @@
 module Yoolk
   module Sandbox
     module InstantWebsite
-      class CustomPageLabel < Yoolk::Sandbox::Base
+      class PageLabel < Yoolk::Sandbox::Base
 
         attribute :id,                    String
         attribute :name,                  String
