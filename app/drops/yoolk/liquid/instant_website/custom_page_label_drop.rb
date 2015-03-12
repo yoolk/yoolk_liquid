@@ -18,16 +18,16 @@ module Yoolk
         end
 
         def url
-          page_name = template_page.name.parameterize.underscore
+          # page_name = template_page.name.parameterize.underscore
           page = case page_name
-                 when "menu", "reservation", "feedback" then "#{page_name}_index"
+                 when "menu", "reservation", "feedback", "map" then "#{page_name}_index"
                  else page_name end
 
           eval "view.#{page}_path"
         end
 
         def show?
-          page_name = template_page.name.parameterize.underscore
+          # page_name = template_page.name.parameterize.underscore
           collection = case page_name
                  when "brochures" then "artworks"
                  when "about_us"  then "catalog_items"
@@ -42,9 +42,18 @@ module Yoolk
           end
         end
 
+        def active?
+          eval "@context['request.#{page_name}_url?']"
+        end
+
         def view
           @context.registers[:view]
         end
+        private
+
+          def page_name
+            @page_name ||= template_page.name.parameterize.underscore
+          end
       end
     end
   end
