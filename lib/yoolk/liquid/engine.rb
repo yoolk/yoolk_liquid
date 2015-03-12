@@ -7,6 +7,7 @@ require 'virtus'
 require 'themes_on_rails'
 require 'liquid-rails'
 require 'assets-rails'
+require 'bower-rails'
 
 # views
 require 'kaminari'
