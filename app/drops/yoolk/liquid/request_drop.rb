@@ -123,7 +123,7 @@ module Yoolk
       end
 
       def css_class_name
-        controller.controller_path.split('/')[0].gsub('_', '-')
+        "#{ controller.controller_path.split('/')[0].gsub('_', '-') }-#{ action_name }"
       end
 
       private
