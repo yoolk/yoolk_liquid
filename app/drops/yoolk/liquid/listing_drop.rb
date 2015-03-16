@@ -68,6 +68,10 @@ module Yoolk
       belongs_to  :portal,                class_name: 'Yoolk::Liquid::PortalDrop'
       belongs_to  :instant_website,       class_name: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
 
+
+      delegate :email?, :telephone?,
+               to: :object
+
       def facebook_page_url
         facebook_page.try(:url)
       end
@@ -95,6 +99,10 @@ module Yoolk
         end
 
         summary
+      end
+
+      def show_map?
+        show_map_on_web && lat.present? && long.present?
       end
     end
   end
