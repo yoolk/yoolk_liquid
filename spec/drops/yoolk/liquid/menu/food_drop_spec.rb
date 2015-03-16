@@ -6,6 +6,7 @@ module Yoolk
       describe FoodDrop, 'model' do
         it { should have_attribute(:id) }
         it { should have_attribute(:name) }
+        it { should have_attribute(:price) }
         it { should have_attribute(:description) }
         it { should have_attribute(:properties) }
         it { should have_attribute(:delivery) }
