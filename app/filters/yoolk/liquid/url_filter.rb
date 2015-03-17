@@ -35,22 +35,25 @@ module Yoolk
         controller.announcement_path(announcement)
       end
 
-      # Returns the attachment of any attachment objects
+      # Returns the attachment (url, width, height) of any attachment objects
       # Usage:
       # For catalog_item, brochure, announcement, you don't need to pass attachment object.
       # {{ catalog_item | attachment_url: "medium" }}
       # {{ product.photos[0] | attachment_url: "medium" }}
-      def attachment_url(object, style)
-        return nil if object.nil?
 
-        if object.respond_to?(:image)
-          image = object.image
+      %w(url width height).each do |meta|
+        define_method("attachment_#{meta}") do |object, style|
+          return nil if object.nil?
 
-          if image.present? && image.is_a?(Yoolk::Liquid::AttachmentDrop)
-            image.url(style)
+          if object.respond_to?(:image)
+            image = object.image
+
+            if image.present? && image.is_a?(Yoolk::Liquid::AttachmentDrop)
+              image.send(meta, style)
+            end
+          else
+            object.send(meta, style)
           end
-        else
-          object.url(style)
         end
       end
 
