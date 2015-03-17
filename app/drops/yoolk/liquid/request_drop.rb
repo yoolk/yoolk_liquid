@@ -52,6 +52,10 @@ module Yoolk
         products_path
       end
 
+      def products_all?
+        products_path == request.fullpath
+      end
+
       def services_url
         services_path
       end
