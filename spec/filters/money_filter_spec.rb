@@ -8,7 +8,7 @@ module Yoolk
       end
 
       it "#money_with_currency" do
-        expect_template_result("{{ 12.04 | money_with_currency }}", "$12.04 USD")
+        expect_template_result("{{ 12.04 | money_with_currency }}", "USD 12.04")
       end
     end
   end

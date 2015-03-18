@@ -8,7 +8,7 @@ module Yoolk
 
       def money_with_currency(money)
         return '' if money.nil?
-        sprintf("$%.2f USD", money)
+        sprintf("USD %.2f", money)
       end
     end
   end
