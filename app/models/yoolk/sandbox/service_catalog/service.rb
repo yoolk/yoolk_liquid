@@ -5,6 +5,7 @@ module Yoolk
 
         attribute :id,            Integer
         attribute :name,          String
+        attribute :price,         Float
         attribute :description,   String
         attribute :properties,    Array
         attribute :created_at,    DateTime
