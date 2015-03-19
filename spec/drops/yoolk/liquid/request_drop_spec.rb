@@ -85,6 +85,16 @@ module Yoolk
         expect(subject.theme_color).to eq('gray')
       end
 
+      context '#products_all?' do
+        it 'return true if request to products_path' do
+          allow(subject.send(:request)).to receive(:fullpath).and_return('/products')
+          expect(subject.products_all?).to eq(true)
+        end
+        it 'return false unless request to products_path' do
+          expect(subject.products_all?).to eq(false)
+        end
+      end
+
       context '#js_class_name' do
         it 'action_name is other than #create and #update' do
           allow(subject).to receive(:action_name).and_return('index')
