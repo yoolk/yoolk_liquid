@@ -3,12 +3,12 @@ module Yoolk
     module MoneyFilter
       def money(money)
         return '' if money.nil?
-        sprintf("$%.2f", money)
+        sprintf("$ %.2f", money)
       end
 
       def money_with_currency(money)
         return '' if money.nil?
-        sprintf("USD %.2f", money)
+        sprintf("$ %.2f USD", money)
       end
     end
   end
