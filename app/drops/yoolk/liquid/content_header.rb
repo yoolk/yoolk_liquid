@@ -43,7 +43,7 @@ module Yoolk
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-          ga('create', '#{google_analytics_key}', 'auto');
+          ga('create', '#{google_analytics_key}', '#{request.host}');
           ga('send', 'pageview');
 
           </script>
@@ -95,8 +95,12 @@ module Yoolk
 
       private
 
+        def request
+          view_context.request
+        end
+
         def preview_mode?
-          view_context.request.host.in?(['iw.yoolk.com', 'iwstaging.yoolk.com', 'localhost']) && view_context.request.params[:alias_id].present?
+          request.host.in?(['iw.yoolk.com', 'iwstaging.yoolk.com', 'localhost']) && request.params[:alias_id].present?
         end
 
         def google_analytics_key
