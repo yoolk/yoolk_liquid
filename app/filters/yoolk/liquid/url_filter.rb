@@ -171,7 +171,7 @@ module Yoolk
         services_path == request.fullpath
       end
 
-      def menu_all?
+      def foods_all?
         menu_index_path == request.fullpath
       end
 

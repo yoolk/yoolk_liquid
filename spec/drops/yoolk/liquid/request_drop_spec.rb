@@ -105,13 +105,13 @@ module Yoolk
         end
       end
 
-      context '#menu_all?' do
+      context '#foods_all?' do
         it 'return true if request to menu_index_path' do
           allow(subject.send(:request)).to receive(:fullpath).and_return('/menu')
-          expect(subject.menu_all?).to eq(true)
+          expect(subject.foods_all?).to eq(true)
         end
         it 'return false unless request to menu_index_path' do
-          expect(subject.menu_all?).to eq(false)
+          expect(subject.foods_all?).to eq(false)
         end
       end
 
