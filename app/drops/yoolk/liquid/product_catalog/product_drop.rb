@@ -2,7 +2,7 @@ module Yoolk
   module Liquid
     module ProductCatalog
       class ProductDrop < BaseDrop
-        attributes  :id, :name, :description, :delivery, :features, :brand, :to_param,
+        attributes  :id, :name, :price, :description, :delivery, :features, :brand, :to_param,
                     :created_at, :updated_at
 
         belongs_to  :category,  class_name: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'

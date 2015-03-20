@@ -1,0 +1,120 @@
+id:
+  default_pages_title: &default_pages_title
+    home:                       "Halaman Utama"
+    products:                   "Produk"
+    services:                   "Layanan"
+    menu:                       "Menu"
+    photos:                     "Photos"
+    galleries:                  "Galeri"
+    about_us:                   "Tentang Kami"
+    contact_us:                 "Hubungi Kami"
+    reservation:                "Reservasi"
+    feedback:                   "Tanggapan"
+    announcement:               "Announcement"
+    announcements:              "Pengumuman"
+    videos:                     "Videos"
+    attachments:                "Download"
+    links:                      "Links"
+    people:                     "Management"
+    map:                        "Peta"
+    brochures:                  "Brosur"
+
+  yoolk:
+    form:
+      messages:
+        invalid:                "Wajib diisi"
+        invalid_email:          "Email tidak valid"
+
+  seo:
+    <<: *default_pages_title
+
+    in:                         "dalam"
+    is_located_in:              "Lokasi"
+    and_classified_as:          "dan diklasifikasikan sebagai"
+    brochures_of:               "Brosur dari"
+    contact_info:               "silahkan menghubungi kami untuk informasi lebih lanjut"
+    visit_address:              "atau kunjungi kami di alamat berikut"
+    photo_gallery_of:           "Galeri Foto dari"
+    by:                         "oleh"
+    announcements_on:           "Pengumuman aktif"
+    feedback_quote:             "Terimakasih Atas Saran dan Masukan Anda. Saran dan Masukan Anda Sangat Berharga Untuk Meningkatkan Kualitas Pelayanan Kami"
+
+  breadcrumb:
+    <<: *default_pages_title
+
+  links:
+    <<: *default_pages_title
+    more:                       "Selengkapnya"
+  catalogues:
+    featured_products:          "Produk utama"
+    latest_products:            "Produk Terbaru"
+    new_products:               "Produk Baru"
+    recent_products:            "Produk Saat Ini"
+    recent_images:              "Gambar Saat Ini"
+    recent_foods:               "Recent Foods"
+    all_products:               "semua Produk"
+    new_foods:                  "Menu Baru"
+    brand:                      "Merek"
+    category:                   "Kategori"
+    categories:                 "Kategori"
+    description:                "Deskripsi"
+    download_catalog:           "Unduh katalog"
+    all_foods:                  "Seluruh Menu"
+    foods_from_chef:            "Makanan Dari Chef kami"
+    chef_recommended:           "rekomendasi chef"
+    foods:                      "makanan"
+    food_details:               "Rincian Makanan"
+    menu_details:               "Rincian menu"
+    our_products:               "Produk kami"
+    our_services:               "Layanan Kami"
+    our_menu:                   "menu kami"
+
+  people:
+    directors:                  "Direktur"
+    managers:                   "Manager"
+    employees:                  "Staff"
+    our_members:                "Member Kami"
+
+  attachments:
+    name:                       "Nama"
+    file_size:                  "Ukuran File"
+    updated_at:                 "Perbaharui Di"
+
+  reservation:
+    check_in:                   "Check-in"
+    check_out:                  "Check-out"
+    comment:                    "Komentar"
+    double:                     "Double"
+    guests:                     "Tamu"
+    room_types:                 "Jenis kamar"
+    send_success:               "Terima kasih atas pemesanan Anda"
+    single:                     "Single"
+    special_request:            "Permintaan khusus"
+    triple:                     "Triple"
+
+  contact_us:
+    reset:                      "Atur ulang"
+    submit:                     "mengajukan"
+    send:                       "Kirim"
+    name:                       "Nama"
+    phone:                      "Telepon"
+    "*email":                   "*Email"
+    "*message":                 "*pesan"
+
+  global:
+    all:                        "semua"
+    business_view:              "Gambaran usaha"
+    business_hours:             "Jam Bisnis"
+    all_photos:                 "Seluruh Foto"
+    follow_us:                  "Follow Us"
+    call_us:                    "Telepon Kami"
+    mail_us:                    "Email Kami"
+    my_office:                  "Kantor Saya"
+    sign_in:                    "Masuk"
+    read_more:                  "Selengkapnya"
+    open:                       "Buka"
+    closed:                     "Tutup"
+    today:                      "Hari ini"
+    copyright:                  "Hak cipta © %{year}. Semua Hak Cipta dilindungi"
+    activities:                 "kegiatan"
+    price:                      "Harga"

@@ -30,7 +30,7 @@ module Yoolk
       end
 
       def current_domain
-        @context['listing.instant_website.domains'].find { |domain|
+        @context['listing.instant_website.domains'].to_a.find { |domain|
           domain['name'] == @context.registers[:controller].request.host
         }
       end

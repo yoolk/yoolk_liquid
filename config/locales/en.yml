@@ -1,45 +1,120 @@
 en:
+  default_pages_title: &default_pages_title
+    home:                       "Home"
+    products:                   "Products"
+    services:                   "Services"
+    menu:                       "Menu"
+    photos:                     "Photos"
+    galleries:                  "Galleries"
+    about_us:                   "About us"
+    contact_us:                 "Contact us"
+    reservation:                "Reservation"
+    feedback:                   "Feedback"
+    announcement:               "Announcement"
+    announcements:              "Announcements"
+    videos:                     "Videos"
+    attachments:                "Downloads"
+    links:                      "Links"
+    people:                     "People"
+    map:                        "Map"
+    brochures:                  "Brochures"
+
   yoolk:
     form:
       messages:
-        invalid:            "You can't leave this empty"
-        invalid_email:      "Email is invalid"
+        invalid:                "You can't leave this empty"
+        invalid_email:          "Email is invalid"
+
   seo:
-    about_us:               "About Us"
-    announcements:          "Announcements"
-    brochures:              "Brochures"
-    contact_us:             "Contact Us"
-    feedback:               "Feedback"
-    galleries:              "Galleries"
-    in:                     "in"
-    is_located_in:          "is located in"
-    and_classified_as:      "and classified as"
-    brochures_of:           "Brochures of"
-    contact_info:           "For more information, please contact us directly by"
-    visit_address:          "or visit us by this address"
-    photo_gallery_of:       "Photo Gallery of"
-    by:                     "by"
-    announcements_on:       "Announcement on"
-    feedback_quote:         "We'd love to hear what your thoughts. Your valuable feedback will help us to improve and upgrade our business."
-    links:                  'Links'
-    videos:                 'Videos'
-    attachments:            'Downloads'
+    <<: *default_pages_title
+
+    in:                         "in"
+    is_located_in:              "is located in"
+    and_classified_as:          "and classified as"
+    brochures_of:               "Brochures of"
+    contact_info:               "For more information, please contact us directly by"
+    visit_address:              "or visit us by this address"
+    photo_gallery_of:           "Photo Gallery of"
+    by:                         "by"
+    announcements_on:           "Announcement on"
+    feedback_quote:             "We'd love to hear what your thoughts. Your valuable feedback will help us to improve and upgrade our business."
+
   breadcrumb:
-    home:                   'Home'
-    about_us:               'About us'
-    contact_us:             'Contact us'
-    feedback:               'Feedback'
-    announcement:           'Announcement'
-    announcements:          'Announcements'
-    brochures:              'Brochures'
-    photos:                 'Photos'
-    map:                    'Map'
-    menu:                   'Menu'
-    people:                 'People'
-    products:               'Products'
-    services:               'Services'
-    reservation:            'Reservation'
-    galleries:              'Galleries'
-    links:                  'Links'
-    videos:                 'Videos'
-    attachments:            'Downloads'
+    <<: *default_pages_title
+
+  links:
+    <<: *default_pages_title
+    more:                       "More"
+  catalogues:
+    featured_products:          "Featured Products"
+    latest_products:            "Latest Products"
+    new_products:               "New Products"
+    recent_products:            "Recent Products"
+    recent_images:              "Recent Images"
+    recent_foods:               "Recent Foods"
+    all_products:               "All Products"
+    new_foods:                  "New Foods"
+    brand:                      "Brand"
+    category:                   "Category"
+    categories:                 "Categories"
+    description:                "Description"
+    download_catalog:           "Download Catalogue"
+    all_foods:                  "All Foods"
+    foods_from_chef:            "Foods From Our Chef"
+    chef_recommended:           "Chef Recommended"
+    foods:                      "Foods"
+    food_details:               "Food Details"
+    menu_details:               "Menu Details"
+    our_products:               "Our Products"
+    our_services:               "Our Services"
+    our_menu:                   "Our Menu"
+
+  people:
+    directors:                  "Directors"
+    managers:                   "Managers"
+    employees:                  "Employees"
+    our_members:                "Our Members"
+
+  attachments:
+    name:                       "Name"
+    file_size:                  "File Size"
+    updated_at:                 "Updated At"
+
+  reservation:
+    check_in:                   "Check In"
+    check_out:                  "Check Out"
+    comment:                    "Comment"
+    double:                     "Double"
+    guests:                     "Guests"
+    room_types:                 "Room Types"
+    send_success:               "Thank you for submitting your reservation."
+    single:                     "Single"
+    special_request:            "Special Request"
+    triple:                     "Triple"
+
+  contact_us:
+    reset:                      "Reset"
+    submit:                     "Submit"
+    send:                       "Send"
+    name:                       "Name"
+    phone:                      "Phone"
+    "*email":                   "*Email"
+    "*message":                 "*Message"
+
+  global:
+    all:                        "All"
+    business_view:              "Business View"
+    business_hours:             "Business Hours"
+    all_photos:                 "All Photos"
+    follow_us:                  "Follow Us"
+    call_us:                    "Call Us"
+    mail_us:                    "Mail Us"
+    my_office:                  "My office"
+    sign_in:                    "Sign in"
+    read_more:                  "read more"
+    open:                       "Open"
+    closed:                     "Closed"
+    today:                      "Today"
+    copyright:                  "Copyright &copy; %{year}. All Rights Reserved"
+    activities:                 "Activities"
+    price:                      "Price"
