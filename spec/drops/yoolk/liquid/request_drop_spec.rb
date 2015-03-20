@@ -95,6 +95,26 @@ module Yoolk
         end
       end
 
+      context '#services_all?' do
+        it 'return true if request to services_path' do
+          allow(subject.send(:request)).to receive(:fullpath).and_return('/services')
+          expect(subject.services_all?).to eq(true)
+        end
+        it 'return false unless request to services_path' do
+          expect(subject.services_all?).to eq(false)
+        end
+      end
+
+      context '#menu_all?' do
+        it 'return true if request to menu_index_path' do
+          allow(subject.send(:request)).to receive(:fullpath).and_return('/menu')
+          expect(subject.menu_all?).to eq(true)
+        end
+        it 'return false unless request to menu_index_path' do
+          expect(subject.menu_all?).to eq(false)
+        end
+      end
+
       context '#js_class_name' do
         it 'action_name is other than #create and #update' do
           allow(subject).to receive(:action_name).and_return('index')

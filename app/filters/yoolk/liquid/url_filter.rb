@@ -163,6 +163,18 @@ module Yoolk
         request.fullpath.start_with?(products_path.split('?')[0])
       end
 
+      def products_all?
+        products_path == request.fullpath
+      end
+
+      def services_all?
+        services_path == request.fullpath
+      end
+
+      def menu_all?
+        menu_index_path == request.fullpath
+      end
+
       def services_url?
         request.fullpath.start_with?(services_path.split('?')[0])
       end
