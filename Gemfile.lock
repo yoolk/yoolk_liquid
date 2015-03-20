@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: git://github.com/yoolk/liquid-rails.git
-  revision: 7b26ad98a39424e0a86e44b7d2c4d6fc10a96eb6
+  revision: ed37dc0d1c65824aa5e7bed5b123e16dcef8201a
   specs:
-    liquid-rails (0.1.1)
+    liquid-rails (0.2.0.pre)
       kaminari (~> 0.16.1)
       liquid (>= 3.0.0)
       rails (>= 3.2)
@@ -107,7 +107,7 @@ GEM
     equalizer (0.0.9)
     erubis (2.7.0)
     eventmachine (1.0.6)
-    execjs (2.3.0)
+    execjs (2.4.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -250,7 +250,7 @@ GEM
       eventmachine (~> 1.0)
       rack (~> 1.0)
     thor (0.19.1)
-    thread_safe (0.3.4)
+    thread_safe (0.3.5)
     tilt (1.4.1)
     timers (4.0.1)
       hitimes
