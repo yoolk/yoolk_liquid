@@ -26,11 +26,11 @@ PATH
   specs:
     yoolk_liquid (4.0.0.beta1)
       activemodel (~> 4.0.10)
-      assets-rails (~> 0.1.0)
+      assets-rails (>= 0.1.0)
       autoprefixer-rails (~> 3.1.0.20140911)
       coffee-rails (~> 4.0.1)
       kaminari (~> 0.16.1)
-      liquid-rails (~> 0.1.1)
+      liquid-rails (>= 0.1.1)
       oj (~> 2.10.2)
       rails (~> 4.0.10)
       rails-i18n (~> 4.0.3)
