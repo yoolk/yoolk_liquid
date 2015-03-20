@@ -69,7 +69,7 @@ module Yoolk
       belongs_to  :instant_website,       class_name: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
 
 
-      delegate :email?, :telephone?,
+      delegate :email?, :telephone?, :website?,
                to: :object
 
       def facebook_page_url

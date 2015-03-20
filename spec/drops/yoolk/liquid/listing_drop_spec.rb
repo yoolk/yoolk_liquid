@@ -67,6 +67,7 @@ module Yoolk
 
       it { should delegate(:email?).to(:object) }
       it { should delegate(:telephone?).to(:object) }
+      it { should delegate(:website?).to(:object) }
 
     end
   end
