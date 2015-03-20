@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   # themes
   s.add_dependency 'themes_on_rails',       '~> 0.3.0'
-  s.add_dependency 'liquid-rails',          '~> 0.1.1'
+  s.add_dependency 'liquid-rails',          '>= 0.1.1'
   s.add_dependency 'assets-rails',          '~> 0.1.0'
 
   # views
