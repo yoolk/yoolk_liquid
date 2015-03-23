@@ -2,57 +2,62 @@ module Yoolk
   module Liquid
     module InstantWebsite
       class PageLabelDrop < BaseDrop
+        PRIMARY_PAGES = ["products", "menu", "services", "reservation", "feedback", "contact_us"]
+
         attributes  :id, :name, :created_at, :updated_at
 
         belongs_to  :template_page,      with: 'Yoolk::Liquid::InstantWebsite::TemplatePage'
 
         def name
-          page_name = object.template_page.name
-
-          if object.name =~ /^(#{page_name})$/i
-            key = $1.downcase.gsub ' ', '_'
-            I18n.t("#{@context['request'].theme_name}.links.#{key}", default: page_name)
+          if page_name.parameterize.underscore == page_to_parameterize
+            I18n.t("links.#{page_to_parameterize}")
           else
-            object.name
+            page_name
           end
         end
 
         def url
-          # page_name = template_page.name.parameterize.underscore
-          page = case page_name
-                 when "menu", "reservation", "feedback", "map" then "#{page_name}_index"
-                 else page_name end
+          page = case page_to_parameterize
+                 when "menu", "reservation", "feedback", "map" then "#{page_to_parameterize}_index"
+                 else page_to_parameterize end
 
-          eval "view.#{page}_path"
+          send(:"#{page}_path")
         end
 
-        def show?
-          # page_name = template_page.name.parameterize.underscore
-          collection = case page_name
+        def collection_exist?
+          collection = case page_to_parameterize
                  when "brochures" then "artworks"
                  when "about_us"  then "catalog_items"
                  when "videos"    then "medias"
                  else page_name   end
 
-          unless page_name.in? ["products", "menu", "services", "reservation", "feedback", "contact_us"]
-            @context["request"].preview_mode? or \
-            eval %{@context['listing'].#{collection}.present?}
-          else
+          @context['listing'].send(:"#{ collection }").present?
+        end
+
+        def show?
+          if PRIMARY_PAGES.include? page_to_parameterize
             true
+          else
+            @context["request"].preview_mode? or collection_exist?
           end
         end
 
         def active?
-          eval "@context['request.#{page_name}_url?']"
+          @context['request'].send(:"#{page_to_parameterize}_url?")
         end
 
-        def view
-          @context.registers[:view]
-        end
         private
 
           def page_name
-            @page_name ||= template_page.name.parameterize.underscore
+            object.name
+          end
+
+          def template_page_name
+            object.template_page.name
+          end
+
+          def page_to_parameterize
+            template_page_name.parameterize.underscore
           end
       end
     end
