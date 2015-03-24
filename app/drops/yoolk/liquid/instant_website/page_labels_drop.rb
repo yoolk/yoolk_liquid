@@ -1,13 +1,13 @@
 module Yoolk
   module Liquid
     class InstantWebsite::PageLabelsDrop < ::Liquid::Rails::CollectionDrop
-      scope :primary, :mores
+      scope :primary, :more
 
-      def mores?
-        mores.select do |item|
+      def more?
+        more.select do |item|
           item.context = @context
           item.show?
-        end
+        end.present?
       end
     end
   end

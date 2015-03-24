@@ -29,7 +29,7 @@ module Yoolk
                  when "brochures" then "artworks"
                  when "about_us"  then "catalog_items"
                  when "videos"    then "medias"
-                 else page_name   end
+                 else page_to_parameterize end
 
           @context['listing'].send(:"#{ collection }").present?
         end
@@ -38,7 +38,8 @@ module Yoolk
           if primary_pages?
             true
           else
-            @context["request"].preview_mode? or collection_exist?
+            # @context["request"].preview_mode? or collection_exist?
+            collection_exist?
           end
         end
 
