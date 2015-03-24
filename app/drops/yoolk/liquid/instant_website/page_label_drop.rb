@@ -35,11 +35,15 @@ module Yoolk
         end
 
         def show?
-          if PRIMARY_PAGES.include? page_to_parameterize
+          if primary_pages?
             true
           else
             @context["request"].preview_mode? or collection_exist?
           end
+        end
+
+        def primary_pages?
+          PRIMARY_PAGES.include? page_to_parameterize
         end
 
         def active?

@@ -9,7 +9,8 @@ module Yoolk
         belongs_to  :favicon,       with: 'Yoolk::Liquid::AttachmentDrop'
         belongs_to  :template,      with: 'Yoolk::Liquid::InstantWebsite::TemplateDrop'
 
-        has_many    :page_labels,   with: 'Yoolk::Liquid::InstantWebsite::PageLabelDrop'
+        has_many    :page_labels,   class_name: 'Yoolk::Liquid::InstantWebsite::PageLabelsDrop',
+                                    with: 'Yoolk::Liquid::InstantWebsite::PageLabelDrop'
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
         def color
