@@ -37,8 +37,7 @@ module Yoolk
         if primary_pages?
           true
         else
-          # @context["request"].preview_mode? or collection_exist?
-          collection_exist?
+          @context["request"].preview_mode? or collection_exist?
         end
       end
 
