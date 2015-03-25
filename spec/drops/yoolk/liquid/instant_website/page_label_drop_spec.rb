@@ -16,5 +16,17 @@ module Yoolk
       it { should respond_to(:primary_pages?) }
       it { should respond_to(:active?) }
     end
+    describe InstantWebsite::PageLabelDrop, "#name" do
+    end
+    describe InstantWebsite::PageLabelDrop, "#url" do
+    end
+    describe InstantWebsite::PageLabelDrop, "#collection_exist?" do
+    end
+    describe InstantWebsite::PageLabelDrop, "#show?" do
+    end
+    describe InstantWebsite::PageLabelDrop, "#primary_pages?" do
+    end
+    describe InstantWebsite::PageLabelDrop, "#active?" do
+    end
   end
 end
