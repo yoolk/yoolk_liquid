@@ -52,7 +52,7 @@ module Yoolk
       end
 
       it 'has :page_labels attribute' do
-        expect(described_class).to have_attribute(:page_labels).of_type(Array, member_type: Yoolk::Sandbox::InstantWebsite::PageLabel)
+        expect(described_class).to have_attribute(:page_labels).of_type(Yoolk::Sandbox::InstantWebsite::PageLabels, member_type: Yoolk::Sandbox::InstantWebsite::PageLabel)
       end
 
       it { should delegate(:name).to(:template).with_prefix }
