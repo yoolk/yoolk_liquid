@@ -13,6 +13,12 @@ module Yoolk
                                     with: 'Yoolk::Liquid::InstantWebsite::PageLabelDrop'
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
+        # def page_labels
+        #   @pages = object.page_labels.presence || object.template.pages
+
+        #   @page_labels ||= PageLabelsDrop.new(@pages, with: 'Yoolk::Liquid::InstantWebsite::PageLabelDrop')
+        # end
+
         def color
           object.color_name
         end
