@@ -63,6 +63,12 @@ module Yoolk
       it { should have_many(:attachments).with('Yoolk::Liquid::Listing::AttachmentDrop') }
 
       it { should respond_to(:multilinguals) }
+      it { should respond_to(:show_map?) }
+
+      it { should delegate(:email?).to(:object) }
+      it { should delegate(:telephone?).to(:object) }
+      it { should delegate(:website?).to(:object) }
+
     end
   end
 end
