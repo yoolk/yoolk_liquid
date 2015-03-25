@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Yoolk
   module Liquid
-    describe InstantWebsite::PageLabelDrop do
+    describe InstantWebsite::PageDrop do
       it { should have_attribute(:id) }
       it { should have_attribute(:name) }
       it { should have_attribute(:created_at) }
@@ -16,17 +16,17 @@ module Yoolk
       it { should respond_to(:primary_pages?) }
       it { should respond_to(:active?) }
     end
-    describe InstantWebsite::PageLabelDrop, "#name" do
+    describe InstantWebsite::PageDrop, "#name" do
     end
-    describe InstantWebsite::PageLabelDrop, "#url" do
+    describe InstantWebsite::PageDrop, "#url" do
     end
-    describe InstantWebsite::PageLabelDrop, "#collection_exist?" do
+    describe InstantWebsite::PageDrop, "#collection_exist?" do
     end
-    describe InstantWebsite::PageLabelDrop, "#show?" do
+    describe InstantWebsite::PageDrop, "#show?" do
     end
-    describe InstantWebsite::PageLabelDrop, "#primary_pages?" do
+    describe InstantWebsite::PageDrop, "#primary_pages?" do
     end
-    describe InstantWebsite::PageLabelDrop, "#active?" do
+    describe InstantWebsite::PageDrop, "#active?" do
     end
   end
 end

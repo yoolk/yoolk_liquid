@@ -1,6 +1,6 @@
 module Yoolk
   module Sandbox
-    class InstantWebsite::PageLabels < Collection
+    class InstantWebsite::Pages < Collection
       def primary
         # select { |item| item.type.downcase == 'e-mail' }
       end

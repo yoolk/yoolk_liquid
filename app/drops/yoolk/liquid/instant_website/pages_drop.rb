@@ -1,6 +1,6 @@
 module Yoolk
   module Liquid
-    class InstantWebsite::PageLabelsDrop < ::Liquid::Rails::CollectionDrop
+    class InstantWebsite::PagesDrop < ::Liquid::Rails::CollectionDrop
       scope :primary, :more
 
       def more?

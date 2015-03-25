@@ -1,6 +1,6 @@
 module Yoolk
   module Liquid
-    class InstantWebsite::PageLabelDrop < BaseDrop
+    class InstantWebsite::PageDrop < BaseDrop
       PRIMARY_PAGES = ["products", "menu", "services", "reservation", "feedback", "contact_us"]
 
       attributes  :id, :name, :created_at, :updated_at

@@ -17,7 +17,7 @@ module Yoolk
         attribute :listing,               Yoolk::Sandbox::Listing
         attribute :cover_photos,          Array[Yoolk::Sandbox::InstantWebsite::WebsiteCoverPhoto]
         attribute :domains,               Array[Yoolk::Sandbox::InstantWebsite::Domain]
-        attribute :page_labels,           Yoolk::Sandbox::InstantWebsite::PageLabels[Yoolk::Sandbox::InstantWebsite::PageLabel]
+        attribute :pages,                 Yoolk::Sandbox::InstantWebsite::Pages[Yoolk::Sandbox::InstantWebsite::Page]
 
         delegate  :name,                  to: :template, prefix: true
 

@@ -9,14 +9,14 @@ module Yoolk
         belongs_to  :favicon,       with: 'Yoolk::Liquid::AttachmentDrop'
         belongs_to  :template,      with: 'Yoolk::Liquid::InstantWebsite::TemplateDrop'
 
-        has_many    :page_labels,   class_name: 'Yoolk::Liquid::InstantWebsite::PageLabelsDrop',
-                                    with: 'Yoolk::Liquid::InstantWebsite::PageLabelDrop'
+        has_many    :pages,         class_name: 'Yoolk::Liquid::InstantWebsite::PagesDrop',
+                                    with: 'Yoolk::Liquid::InstantWebsite::PageDrop'
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
-        # def page_labels
-        #   @pages = object.page_labels.presence || object.template.pages
+        # def pages
+        #   @pages = object.pages.presence || object.template.pages
 
-        #   @page_labels ||= PageLabelsDrop.new(@pages, with: 'Yoolk::Liquid::InstantWebsite::PageLabelDrop')
+        #   @pages ||= PagesDrop.new(@pages, with: 'Yoolk::Liquid::InstantWebsite::PageDrop')
         # end
 
         def color
