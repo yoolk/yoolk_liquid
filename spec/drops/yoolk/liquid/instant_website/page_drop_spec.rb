@@ -7,7 +7,7 @@ module Yoolk
       it { should have_attribute(:name) }
       it { should have_attribute(:created_at) }
       it { should have_attribute(:updated_at) }
-      it { should belongs_to(:template_page).with('Yoolk::Liquid::InstantWebsite::TemplatePage') }
+      it { should belongs_to(:template_page).with('Yoolk::Liquid::InstantWebsite::TemplatePageDrop') }
 
       it { should respond_to(:name) }
       it { should respond_to(:url) }
@@ -16,16 +16,39 @@ module Yoolk
       it { should respond_to(:primary_pages?) }
       it { should respond_to(:active?) }
     end
-    describe InstantWebsite::PageDrop, "#name" do
+
+    describe InstantWebsite::PageDrop, "#name", :focus do
+      let(:template_page) { build(:instant_website_template_page, name: 'Products') }
+      let(:page)          { build(:instant_website_page, name: 'My Products', template_page: template_page) }
+      let(:drop)          { page.to_liquid }
+      before              {
+        @context['request'] = { 'theme_name' => 'theme_a' }
+        drop.context = @context
+      }
+
+      it "returns its page's name" do
+        expect(drop.name).to eq('My Products')
+      end
+
+      it "returns template_page's name in localized" do
+        page.name = 'Products'
+
+        expect(drop.name).to eq(I18n.t(:'links.products'))
+      end
     end
+
     describe InstantWebsite::PageDrop, "#url" do
     end
+
     describe InstantWebsite::PageDrop, "#collection_exist?" do
     end
+
     describe InstantWebsite::PageDrop, "#show?" do
     end
+
     describe InstantWebsite::PageDrop, "#primary_pages?" do
     end
+
     describe InstantWebsite::PageDrop, "#active?" do
     end
   end

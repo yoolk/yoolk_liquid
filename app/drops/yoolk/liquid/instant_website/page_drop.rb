@@ -1,17 +1,22 @@
 module Yoolk
   module Liquid
     class InstantWebsite::PageDrop < BaseDrop
-      PRIMARY_PAGES = ["products", "menu", "services", "reservation", "feedback", "contact_us"]
+      # All Pages
+      # ["Products", "Services", "Menu", "Galleries", "About Us", "Contact Us", "Reservation", "Feedback", "Announcements", "Videos", "Attachments", "Links", "People", "Map"]
+      PRIMARY_PAGES = %w(products menu services reservation feedback contact_us)
 
       attributes  :id, :name, :created_at, :updated_at
 
-      belongs_to  :template_page,      with: 'Yoolk::Liquid::InstantWebsite::TemplatePage'
+      belongs_to  :template_page, with: 'Yoolk::Liquid::InstantWebsite::TemplatePageDrop'
 
+      # Returns the localized/translated name of that page
+      # @note If user customized the page's name, it will returns that name. Otherwise, it returns the localized version from its template page's name.
+      # @return [String] the localized name of the page
       def name
-        if page_name.parameterize.underscore == page_to_parameterize
-          I18n.t("links.#{page_to_parameterize}")
+        if object.name == template_page.name
+          translate("#{theme_name}.links.#{locale_key}")
         else
-          page_name
+          object.name
         end
       end
 
@@ -51,6 +56,10 @@ module Yoolk
 
       private
 
+        def theme_name
+          @context['request.theme_name']
+        end
+
         def page_name
           object.name
         end
@@ -61,6 +70,10 @@ module Yoolk
 
         def page_to_parameterize
           template_page_name.parameterize.underscore
+        end
+
+        def locale_key
+          template_page.name.parameterize.underscore
         end
     end
   end
