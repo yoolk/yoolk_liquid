@@ -11,9 +11,7 @@ module Yoolk
 
       it { should respond_to(:name) }
       it { should respond_to(:url) }
-      it { should respond_to(:collection_exist?) }
       it { should respond_to(:show?) }
-      it { should respond_to(:primary_pages?) }
       it { should respond_to(:active?) }
     end
 
@@ -44,13 +42,7 @@ module Yoolk
       end
     end
 
-    describe InstantWebsite::PageDrop, "#collection_exist?" do
-    end
-
     describe InstantWebsite::PageDrop, "#show?" do
-    end
-
-    describe InstantWebsite::PageDrop, "#primary_pages?" do
     end
 
     describe InstantWebsite::PageDrop, "#active?" do

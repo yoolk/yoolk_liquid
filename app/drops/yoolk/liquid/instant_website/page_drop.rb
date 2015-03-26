@@ -28,16 +28,6 @@ module Yoolk
         send(:"#{page}_path")
       end
 
-      def collection_exist?
-        collection = case page_to_parameterize
-               when "brochures" then "artworks"
-               when "about_us"  then "catalog_items"
-               when "videos"    then "medias"
-               else page_to_parameterize end
-
-        @context['listing'].send(:"#{ collection }").present?
-      end
-
       def show?
         if primary_pages?
           true
@@ -46,15 +36,25 @@ module Yoolk
         end
       end
 
-      def primary_pages?
-        PRIMARY_PAGES.include? page_to_parameterize
-      end
-
       def active?
         @context['request'].send(:"#{page_to_parameterize}_url?")
       end
 
       private
+
+        def collection_exist?
+          collection = case page_to_parameterize
+                 when "brochures" then "artworks"
+                 when "about_us"  then "catalog_items"
+                 when "videos"    then "medias"
+                 else page_to_parameterize end
+
+          @context['listing'].send(:"#{ collection }").present?
+        end
+
+        def primary_pages?
+          PRIMARY_PAGES.include? page_to_parameterize
+        end
 
         def theme_name
           @context['request.theme_name']
