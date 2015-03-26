@@ -40,9 +40,30 @@ module Yoolk
           expect(drop.url).to eq("/products")
         end
       end
-    end
+      context '#show?' do
 
-    describe InstantWebsite::PageDrop, "#show?" do
+        it 'return true if it is one of a primary page' do
+          expect(drop.show?).to eq(true)
+        end
+
+        it 'return false if not in preview mode or collection empty', :focus do
+          # page.template_page = build(:instant_website_template_page, name: 'About Us')
+          # drop = page.to_liquid
+
+          # request_drop  = ::Yoolk::Liquid::RequestDrop.new
+          # allow(request_drop).to receive(:preview_mode?).and_return(true)
+
+          # @context['request'] = request_drop
+          # @context['listing'] = { "products" => [{ "name" => "cola" }]}
+          # drop.context = @context
+
+          # binding.pry
+        end
+        it 'return true if preview mode but collection is not empty' do
+        end
+        it 'return true if not preview mode but collection is not empty' do
+        end
+      end
     end
 
     describe InstantWebsite::PageDrop, "#active?" do
