@@ -2,11 +2,11 @@ module Yoolk
   module Sandbox
     class InstantWebsite::Pages < Collection
       def primary
-        # select { |item| item.type.downcase == 'e-mail' }
+        take(5)
       end
 
       def more
-        # select { |item| item.type.downcase == 'website' }
+        drop(5)
       end
     end
   end
