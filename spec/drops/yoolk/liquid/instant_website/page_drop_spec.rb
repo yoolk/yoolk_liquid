@@ -64,9 +64,12 @@ module Yoolk
         it 'return true if not preview mode but collection is not empty' do
         end
       end
-    end
-
-    describe InstantWebsite::PageDrop, "#active?" do
+      context '#active?' do
+        it 'return true if request to current template page' do
+        end
+        it 'return false if request to another template page' do
+        end
+      end
     end
   end
 end

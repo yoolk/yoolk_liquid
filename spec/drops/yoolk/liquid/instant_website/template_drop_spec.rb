@@ -18,7 +18,7 @@ module Yoolk
 
       it { should belongs_to(:thumbnail).with('Yoolk::Liquid::AttachmentDrop') }
       it { should belongs_to(:cover_photo).with('Yoolk::Liquid::InstantWebsite::TemplateCoverPhotoDrop') }
-      it { should belongs_to(:pages).with('Yoolk::Liquid::InstantWebsite::TemplatePageDrop') }
+      it { should have_many(:pages).with('Yoolk::Liquid::InstantWebsite::TemplatePageDrop') }
     end
   end
 end

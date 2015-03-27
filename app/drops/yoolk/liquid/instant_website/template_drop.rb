@@ -7,7 +7,7 @@ module Yoolk
                     :created_at, :updated_at
 
         belongs_to  :thumbnail,     with: 'Yoolk::Liquid::AttachmentDrop'
-        belongs_to  :pages,         with: 'Yoolk::Liquid::InstantWebsite::TemplatePageDrop'
+        has_many    :pages,         with: 'Yoolk::Liquid::InstantWebsite::TemplatePageDrop'
         belongs_to  :cover_photo,   with: 'Yoolk::Liquid::InstantWebsite::TemplateCoverPhotoDrop'
 
         def name
