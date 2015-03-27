@@ -8,8 +8,15 @@ module Yoolk
 
         belongs_to  :favicon,       with: 'Yoolk::Liquid::AttachmentDrop'
         belongs_to  :template,      with: 'Yoolk::Liquid::InstantWebsite::TemplateDrop'
-
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
+
+        def pages
+          if object.pages.present?
+            @pages ||= Yoolk::Liquid::InstantWebsite::PagesDrop.new(object.pages)
+          else
+            @pages ||= Yoolk::Liquid::InstantWebsite::TemplatePagesDrop.new(object.template.pages)
+          end
+        end
 
         def color
           object.color_name

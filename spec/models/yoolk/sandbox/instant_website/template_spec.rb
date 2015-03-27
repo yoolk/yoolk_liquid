@@ -41,7 +41,7 @@ module Yoolk
       end
 
       it 'has :pages attribute' do
-        expect(described_class).to have_attribute(:pages).of_type(Array)
+        expect(described_class).to have_attribute(:pages).of_type(Yoolk::Sandbox::InstantWebsite::Pages, member_type: Yoolk::Sandbox::InstantWebsite::TemplatePage)
       end
 
       it 'has :colors attribute' do

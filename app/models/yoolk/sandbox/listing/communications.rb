@@ -10,7 +10,11 @@ module Yoolk
       end
 
       def telephones
-        select { |item| item.type.downcase.in?(['tel', 'tel & fax', 'fax', 'mobile', 'mobile phone', 'toll free']) }
+        select { |item| item.type.downcase.in?(['tel', 'tel & fax', 'mobile', 'mobile phone', 'toll free']) }
+      end
+
+      def faxes
+        select { |item| item.type.downcase.in?(['tel & fax', 'fax']) }
       end
     end
   end

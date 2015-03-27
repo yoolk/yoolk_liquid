@@ -19,7 +19,7 @@ module Yoolk
       it { should have_many(:domains).with('Yoolk::Liquid::InstantWebsite::DomainDrop') }
     end
 
-    describe InstantWebsite::WebsiteDrop do
+    describe InstantWebsite::WebsiteDrop, '#cover_photos' do
       let(:template)  { build(:instant_website_template, dimension: '200x400') }
       let(:website1)  { build(:instant_website_website, :cover_photos, template: template, dimensions: ['200x400', '400x200']) }
       let(:website2)  { build(:instant_website_website, :cover_photos, template: template, dimensions: ['200x400', '400x200']) }
@@ -34,7 +34,7 @@ module Yoolk
       it { should respond_to(:office_url) }
 
       context '#cover_photos' do
-        it 'returns an instance of Liquid::Rails::CollectionDrop', :focus do
+        it 'returns an instance of Liquid::Rails::CollectionDrop' do
           expect(drop1.cover_photos).to be_instance_of(::Liquid::Rails::CollectionDrop)
         end
 
@@ -47,6 +47,36 @@ module Yoolk
           template.cover_photo = nil
 
           expect(drop1.cover_photos.length).to eq(0)
+        end
+      end
+    end
+
+    describe InstantWebsite::WebsiteDrop, '#pages' do
+      let(:template) { build(:instant_website_template, page_names: ['Products', 'Services', 'About Us']) }
+      let(:website)  { build(:instant_website_website, template: template, pages: []) }
+      let(:drop)     { website.to_liquid }
+
+      context 'website without pages' do
+        it 'returns an instance of TemplatePagesDrop' do
+          expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::TemplatePagesDrop)
+        end
+
+        it 'returns pages of template when its pages is blank' do
+          expect(drop.pages.count).to   eq(template.pages.count)
+        end
+      end
+
+      context 'website with pages' do
+        before  {
+          website.pages << build(:instant_website_page, name: 'Products')
+        }
+
+        it 'returns an instance of PagesDrop' do
+          expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::PagesDrop)
+        end
+
+        it 'returns PagesDrop' do
+          expect(drop.pages.count).to   eq(website.pages.count)
         end
       end
     end

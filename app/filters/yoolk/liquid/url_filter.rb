@@ -57,77 +57,12 @@ module Yoolk
         end
       end
 
-      def link_to_office(value, options={})
-        link_to(value, office_path, options.merge({rel: "nofollow"}))
+      def home_url
+        root_path
       end
 
-      def link_to_home(value, options={})
-        link_to(value, root_path, default_class_options(root_url?, options))
-      end
-      alias_method :link_to_root, :link_to_home
-
-      def link_to_galleries(value, options={})
-        link_to(value, galleries_path, default_class_options(galleries_url?, options))
-      end
-
-      def link_to_people(value, options={})
-        link_to(value, people_path, default_class_options(people_url?, options))
-      end
-
-      def link_to_products(value, options={})
-        link_to(value, products_path, default_class_options(products_url?, options))
-      end
-
-      def link_to_services(value, options={})
-        link_to(value, services_path, default_class_options(services_url?, options))
-      end
-
-      def link_to_menu(value, options={})
-        link_to(value, menu_index_path, default_class_options(menu_url?, options))
-      end
-
-      def link_to_announcements(value, options={})
-        link_to(value, announcements_path, default_class_options(announcements_url?, options))
-      end
-
-      def link_to_brochures(value, options={})
-        link_to(value, brochures_path, default_class_options(brochures_url?, options))
-      end
-
-      def link_to_links(value, options={})
-        link_to(value, links_path, default_class_options(links_url?, options))
-      end
-
-      def link_to_videos(value, options={})
-        link_to(value, videos_path, default_class_options(videos_url?, options))
-      end
-
-      def link_to_attachments(value, options={})
-        link_to(value, attachments_path, default_class_options(attachments_url?, options))
-      end
-
-      def link_to_map(value, options={})
-        link_to(value, map_index_path, default_class_options(map_url?, options))
-      end
-
-      def link_to_about_us(value, options={})
-        link_to(value, about_us_path, default_class_options(about_us_url?, options))
-      end
-
-      def link_to_contact_us(value, options={})
-        link_to(value, contact_us_path, default_class_options(contact_us_url?, options))
-      end
-
-      def link_to_reservation(value, options={})
-        link_to(value, reservation_index_path, default_class_options(reservation_url?, options))
-      end
-
-      def link_to_feedback(value, options={})
-        link_to(value, feedback_index_path, default_class_options(feedback_url?, options))
-      end
-
-      def link_to_sign_in(value)
-        link_to value, office_path, rel: 'nofollow'
+      def root_url
+        root_path
       end
 
       def root_url?
@@ -135,76 +70,144 @@ module Yoolk
       end
       alias_method :home_url?, :root_url?
 
-      def galleries_url?
-        request.fullpath.start_with?(galleries_path.split('?')[0])
+      def office_url
+        office_path
       end
 
-      def people_url?
-        request.fullpath.start_with?(people_path.split('?')[0])
+      def office_url?
+        request_path == office_path
       end
 
-      def brochures_url?
-        request.fullpath.start_with?(brochures_path.split('?')[0])
+      def map_url
+        map_index_path
       end
 
       def map_url?
-        request.fullpath.start_with?(map_index_path.split('?')[0])
+        request.fullpath.start_with?(map_url.split('?')[0])
       end
 
-      def about_us_url?
-        request.fullpath.start_with?(about_us_path.split('?')[0])
-      end
-
-      def contact_us_url?
-        request.fullpath.start_with?(contact_us_path.split('?')[0])
-      end
-
-      def products_url?
-        request.fullpath.start_with?(products_path.split('?')[0])
-      end
-
-      def products_all?
-        products_path == request.fullpath
-      end
-
-      def services_all?
-        services_path == request.fullpath
-      end
-
-      def foods_all?
-        menu_index_path == request.fullpath
-      end
-
-      def services_url?
-        request.fullpath.start_with?(services_path.split('?')[0])
-      end
-
-      def menu_url?
-        request.fullpath.start_with?(menu_index_path.split('?')[0])
-      end
-
-      def announcements_url?
-        request.fullpath.start_with?(announcements_path.split('?')[0])
+      def reservation_url
+        reservation_index_path
       end
 
       def reservation_url?
-        request.fullpath.start_with?(reservation_index_path.split('?')[0])
+        request.fullpath.start_with?(reservation_url.split('?')[0])
+      end
+
+      def feedback_url
+        feedback_index_path
       end
 
       def feedback_url?
-        request.fullpath.start_with?(feedback_index_path.split('?')[0])
+        request.fullpath.start_with?(feedback_url.split('?')[0])
+      end
+
+      def galleries_url
+        galleries_path
+      end
+
+      def galleries_url?
+        request.fullpath.start_with?(galleries_url.split('?')[0])
+      end
+
+      def links_url
+        links_path
       end
 
       def links_url?
-        request.fullpath.start_with?(links_path.split('?')[0])
+        request.fullpath.start_with?(links_url.split('?')[0])
       end
 
-      def videos_url?
-        request.fullpath.start_with?(videos_path.split('?')[0])
+      def people_url
+        people_path
+      end
+
+      def people_url?
+        request.fullpath.start_with?(people_url.split('?')[0])
+      end
+
+      def brochures_url
+        brochures_path
+      end
+
+      def brochures_url?
+        request.fullpath.start_with?(brochures_url.split('?')[0])
+      end
+
+      def products_url
+        products_path
+      end
+
+      def products_url?
+        request.fullpath.start_with?(products_url.split('?')[0])
+      end
+
+      def products_all? # :nodoc:
+        products_url == request.fullpath
+      end
+
+      def services_url
+        services_path
+      end
+
+      def services_url?
+        request.fullpath.start_with?(services_url.split('?')[0])
+      end
+
+      def services_all?
+        services_url == request.fullpath
+      end
+
+      def menu_url
+        menu_index_path
+      end
+
+      def menu_url?
+        request.fullpath.start_with?(menu_url.split('?')[0])
+      end
+
+      def foods_all?
+        menu_url == request.fullpath
+      end
+
+      def announcements_url
+        announcements_path
+      end
+
+      def announcements_url?
+        request.fullpath.start_with?(announcements_url.split('?')[0])
+      end
+
+      def about_us_url
+        about_us_path
+      end
+
+      def about_us_url?
+        request.fullpath.start_with?(about_us_url.split('?')[0])
+      end
+
+      def contact_us_url
+        contact_us_path
+      end
+
+      def contact_us_url?
+        request.fullpath.start_with?(contact_us_url.split('?')[0])
+      end
+
+      def attachments_url
+        attachments_path
       end
 
       def attachments_url?
-        request.fullpath.start_with?(attachments_path.split('?')[0])
+        request.fullpath.start_with?(attachments_url.split('?')[0])
+      end
+
+      def videos_url
+        videos_path
+      end
+
+      def videos_url?
+        request.fullpath.start_with?(videos_url.split('?')[0])
       end
 
       private
