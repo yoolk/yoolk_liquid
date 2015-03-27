@@ -11,7 +11,11 @@ module Yoolk
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
         def pages
-          @pages ||= Yoolk::Liquid::InstantWebsite::PagesDrop.new(object.pages.presence || object.template.pages)
+          if object.pages.present?
+            @pages ||= Yoolk::Liquid::InstantWebsite::PagesDrop.new(object.pages)
+          else
+            @pages ||= Yoolk::Liquid::InstantWebsite::TemplatePagesDrop.new(object.template.pages)
+          end
         end
 
         def color
