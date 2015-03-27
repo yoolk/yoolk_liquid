@@ -53,26 +53,31 @@ module Yoolk
 
     describe InstantWebsite::WebsiteDrop, '#pages' do
       let(:template) { build(:instant_website_template, page_names: ['Products', 'Services', 'About Us']) }
-      let(:website)  { build(:instant_website_website, template: template) }
+      let(:website)  { build(:instant_website_website, template: template, pages: []) }
       let(:drop)     { website.to_liquid }
 
-      it 'returns an instance of PagesDrop' do
-        expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::PagesDrop)
+      context 'website without pages' do
+        it 'returns an instance of TemplatePagesDrop' do
+          expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::TemplatePagesDrop)
+        end
+
+        it 'returns pages of template when its pages is blank' do
+          expect(drop.pages.count).to   eq(template.pages.count)
+        end
       end
 
-      it 'returns PagesDrop' do
-        website.pages << build(:instant_website_page, name: 'Products')
+      context 'website with pages' do
+        before  {
+          website.pages << build(:instant_website_page, name: 'Products')
+        }
 
-        expect(drop.pages.count).to   eq(website.pages.count)
-      end
+        it 'returns an instance of PagesDrop' do
+          expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::PagesDrop)
+        end
 
-      it 'returns pages of template when its pages is blank' do
-        website.pages = []
-
-        expect(drop.pages.count).to   eq(template.pages.count)
-        expect(drop.pages[0].name).to eq(template.pages[0].name)
-        expect(drop.pages[1].name).to eq(template.pages[1].name)
-        expect(drop.pages[2].name).to eq(template.pages[2].name)
+        it 'returns PagesDrop' do
+          expect(drop.pages.count).to   eq(website.pages.count)
+        end
       end
     end
   end

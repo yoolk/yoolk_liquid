@@ -4,6 +4,7 @@ module Yoolk
   module Liquid
     describe BaseDrop do
       it { should include_module(Yoolk::Liquid::UrlFilter) }
+      it { should include_module(Yoolk::Liquid::LinkFilter) }
       it { should include_module(Yoolk::Liquid::TranslateFilter) }
 
       it '#id' do

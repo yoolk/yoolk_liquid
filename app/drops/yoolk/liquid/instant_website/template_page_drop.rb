@@ -1,7 +1,8 @@
 module Yoolk
   module Liquid
     module InstantWebsite
-      class TemplatePageDrop < PageableDrop
+      class TemplatePageDrop < BaseDrop
+        include PageableDrop
 
         attributes  :id, :name, :display_order, :created_at, :updated_at
 

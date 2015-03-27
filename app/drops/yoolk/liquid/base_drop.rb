@@ -2,6 +2,7 @@ module Yoolk
   module Liquid
     class BaseDrop < ::Liquid::Rails::Drop
       include Yoolk::Liquid::UrlFilter
+      include Yoolk::Liquid::LinkFilter
       include Yoolk::Liquid::TranslateFilter
 
       def id

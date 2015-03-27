@@ -1,25 +1,21 @@
 module Yoolk
   module Liquid
     module InstantWebsite
-      class PageableDrop < ::Yoolk::Liquid::BaseDrop
+      module PageableDrop
 
         # All Pages
         # ["Products", "Services", "Menu", "Galleries", "About Us", "Contact Us", "Reservation", "Feedback", "Announcements", "Videos", "Attachments", "Links", "People", "Map"]
         PRIMARY_PAGES = %w(products menu services reservation feedback contact_us)
 
         def url
-          page = case name_to_parameterize
-                 when "menu", "reservation", "feedback", "map" then "#{name_to_parameterize}_index"
-                 else name_to_parameterize end
-
-          send(:"#{page}_path")
+          send(:"#{name_to_parameterize}_url")
         end
 
         def show?
-          if primary_pages?
+          if primary_page?
             true
           else
-            @context["request"].preview_mode? or collection_exist?
+            @context['request'].preview_mode? || collection_exists?
           end
         end
 
@@ -37,26 +33,25 @@ module Yoolk
             end
             name.parameterize.underscore
           end
+          alias_method :locale_key, :name_to_parameterize
 
-          def primary_pages?
-            PRIMARY_PAGES.include? name_to_parameterize
+          def primary_page?
+            PRIMARY_PAGES.include?(name_to_parameterize)
           end
 
-          def collection_exist?
+          def collection_exists?
             collection = case name_to_parameterize
-                   when "brochures" then "artworks"
-                   when "about_us"  then "catalog_items"
-                   when "videos"    then "medias"
-                   else name_to_parameterize end
+              when "brochures" then "artworks"
+              when "about_us"  then "catalog_items"
+              when "videos"    then "medias"
+              else name_to_parameterize end
 
-            @context['listing'].send(:"#{ collection }").present?
+            @context['listing'].try(:"#{ collection }").present?
           end
 
           def theme_name
             @context['request.theme_name']
           end
-
-          alias_method :locale_key, :name_to_parameterize
 
       end
     end
