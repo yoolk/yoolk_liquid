@@ -46,7 +46,7 @@ module Yoolk
           expect(drop.show?).to eq(true)
         end
 
-        it 'return false if not in preview mode or collection empty', :focus do
+        it 'return false if not in preview mode or collection empty' do
           # page.template_page = build(:instant_website_template_page, name: 'About Us')
           # drop = page.to_liquid
 

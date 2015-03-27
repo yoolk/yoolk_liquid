@@ -61,7 +61,7 @@ module Yoolk
         expect_template_result(template, expected, { 'listing' => listing })
       end
 
-      it '{% facebook %} with url and size', :focus do
+      it '{% facebook %} with url and size' do
         template = multiline_string(<<-END_LIQUID)
           |  {% addthis_follow %}
           |     {% facebook '/path/to/image.png', '10x10' %}
@@ -72,7 +72,7 @@ module Yoolk
         expect_template_result(template, expected, { 'listing' => listing })
       end
 
-      it '{% facebook %} with url', :focus do
+      it '{% facebook %} with url' do
         template = multiline_string(<<-END_LIQUID)
           |  {% addthis_follow %}
           |     {% facebook '/path/to/image.png' %}

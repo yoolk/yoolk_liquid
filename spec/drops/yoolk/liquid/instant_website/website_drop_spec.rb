@@ -17,10 +17,9 @@ module Yoolk
       it { should belongs_to(:favicon).with('Yoolk::Liquid::AttachmentDrop') }
       it { should belongs_to(:template).with('Yoolk::Liquid::InstantWebsite::TemplateDrop') }
       it { should have_many(:domains).with('Yoolk::Liquid::InstantWebsite::DomainDrop') }
-      it { should have_many(:pages).class_name('Yoolk::Liquid::InstantWebsite::PagesDrop').with('Yoolk::Liquid::InstantWebsite::PageDrop') }
     end
 
-    describe InstantWebsite::WebsiteDrop do
+    describe InstantWebsite::WebsiteDrop, '#cover_photos' do
       let(:template)  { build(:instant_website_template, dimension: '200x400') }
       let(:website1)  { build(:instant_website_website, :cover_photos, template: template, dimensions: ['200x400', '400x200']) }
       let(:website2)  { build(:instant_website_website, :cover_photos, template: template, dimensions: ['200x400', '400x200']) }
@@ -35,7 +34,7 @@ module Yoolk
       it { should respond_to(:office_url) }
 
       context '#cover_photos' do
-        it 'returns an instance of Liquid::Rails::CollectionDrop', :focus do
+        it 'returns an instance of Liquid::Rails::CollectionDrop' do
           expect(drop1.cover_photos).to be_instance_of(::Liquid::Rails::CollectionDrop)
         end
 
@@ -49,6 +48,31 @@ module Yoolk
 
           expect(drop1.cover_photos.length).to eq(0)
         end
+      end
+    end
+
+    describe InstantWebsite::WebsiteDrop, '#pages' do
+      let(:template) { build(:instant_website_template, page_names: ['Products', 'Services', 'About Us']) }
+      let(:website)  { build(:instant_website_website, template: template) }
+      let(:drop)     { website.to_liquid }
+
+      it 'returns an instance of PagesDrop' do
+        expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::PagesDrop)
+      end
+
+      it 'returns PagesDrop' do
+        website.pages << build(:instant_website_page, name: 'Products')
+
+        expect(drop.pages.count).to   eq(website.pages.count)
+      end
+
+      it 'returns pages of template when its pages is blank' do
+        website.pages = []
+
+        expect(drop.pages.count).to   eq(template.pages.count)
+        expect(drop.pages[0].name).to eq(template.pages[0].name)
+        expect(drop.pages[1].name).to eq(template.pages[1].name)
+        expect(drop.pages[2].name).to eq(template.pages[2].name)
       end
     end
   end

@@ -18,7 +18,7 @@ module Yoolk
 
         attribute :thumbnail,        Yoolk::Sandbox::Attachment
         attribute :cover_photo,      Yoolk::Sandbox::InstantWebsite::TemplateCoverPhoto
-        attribute :pages,            Array[Yoolk::Sandbox::InstantWebsite::TemplatePage]
+        attribute :pages,            Yoolk::Sandbox::InstantWebsite::Pages[Yoolk::Sandbox::InstantWebsite::TemplatePage]
       end
     end
   end
