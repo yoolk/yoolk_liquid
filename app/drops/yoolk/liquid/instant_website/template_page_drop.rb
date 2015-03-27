@@ -1,8 +1,7 @@
 module Yoolk
   module Liquid
     module InstantWebsite
-      class TemplatePageDrop < BaseDrop
-        PRIMARY_PAGES = %w(products menu services reservation feedback contact_us)
+      class TemplatePageDrop < PageableDrop
 
         attributes  :id, :name, :display_order, :created_at, :updated_at
 

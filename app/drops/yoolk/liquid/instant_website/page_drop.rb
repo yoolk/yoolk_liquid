@@ -1,9 +1,7 @@
 module Yoolk
   module Liquid
-    class InstantWebsite::PageDrop < BaseDrop
-      # All Pages
-      # ["Products", "Services", "Menu", "Galleries", "About Us", "Contact Us", "Reservation", "Feedback", "Announcements", "Videos", "Attachments", "Links", "People", "Map"]
-      PRIMARY_PAGES = %w(products menu services reservation feedback contact_us)
+    module InstantWebsite
+      class PageDrop < PageableDrop
 
       attributes  :id, :name, :created_at, :updated_at
 
@@ -75,6 +73,7 @@ module Yoolk
         def locale_key
           object.template_page.name.parameterize.underscore
         end
+      end
     end
   end
 end
