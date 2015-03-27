@@ -13,7 +13,7 @@ module Yoolk
       # @note If user customized the page's name, it will returns that name. Otherwise, it returns the localized version from its template page's name.
       # @return [String] the localized name of the page
       def name
-        if object.name == template_page.name
+        if object.name == object.template_page.name
           translate("#{theme_name}.links.#{locale_key}")
         else
           object.name
@@ -73,7 +73,7 @@ module Yoolk
         end
 
         def locale_key
-          template_page.name.parameterize.underscore
+          object.template_page.name.parameterize.underscore
         end
     end
   end
