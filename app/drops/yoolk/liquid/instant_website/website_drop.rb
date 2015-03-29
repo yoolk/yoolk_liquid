@@ -14,7 +14,11 @@ module Yoolk
           if object.pages.present?
             @pages ||= Yoolk::Liquid::InstantWebsite::PagesDrop.new(object.pages)
           else
-            @pages ||= Yoolk::Liquid::InstantWebsite::TemplatePagesDrop.new(object.template.pages)
+            @pages ||= if @context['request.previewed_template'].object.pages.present?
+              Yoolk::Liquid::InstantWebsite::TemplatePagesDrop.new(@context['request.previewed_template'].object.pages)
+            else
+              Yoolk::Liquid::InstantWebsite::TemplatePagesDrop.new(object.template.pages)
+            end
           end
         end
 
