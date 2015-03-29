@@ -58,10 +58,16 @@ module Yoolk
 
       context 'website without pages' do
         it 'returns an instance of TemplatePagesDrop' do
+          @context['request'] = { 'previewed_template' => template }
+          drop.context = @context
+
           expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::TemplatePagesDrop)
         end
 
         it 'returns pages of template when its pages is blank' do
+          @context['request'] = { 'previewed_template' => template }
+          drop.context = @context
+
           expect(drop.pages.count).to   eq(template.pages.count)
         end
       end
