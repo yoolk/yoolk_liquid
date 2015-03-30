@@ -56,18 +56,32 @@ module Yoolk
       let(:website)  { build(:instant_website_website, template: template, pages: []) }
       let(:drop)     { website.to_liquid }
 
-      context 'website without pages' do
-        it 'returns an instance of TemplatePagesDrop' do
+      context 'website without pages when previewed_template' do
+        before       {
           @context['request'] = { 'previewed_template' => template }
-          drop.context = @context
+          drop.context        = @context
+        }
 
+        it 'returns an instance of TemplatePagesDrop' do
           expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::TemplatePagesDrop)
         end
 
         it 'returns pages of template when its pages is blank' do
-          @context['request'] = { 'previewed_template' => template }
-          drop.context = @context
+          expect(drop.pages.count).to   eq(template.pages.count)
+        end
+      end
 
+      context 'website without pages with its template' do
+        before       {
+          @context['request'] = { 'previewed_template' => nil }
+          drop.context        = @context
+        }
+
+        it 'returns an instance of TemplatePagesDrop' do
+          expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::TemplatePagesDrop)
+        end
+
+        it 'returns pages of template when its pages is blank' do
           expect(drop.pages.count).to   eq(template.pages.count)
         end
       end
