@@ -74,7 +74,8 @@ module Yoolk
       end
 
       it '#theme_name' do
-        allow(subject.send(:request)).to receive(:params).and_return(theme: 'sample')
+        @context.registers[:controller].params = { 'theme' => 'sample' }
+        subject.context = @context
 
         expect(subject.theme_name).to eq('sample')
       end

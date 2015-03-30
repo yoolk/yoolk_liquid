@@ -4,7 +4,7 @@ module Yoolk
       class PageDrop < BaseDrop
         include PageableDrop
 
-        attributes  :id, :name, :created_at, :updated_at
+        attributes  :id, :name, :display_order, :created_at, :updated_at
 
         belongs_to  :template_page, with: 'Yoolk::Liquid::InstantWebsite::TemplatePageDrop'
 

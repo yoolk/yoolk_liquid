@@ -19,7 +19,7 @@ module Yoolk
       end
 
       def theme_name
-        request.params[:theme]
+        @context.registers[:controller].params[:theme]
       end
 
       # theme_style_url is deprecated due to the rename to color
