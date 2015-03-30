@@ -5,7 +5,7 @@ module Yoolk
 
         # All Pages
         # ["Products", "Services", "Menu", "Galleries", "About Us", "Contact Us", "Reservation", "Feedback", "Announcements", "Videos", "Attachments", "Links", "People", "Map"]
-        PRIMARY_PAGES = %w(products menu services reservation feedback contact_us)
+        PRIMARY_PAGES = %w(home products menu services reservation feedback contact_us)
 
         def url
           send(:"#{name_to_parameterize}_url")
