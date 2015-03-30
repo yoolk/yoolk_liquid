@@ -11,10 +11,10 @@ module Yoolk
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
         def pages
-          if object.pages.present?
-            @pages ||= Yoolk::Liquid::InstantWebsite::PagesDrop.new(object.pages)
+          @pages ||= if object.pages.present?
+            Yoolk::Liquid::InstantWebsite::PagesDrop.new(object.pages)
           else
-            @pages ||= Yoolk::Liquid::InstantWebsite::TemplatePagesDrop.new(object.template.pages)
+            Yoolk::Liquid::InstantWebsite::TemplatePagesDrop.new(_template.send(:object).pages)
           end
         end
 
@@ -41,6 +41,7 @@ module Yoolk
           ::Liquid::Rails::Drop.dropify(_cover_photos)
         end
 
+        # Returns the previewed_template or its template
         def _template
           @context['request.previewed_template'] || template
         end
