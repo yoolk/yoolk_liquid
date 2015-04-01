@@ -3,8 +3,6 @@ require 'rails_helper'
 module Yoolk
   module Liquid
     describe InstantWebsite::TemplatePageDrop do
-      it { should include_module(Yoolk::Liquid::InstantWebsite::PageableDrop) }
-
       it { should have_attribute(:id) }
       it { should have_attribute(:name) }
       it { should have_attribute(:display_order) }

@@ -1,13 +1,16 @@
 module Yoolk
   module Liquid
     class InstantWebsite::PagesDrop < ::Liquid::Rails::CollectionDrop
-      scope :primary, :more
+      def primary
+        @primary ||= self.class.new(objects.select { |object| object.primary? }.take(6))
+      end
+
+      def more
+        @more ||= self.class.new(objects.select { |object| !object.primary? }.drop(6))
+      end
 
       def more?
-        more.select do |item|
-          item.context = @context
-          item.show?
-        end.present?
+        more.select { |m| m.show? }.present?
       end
     end
   end
