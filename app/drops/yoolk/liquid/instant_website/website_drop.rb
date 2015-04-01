@@ -13,9 +13,13 @@ module Yoolk
         def pages
           return @pages if @pages
 
+          products_order = object.pages.detect{|page| page.template_page.name == "Products"}.try(:display_order)
+          services_order = object.pages.detect{|page| page.template_page.name == "Services"}.try(:display_order)
+          menu_order     = object.pages.detect{|page| page.template_page.name == "Menu"}.try(:display_order)
+
           _pages = _template.send(:object).pages.map do |tp|
             object.pages.detect { |wp| wp.template_page.name == tp.name } ||
-            object.pages.new(template_page: tp, name: tp.name, display_order: 9999)
+            object.pages.new(template_page: tp, name: tp.name, display_order: products_order || services_order || menu_order || 99 )
           end.sort_by { |wp| wp.display_order }
 
           @pages = Yoolk::Liquid::InstantWebsite::PagesDrop.new(_pages)
