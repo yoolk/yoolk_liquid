@@ -3,12 +3,12 @@ module Yoolk
     class InstantWebsite::PagesDrop < ::Liquid::Rails::CollectionDrop
       def primary
         # @primary ||= self.class.new(objects.select { |object| object.primary? }.take(6))
-        @primary ||= self.class.new(objects.take(5))
+        @primary ||= self.class.new(objects.take(6))
       end
 
       def more
         # @more ||= self.class.new(objects.select { |object| !object.primary? }.drop(6))
-        @more ||= self.class.new(objects.drop(5))
+        @more ||= self.class.new(objects.drop(6))
       end
 
       def more?
