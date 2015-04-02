@@ -48,10 +48,6 @@ module Yoolk
         def _template
           @context['request.previewed_template'] || template
         end
-
-        if Rails.env.test?
-          attr_reader :context
-        end
       end
     end
   end

@@ -24,7 +24,7 @@ module Yoolk
         end
 
         def show?
-          if object.primary?
+          if object.important?
             true
           else
             @context['request'].preview_mode? || collection_exists?

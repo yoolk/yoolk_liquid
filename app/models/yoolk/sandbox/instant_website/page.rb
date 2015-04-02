@@ -2,7 +2,7 @@ module Yoolk
   module Sandbox
     class InstantWebsite::Page < Base
 
-      PRIMARY_PAGES = %w(home products menu services reservation feedback contact_us)
+      IMPORTANT_PAGES = %w(home products menu services reservation feedback contact_us)
 
       attribute :id,                    String
       attribute :name,                  String
@@ -12,8 +12,8 @@ module Yoolk
 
       attribute :template_page,         Yoolk::Sandbox::InstantWebsite::TemplatePage
 
-      def primary?
-        PRIMARY_PAGES.include?(template_page.name.parameterize.underscore)
+      def important?
+        IMPORTANT_PAGES.include?(template_page.name.parameterize.underscore)
       end
     end
   end
