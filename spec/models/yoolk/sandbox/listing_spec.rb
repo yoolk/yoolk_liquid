@@ -189,6 +189,7 @@ module Yoolk
       it { should respond_to(:email?) }
       it { should respond_to(:website?) }
       it { should respond_to(:multilinguals) }
+      it { should respond_to(:from_groow?) }
 
       it { should alias_from(:image_galleries).to(:galleries) }
       it { should alias_from(:gallery_images).to(:images) }
