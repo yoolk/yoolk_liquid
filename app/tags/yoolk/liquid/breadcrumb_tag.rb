@@ -17,16 +17,16 @@ module Yoolk
         @context = context
         @lis    << li_home
 
-        if request.map_url?              then append_li li(t(:map))
-        elsif request.about_us_url?      then append_li li(t(:about_us))
-        elsif request.brochures_url?     then append_li li(t(:brochures))
-        elsif request.people_url?        then append_li li(t(:people))
-        elsif request.reservation_url?   then append_li li(t(:reservation))
-        elsif request.feedback_url?      then append_li li(t(:feedback))
-        elsif request.contact_us_url?    then append_li li(t(:contact_us))
-        elsif request.videos_url?        then append_li li(t(:videos))
-        elsif request.attachments_url?   then append_li li(t(:attachments))
-        elsif request.links_url?         then append_li li(t(:links))
+        if request.map_url?              then append_li li( t("Map")         )
+        elsif request.about_us_url?      then append_li li( t("About Us")    )
+        elsif request.brochures_url?     then append_li li( t("Brochures")   )
+        elsif request.people_url?        then append_li li( t("People")      )
+        elsif request.reservation_url?   then append_li li( t("Reservation") )
+        elsif request.feedback_url?      then append_li li( t("Feedback")    )
+        elsif request.contact_us_url?    then append_li li( t("Contact Us")  )
+        elsif request.videos_url?        then append_li li( t("Videos")      )
+        elsif request.attachments_url?   then append_li li( t("Attachments") )
+        elsif request.links_url?         then append_li li( t("Links")       )
         elsif request.galleries_url?
           append_li li_galleries
           append_li li(span gallery.name)     if gallery
@@ -62,20 +62,19 @@ module Yoolk
         end
 
         def li_home
-          # li view.link_to(t(:home), request.root_url)
-          li view.link_to(t(:home), request.root_url, itemprop: "item")
+          li view.link_to( t("Home"), request.root_url, itemprop: "item")
         end
 
         def li_galleries
-          li view.link_to_if(gallery, t(:galleries), request.galleries_url, itemprop: "item")
+          li view.link_to_if(gallery, t("Galleries"), request.galleries_url, itemprop: "item")
         end
 
         def li_announcements
-          li view.link_to_if(announcement, t(:announcements), request.announcements_url, itemprop: "item")
+          li view.link_to_if(announcement, t("Announcements"), request.announcements_url, itemprop: "item")
         end
 
         def li_products
-          li view.link_to_if(product || product_category, t(:products), request.products_url, itemprop: "item")
+          li view.link_to_if(product || product_category, t("Products"), request.products_url, itemprop: "item")
         end
 
         def li_product_category
@@ -83,7 +82,7 @@ module Yoolk
         end
 
         def li_services
-          li view.link_to_if(service || service_category, t(:services), request.services_url, itemprop: "item")
+          li view.link_to_if(service || service_category, t("Services"), request.services_url, itemprop: "item")
         end
 
         def li_service_category
@@ -91,7 +90,7 @@ module Yoolk
         end
 
         def li_menu
-          li view.link_to_if(food || food_category, t(:menu), request.menu_url, itemprop: "item")
+          li view.link_to_if(food || food_category, t("Menu"), request.menu_url, itemprop: "item")
         end
 
         def li_food_category
@@ -155,9 +154,12 @@ module Yoolk
           @context['request']
         end
 
-        def t(key)
-          text = I18n.t("#{request.theme_name}.breadcrumb.#{key}", default: I18n.t("breadcrumb.#{key}"))
-          view.content_tag :span, text, itemprop: "name"
+        def t(page_name)
+          _page_name = @context['listing.instant_website.pages'].send(:objects).detect { |wp| wp.template_page.name == page_name }.try(:name)
+          key        = page_name.to_s.parameterize.underscore
+          value      = _page_name.presence || I18n.t(:"#{request.theme_name}.breadcrumb.#{key}", default: :"breadcrumb.#{key}")
+
+          view.content_tag :span, value, itemprop: 'name'
         end
 
         def view
