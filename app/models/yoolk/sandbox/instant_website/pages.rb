@@ -1,12 +1,10 @@
 module Yoolk
   module Sandbox
-    class InstantWebsite::Pages < Collection
-      def primary
-        take(5)
-      end
-
-      def more
-        drop(5)
+    module InstantWebsite
+      class Pages < Collection
+        def new(attributes={})
+          Yoolk::Sandbox::InstantWebsite::Page.new(attributes)
+        end
       end
     end
   end

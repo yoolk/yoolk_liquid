@@ -11,11 +11,14 @@ module Yoolk
         has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
 
         def pages
-          @pages ||= if object.pages.present?
-            Yoolk::Liquid::InstantWebsite::PagesDrop.new(object.pages)
-          else
-            Yoolk::Liquid::InstantWebsite::TemplatePagesDrop.new(_template.send(:object).pages)
-          end
+          return @pages if @pages
+
+          _pages = _template.send(:object).pages.map do |tp|
+            object.pages.detect { |wp| wp.template_page.name == tp.name } ||
+            object.pages.new(template_page: tp, name: tp.name, display_order: tp.display_order )
+          end.sort_by { |wp| wp.display_order.to_i }
+
+          @pages = Yoolk::Liquid::InstantWebsite::PagesDrop.new(_pages)
         end
 
         def color
@@ -44,6 +47,10 @@ module Yoolk
         # Returns the previewed_template or its template
         def _template
           @context['request.previewed_template'] || template
+        end
+
+        if Rails.env.test?
+          attr_reader :context
         end
       end
     end

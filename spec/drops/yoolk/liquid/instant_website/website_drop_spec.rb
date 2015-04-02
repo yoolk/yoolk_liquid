@@ -62,8 +62,8 @@ module Yoolk
           drop.context        = @context
         }
 
-        it 'returns an instance of TemplatePagesDrop' do
-          expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::TemplatePagesDrop)
+        it 'returns an instance of PagesDrop' do
+          expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::PagesDrop)
         end
 
         it 'returns pages of template when its pages is blank' do
@@ -77,8 +77,8 @@ module Yoolk
           drop.context        = @context
         }
 
-        it 'returns an instance of TemplatePagesDrop' do
-          expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::TemplatePagesDrop)
+        it 'returns an instance of PagesDrop' do
+          expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::PagesDrop)
         end
 
         it 'returns pages of template when its pages is blank' do
@@ -88,15 +88,17 @@ module Yoolk
 
       context 'website with pages' do
         before  {
-          website.pages << build(:instant_website_page, name: 'Products')
+          website.pages << build(:instant_website_page, name: 'Products', display_order: 1)
+          @context['request'] = { 'previewed_template' => nil }
+          drop.context        = @context
         }
 
         it 'returns an instance of PagesDrop' do
           expect(drop.pages).to be_instance_of(Yoolk::Liquid::InstantWebsite::PagesDrop)
         end
 
-        it 'returns PagesDrop' do
-          expect(drop.pages.count).to   eq(website.pages.count)
+        it 'returns the number of pages the same as its template\'s pages' do
+          expect(drop.pages.count).to   eq(template.pages.count)
         end
       end
     end
