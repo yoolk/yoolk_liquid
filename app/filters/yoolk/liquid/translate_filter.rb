@@ -19,6 +19,7 @@ module Yoolk
         translate_without_default(key, options)
       end
       alias_method_chain :translate, :default
+      alias_method :t, :translate_with_default
     end
   end
 end
