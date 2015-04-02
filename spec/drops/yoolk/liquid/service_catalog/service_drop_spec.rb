@@ -24,6 +24,10 @@ module Yoolk
 
           drop.url
         end
+
+        it '#cover_photo' do
+          expect(drop).to respond_to(:cover_photo)
+        end
       end
     end
   end
