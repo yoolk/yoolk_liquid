@@ -17,12 +17,18 @@ module Yoolk
       end
 
       describe ServiceDrop, 'methods' do
-        let(:drop)      { described_class.new(double) }
+        let(:service)   { build(:service) }
+        let(:drop)      { described_class.new(service) }
 
         it '#url' do
           expect(drop).to receive(:service_url).with(drop)
 
           drop.url
+        end
+
+        it '#cover_photo' do
+          expect(drop).to respond_to(:cover_photo)
+          expect(drop.cover_photo).to eq(drop.photos[0])
         end
       end
     end

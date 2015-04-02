@@ -12,6 +12,9 @@ module Yoolk
           service_url(self)
         end
 
+        def cover_photo
+          photos[0]
+        end
       end
     end
   end
