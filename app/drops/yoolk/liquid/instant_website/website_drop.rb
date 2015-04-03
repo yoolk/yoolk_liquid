@@ -21,11 +21,11 @@ module Yoolk
           @pages = Yoolk::Liquid::InstantWebsite::PagesDrop.new(_pages)
         end
 
-        def current_page_label
+        def current_page
           pages.detect do |page|
             page.context = @context
             controller.controller_path.include? page.template_page.name.downcase.tr(" ","_")
-          end.try(:name)
+          end
         end
 
         def color
