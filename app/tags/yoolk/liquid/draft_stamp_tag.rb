@@ -14,7 +14,7 @@ module Yoolk
 
       def render(context)
         @context = context
-        if draft_stamp?
+        if draft_stamp? and !context['listing.from_groow?']
           image = context.registers[:view].asset_url @variable_name
           context.registers[:view].image_tag(image, style: "position: absolute; top: 0; right: 0; z-index: 9999;")
         end
