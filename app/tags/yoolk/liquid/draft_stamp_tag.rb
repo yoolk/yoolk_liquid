@@ -14,7 +14,7 @@ module Yoolk
 
       def render(context)
         @context = context
-        if draft_stamp? and !context['listing.from_groow?']
+        if draft_stamp? and listing_not_from_groow
           image = context.registers[:view].asset_url @variable_name
           context.registers[:view].image_tag(image, style: "position: absolute; top: 0; right: 0; z-index: 9999;")
         end
@@ -23,6 +23,10 @@ module Yoolk
     private
       def draft_stamp?
         !is_live? && current_domain && current_domain['type'] != 'subdomain'
+      end
+
+      def listing_not_from_groow
+        !@context['listing.from_groow?']
       end
 
       def is_live?
