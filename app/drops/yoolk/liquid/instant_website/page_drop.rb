@@ -23,12 +23,39 @@ module Yoolk
           send(:"#{name_to_parameterize}_url")
         end
 
+        def preview_mode?
+          @context['request'].preview_mode?
+        end
+
         def show?
-          if object.important?
-            true
+          binding.pry
+          if object.important? or preview_mode? then true
+          elsif name_to_parameterize.in?(["menu", "products", "services"])
+            case name_to_parameterize
+            when 'menu'     then 'Menu'.in?(listing_apps)            && listing_foods.present?
+            when 'products' then 'Product Catalog'.in?(listing_apps) && listing_products.present?
+            when 'services' then 'Service Catalog'.in?(listing_apps) && listing_services.present?
+            end
           else
-            @context['request'].preview_mode? || collection_exists?
+            collection_exists?
           end
+        end
+
+        # Catalogs
+        def listing_products
+          @context['listing.products']
+        end
+
+        def listing_services
+          @context['listing.services']
+        end
+
+        def listing_foods
+          @context['listing.foods']
+        end
+
+        def listing_apps
+          @context['listing.apps'].send(:map, &:name)
         end
 
         def active?
