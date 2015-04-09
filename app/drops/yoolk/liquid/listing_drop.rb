@@ -21,6 +21,7 @@ module Yoolk
       has_many    :websites,              with: 'Yoolk::Liquid::Listing::CommunicationDrop'
 
       has_many    :listing_categories,    with: 'Yoolk::Liquid::Listing::CategoryDrop'
+      has_many    :apps,                  with: 'Yoolk::Liquid::Listing::AppDrop'
 
       has_many    :catalog_items,         scope: :published,
                                           with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
