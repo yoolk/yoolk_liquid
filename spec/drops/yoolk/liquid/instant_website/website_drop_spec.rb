@@ -116,6 +116,7 @@ module Yoolk
         allow(subject.send(:controller)).to receive(:controller_path).and_return('products')
 
         expect(drop.current_page).to be_instance_of(Yoolk::Liquid::InstantWebsite::PageDrop)
+        expect(drop.current_page.send(:object).name).to eq('Products')
       end
     end
   end

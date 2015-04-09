@@ -24,7 +24,7 @@ module Yoolk
         def current_page
           pages.detect do |page|
             page.context = @context
-            controller.controller_path.include? page.template_page.name.downcase.tr(" ","_")
+            controller.controller_path.include? page.template_page.name.downcase.tr(' ', '_')
           end
         end
 
