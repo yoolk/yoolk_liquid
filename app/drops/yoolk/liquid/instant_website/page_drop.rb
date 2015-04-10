@@ -50,7 +50,6 @@ module Yoolk
           def collection_exists?
             collection = case name_to_parameterize
               when 'brochures' then 'artworks'
-              when 'about_us'  then 'catalog_items'
               when 'videos'    then 'medias'
               else name_to_parameterize end
 
