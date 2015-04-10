@@ -26,6 +26,8 @@ module Yoolk
         def show?
           if object.important?
             true
+          elsif name_to_parameterize == "about_us"
+            @context['request'].preview_mode? || @context['listing.catalog_items'].present? || @context['listing.business_photos'].present?
           else
             @context['request'].preview_mode? || collection_exists?
           end
@@ -45,7 +47,6 @@ module Yoolk
           def collection_exists?
             collection = case name_to_parameterize
               when 'brochures' then 'artworks'
-              when 'about_us'  then 'catalog_items'
               when 'videos'    then 'medias'
               else name_to_parameterize end
 

@@ -102,5 +102,22 @@ module Yoolk
         end
       end
     end
+    describe InstantWebsite::WebsiteDrop, '#current_page' do
+      let(:template) { build(:instant_website_template, page_names: ['Products', 'Services', 'About Us']) }
+      let(:website)  { build(:instant_website_website, template: template, pages: []) }
+      let(:drop)     { website.to_liquid }
+
+      before  {
+        website.pages << build(:instant_website_page, name: 'Products', display_order: 1)
+        drop.context        = @context
+      }
+
+      it 'return page object' do
+        allow(subject.send(:controller)).to receive(:controller_path).and_return('products')
+
+        expect(drop.current_page).to be_instance_of(Yoolk::Liquid::InstantWebsite::PageDrop)
+        expect(drop.current_page.send(:object).name).to eq('Products')
+      end
+    end
   end
 end
