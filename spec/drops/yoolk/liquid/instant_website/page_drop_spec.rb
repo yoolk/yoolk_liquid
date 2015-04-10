@@ -57,7 +57,7 @@ module Yoolk
           expect(drop.show?).to be(true)
         end
 
-        it 'return true if collection exist' do
+        it 'return true if collection exist and has app installed' do
           allow(page).to receive(:important?).and_return(false)
           @context['request'] = @context['request'].merge( 'preview_mode?' => false )
 
