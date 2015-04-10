@@ -61,6 +61,20 @@ module Yoolk
           allow(page).to receive(:important?).and_return(false)
           @context['request'] = @context['request'].merge( 'preview_mode?' => false )
 
+          page.name = "Our Services"
+          page.template_page.name = "Services"
+          drop = page.to_liquid
+
+          @context['listing'] = build(:listing, :services)
+          drop.context = @context
+
+          expect(drop.show?).to eq(true)
+        end
+
+        it 'return true if collection exist' do
+          allow(page).to receive(:important?).and_return(false)
+          @context['request'] = @context['request'].merge( 'preview_mode?' => false )
+
           page.name = "Photos"
           page.template_page.name = "Galleries"
           drop = page.to_liquid
