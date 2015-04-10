@@ -77,7 +77,7 @@ module Yoolk
           end
 
           def preview_mode?
-            @context['request'].preview_mode?
+            @context['request.preview_mode?']
           end
       end
     end

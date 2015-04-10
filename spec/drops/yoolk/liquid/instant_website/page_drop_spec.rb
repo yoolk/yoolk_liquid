@@ -43,6 +43,20 @@ module Yoolk
           expect(drop.url).to eq("/products")
         end
       end
+
+      context '#show?' do
+        it 'return true if important page' do
+          expect(drop.show?).to be(true)
+        end
+
+        it 'return true if in preview mode' do
+          allow(page).to receive(:important?).and_return(false)
+          @context['request'] = @context['request'].merge( 'preview_mode?' => true )
+          drop.context = @context
+
+          expect(drop.show?).to be(true)
+        end
+      end
     end
   end
 end
