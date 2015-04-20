@@ -8,6 +8,10 @@ module Yoolk
       it { should have_attribute(:display_order) }
       it { should have_attribute(:created_at) }
       it { should have_attribute(:updated_at) }
+
+      it { should delegate(:menu?).to(:object) }
+      it { should delegate(:products?).to(:object) }
+      it { should delegate(:services?).to(:object) }
     end
   end
 end
