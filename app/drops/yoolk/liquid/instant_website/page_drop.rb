@@ -24,13 +24,14 @@ module Yoolk
         end
 
         def show?
-          if object.important? or preview_mode? then true
-          elsif name_to_parameterize.in?(["menu", "products", "services"])
-            case name_to_parameterize
-            when 'menu'     then 'Menu'.in?(listing_apps)            && listing_foods.present?
-            when 'products' then 'Product Catalog'.in?(listing_apps) && listing_products.present?
-            when 'services' then 'Service Catalog'.in?(listing_apps) && listing_services.present?
-            end
+          if object.important? or preview_mode?
+            true
+          elsif object.template_page.menu?
+            listing_apps.include?("Menu") && listing_foods.present?
+          elsif object.template_page.products?
+            listing_apps.include?("Product Catalog") && listing_products.present?
+          elsif object.template_page.services?
+            listing_apps.include?("Service Catalog") && listing_services.present?
           else
             collection_exists?
           end
