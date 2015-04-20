@@ -19,7 +19,27 @@ module Yoolk
       it 'has :updated_at attribute' do
         expect(described_class).to have_attribute(:updated_at).of_type(DateTime)
       end
+    end
 
+    describe InstantWebsite::TemplatePage, 'methods' do
+      it { should respond_to(:menu?) }
+      it { should respond_to(:products?) }
+      it { should respond_to(:services?) }
+
+      it '#menu? return true when navigate to menu page' do
+        page = InstantWebsite::TemplatePage.new(name: 'Menu')
+        expect(page.menu?).to eq(true)
+      end
+
+      it '#products? return true when navigate to products page' do
+        page = InstantWebsite::TemplatePage.new(name: 'Products')
+        expect(page.products?).to eq(true)
+      end
+
+      it '#services? return true when navigate to services page' do
+        page = InstantWebsite::TemplatePage.new(name: 'Services')
+        expect(page.services?).to eq(true)
+      end
     end
   end
 end
