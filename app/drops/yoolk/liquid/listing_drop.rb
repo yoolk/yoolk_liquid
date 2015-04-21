@@ -21,7 +21,6 @@ module Yoolk
       has_many    :websites,              with: 'Yoolk::Liquid::Listing::CommunicationDrop'
 
       has_many    :listing_categories,    with: 'Yoolk::Liquid::Listing::CategoryDrop'
-      has_many    :apps,                  with: 'Yoolk::Liquid::Listing::AppDrop'
 
       has_many    :catalog_items,         scope: :published,
                                           with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
@@ -88,6 +87,10 @@ module Yoolk
 
       def multilinguals
         @multilinguals ||= ::Liquid::Rails::CollectionDrop.new(object.multilinguals.select { |listing| listing.instant_website.try(:domain_name).present? })
+      end
+
+      def installed_apps
+        @installed_apps ||= ::Liquid::Rails::CollectionDrop.new(object.apps)
       end
 
       def summary_business_hours

@@ -74,7 +74,7 @@ module Yoolk
           end
 
           def listing_apps
-            @context['listing.apps'].send(:map, &:name)
+            @context['listing.installed_apps'].send(:map, &:name)
           end
 
           def preview_mode?

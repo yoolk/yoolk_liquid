@@ -18,6 +18,7 @@ module Yoolk
       attribute :created_at,              DateTime
       attribute :updated_at,              DateTime
       attribute :multilingual_ids,        Array
+      attribute :installed_apps,          Array
 
       # relations
       attribute :portal,                  Yoolk::Sandbox::Portal
@@ -29,7 +30,6 @@ module Yoolk
       attribute :extra_communications,    Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::Communication]
       attribute :people,                  Yoolk::Sandbox::Listing::People[Yoolk::Sandbox::Listing::Person]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
-      attribute :apps,                    Array[Yoolk::Sandbox::Listing::App]
       attribute :catalog_items,           Yoolk::Sandbox::Listing::CatalogItems[Yoolk::Sandbox::Listing::CatalogItem]
       attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
       attribute :artworks,                Yoolk::Sandbox::Listing::Artworks[Yoolk::Sandbox::Listing::Artwork]
@@ -139,6 +139,7 @@ module Yoolk
       alias_method :images,         :gallery_images
       alias_method :brochures,      :artworks
       alias_method :business_hours, :opening_hours
+      alias_method :apps,           :installed_apps
 
       def from_groow?
         source_name == 'groow.io'
