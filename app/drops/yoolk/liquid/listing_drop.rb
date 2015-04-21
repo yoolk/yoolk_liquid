@@ -1,7 +1,7 @@
 module Yoolk
   module Liquid
     class ListingDrop < BaseDrop
-      attributes  :id, :alias_id, :name, :headline, :postal_code, :description,
+      attributes  :id, :alias_id, :name, :headline, :postal_code, :description, :from_groow?,
                   :lat, :long, :zoom_level, :address, :show_map_on_web, :is_active
 
       belongs_to  :location,              class_name: 'Yoolk::Liquid::LocationDrop'
