@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :listing, class: Yoolk::Sandbox::Listing do
-    name     'Yellow Tower inc.'
-    alias_id 'kh34363'
-    apps     { [ build(:apps) ] }
+    name              'Yellow Tower inc.'
+    alias_id          'kh34363'
+    installed_apps    { [ build(:apps) ] }
 
     trait :services do
       transient do

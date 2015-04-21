@@ -1,6 +1,6 @@
 module Yoolk
   module Sandbox
-    class Listing::App < Base
+    class App < Base
 
       attribute :id,                    String
       attribute :name,                  String
