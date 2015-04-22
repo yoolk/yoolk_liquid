@@ -89,8 +89,8 @@ module Yoolk
         @multilinguals ||= ::Liquid::Rails::CollectionDrop.new(object.multilinguals.select { |listing| listing.instant_website.try(:domain_name).present? })
       end
 
-      def installed_apps
-        @installed_apps ||= ::Liquid::Rails::CollectionDrop.new(object.apps)
+      def apps
+        @apps ||= ::Liquid::Rails::CollectionDrop.new(object.apps)
       end
 
       def summary_business_hours
