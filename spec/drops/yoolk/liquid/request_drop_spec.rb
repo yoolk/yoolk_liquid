@@ -5,12 +5,24 @@ module Yoolk
     describe RequestDrop do
       subject { described_class.new }
 
-      it '#root_url' do
-        expect(subject.root_url).to eq('/')
+      describe 'listing from groow' do
+        let(:listing) { build(:listing, :groow) }
+        it '#office_url' do
+          context['listing'] = listing
+          expect(subject.office_url).to eq('https://groow.io/office')
+        end
       end
 
-      it '#office_url' do
-        expect(subject.office_url).to eq('/office')
+      describe 'listing from portal' do
+        let(:listing) { build(:listing) }
+        it '#office_url' do
+          context['listing'] = listing
+          expect(subject.office_url).to eq('/office')
+        end
+      end
+
+      it '#root_url' do
+        expect(subject.root_url).to eq('/')
       end
 
       it '#galleries_url' do

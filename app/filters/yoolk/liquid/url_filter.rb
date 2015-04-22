@@ -74,10 +74,6 @@ module Yoolk
         office_path
       end
 
-      def office_url?
-        request_path == office_path
-      end
-
       def map_url
         map_index_path
       end
@@ -219,7 +215,11 @@ module Yoolk
                   to: :controller
 
         def office_path
-          '/office'
+          if @context['listing'].from_groow?
+            'https://groow.io/office'
+          else
+            '/office'
+          end
         end
 
         def default_class_options(is_current_page, options={})
