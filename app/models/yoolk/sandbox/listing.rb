@@ -18,6 +18,7 @@ module Yoolk
       attribute :created_at,              DateTime
       attribute :updated_at,              DateTime
       attribute :multilingual_ids,        Array
+      attribute :app_ids,                 Array
 
       # relations
       attribute :portal,                  Yoolk::Sandbox::Portal
@@ -127,6 +128,10 @@ module Yoolk
 
       def multilinguals
         @multilinguals  ||= multilingual_ids.map { |alias_id| Yoolk::Sandbox::Listing.find(alias_id) }
+      end
+
+      def apps
+        @apps           ||= app_ids.map { |app_id| Yoolk::Sandbox::App.find(app_id) }
       end
 
       def short_descriptions

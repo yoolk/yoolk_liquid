@@ -63,6 +63,10 @@ module Yoolk
         expect(described_class).to have_attribute(:multilingual_ids).of_type(Array)
       end
 
+      it 'has :app_ids attribute' do
+        expect(described_class).to have_attribute(:app_ids).of_type(Array)
+      end
+
       it 'has :location attribute' do
         expect(described_class).to have_attribute(:location).of_type(Yoolk::Sandbox::Location)
       end
@@ -189,6 +193,7 @@ module Yoolk
       it { should respond_to(:email?) }
       it { should respond_to(:website?) }
       it { should respond_to(:multilinguals) }
+      it { should respond_to(:apps) }
       it { should respond_to(:from_groow?) }
 
       it { should alias_from(:image_galleries).to(:galleries) }

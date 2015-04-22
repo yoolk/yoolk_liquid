@@ -8,6 +8,18 @@ module Yoolk
         attribute :display_order,    Integer
         attribute :created_at,       DateTime
         attribute :updated_at,       DateTime
+
+        def menu?
+          name == 'Menu'
+        end
+
+        def products?
+          name == 'Products'
+        end
+
+        def services?
+          name == 'Services'
+        end
       end
     end
   end

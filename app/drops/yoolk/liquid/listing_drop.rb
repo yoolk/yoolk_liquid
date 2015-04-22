@@ -89,6 +89,10 @@ module Yoolk
         @multilinguals ||= ::Liquid::Rails::CollectionDrop.new(object.multilinguals.select { |listing| listing.instant_website.try(:domain_name).present? })
       end
 
+      def apps
+        @apps ||= ::Liquid::Rails::CollectionDrop.new(object.apps)
+      end
+
       def summary_business_hours
         summary  = []
         group_by = business_hours.select { |item| !item.closed? }.group_by { |item| [item.open.to_s, item.closed.to_s] }

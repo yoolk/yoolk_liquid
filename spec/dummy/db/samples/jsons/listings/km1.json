@@ -1,0 +1,29 @@
+{
+  "id": "292D51B2-76C8-465D-BEF1-13300DEC90FA",
+  "alias_id": "km1",
+  "name": "អគារពណ៌លឿង",
+  "address": "លេខ 191, ទន្លេសាប (ខ្ទង់។ ), ភូមិ 1, សង្កាត់ជ្រោយចង្វារ, 12110 ភ្នំពេញ",
+  "lat": 101.574302136424594,
+  "long": 103.93494145572186,
+  "portal": {
+    "language": {
+      "name": "Khmer",
+      "two_code": "km"
+    }
+  },
+  "location": {
+    "id": "1",
+    "alias_id": "km1",
+    "name": "រាជធានីភ្នំពេញ",
+    "priority": 1
+  },
+  "multilingual_ids": ["kh1"],
+  "instant_website": {
+    "domains": [
+      {
+        "is_primary": true,
+        "name": "127.0.0.1:3000"
+      }
+    ]
+  }
+}

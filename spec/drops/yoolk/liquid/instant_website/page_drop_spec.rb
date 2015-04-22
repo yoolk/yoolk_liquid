@@ -43,6 +43,48 @@ module Yoolk
           expect(drop.url).to eq("/products")
         end
       end
+
+      context '#show?' do
+        it 'return true if important page' do
+          expect(drop.show?).to be(true)
+        end
+
+        it 'return true if in preview mode' do
+          allow(page).to receive(:important?).and_return(false)
+          @context['request'] = @context['request'].merge( 'preview_mode?' => true )
+          drop.context = @context
+
+          expect(drop.show?).to be(true)
+        end
+
+        it 'return true if collection exist and has app installed' do
+          allow(page).to receive(:important?).and_return(false)
+          @context['request'] = @context['request'].merge( 'preview_mode?' => false )
+
+          page.name = "Our Services"
+          page.template_page.name = "Services"
+          drop = page.to_liquid
+
+          @context['listing'] = build(:listing, :services)
+          drop.context = @context
+
+          expect(drop.show?).to eq(true)
+        end
+
+        it 'return true if collection exist' do
+          allow(page).to receive(:important?).and_return(false)
+          @context['request'] = @context['request'].merge( 'preview_mode?' => false )
+
+          page.name = "Photos"
+          page.template_page.name = "Galleries"
+          drop = page.to_liquid
+
+          @context['listing'] = build(:listing, image_galleries: [build(:image_galleries)])
+          drop.context = @context
+
+          expect(drop.show?).to eq(true)
+        end
+      end
     end
   end
 end

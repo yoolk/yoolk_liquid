@@ -4,6 +4,8 @@ module Yoolk
       class TemplatePageDrop < BaseDrop
         attributes  :id, :name, :display_order, :created_at, :updated_at
 
+        delegate :menu?, :products?, :services?,
+               to: :object
       end
     end
   end

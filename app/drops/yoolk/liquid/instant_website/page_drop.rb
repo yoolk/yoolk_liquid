@@ -24,12 +24,16 @@ module Yoolk
         end
 
         def show?
-          if object.important?
+          if object.important? || preview_mode?
             true
-          elsif name_to_parameterize == "about_us"
-            @context['request'].preview_mode? || @context['listing.catalog_items'].present? || @context['listing.business_photos'].present?
+          elsif object.template_page.menu?
+            listing_apps.include?("Menu") && listing_foods.present?
+          elsif object.template_page.products?
+            listing_apps.include?("Product Catalog") && listing_products.present?
+          elsif object.template_page.services?
+            listing_apps.include?("Service Catalog") && listing_services.present?
           else
-            @context['request'].preview_mode? || collection_exists?
+            collection_exists?
           end
         end
 
@@ -55,6 +59,26 @@ module Yoolk
 
           def theme_name
             @context['request.theme_name']
+          end
+
+          def listing_products
+            @context['listing.products']
+          end
+
+          def listing_services
+            @context['listing.services']
+          end
+
+          def listing_foods
+            @context['listing.foods']
+          end
+
+          def listing_apps
+            @context['listing.apps'].send(:map, &:name)
+          end
+
+          def preview_mode?
+            @context['request.preview_mode?']
           end
       end
     end
