@@ -4,6 +4,10 @@ FactoryGirl.define do
     alias_id          'kh34363'
     app_ids           [1, 2, 3]
 
+    trait :groow do
+      source_name 'groow.io'
+    end
+
     trait :services do
       transient do
         service_count 2
