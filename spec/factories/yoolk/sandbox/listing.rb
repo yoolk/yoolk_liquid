@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :listing, class: Yoolk::Sandbox::Listing do
     name              'Yellow Tower inc.'
     alias_id          'kh34363'
-    installed_apps    { [ build(:apps) ] }
+    app_ids           [1, 2, 3]
 
     trait :services do
       transient do
@@ -20,10 +20,6 @@ FactoryGirl.define do
       transient do
         galleries_count 2
         galleries_name  'Album'
-      end
-
-      ignore do
-        comments_count 0
       end
 
       after(:build) do |listing, evaluator|

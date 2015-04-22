@@ -24,7 +24,7 @@ module Yoolk
         end
 
         def show?
-          if object.important? or preview_mode?
+          if object.important? || preview_mode?
             true
           elsif object.template_page.menu?
             listing_apps.include?("Menu") && listing_foods.present?
@@ -74,7 +74,7 @@ module Yoolk
           end
 
           def listing_apps
-            @context['listing.installed_apps'].send(:map, &:name)
+            @context['listing.apps'].send(:map, &:name)
           end
 
           def preview_mode?

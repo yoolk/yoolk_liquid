@@ -1,0 +1,40 @@
+{
+  "id": "1",
+  "email": "radin@yoolk.com",
+  "person": {
+    "id": "10",
+    "full_name": "radin reth",
+    "gender": "m",
+    "avatar": {
+      "id": 11,
+      "content_type": "image/png",
+      "attachment_meta": {
+        "original": {
+          "width": 558,
+          "height": 372,
+          "url": "/attachments/images/person/original/4390.jpg"
+        },
+        "large": {
+          "width": 558,
+          "height": 372,
+          "url": "/attachments/images/person/large/4390.jpg"
+        },
+        "medium": {
+          "width": 364,
+          "height": 243,
+          "url": "/attachments/images/person/medium/4390.jpg"
+        },
+        "small": {
+          "width": 196,
+          "height": 131,
+          "url": "/attachments/images/person/small/4390.jpg"
+        },
+        "thumbnail": {
+          "width": 60,
+          "height": 40,
+          "url": "/attachments/images/person/thumbnail/4390.jpg"
+        }
+      }
+    }
+  }
+}
