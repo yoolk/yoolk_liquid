@@ -26,6 +26,10 @@ module Yoolk
         def show?
           if object.important? || preview_mode?
             true
+          elsif name_to_parameterize == "about_us"
+            @context['listing.catalog_items'].present? || @context['listing.business_photos'].present?
+          elsif name_to_parameterize == "map"
+            @context['listing.show_map_on_web'] && @context['listing.lat'].present? && @context['listing.long'].present?
           elsif object.template_page.menu?
             listing_apps.include?("Menu") && listing_foods.present?
           elsif object.template_page.products?
