@@ -84,6 +84,28 @@ module Yoolk
 
           expect(drop.show?).to eq(true)
         end
+
+        it 'return true either if catalog items or business photos is not empty' do
+          page.name = "About Us"
+          page.template_page.name = "About Us"
+          drop = page.to_liquid
+
+          @context['listing'] = build(:listing, :catalog_items, :business_photos)
+          drop.context = @context
+
+          expect(drop.show?).to eq(true)
+        end
+
+        it 'return true either if catalog items or business photos is not empty' do
+          page.name = "Map"
+          page.template_page.name = "Map"
+          drop = page.to_liquid
+
+          @context['listing'] = build(:listing, show_map_on_web: true, lat: 101, long: 102)
+          drop.context = @context
+
+          expect(drop.show?).to eq(true)
+        end
       end
     end
   end
