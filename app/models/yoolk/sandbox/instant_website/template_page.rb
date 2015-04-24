@@ -20,6 +20,14 @@ module Yoolk
         def services?
           name == 'Services'
         end
+
+        def about_us?
+          name == 'About Us'
+        end
+
+        def map?
+          name == 'Map'
+        end
       end
     end
   end
