@@ -20,10 +20,6 @@ describe InstantWebsite::Generators::ThemeGenerator do
       expect(file("app/themes/theme_a")).to exist
     end
 
-    it "exists `app/themes/theme_a/locales`" do
-      expect(file("app/themes/theme_a/locales")).to exist
-    end
-
     it "exists `app/themes/theme_a/assets/images/theme_a`" do
       expect(file("app/themes/theme_a/assets/images/theme_a")).to exist
     end
@@ -153,6 +149,32 @@ describe InstantWebsite::Generators::ThemeGenerator do
 
       it "`services/show.liquid` should exist" do
         expect(file('app/themes/theme_a/views/services/show.liquid')).to exist
+      end
+    end
+
+    context "Locales" do
+      it "exists `app/themes/theme_a/locales`" do
+        expect(file("app/themes/theme_a/locales")).to exist
+      end
+
+      it "exists `app/themes/theme_a/locales/km.yml`" do
+        expect(file("app/themes/theme_a/locales/km.yml")).to exist
+      end
+
+      it "exists `app/themes/theme_a/locales/en.yml`" do
+        expect(file("app/themes/theme_a/locales/en.yml")).to exist
+      end
+
+      it "exists `app/themes/theme_a/locales/id.yml`" do
+        expect(file("app/themes/theme_a/locales/id.yml")).to exist
+      end
+
+      it "exists `app/themes/theme_a/locales/th.yml`" do
+        expect(file("app/themes/theme_a/locales/th.yml")).to exist
+      end
+
+      it "exists `app/themes/theme_a/locales/vi.yml`" do
+        expect(file("app/themes/theme_a/locales/vi.yml")).to exist
       end
     end
   end

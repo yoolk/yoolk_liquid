@@ -29,6 +29,14 @@ module InstantWebsite
         template        'layout.liquid',  "#{theme_views_layout_directory}/#{theme_name}.liquid"
       end
 
+      def copy_locales_files
+        template        'locales/km.yml',  "#{theme_locales_directory}/km.yml"
+        template        'locales/en.yml',  "#{theme_locales_directory}/en.yml"
+        template        'locales/id.yml',  "#{theme_locales_directory}/id.yml"
+        template        'locales/th.yml',  "#{theme_locales_directory}/th.yml"
+        template        'locales/vi.yml',  "#{theme_locales_directory}/vi.yml"
+      end
+
       def create_pages
         create_about_us       if pages.include?('about_us')
         create_announcements  if pages.include?('announcements')
