@@ -18,7 +18,8 @@ module Yoolk
           meta_itemscope,
           csrf_meta_tags,
           google_analytics,
-          alternate_link
+          alternate_link,
+          favicon
         ].compact.join("\n")
       end
 
@@ -91,6 +92,10 @@ module Yoolk
           <meta content='width=device-width, initial-scale=1.0'                      name='viewport'>
           <meta content="#{ preview_mode? ? 'noindex, nofollow' : 'index, follow' }" name='robots'>
         }
+      end
+
+      def favicon
+        listing.to_liquid.favicon
       end
 
       private

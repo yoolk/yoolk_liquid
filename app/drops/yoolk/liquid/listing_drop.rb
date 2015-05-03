@@ -108,6 +108,20 @@ module Yoolk
       def show_map?
         show_map_on_web && lat.present? && long.present?
       end
+
+      def favicon
+        iw = object.instant_website
+        return unless iw && iw.favicon.present?
+
+        h.favicon_link_tag iw.favicon.url
+      end
+
+      private
+
+        def h
+          @context.registers[:helper]
+        end
+
     end
   end
 end
