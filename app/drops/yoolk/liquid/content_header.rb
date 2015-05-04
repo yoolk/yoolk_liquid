@@ -19,7 +19,7 @@ module Yoolk
           csrf_meta_tags,
           google_analytics,
           alternate_link,
-          favicon
+          favicon_link_tag
         ].compact.join("\n")
       end
 
@@ -94,8 +94,11 @@ module Yoolk
         }
       end
 
-      def favicon
-        listing.to_liquid.favicon
+      def favicon_link_tag
+        iw = listing.instant_website
+        return unless iw && iw.favicon.present?
+
+        view_context.favicon_link_tag iw.favicon.url
       end
 
       private
