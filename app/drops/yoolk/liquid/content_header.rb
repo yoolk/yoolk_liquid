@@ -15,6 +15,7 @@ module Yoolk
           meta_base,
           meta_og,
           meta_twitter,
+          webclip_link,
           meta_itemscope,
           csrf_meta_tags,
           google_analytics,
@@ -91,6 +92,12 @@ module Yoolk
           <meta content='width=device-width, initial-scale=1.0'                      name='viewport'>
           <meta content="#{ preview_mode? ? 'noindex, nofollow' : 'index, follow' }" name='robots'>
         }
+      end
+
+      def webclip_link
+        if listing.instant_website.webclip.present?
+          %Q{ <link rel='apple-touch-icon' href="#{listing.instant_website.webclip.url}" /> }
+        end
       end
 
       private
