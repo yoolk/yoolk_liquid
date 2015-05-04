@@ -44,6 +44,16 @@ module Yoolk
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
           ga('create', '#{google_analytics_key}', '#{request.host}');
+
+          #{
+            if owner_google_analytics_key.present?
+             [
+               "ga('create', '#{owner_google_analytics_key}', '#{request.host}', {'name': 'ownerTracker'});",
+               "ga('ownerTracker.send', 'pageview');"
+             ].join("\n")
+            end
+          }
+
           ga('send', 'pageview');
 
           </script>
@@ -105,6 +115,10 @@ module Yoolk
 
         def google_analytics_key
           listing.instant_website.try(:google_analytics_key).presence || 'UA-51188061-1'
+        end
+
+        def owner_google_analytics_key
+          listing.instant_website.owner_google_analytics_key
         end
     end
   end
