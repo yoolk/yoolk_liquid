@@ -27,7 +27,7 @@ module Yoolk
       def alternate_link
         if listing.to_liquid.multilinguals.present?
           listing.to_liquid.multilinguals.inject('') do |result, listing|
-            "<link href='http://#{ listing.instant_website.primary_domain.url }' hreflang='#{ listing.language.two_code }' rel='alternate' />"
+            "<link href='#{ listing.instant_website.primary_domain.url }' hreflang='#{ listing.language.two_code }' rel='alternate' />"
           end
         end
       end
@@ -106,10 +106,9 @@ module Yoolk
       end
 
       def favicon_link
-        iw = listing.instant_website
-        return unless iw && iw.favicon.present?
-
-        view_context.favicon_link_tag iw.favicon.url
+        if listing.instant_website.favicon.present?
+          view_context.favicon_link_tag iw.favicon.url
+        end
       end
 
       def webclip_link
