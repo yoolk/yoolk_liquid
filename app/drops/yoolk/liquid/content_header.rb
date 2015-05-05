@@ -16,6 +16,7 @@ module Yoolk
           meta_og,
           meta_twitter,
           webclip_link,
+          favicon_link,
           meta_itemscope,
           csrf_meta_tags,
           google_analytics,
@@ -102,6 +103,13 @@ module Yoolk
           <meta content='width=device-width, initial-scale=1.0'                      name='viewport'>
           <meta content="#{ preview_mode? ? 'noindex, nofollow' : 'index, follow' }" name='robots'>
         }
+      end
+
+      def favicon_link
+        iw = listing.instant_website
+        return unless iw && iw.favicon.present?
+
+        view_context.favicon_link_tag iw.favicon.url
       end
 
       def webclip_link

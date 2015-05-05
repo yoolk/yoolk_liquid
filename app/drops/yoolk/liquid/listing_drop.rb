@@ -108,6 +108,7 @@ module Yoolk
       def show_map?
         show_map_on_web && lat.present? && long.present?
       end
+
     end
   end
 end
