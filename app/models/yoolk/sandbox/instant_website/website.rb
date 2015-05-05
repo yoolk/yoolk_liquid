@@ -14,6 +14,7 @@ module Yoolk
         attribute :updated_at,                   DateTime
 
         attribute :favicon,               Yoolk::Sandbox::Attachment
+        attribute :webclip,               Yoolk::Sandbox::Attachment
         attribute :template,              Yoolk::Sandbox::InstantWebsite::Template
         attribute :listing,               Yoolk::Sandbox::Listing
         attribute :cover_photos,          Array[Yoolk::Sandbox::InstantWebsite::WebsiteCoverPhoto]
