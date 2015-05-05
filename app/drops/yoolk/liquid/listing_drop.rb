@@ -109,12 +109,6 @@ module Yoolk
         show_map_on_web && lat.present? && long.present?
       end
 
-      private
-
-        def h
-          @context.registers[:helper]
-        end
-
     end
   end
 end
