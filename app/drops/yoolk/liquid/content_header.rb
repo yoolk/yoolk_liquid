@@ -107,7 +107,7 @@ module Yoolk
 
       def favicon_link
         if listing.instant_website.favicon.present?
-          view_context.favicon_link_tag iw.favicon.url
+          view_context.favicon_link_tag listing.instant_website.favicon.url
         end
       end
 
