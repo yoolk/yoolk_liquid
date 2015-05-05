@@ -15,11 +15,12 @@ module Yoolk
           meta_base,
           meta_og,
           meta_twitter,
+          webclip_link,
+          favicon_link,
           meta_itemscope,
           csrf_meta_tags,
           google_analytics,
-          alternate_link,
-          favicon_link_tag
+          alternate_link
         ].compact.join("\n")
       end
 
@@ -45,6 +46,16 @@ module Yoolk
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
           ga('create', '#{google_analytics_key}', '#{request.host}');
+
+          #{
+            if owner_google_analytics_key.present?
+             [
+               "ga('create', '#{owner_google_analytics_key}', '#{request.host}', {'name': 'ownerTracker'});",
+               "ga('ownerTracker.send', 'pageview');"
+             ].join("\n")
+            end
+          }
+
           ga('send', 'pageview');
 
           </script>
@@ -94,11 +105,17 @@ module Yoolk
         }
       end
 
-      def favicon_link_tag
+      def favicon_link
         iw = listing.instant_website
         return unless iw && iw.favicon.present?
 
         view_context.favicon_link_tag iw.favicon.url
+      end
+
+      def webclip_link
+        if listing.instant_website.webclip.present?
+          %Q{ <link rel='apple-touch-icon' href="#{listing.instant_website.webclip.url}" /> }
+        end
       end
 
       private
@@ -113,6 +130,10 @@ module Yoolk
 
         def google_analytics_key
           listing.instant_website.try(:google_analytics_key).presence || 'UA-51188061-1'
+        end
+
+        def owner_google_analytics_key
+          listing.instant_website.owner_google_analytics_key
         end
     end
   end

@@ -3,16 +3,18 @@ module Yoolk
     module InstantWebsite
       class Website < Yoolk::Sandbox::Base
 
-        attribute :id,                    String
-        attribute :google_analytics_key,  String
-        attribute :is_live,               Boolean
-        attribute :is_active,             Boolean
-        attribute :free_plan,             Boolean
-        attribute :color_name,            String
-        attribute :created_at,            DateTime
-        attribute :updated_at,            DateTime
+        attribute :id,                           String
+        attribute :google_analytics_key,         String
+        attribute :owner_google_analytics_key,   String
+        attribute :is_live,                      Boolean
+        attribute :is_active,                    Boolean
+        attribute :free_plan,                    Boolean
+        attribute :color_name,                   String
+        attribute :created_at,                   DateTime
+        attribute :updated_at,                   DateTime
 
         attribute :favicon,               Yoolk::Sandbox::Attachment
+        attribute :webclip,               Yoolk::Sandbox::Attachment
         attribute :template,              Yoolk::Sandbox::InstantWebsite::Template
         attribute :listing,               Yoolk::Sandbox::Listing
         attribute :cover_photos,          Array[Yoolk::Sandbox::InstantWebsite::WebsiteCoverPhoto]

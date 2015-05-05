@@ -7,6 +7,7 @@ module Yoolk
       it { should have_attribute(:template_name) }
       it { should have_attribute(:color) }
       it { should have_attribute(:google_analytics_key) }
+      it { should have_attribute(:owner_google_analytics_key) }
       it { should have_attribute(:is_live) }
       it { should have_attribute(:is_active) }
       it { should have_attribute(:free_plan) }
@@ -15,6 +16,7 @@ module Yoolk
       it { should have_attribute(:updated_at) }
 
       it { should belongs_to(:favicon).with('Yoolk::Liquid::AttachmentDrop') }
+      it { should belongs_to(:webclip).with('Yoolk::Liquid::AttachmentDrop') }
       it { should belongs_to(:template).with('Yoolk::Liquid::InstantWebsite::TemplateDrop') }
       it { should have_many(:domains).with('Yoolk::Liquid::InstantWebsite::DomainDrop') }
     end
