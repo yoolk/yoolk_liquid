@@ -106,13 +106,13 @@ module Yoolk
       end
 
       def favicon_link
-        if listing.instant_website.favicon.present?
+        if listing.instant_website.try(:favicon).present?
           view_context.favicon_link_tag listing.instant_website.favicon.url
         end
       end
 
       def webclip_link
-        if listing.instant_website.webclip.present?
+        if listing.instant_website.try(:webclip).present?
           %Q{ <link rel='apple-touch-icon' href="#{listing.instant_website.webclip.url}" /> }
         end
       end

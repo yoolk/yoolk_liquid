@@ -216,7 +216,11 @@ module Yoolk
 
         def office_path
           if @context['listing'].from_groow?
-            'https://groow.io/office'
+            if Rails.env.staging?
+              'http://staging.groow.io/office'
+            else
+              'https://groow.io/office'
+            end
           else
             '/office'
           end
