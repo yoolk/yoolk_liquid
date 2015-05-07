@@ -53,12 +53,7 @@ module Yoolk
           alias_method :locale_key, :name_to_parameterize
 
           def collection_exists?
-            collection = case name_to_parameterize
-              when 'brochures' then 'artworks'
-              when 'videos'    then 'medias'
-              else name_to_parameterize end
-
-            @context['listing'].try(:"#{ collection }").present?
+            @context['listing'].try(:"#{ name_to_parameterize }").present?
           end
 
           def theme_name

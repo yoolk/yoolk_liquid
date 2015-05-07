@@ -64,6 +64,7 @@ module Yoolk
 
       it { should respond_to(:multilinguals) }
       it { should respond_to(:show_map?) }
+      it { should respond_to(:videos) }
 
       it { should delegate(:email?).to(:object) }
       it { should delegate(:telephone?).to(:object) }

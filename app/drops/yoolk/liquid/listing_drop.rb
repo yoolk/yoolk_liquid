@@ -69,8 +69,8 @@ module Yoolk
       belongs_to  :instant_website,       class_name: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
 
 
-      delegate :email?, :telephone?, :website?,
-               to: :object
+      delegate    :email?, :telephone?, :website?,
+                  to: :object
 
       def facebook_page_url
         facebook_page.try(:url)
@@ -109,6 +109,8 @@ module Yoolk
         show_map_on_web && lat.present? && long.present?
       end
 
+      ## Alias Method
+      alias_method :videos, :medias
     end
   end
 end
