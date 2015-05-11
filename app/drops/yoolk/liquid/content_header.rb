@@ -113,7 +113,7 @@ module Yoolk
 
       def webclip_link
         if listing.instant_website.try(:webclip).present?
-          %Q{ <link rel='apple-touch-icon' href="#{listing.instant_website.webclip.url}" /> }
+          %Q{ <link rel='apple-touch-icon' href='#{listing.instant_website.webclip.url}' /> }
         end
       end
 
