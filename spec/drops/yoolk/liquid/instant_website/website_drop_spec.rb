@@ -115,11 +115,90 @@ module Yoolk
         drop.context        = @context
       }
 
-      it 'return page object' do
+      it '#current_page' do
         allow(subject.send(:controller)).to receive(:controller_path).and_return('products')
 
         expect(drop.current_page).to be_instance_of(Yoolk::Liquid::InstantWebsite::PageDrop)
         expect(drop.current_page.send(:object).name).to eq('Products')
+      end
+
+    end
+
+    describe InstantWebsite::WebsiteDrop, 'all pages' do
+      let(:page_names) { [  'Home', 'Products', 'Services', 'Menu', 'Galleries',
+                            'About Us', 'Contact Us', 'Reservation', 'Feedback',
+                            'Announcements', 'Videos', 'Attachments', 'Links',
+                            'People', 'Map', 'Brochures' ] }
+      let(:template) { build(:instant_website_template, page_names: page_names) }
+      let(:website)  { build(:instant_website_website, template: template, pages: []) }
+      let(:drop)     { website.to_liquid }
+
+      before  {
+        drop.context  = @context
+      }
+
+      it '#home_page' do
+        expect(drop.home_page.send(:object).name).to eq('Home')
+      end
+
+      it '#products_page' do
+        expect(drop.products_page.send(:object).name).to eq('Products')
+      end
+
+      it '#services_page' do
+        expect(drop.services_page.send(:object).name).to eq('Services')
+      end
+
+      it '#menu_page' do
+        expect(drop.menu_page.send(:object).name).to eq('Menu')
+      end
+
+      it '#galleries_page' do
+        expect(drop.galleries_page.send(:object).name).to eq('Galleries')
+      end
+
+      it '#about_us_page' do
+        expect(drop.about_us_page.send(:object).name).to eq('About Us')
+      end
+
+      it '#contact_us_page' do
+        expect(drop.contact_us_page.send(:object).name).to eq('Contact Us')
+      end
+
+      it '#reservation_page' do
+        expect(drop.reservation_page.send(:object).name).to eq('Reservation')
+      end
+
+      it '#feedback_page' do
+        expect(drop.feedback_page.send(:object).name).to eq('Feedback')
+      end
+
+      it '#announcements_page' do
+        expect(drop.announcements_page.send(:object).name).to eq('Announcements')
+      end
+
+      it '#videos_page' do
+        expect(drop.videos_page.send(:object).name).to eq('Videos')
+      end
+
+      it '#attachments_page' do
+        expect(drop.attachments_page.send(:object).name).to eq('Attachments')
+      end
+
+      it '#links_page' do
+        expect(drop.links_page.send(:object).name).to eq('Links')
+      end
+
+      it '#people_page' do
+        expect(drop.people_page.send(:object).name).to eq('People')
+      end
+
+      it '#map_page' do
+        expect(drop.map_page.send(:object).name).to eq('Map')
+      end
+
+      it '#brochures_page' do
+        expect(drop.brochures_page.send(:object).name).to eq('Brochures')
       end
     end
   end

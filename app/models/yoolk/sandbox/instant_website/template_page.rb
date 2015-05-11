@@ -9,25 +9,21 @@ module Yoolk
         attribute :created_at,       DateTime
         attribute :updated_at,       DateTime
 
-        def menu?
-          name == 'Menu'
+
+        def self.all
+          ['Home', 'Products', 'Services', 'Menu', 'Galleries',
+           'About Us', 'Contact Us', 'Reservation', 'Feedback',
+           'Announcements', 'Videos', 'Attachments', 'Links',
+           'People', 'Map', 'Brochures'
+          ]
         end
 
-        def products?
-          name == 'Products'
+        self.all.each do |name|
+          define_method "#{name.parameterize.underscore}?" do
+            self.name == name
+          end
         end
 
-        def services?
-          name == 'Services'
-        end
-
-        def about_us?
-          name == 'About Us'
-        end
-
-        def map?
-          name == 'Map'
-        end
       end
     end
   end

@@ -29,6 +29,21 @@ module Yoolk
           end
         end
 
+        def self.page_names
+          ['Home', 'Products', 'Services', 'Menu', 'Galleries',
+           'About Us', 'Contact Us', 'Reservation', 'Feedback',
+           'Announcements', 'Videos', 'Attachments', 'Links',
+           'People', 'Map', 'Brochures'
+          ]
+        end
+
+        self.page_names.each do |name|
+          name = name.parameterize.underscore
+          define_method "#{name}_page" do
+            pages.find { |page| page.template_page.send("#{name}?") }
+          end
+        end
+
         def color
           object.color_name
         end
