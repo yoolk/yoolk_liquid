@@ -6,6 +6,7 @@ module Yoolk
         attribute :id,                           String
         attribute :google_analytics_key,         String
         attribute :owner_google_analytics_key,   String
+        attribute :google_remarketing_tag,       String
         attribute :is_live,                      Boolean
         attribute :is_active,                    Boolean
         attribute :free_plan,                    Boolean

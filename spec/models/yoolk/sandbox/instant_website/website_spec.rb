@@ -15,6 +15,10 @@ module Yoolk
         expect(described_class).to have_attribute(:owner_google_analytics_key).of_type(String)
       end
 
+      it 'has :google_remarketing_tag attribute' do
+        expect(described_class).to have_attribute(:google_remarketing_tag).of_type(String)
+      end
+
       it 'has :is_live attribute' do
         expect(described_class).to have_attribute(:is_live)
       end

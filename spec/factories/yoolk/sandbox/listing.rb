@@ -7,6 +7,16 @@ FactoryGirl.define do
     long              102
     app_ids           [1, 2, 3]
 
+    trait :instant_website do
+      transient do
+        google_remarketing_tag nil
+      end
+
+      after(:build) do |listing, evaluator|
+        listing.instant_website = build(:instant_website_website, google_remarketing_tag: evaluator.google_remarketing_tag)
+      end
+    end
+
     trait :groow do
       source_name 'groow.io'
     end

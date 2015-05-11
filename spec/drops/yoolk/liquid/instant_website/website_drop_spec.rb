@@ -8,6 +8,7 @@ module Yoolk
       it { should have_attribute(:color) }
       it { should have_attribute(:google_analytics_key) }
       it { should have_attribute(:owner_google_analytics_key) }
+      it { should have_attribute(:google_remarketing_tag) }
       it { should have_attribute(:is_live) }
       it { should have_attribute(:is_active) }
       it { should have_attribute(:free_plan) }
