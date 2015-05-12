@@ -26,6 +26,25 @@ module Yoolk
         drop.context = @context
       }
 
+      describe 'delegate methods' do
+         it { should delegate_method(:home?).to(:template_page) }
+         it { should delegate_method(:products?).to(:template_page) }
+         it { should delegate_method(:services?).to(:template_page) }
+         it { should delegate_method(:menu?).to(:template_page) }
+         it { should delegate_method(:galleries?).to(:template_page) }
+         it { should delegate_method(:about_us?).to(:template_page) }
+         it { should delegate_method(:contact_us?).to(:template_page) }
+         it { should delegate_method(:reservation?).to(:template_page) }
+         it { should delegate_method(:feedback?).to(:template_page) }
+         it { should delegate_method(:announcements?).to(:template_page) }
+         it { should delegate_method(:videos?).to(:template_page) }
+         it { should delegate_method(:attachments?).to(:template_page) }
+         it { should delegate_method(:links?).to(:template_page) }
+         it { should delegate_method(:people?).to(:template_page) }
+         it { should delegate_method(:map?).to(:template_page) }
+         it { should delegate_method(:brochures?).to(:template_page) }
+      end
+
       context '#name' do
         it "returns its page's name" do
           expect(drop.name).to eq('My Products')

@@ -8,6 +8,12 @@ module Yoolk
         belongs_to  :website,       with: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
         belongs_to  :template_page, with: 'Yoolk::Liquid::InstantWebsite::TemplatePageDrop'
 
+        delegate :home?, :products?, :services?, :menu?, :galleries?,
+                 :about_us?, :contact_us?, :reservation?, :feedback?,
+                 :announcements?, :videos?, :attachments?, :links?,
+                 :people?, :map?, :brochures?,
+                 to: :template_page
+
         # Returns the localized/translated name of that page
         # @note If user customized the page's name, it will returns that name. Otherwise, it returns the localized version from its template page's name.
         # @return [String] the localized name of the page
