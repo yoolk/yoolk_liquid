@@ -1,20 +1,4 @@
 GIT
-  remote: git://github.com/yoolk/assets-rails.git
-  revision: 2ce48239aff9ab0231913c16062184ac7152c77c
-  specs:
-    assets-rails (0.1.2)
-      railties (>= 3.2)
-
-GIT
-  remote: git://github.com/yoolk/liquid-rails.git
-  revision: ed37dc0d1c65824aa5e7bed5b123e16dcef8201a
-  specs:
-    liquid-rails (0.2.0.pre)
-      kaminari (~> 0.16.1)
-      liquid (>= 3.0.0)
-      rails (>= 3.2)
-
-GIT
   remote: git://github.com/yoolk/themes_on_rails.git
   revision: 3243b758e8250602ee1ae702a135759d3b7a280c
   specs:
@@ -26,11 +10,11 @@ PATH
   specs:
     yoolk_liquid (4.0.0.beta1)
       activemodel (~> 4.1.10)
-      assets-rails (>= 0.1.0)
+      assets-rails (>= 0.2.0)
       autoprefixer-rails (~> 3.1.0.20140911)
       coffee-rails (~> 4.0.1)
       kaminari (~> 0.16.1)
-      liquid-rails (>= 0.1.1)
+      liquid-rails (~> 0.1.2)
       oj (~> 2.10.2)
       rails (~> 4.1.10)
       rails-i18n (~> 4.0.3)
@@ -76,6 +60,8 @@ GEM
       railties (>= 3.0)
       rspec-rails (>= 2.2)
     arel (5.0.1.20140414130214)
+    assets-rails (0.2.0)
+      railties (>= 3.2)
     autoprefixer-rails (3.1.0.20140911)
       execjs
     axiom-types (0.1.1)
@@ -139,7 +125,11 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     libv8 (3.16.14.7)
-    liquid (3.0.1)
+    liquid (3.0.2)
+    liquid-rails (0.1.2)
+      kaminari (~> 0.16.1)
+      liquid (>= 3.0.0)
+      rails (>= 3.2)
     listen (2.8.5)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -148,8 +138,8 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
-    mime-types (2.4.3)
-    minitest (5.6.0)
+    mime-types (2.5)
+    minitest (5.6.1)
     multi_json (1.11.0)
     nenv (0.2.0)
     netrc (0.10.3)
@@ -163,7 +153,7 @@ GEM
       slop (~> 3.4)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.5.2)
+    rack (1.5.3)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.10)
@@ -234,9 +224,9 @@ GEM
       simplecov-html (~> 0.9.0)
     simplecov-html (0.9.0)
     slop (3.6.0)
-    sprockets (3.0.1)
+    sprockets (3.1.0)
       rack (~> 1.0)
-    sprockets-rails (2.2.4)
+    sprockets-rails (2.3.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
@@ -272,11 +262,9 @@ PLATFORMS
 
 DEPENDENCIES
   ammeter (~> 1.1.2)
-  assets-rails!
   coveralls
   factory_girl_rails (>= 4.5.0)
   guard-rspec (~> 4.5.0)
-  liquid-rails!
   pry (~> 0.9.12.3)
   quiet_assets
   rake (~> 10.3.1)
