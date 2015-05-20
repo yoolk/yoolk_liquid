@@ -115,7 +115,7 @@ en:
     open:                       "Open"
     closed:                     "Closed"
     today:                      "Today"
-    copyright:                  "Copyright © %{year}. All Rights Reserved"
+    copyright:                  "Copyright © %{year}. All Rights Reserved."
     activities:                 "Activities"
     price:                      "Price"
     view_more:                  "View More"

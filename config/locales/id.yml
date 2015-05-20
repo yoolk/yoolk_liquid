@@ -115,7 +115,7 @@ id:
     open:                       "Buka"
     closed:                     "Tutup"
     today:                      "Hari ini"
-    copyright:                  "Hak cipta © %{year}. Semua Hak Cipta dilindungi"
+    copyright:                  "Hak cipta © %{year}. Semua Hak Cipta dilindungi."
     activities:                 "kegiatan"
     price:                      "Harga"
     view_more:                  "Lihat Lebih"

@@ -115,7 +115,7 @@ th:
     open:                       "เปิด"
     closed:                     "ปิด"
     today:                      "วันนี้"
-    copyright:                  "©สงวนลิขสิทธิ์%{year}. สงวนลิขสิทธิ์"
+    copyright:                  "©สงวนลิขสิทธิ์%{year}  สงวนลิขสิทธิ์"
     activities:                 "กิจกรรม"
     price:                      "ราคา"
     view_more:                  "ดูรายละเอียดเพิ่มเติม"
