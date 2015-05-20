@@ -1,3 +1,5 @@
+# generate all pages
+# checkout all ready theme exist, ThemesOnRails.all
 require 'rails/generators/base'
 
 module InstantWebsite
@@ -47,17 +49,20 @@ module InstantWebsite
       def create_pages
         create_about_us       if pages.include?('about_us')
         create_announcements  if pages.include?('announcements')
+        create_attachments    if pages.include?('attachments')
         create_brochures      if pages.include?('brochures')
         create_contact_us     if pages.include?('contact_us')
         create_feedback       if pages.include?('feedback')
         create_galleries      if pages.include?('galleries')
         create_home           if pages.include?('home')
+        create_links          if pages.include?('links')
         create_map            if pages.include?('map')
         create_menu           if pages.include?('menu')
         create_people         if pages.include?('people')
         create_products       if pages.include?('products')
         create_reservation    if pages.include?('reservation')
         create_services       if pages.include?('services')
+        create_videos         if pages.include?('videos')
       end
 
       private
@@ -94,6 +99,10 @@ module InstantWebsite
           "#{theme_views_directory}/home"
         end
 
+        def theme_views_links_directory
+          "#{theme_views_directory}/links"
+        end
+
         def theme_views_contact_us_directory
           "#{theme_views_directory}/contact_us"
         end
@@ -104,6 +113,10 @@ module InstantWebsite
 
         def theme_views_announcements_directory
           "#{theme_views_directory}/announcements"
+        end
+
+        def theme_views_attachments_directory
+          "#{theme_views_directory}/attachments"
         end
 
         def theme_views_brochures_directory
@@ -158,6 +171,10 @@ module InstantWebsite
           "#{theme_views_services_directory}/categories"
         end
 
+        def theme_views_videos_directory
+          "#{theme_views_directory}/videos"
+        end
+
         def pages
           options.pages.split(',')
         end
@@ -165,6 +182,11 @@ module InstantWebsite
         def create_home
           empty_directory theme_views_home_directory
           create_file     "#{theme_views_home_directory}/index.liquid",       "<h1>Home#index</h1>\n<p>Find me in #{theme_views_home_directory}/index.liquid"
+        end
+
+        def create_links
+          empty_directory theme_views_links_directory
+          create_file     "#{theme_views_links_directory}/index.liquid",       "<h1>Links#index</h1>\n<p>Find me in #{theme_views_links_directory}/index.liquid"
         end
 
         def create_contact_us
@@ -180,6 +202,11 @@ module InstantWebsite
         def create_announcements
           empty_directory theme_views_announcements_directory
           create_file     "#{theme_views_announcements_directory}/index.liquid", "<h1>Announcements#index</h1>\n<p>Find me in #{theme_views_announcements_directory}/index.liquid"
+        end
+
+        def create_attachments
+          empty_directory theme_views_attachments_directory
+          create_file     "#{theme_views_attachments_directory}/index.liquid", "<h1>Attachments#index</h1>\n<p>Find me in #{theme_views_attachments_directory}/index.liquid"
         end
 
         def create_brochures
@@ -236,6 +263,11 @@ module InstantWebsite
           create_file     "#{theme_views_services_directory}/index.liquid", "<h1>Services#index</h1>\n<p>Find me in #{theme_views_services_directory}/index.liquid"
           create_file     "#{theme_views_services_directory}/show.liquid", "<h1>Services#show</h1>\n<p>Find me in #{theme_views_services_directory}/show.liquid"
           create_file     "#{theme_views_services_categories_directory}/show.liquid", "<h1>Services/Categories#show</h1>\n<p>Find me in #{theme_views_services_categories_directory}/show.liquid"
+        end
+
+        def create_videos
+          empty_directory theme_views_videos_directory
+          create_file     "#{theme_views_videos_directory}/index.liquid", "<h1>Videos#index</h1>\n<p>Find me in #{theme_views_videos_directory}/index.liquid"
         end
     end
   end
