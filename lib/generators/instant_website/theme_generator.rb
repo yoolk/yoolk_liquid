@@ -5,36 +5,43 @@ module InstantWebsite
     class ThemeGenerator < ::Rails::Generators::Base
       source_root   File.expand_path('../templates', __FILE__)
       argument      :theme_name,      type: :string
-      class_option  :theme_directory, type: :string, default: 'app/themes',      desc: 'Theme Directory'
+      class_option  :theme_directory, type: :string, default: 'yoolk_themes',      desc: 'Theme Directory'
       class_option  :pages,           type: :string, default: 'home,contact_us', desc: 'Available pages: about_us,announcements,brochures,contact_us,feedback,galleries,home,map,menu,people,products,reservation,services'
 
       desc          'Generates a new blank theme'
 
-     def create_theme_directory
-        empty_directory theme_views_layout_directory
-        empty_directory theme_images_directory
-        empty_directory theme_javascripts_directory
-        empty_directory theme_stylesheets_directory
-        empty_directory theme_locales_directory
-        create_file     "#{theme_images_directory}/.gitkeep",   nil
-        create_file     "#{theme_locales_directory}/.gitkeep",  nil
+      def create_assets_images
+        empty_directory image_dir
+        create_file     "#{image_dir}/.gitkeep", nil
       end
 
-      def copy_manifest_files
-        copy_file       'all.js.coffee',  "#{theme_javascripts_directory}/all.js.coffee"
-        copy_file       'all.scss',       "#{theme_stylesheets_directory}/all.scss"
+      def create_assets_javascript
+        empty_directory js_dir
+        empty_directory "#{js_dir}/widgets"
+        empty_directory "#{js_dir}/views"
+        create_file     "#{js_dir}/views/application_view.coffee", nil
+        copy_file       'all.js.coffee', "#{js_dir}/all.js.coffee"
       end
 
-      def copy_layout_file
-        template        'layout.liquid',  "#{theme_views_layout_directory}/#{theme_name}.liquid"
+
+      def create_assets_stylesheets
+        empty_directory css_dir
+        copy_file       'all.scss', "#{css_dir}/all.scss"
       end
 
-      def copy_locales_files
-        template        'locales/km.yml',  "#{theme_locales_directory}/km.yml"
-        template        'locales/en.yml',  "#{theme_locales_directory}/en.yml"
-        template        'locales/id.yml',  "#{theme_locales_directory}/id.yml"
-        template        'locales/th.yml',  "#{theme_locales_directory}/th.yml"
-        template        'locales/vi.yml',  "#{theme_locales_directory}/vi.yml"
+      def create_locales
+        empty_directory locale_dir
+        template        'locales/km.yml',  "#{locale_dir}/km.yml"
+        template        'locales/en.yml',  "#{locale_dir}/en.yml"
+        template        'locales/id.yml',  "#{locale_dir}/id.yml"
+        template        'locales/th.yml',  "#{locale_dir}/th.yml"
+        template        'locales/vi.yml',  "#{locale_dir}/vi.yml"
+        create_file     "#{locale_dir}/.gitkeep",  nil
+      end
+
+      def create_views
+        empty_directory layout_dir
+        template        'layout.liquid',  "#{layout_dir}/#{theme_name}.liquid"
       end
 
       def create_pages
@@ -57,6 +64,26 @@ module InstantWebsite
 
         def theme_directory
           "#{options.theme_directory}/#{theme_name}"
+        end
+
+        def image_dir
+          @image_dir ||= "#{theme_directory}/assets/images/#{theme_name}"
+        end
+
+        def js_dir
+          @js_dir   ||= "#{theme_directory}/assets/javascripts/#{theme_name}"
+        end
+
+        def css_dir
+          @css_dir ||= "#{theme_directory}/assets/stylesheets/#{theme_name}"
+        end
+
+        def locale_dir
+          @locale_dir ||= "#{theme_directory}/locales"
+        end
+
+        def layout_dir
+          @layout_dir ||= "#{theme_directory}/views/layouts"
         end
 
         def theme_views_directory
@@ -129,26 +156,6 @@ module InstantWebsite
 
         def theme_views_services_categories_directory
           "#{theme_views_services_directory}/categories"
-        end
-
-        def theme_views_layout_directory
-          "#{theme_views_directory}/layouts"
-        end
-
-        def theme_images_directory
-          "#{theme_directory}/assets/images/#{theme_name}"
-        end
-
-        def theme_javascripts_directory
-          "#{theme_directory}/assets/javascripts/#{theme_name}"
-        end
-
-        def theme_stylesheets_directory
-          "#{theme_directory}/assets/stylesheets/#{theme_name}"
-        end
-
-        def theme_locales_directory
-          "#{theme_directory}/locales"
         end
 
         def pages

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  {{ '<%= "#{theme_name}/all" %>' | stylesheet_link_tag }}
+  {{ request.theme_color_url | stylesheet_link_tag }}
   {{ content_for_header }}
 </head>
 <body data-theme-name="{{ request.theme_name }}" data-listing-alias-id="{{ listing.alias_id }}" data-class-name="{{ request.js_class_name }}">
   {% draft_stamp %}
   {{ content_for_layout }}
-  {{ '<%= "#{theme_name}/all" %>' | javascript_include_tag }}
+  {{ 'groow-orkide/all' | javascript_include_tag }}
   {% google_remarketing_tag %}
 </body>
 </html>
