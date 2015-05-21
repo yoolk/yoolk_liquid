@@ -1,5 +1,3 @@
-# generate all pages
-# checkout all ready theme exist, ThemesOnRails.all
 require 'rails/generators/base'
 
 module InstantWebsite

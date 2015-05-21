@@ -7,7 +7,7 @@
 <body data-theme-name="{{ request.theme_name }}" data-listing-alias-id="{{ listing.alias_id }}" data-class-name="{{ request.js_class_name }}">
   {% draft_stamp %}
   {{ content_for_layout }}
-  {{ 'groow-orkide/all' | javascript_include_tag }}
+  {{ '<%= "#{theme_name}/all" %>' | javascript_include_tag }}
   {% google_remarketing_tag %}
 </body>
 </html>
