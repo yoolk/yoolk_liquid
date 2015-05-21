@@ -10,7 +10,7 @@ describe InstantWebsite::Generators::ThemeGenerator do
   before      { prepare_destination }
 
   context 'default' do
-    before   { run_generator %w(theme_a) }
+    before   { run_generator %w(theme_a --theme_directory app/themes) }
 
     it "exists `app/themes`" do
       expect(file("app/themes")).to exist
@@ -32,6 +32,18 @@ describe InstantWebsite::Generators::ThemeGenerator do
       expect(file("app/themes/theme_a/assets/javascripts/theme_a/all.js.coffee")).to exist
     end
 
+    it "exists `app/themes/theme_a/assets/javascripts/theme_a/widgets`" do
+      expect(file("app/themes/theme_a/assets/javascripts/theme_a/widgets")).to exist
+    end
+
+    it "exists `app/themes/theme_a/assets/javascripts/theme_a/views`" do
+      expect(file("app/themes/theme_a/assets/javascripts/theme_a/views")).to exist
+    end
+
+    it "exists `app/themes/theme_a/assets/javascripts/theme_a/views/application_view.coffee`" do
+      expect(file("app/themes/theme_a/assets/javascripts/theme_a/views/application_view.coffee")).to exist
+    end
+
     it "exists `app/themes/theme_a/assets/stylesheets/theme_a`" do
       expect(file("app/themes/theme_a/assets/stylesheets/theme_a")).to exist
     end
@@ -42,7 +54,7 @@ describe InstantWebsite::Generators::ThemeGenerator do
   end
 
   context "layout file: liquid" do
-    before        { run_generator %w(theme_a) }
+    before        { run_generator %w(theme_a --theme_directory app/themes) }
 
     before(:all)  {
       Rails.configuration.app_generators.rails[:template_engine] = :liquid
@@ -53,17 +65,17 @@ describe InstantWebsite::Generators::ThemeGenerator do
     subject { file("app/themes/theme_a/views/layouts/theme_a.liquid") }
 
     it { should exist }
-    it { should contain(/\{\{ \'theme_a\/all\' | asset_url | javascript_include_tag \}\}/) }
-    it { should contain(/\{\{ \'theme_a\/all\' | asset_url | stylesheet_link_tag \}\}/) }
+    it { should contain(/\{\{ request.theme_color_url | stylesheet_link_tag \}\}/) }
     it { should contain(/\{\{ content_for_header \}\}/) }
     it { should contain(/\{\{ content_for_layout \}\}/) }
     it { should contain(/\{% draft_stamp %\}/) }
     it { should contain(/\{% google_remarketing_tag %\}/) }
     it { should contain(/<body data-theme-name="{{ request.theme_name }}" data-listing-alias-id="{{ listing.alias_id }}" data-class-name="{{ request.js_class_name }}">/) }
+    it { should contain(/\{% google_remarketing_tag %\}/) }
   end
 
   context "create pages" do
-    before   { run_generator %w(theme_a --pages about_us,announcements,brochures,contact_us,feedback,galleries,home,map,menu,people,products,reservation,services) }
+    before   { run_generator %w(theme_a --theme_directory app/themes --pages about_us,announcements,attachments,brochures,contact_us,feedback,galleries,links,home,map,menu,people,products,reservation,services,videos) }
 
     it "`home/index.liquid` should exist" do
       expect(file('app/themes/theme_a/views/home/index.liquid')).to exist
@@ -77,8 +89,18 @@ describe InstantWebsite::Generators::ThemeGenerator do
       expect(file('app/themes/theme_a/views/about_us/index.liquid')).to exist
     end
 
-    it "`announcements/index.liquid` should exist" do
-      expect(file('app/themes/theme_a/views/announcements/index.liquid')).to exist
+    context 'Announcement' do
+      it "`announcements/index.liquid` should exist" do
+        expect(file('app/themes/theme_a/views/announcements/index.liquid')).to exist
+      end
+
+      it "`announcements/show.liquid` should exist" do
+        expect(file('app/themes/theme_a/views/announcements/show.liquid')).to exist
+      end
+    end
+
+    it "`attachments/index.liquid` should exist" do
+      expect(file('app/themes/theme_a/views/attachments/index.liquid')).to exist
     end
 
     it "`brochures/index.liquid` should exist" do
@@ -97,6 +119,10 @@ describe InstantWebsite::Generators::ThemeGenerator do
       it "`galleries/show.liquid` should exist" do
         expect(file('app/themes/theme_a/views/galleries/show.liquid')).to exist
       end
+    end
+
+    it "`links/index.liquid` should exist" do
+      expect(file('app/themes/theme_a/views/links/index.liquid')).to exist
     end
 
     it "`map/index.liquid` should exist" do
@@ -152,6 +178,10 @@ describe InstantWebsite::Generators::ThemeGenerator do
         expect(file('app/themes/theme_a/views/services/show.liquid')).to exist
       end
     end
+
+    it "`videos/index.liquid` should exist" do
+        expect(file('app/themes/theme_a/views/videos/index.liquid')).to exist
+      end
 
     context "Locales" do
       it "exists `app/themes/theme_a/locales`" do
