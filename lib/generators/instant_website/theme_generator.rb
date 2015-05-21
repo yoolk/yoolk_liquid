@@ -202,6 +202,7 @@ module InstantWebsite
         def create_announcements
           empty_directory theme_views_announcements_directory
           create_file     "#{theme_views_announcements_directory}/index.liquid", "<h1>Announcements#index</h1>\n<p>Find me in #{theme_views_announcements_directory}/index.liquid"
+          create_file     "#{theme_views_announcements_directory}/show.liquid", "<h1>Announcements#show</h1>\n<p>Find me in #{theme_views_announcements_directory}/show.liquid"
         end
 
         def create_attachments
@@ -268,6 +269,7 @@ module InstantWebsite
         def create_videos
           empty_directory theme_views_videos_directory
           create_file     "#{theme_views_videos_directory}/index.liquid", "<h1>Videos#index</h1>\n<p>Find me in #{theme_views_videos_directory}/index.liquid"
+          create_file     "#{theme_views_videos_directory}/show.liquid", "<h1>Videos#show</h1>\n<p>Find me in #{theme_views_videos_directory}/show.liquid"
         end
     end
   end
