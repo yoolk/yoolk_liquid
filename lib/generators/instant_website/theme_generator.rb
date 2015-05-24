@@ -5,7 +5,7 @@ module InstantWebsite
     class ThemeGenerator < ::Rails::Generators::Base
       source_root   File.expand_path('../templates', __FILE__)
       argument      :theme_name,      type: :string
-      class_option  :theme_directory, type: :string, default: 'yoolk_themes',      desc: 'Theme Directory'
+      class_option  :theme_directory, type: :string, default: 'app/themes',      desc: 'Theme Directory'
       class_option  :pages,           type: :string, default: 'home,contact_us', desc: 'Available pages: about_us,announcements,brochures,contact_us,feedback,galleries,home,map,menu,people,products,reservation,services'
 
       desc          'Generates a new blank theme'
