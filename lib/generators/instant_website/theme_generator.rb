@@ -10,47 +10,57 @@ module InstantWebsite
 
       desc          'Generates a new blank theme'
 
-     def create_theme_directory
-        empty_directory theme_views_layout_directory
-        empty_directory theme_images_directory
-        empty_directory theme_javascripts_directory
-        empty_directory theme_stylesheets_directory
-        empty_directory theme_locales_directory
-        create_file     "#{theme_images_directory}/.gitkeep",   nil
-        create_file     "#{theme_locales_directory}/.gitkeep",  nil
+      def create_assets_images
+        empty_directory image_dir
+        create_file     "#{image_dir}/.gitkeep", nil
       end
 
-      def copy_manifest_files
-        copy_file       'all.js.coffee',  "#{theme_javascripts_directory}/all.js.coffee"
-        copy_file       'all.scss',       "#{theme_stylesheets_directory}/all.scss"
+      def create_assets_javascript
+        empty_directory js_dir
+        empty_directory "#{js_dir}/widgets"
+        empty_directory "#{js_dir}/views"
+        create_file     "#{js_dir}/views/application_view.coffee", nil
+        copy_file       'all.js.coffee', "#{js_dir}/all.js.coffee"
       end
 
-      def copy_layout_file
-        template        'layout.liquid',  "#{theme_views_layout_directory}/#{theme_name}.liquid"
+
+      def create_assets_stylesheets
+        empty_directory css_dir
+        copy_file       'all.scss', "#{css_dir}/all.scss"
       end
 
-      def copy_locales_files
-        template        'locales/km.yml',  "#{theme_locales_directory}/km.yml"
-        template        'locales/en.yml',  "#{theme_locales_directory}/en.yml"
-        template        'locales/id.yml',  "#{theme_locales_directory}/id.yml"
-        template        'locales/th.yml',  "#{theme_locales_directory}/th.yml"
-        template        'locales/vi.yml',  "#{theme_locales_directory}/vi.yml"
+      def create_locales
+        empty_directory locale_dir
+        template        'locales/km.yml',  "#{locale_dir}/km.yml"
+        template        'locales/en.yml',  "#{locale_dir}/en.yml"
+        template        'locales/id.yml',  "#{locale_dir}/id.yml"
+        template        'locales/th.yml',  "#{locale_dir}/th.yml"
+        template        'locales/vi.yml',  "#{locale_dir}/vi.yml"
+        create_file     "#{locale_dir}/.gitkeep",  nil
+      end
+
+      def create_views
+        empty_directory layout_dir
+        template        'layout.liquid',  "#{layout_dir}/#{theme_name}.liquid"
       end
 
       def create_pages
         create_about_us       if pages.include?('about_us')
         create_announcements  if pages.include?('announcements')
+        create_attachments    if pages.include?('attachments')
         create_brochures      if pages.include?('brochures')
         create_contact_us     if pages.include?('contact_us')
         create_feedback       if pages.include?('feedback')
         create_galleries      if pages.include?('galleries')
         create_home           if pages.include?('home')
+        create_links          if pages.include?('links')
         create_map            if pages.include?('map')
         create_menu           if pages.include?('menu')
         create_people         if pages.include?('people')
         create_products       if pages.include?('products')
         create_reservation    if pages.include?('reservation')
         create_services       if pages.include?('services')
+        create_videos         if pages.include?('videos')
       end
 
       private
@@ -59,12 +69,36 @@ module InstantWebsite
           "#{options.theme_directory}/#{theme_name}"
         end
 
+        def image_dir
+          @image_dir ||= "#{theme_directory}/assets/images/#{theme_name}"
+        end
+
+        def js_dir
+          @js_dir   ||= "#{theme_directory}/assets/javascripts/#{theme_name}"
+        end
+
+        def css_dir
+          @css_dir ||= "#{theme_directory}/assets/stylesheets/#{theme_name}"
+        end
+
+        def locale_dir
+          @locale_dir ||= "#{theme_directory}/locales"
+        end
+
+        def layout_dir
+          @layout_dir ||= "#{theme_directory}/views/layouts"
+        end
+
         def theme_views_directory
           "#{theme_directory}/views"
         end
 
         def theme_views_home_directory
           "#{theme_views_directory}/home"
+        end
+
+        def theme_views_links_directory
+          "#{theme_views_directory}/links"
         end
 
         def theme_views_contact_us_directory
@@ -77,6 +111,10 @@ module InstantWebsite
 
         def theme_views_announcements_directory
           "#{theme_views_directory}/announcements"
+        end
+
+        def theme_views_attachments_directory
+          "#{theme_views_directory}/attachments"
         end
 
         def theme_views_brochures_directory
@@ -131,24 +169,8 @@ module InstantWebsite
           "#{theme_views_services_directory}/categories"
         end
 
-        def theme_views_layout_directory
-          "#{theme_views_directory}/layouts"
-        end
-
-        def theme_images_directory
-          "#{theme_directory}/assets/images/#{theme_name}"
-        end
-
-        def theme_javascripts_directory
-          "#{theme_directory}/assets/javascripts/#{theme_name}"
-        end
-
-        def theme_stylesheets_directory
-          "#{theme_directory}/assets/stylesheets/#{theme_name}"
-        end
-
-        def theme_locales_directory
-          "#{theme_directory}/locales"
+        def theme_views_videos_directory
+          "#{theme_views_directory}/videos"
         end
 
         def pages
@@ -158,6 +180,11 @@ module InstantWebsite
         def create_home
           empty_directory theme_views_home_directory
           create_file     "#{theme_views_home_directory}/index.liquid",       "<h1>Home#index</h1>\n<p>Find me in #{theme_views_home_directory}/index.liquid"
+        end
+
+        def create_links
+          empty_directory theme_views_links_directory
+          create_file     "#{theme_views_links_directory}/index.liquid",       "<h1>Links#index</h1>\n<p>Find me in #{theme_views_links_directory}/index.liquid"
         end
 
         def create_contact_us
@@ -173,6 +200,12 @@ module InstantWebsite
         def create_announcements
           empty_directory theme_views_announcements_directory
           create_file     "#{theme_views_announcements_directory}/index.liquid", "<h1>Announcements#index</h1>\n<p>Find me in #{theme_views_announcements_directory}/index.liquid"
+          create_file     "#{theme_views_announcements_directory}/show.liquid", "<h1>Announcements#show</h1>\n<p>Find me in #{theme_views_announcements_directory}/show.liquid"
+        end
+
+        def create_attachments
+          empty_directory theme_views_attachments_directory
+          create_file     "#{theme_views_attachments_directory}/index.liquid", "<h1>Attachments#index</h1>\n<p>Find me in #{theme_views_attachments_directory}/index.liquid"
         end
 
         def create_brochures
@@ -229,6 +262,11 @@ module InstantWebsite
           create_file     "#{theme_views_services_directory}/index.liquid", "<h1>Services#index</h1>\n<p>Find me in #{theme_views_services_directory}/index.liquid"
           create_file     "#{theme_views_services_directory}/show.liquid", "<h1>Services#show</h1>\n<p>Find me in #{theme_views_services_directory}/show.liquid"
           create_file     "#{theme_views_services_categories_directory}/show.liquid", "<h1>Services/Categories#show</h1>\n<p>Find me in #{theme_views_services_categories_directory}/show.liquid"
+        end
+
+        def create_videos
+          empty_directory theme_views_videos_directory
+          create_file     "#{theme_views_videos_directory}/index.liquid", "<h1>Videos#index</h1>\n<p>Find me in #{theme_views_videos_directory}/index.liquid"
         end
     end
   end
