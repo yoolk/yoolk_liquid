@@ -70,6 +70,15 @@ module Yoolk
       it { should delegate(:telephone?).to(:object) }
       it { should delegate(:website?).to(:object) }
 
+      describe 'api_url' do
+        it { should have_attribute(:api_url)}
+
+        it 'should eq value in ENV' do
+          expect(subject.api_url).to be_present
+          expect(subject.api_url).to eq(ENV['API_URL'])
+        end
+      end
+
     end
   end
 end

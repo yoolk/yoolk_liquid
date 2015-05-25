@@ -14,5 +14,6 @@ gem 'rspec-virtus',       '~> 1.0.1'
 gem 'guard-rspec',        '~> 4.5.0'
 gem 'ammeter',            '~> 1.1.2'
 gem 'quiet_assets'
+gem 'dotenv-rails',       '~> 0.11.1'
 
 gemspec

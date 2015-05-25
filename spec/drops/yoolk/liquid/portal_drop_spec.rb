@@ -15,6 +15,7 @@ module Yoolk
 
       it { should belongs_to(:country).with('Yoolk::Liquid::CountryDrop') }
       it { should belongs_to(:language).with('Yoolk::Liquid::LanguageDrop') }
+
     end
   end
 end
