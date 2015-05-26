@@ -13,6 +13,7 @@ PATH
       assets-rails (>= 0.2.0)
       autoprefixer-rails (~> 3.1.0.20140911)
       coffee-rails (~> 4.0.1)
+      dotenv-rails (~> 0.11.1)
       kaminari (~> 0.16.1)
       liquid-rails (~> 0.1.2)
       oj (~> 2.10.2)
@@ -268,7 +269,6 @@ PLATFORMS
 DEPENDENCIES
   ammeter (~> 1.1.2)
   coveralls
-  dotenv-rails (~> 0.11.1)
   factory_girl_rails (>= 4.5.0)
   guard-rspec (~> 4.5.0)
   pry (~> 0.9.12.3)
