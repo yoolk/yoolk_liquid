@@ -16,6 +16,10 @@ module Yoolk
           expect(described_class).to have_attribute(:price).of_type(Float)
         end
 
+        it 'has :price_with_currency attribute' do
+          expect(described_class).to have_attribute(:price_with_currency).of_type(String)
+        end
+
         it 'has :description attribute' do
           expect(described_class).to have_attribute(:description).of_type(String)
         end

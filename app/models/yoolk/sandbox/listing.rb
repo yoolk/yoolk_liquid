@@ -25,6 +25,7 @@ module Yoolk
       attribute :business_type,           Yoolk::Sandbox::BusinessType
       attribute :location,                Yoolk::Sandbox::Location
       attribute :country,                 Yoolk::Sandbox::Country
+      attribute :currency,                Yoolk::Sandbox::Currency
       attribute :logo,                    Yoolk::Sandbox::Listing::Logo
       attribute :communications,          Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::Communication]
       attribute :extra_communications,    Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::Communication]

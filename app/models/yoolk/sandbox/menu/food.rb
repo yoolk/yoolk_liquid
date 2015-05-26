@@ -6,6 +6,7 @@ module Yoolk
         attribute :id,                    Integer
         attribute :name,                  String
         attribute :price,                 Float
+        attribute :price_with_currency,   String
         attribute :description,           String
         attribute :delivery,              Boolean
         attribute :properties,            Array
