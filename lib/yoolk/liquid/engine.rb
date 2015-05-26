@@ -1,3 +1,5 @@
+require 'dotenv-rails'
+
 # models
 require 'rails-i18n'
 require 'active_model'

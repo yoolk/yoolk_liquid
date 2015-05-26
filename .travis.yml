@@ -6,5 +6,6 @@ rvm:
   - 2.2.0
 env:
   - CI='true'
+  - API_URL='api.yoolk.dev'
 notifications:
   email: false
