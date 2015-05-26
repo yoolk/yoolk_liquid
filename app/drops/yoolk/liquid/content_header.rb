@@ -109,6 +109,11 @@ module Yoolk
         %Q{ 
           <script src="#{ view_context.asset_path('yoolk/mobile-detect.js')}"></script> 
           <script src="#{ view_context.asset_path('yoolk/jquery.business-view-overlay.js')}"></script>
+          <script type="text/javascript">
+            window.addEventListener("load", function() {
+              $('body').data('api-url', "#{ENV['API_URL']}");
+            });
+          </script>
         }
       end
 
