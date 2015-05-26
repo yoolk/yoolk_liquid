@@ -1,7 +1,6 @@
 module Yoolk
   module Liquid
     class ContentHeader
-
       attr_reader :listing, :view_context, :seo
 
       def initialize(listing, view_context, seo)
@@ -20,7 +19,8 @@ module Yoolk
           meta_itemscope,
           csrf_meta_tags,
           google_analytics,
-          alternate_link
+          alternate_link,
+          business_view_js
         ].compact.join("\n")
       end
 
@@ -102,6 +102,13 @@ module Yoolk
           <meta content='#{seo.keywords}'                                            name='keywords'>
           <meta content='width=device-width, initial-scale=1.0'                      name='viewport'>
           <meta content="#{ preview_mode? ? 'noindex, nofollow' : 'index, follow' }" name='robots'>
+        }
+      end
+
+      def business_view_js
+        %Q{ 
+          <script src="#{ view_context.asset_path('yoolk/mobile-detect.js')}"></script> 
+          <script src="#{ view_context.asset_path('yoolk/jquery.business-view-overlay.js')}"></script>
         }
       end
 
