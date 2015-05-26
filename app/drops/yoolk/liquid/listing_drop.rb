@@ -2,7 +2,7 @@ module Yoolk
   module Liquid
     class ListingDrop < BaseDrop
       attributes  :id, :alias_id, :name, :headline, :postal_code, :description, :from_groow?,
-                  :lat, :long, :zoom_level, :address, :show_map_on_web, :is_active
+                  :lat, :long, :zoom_level, :address, :show_map_on_web, :is_active, :api_url
 
       belongs_to  :location,              class_name: 'Yoolk::Liquid::LocationDrop'
       belongs_to  :language,              class_name: 'Yoolk::Liquid::LanguageDrop'
@@ -107,6 +107,10 @@ module Yoolk
 
       def show_map?
         show_map_on_web && lat.present? && long.present?
+      end
+
+      def api_url
+        ENV['API_URL']
       end
 
       ## Alias Method

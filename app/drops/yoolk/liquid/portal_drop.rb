@@ -6,6 +6,8 @@ module Yoolk
 
       belongs_to :country,        with: 'Yoolk::Liquid::CountryDrop'
       belongs_to :language,       with: 'Yoolk::Liquid::LanguageDrop'
+
     end
   end
 end
+

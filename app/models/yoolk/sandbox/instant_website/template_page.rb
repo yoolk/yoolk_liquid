@@ -19,6 +19,7 @@ module Yoolk
         end
 
         self.all.each do |name|
+          # home?, products?, services?,...
           define_method "#{name.parameterize.underscore}?" do
             self.name == name
           end

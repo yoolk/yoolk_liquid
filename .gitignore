@@ -8,3 +8,8 @@ spec/dummy/tmp/
 spec/dummy/.sass-cache
 coverage/*
 yoolk_engines/*
+
+# Ignore .env files
+.env
+.env.production
+.env.staging
