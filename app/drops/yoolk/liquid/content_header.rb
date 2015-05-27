@@ -107,7 +107,7 @@ module Yoolk
 
       def business_view_js
         %Q{ 
-          <script src="#{ view_context.asset_path('yoolk/mobile-detect.js')}"></script> 
+          <script src="#{ view_context.asset_path('yoolk/mobile-detect.min.js')}"></script> 
           <script src="#{ view_context.asset_path('yoolk/jquery.business-view-overlay.js')}"></script>
           <script type="text/javascript">
             window.addEventListener("load", function() {
