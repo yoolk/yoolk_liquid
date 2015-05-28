@@ -12,3 +12,8 @@ This engine depends on:
 2. [liquid-rails](https://github.com/yoolk/liquid-rails)
 3. [themes_on_rails](https://github.com/yoolk/themes_on_rails)
 4. [assets-rails](https://github.com/yoolk/assets-rails)
+
+When a new feature is added to this Engine, you need to apply this feature to the followings:
+
+1. [sample theme](https://github.com/yoolk/yoolk_instant_website_sandbox/tree/master/app/themes/sample)
+2. [liquid-documentation](https://github.com/yoolk/liquid-documentation)

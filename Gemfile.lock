@@ -145,7 +145,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.5)
-    minitest (5.6.1)
+    minitest (5.7.0)
     multi_json (1.11.0)
     nenv (0.2.0)
     netrc (0.10.3)
