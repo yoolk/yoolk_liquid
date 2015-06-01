@@ -1,19 +1,25 @@
 module Yoolk
   module Liquid
     class InstantWebsite::PagesDrop < ::Liquid::Rails::CollectionDrop
+
       def primary
-        @primary ||= self.class.new(objects.take(6))
+        @primary ||= viewable_pages.take(6)
       end
 
       def more
-        @more ||= self.class.new(objects.drop(6))
+        @more ||= viewable_pages.drop(6)
       end
 
       def more?
-        more.select do |m|
-          m.context = @context
-          m.show?
-        end.present?
+        more.present?
+      end
+
+      private
+      def viewable_pages
+        self.class.new(objects).select do |page|
+          page.context = @context
+          page.show?
+        end
       end
     end
   end
