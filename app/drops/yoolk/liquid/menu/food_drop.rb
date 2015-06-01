@@ -2,7 +2,7 @@ module Yoolk
   module Liquid
     module Menu
       class FoodDrop < BaseDrop
-        attributes  :id, :name, :price, :description, :delivery, :properties,
+        attributes  :id, :name, :price, :price_with_currency, :description, :delivery, :properties,
                     :to_param, :created_at, :updated_at
 
         belongs_to  :category,  class_name: 'Yoolk::Liquid::Menu::CategoryDrop'

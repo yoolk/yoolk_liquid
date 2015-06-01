@@ -2,6 +2,7 @@ module Yoolk
   module Sandbox
     module ProductCatalog
       class Product < Yoolk::Sandbox::Base
+        include ActionView::Helpers
 
         attribute :id,                Integer
         attribute :name,              String
@@ -15,9 +16,15 @@ module Yoolk
         attribute :brand,             Yoolk::Sandbox::ProductCatalog::Brand
         attribute :category,          Yoolk::Sandbox::ProductCatalog::Category
         attribute :photos,            Array[Yoolk::Sandbox::Attachment]
+        attribute :listing,           Yoolk::Sandbox::Listing
 
         def to_param
           "#{id}-#{name.parameterize}"
+        end
+
+        def price_with_currency
+          return if price.nil?
+          number_to_currency(price, unit: listing.currency.code, format: '%u %n')
         end
       end
     end

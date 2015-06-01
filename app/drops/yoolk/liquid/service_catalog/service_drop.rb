@@ -2,7 +2,7 @@ module Yoolk
   module Liquid
     module ServiceCatalog
       class ServiceDrop < BaseDrop
-        attributes  :id, :name, :price, :description, :properties,
+        attributes  :id, :name, :price, :price_with_currency, :description, :properties,
                     :created_at, :updated_at, :to_param
 
         belongs_to  :category, class_name: 'Yoolk::Liquid::ServiceCatalog::CategoryDrop'

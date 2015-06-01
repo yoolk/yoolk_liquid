@@ -67,6 +67,7 @@ module Yoolk
 
       belongs_to  :portal,                class_name: 'Yoolk::Liquid::PortalDrop'
       belongs_to  :instant_website,       class_name: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
+      belongs_to  :currency,              class_name: 'Yoolk::Liquid::CurrencyDrop'
 
 
       delegate    :email?, :telephone?, :website?,

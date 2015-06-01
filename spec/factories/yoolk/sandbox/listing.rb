@@ -70,5 +70,11 @@ FactoryGirl.define do
       end
     end
 
+    trait :currency do
+      after(:build) do |listing|
+        listing.currency = build(:currency)
+      end
+    end
+
   end
 end

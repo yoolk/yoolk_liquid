@@ -49,6 +49,7 @@ module Yoolk
         end
 
         it { should respond_to(:to_param) }
+        it { should respond_to(:price_with_currency) }
       end
     end
   end

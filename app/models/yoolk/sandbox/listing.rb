@@ -25,6 +25,7 @@ module Yoolk
       attribute :business_type,           Yoolk::Sandbox::BusinessType
       attribute :location,                Yoolk::Sandbox::Location
       attribute :country,                 Yoolk::Sandbox::Country
+      attribute :currency,                Yoolk::Sandbox::Currency
       attribute :logo,                    Yoolk::Sandbox::Listing::Logo
       attribute :communications,          Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::Communication]
       attribute :extra_communications,    Yoolk::Sandbox::Listing::Communications[Yoolk::Sandbox::Listing::Communication]
@@ -67,16 +68,19 @@ module Yoolk
         service_categories.each do |service_category|
           service_category.services.each do |service|
             service.category = service_category
+            service.listing  = self
           end
         end
         product_categories.each do |product_category|
           product_category.products.each do |product|
             product.category = product_category
+            product.listing  = self
           end
         end
         food_categories.each do |food_category|
           food_category.foods.each do |food|
             food.category = food_category
+            food.listing  = self
           end
         end
         instant_website.listing = self if instant_website.present?

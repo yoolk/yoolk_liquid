@@ -26,6 +26,7 @@ module Yoolk
       it { should belongs_to(:service_catalog_pdf).class_name('Yoolk::Liquid::AttachmentDrop') }
       it { should belongs_to(:menu_pdf).class_name('Yoolk::Liquid::AttachmentDrop') }
       it { should belongs_to(:instant_website).class_name('Yoolk::Liquid::InstantWebsite::WebsiteDrop') }
+      it { should belongs_to(:currency).class_name('Yoolk::Liquid::CurrencyDrop') }
       it { should belongs_to(:portal).class_name('Yoolk::Liquid::PortalDrop') }
 
       it { should have_many(:communications).class_name('Yoolk::Liquid::Listing::CommunicationsDrop').with('Yoolk::Liquid::Listing::CommunicationDrop') }
