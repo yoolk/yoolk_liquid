@@ -71,12 +71,18 @@ module Yoolk
             service.listing  = self
           end
         end
-        product_categories.each do |product_category|
-          product_category.products.each do |product|
-            product.category = product_category
-            product.listing  = self
+
+        products.each do |product|
+          product_categories.each do |category|
+            if category.id.in? product.categories.map(&:id)
+              product.categories.delete_if do |cat|
+                cat.id == category.id
+              end.push(category)
+            end
           end
+          product.listing = self
         end
+
         food_categories.each do |food_category|
           food_category.foods.each do |food|
             food.category = food_category

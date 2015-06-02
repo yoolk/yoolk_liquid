@@ -4,7 +4,16 @@ module Yoolk
 
       # These three belows use url_helpers to avoid conflict in the real app.
       def product_url(product)
-        url_helpers.product_path(product.category, product, default_url_options)
+        # url_helpers.product_path(product, default_url_options)
+        product_with_category_url(product)
+      end
+
+      def product_with_category_url(product)
+        category = product.categories.detect do |x|
+          x.id.to_i == controller.params[:category_id].to_i
+        end
+
+        url_helpers.product_with_category_path(category, product, default_url_options)
       end
 
       def service_url(service)
@@ -136,6 +145,10 @@ module Yoolk
 
       def products_url?
         request.fullpath.start_with?(products_url.split('?')[0])
+      end
+
+      def products_category_url?
+        request.fullpath =~ /^\/categories\/[1-9]+-.*\/products/
       end
 
       def products_all? # :nodoc:
