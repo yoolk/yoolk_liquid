@@ -18,6 +18,10 @@ module Yoolk
         end
       end
 
+      def template
+        @context['current_template']
+      end
+
       def theme_name
         @context.registers[:controller].params[:theme]
       end
