@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   # get         'products/:category_id',      to: 'products/categories#show',   as: :products_category
 
   get         'products',                              to: 'products#index',                as: :products
-  # get         'products/:id',                          to: 'products#show',                 as: :product
-  get         '(categories/:category_id/)products/:id',  to: 'products#show',                 as: :product_with_category
+  get         'products/:id',                          to: 'products#show',                 as: :product
+  get         '(categories/:category_id/)products/:id',  to: 'products#show_category',                 as: :product_with_category
   get         'categories/:category_id/products',      to: 'products/categories#show',      as: :products_category
 
   get         'robots.txt',                 to: 'home#robots'

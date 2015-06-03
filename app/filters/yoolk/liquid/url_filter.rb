@@ -4,8 +4,8 @@ module Yoolk
 
       # These three belows use url_helpers to avoid conflict in the real app.
       def product_url(product)
-        # url_helpers.product_path(product, default_url_options)
-        product_with_category_url(product)
+        url_helpers.product_path(product, default_url_options)
+        # product_with_category_url(product)
       end
 
       def product_with_category_url(product)
@@ -144,7 +144,8 @@ module Yoolk
       end
 
       def products_url?
-        request.fullpath.start_with?(products_url.split('?')[0])
+        # request.fullpath.start_with?(products_url.split('?')[0])
+        request.fullpath.split('?')[0] =~ /(\/categories\/.*)*\/products/
       end
 
       def products_category_url?
