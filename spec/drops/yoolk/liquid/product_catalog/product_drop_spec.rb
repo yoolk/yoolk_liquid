@@ -16,7 +16,7 @@ module Yoolk
         it { should have_attribute(:created_at) }
         it { should have_attribute(:updated_at) }
 
-        it { should belongs_to(:category).class_name('Yoolk::Liquid::ProductCatalog::CategoryDrop') }
+        it { should have_many(:product_categories).with('Yoolk::Liquid::ProductCatalog::CategoryDrop') }
         it { should have_many(:photos).with('Yoolk::Liquid::AttachmentDrop') }
       end
 
