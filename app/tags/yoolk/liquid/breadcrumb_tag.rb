@@ -131,12 +131,12 @@ module Yoolk
 
             if product
               param_category = @context.registers[:controller].params[:category_id].to_i
-              @category = product.categories.detect do |x|
+              @category = product.product_categories.detect do |x|
                 x.id.to_i == param_category
               end
             end
 
-            @service_category ||= product ? @category : @context['product_category']
+            @product_category ||= product ? @category : @context['product_category']
           end
         end
 

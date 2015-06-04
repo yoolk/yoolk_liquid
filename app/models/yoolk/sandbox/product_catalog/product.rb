@@ -14,7 +14,7 @@ module Yoolk
         attribute :updated_at,        DateTime
 
         attribute :brand,             Yoolk::Sandbox::ProductCatalog::Brand
-        attribute :categories,        Array[Yoolk::Sandbox::ProductCatalog::Category]
+        attribute :product_categories,  Array[Yoolk::Sandbox::ProductCatalog::Category]
         attribute :photos,            Array[Yoolk::Sandbox::Attachment]
         attribute :listing,           Yoolk::Sandbox::Listing
 

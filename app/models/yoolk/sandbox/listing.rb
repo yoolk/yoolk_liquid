@@ -74,8 +74,8 @@ module Yoolk
 
         products.each do |product|
           product_categories.each do |category|
-            if category.id.in? product.categories.map(&:id)
-              product.categories.delete_if do |cat|
+            if category.id.in? product.product_categories.map(&:id)
+              product.product_categories.delete_if do |cat|
                 cat.id == category.id
               end.push(category)
             end

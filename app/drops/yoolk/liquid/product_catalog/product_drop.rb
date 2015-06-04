@@ -5,7 +5,7 @@ module Yoolk
         attributes  :id, :name, :price, :price_with_currency, :description, :delivery, :features, :brand, :to_param,
                     :created_at, :updated_at
 
-        has_many    :categories,  with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+        has_many    :product_categories,  with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
         has_many    :photos,      with: 'Yoolk::Liquid::AttachmentDrop'
 
         def url
