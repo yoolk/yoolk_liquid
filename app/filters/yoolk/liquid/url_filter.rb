@@ -173,7 +173,7 @@ module Yoolk
       end
 
       def menu_url?
-        request.fullpath.start_with?(menu_url.split('?')[0])
+        request.fullpath.split('?')[0] =~ /\/menu/
       end
 
       def foods_all?
