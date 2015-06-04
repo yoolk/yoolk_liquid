@@ -20,8 +20,8 @@ module Yoolk
         url_helpers.service_path(service.category, service, default_url_options)
       end
 
-      def menu_food_url(food)
-        url_helpers.menu_food_path(food.category, food, default_url_options)
+      def menu_food_category_url(food)
+        url_helpers.menu_food_category_path(food.category, food, default_url_options)
       end
 
       def products_category_url(product_category)
