@@ -8,12 +8,12 @@ module Yoolk
         # product_with_category_url(product)
       end
 
-      def product_with_category_url(product)
+      def product_category_url(product)
         category = product.categories.detect do |x|
           x.id.to_i == controller.params[:category_id].to_i
         end
 
-        url_helpers.product_with_category_path(category, product, default_url_options)
+        url_helpers.product_category_path(category, product, default_url_options)
       end
 
       def service_url(service)

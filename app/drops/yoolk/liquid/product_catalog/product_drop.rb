@@ -10,7 +10,7 @@ module Yoolk
 
         def url
           if products_category_url?
-            product_with_category_url(self)
+            product_category_url(self)
           else
             product_url(self)
           end
