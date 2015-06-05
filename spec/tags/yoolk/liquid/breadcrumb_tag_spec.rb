@@ -20,6 +20,27 @@ module Yoolk
         context['request'] = request_drop
       end
 
+      it '#breadcrumb renders inside /videos' do
+        allow(request_drop).to receive(:videos_url? ).and_return(true)
+        videos_list = '<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta content="1" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span itemprop="name">Videos</span><meta content="2" itemprop="position"></meta></li></ol>'
+
+        expect_template_result('{% breadcrumb %}', videos_list)
+      end
+
+      it '#breadcrumb renders inside /attachments' do
+        allow(request_drop).to receive(:attachments_url? ).and_return(true)
+        attachments_list = '<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta content="1" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span itemprop="name">Downloads</span><meta content="2" itemprop="position"></meta></li></ol>'
+
+        expect_template_result('{% breadcrumb %}', attachments_list)
+      end
+
+      it '#breadcrumb renders inside /links' do
+        allow(request_drop).to receive(:links_url? ).and_return(true)
+        links_list = '<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta content="1" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span itemprop="name">Links</span><meta content="2" itemprop="position"></meta></li></ol>'
+
+        expect_template_result('{% breadcrumb %}', links_list)
+      end
+
       it '#breadcrumb renders inside /map' do
         allow(request_drop).to receive(:map_url?).and_return(true)
         map_list = '<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta content="1" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span itemprop="name">Map</span><meta content="2" itemprop="position"></meta></li></ol>'
