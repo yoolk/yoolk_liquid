@@ -23,30 +23,13 @@ module Yoolk
       describe ProductDrop, 'methods' do
         let(:drop)      { described_class.new(double) }
 
-
+        it '#url' do
+          expect(drop).to receive(:product_url).with(drop)
+          drop.url
+        end
 
         it '#cover_photo' do
           expect(drop).to respond_to(:cover_photo)
-        end
-
-        context '#url' do
-          it '#url' do
-            @context['request'] = { 'products_category_url?' => true }
-            drop.context = @context
-
-            expect(drop).to receive(:product_category_url).with(drop)
-
-            drop.url
-          end
-
-          it '#url' do
-            @context['request'] = { 'products_category_url?' => false }
-            drop.context = @context
-
-            expect(drop).to receive(:product_url).with(drop)
-
-            drop.url
-          end
         end
       end
     end
