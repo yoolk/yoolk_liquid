@@ -131,8 +131,8 @@ module Yoolk
 
             if product
               param_category = @context.registers[:controller].params[:category_id].to_i
-              @category = product.product_categories.detect do |x|
-                x.id.to_i == param_category
+              @category = product.product_categories.detect do |category|
+                category.id.to_i == param_category
               end
             end
 

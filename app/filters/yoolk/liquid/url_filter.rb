@@ -5,7 +5,6 @@ module Yoolk
       # These three belows use url_helpers to avoid conflict in the real app.
       def product_url(product)
         url_helpers.product_path(product, default_url_options)
-        # product_with_category_url(product)
       end
 
       def service_url(service)
