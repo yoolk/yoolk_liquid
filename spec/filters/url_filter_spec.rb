@@ -3,6 +3,23 @@ require 'rails_helper'
 module Yoolk
   module Liquid
     describe UrlFilter do
+
+      it 'renders product url' do
+        product = build(:product)
+        product_drop = product.to_liquid
+
+        expected = "/products/1-rooftop"
+        expect_template_result("{{ product.url }}", expected, {'product' => product_drop})
+      end
+
+      it 'renders food url' do
+        food = build(:food, :category)
+        food_drop = food.to_liquid
+
+        expected = "/menu/categories/1-ice-cream/foods/1-ice-cream"
+        expect_template_result("{{ food.url }}", expected, {'food' => food_drop})
+      end
+
       context '#attachment_url' do
         let(:catalog_item)  { build(:catalog_item, dimension: '200x400') }
         let(:drop)          { catalog_item.to_liquid }
