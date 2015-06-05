@@ -144,6 +144,10 @@ module Yoolk
         request.fullpath =~ /^\/categories\/[1-9]+-.*\/products/
       end
 
+      def catalogs_category_url?
+        request.fullpath =~ /\/categories\//
+      end
+
       def products_all? # :nodoc:
         products_url == request.fullpath
       end
@@ -213,8 +217,8 @@ module Yoolk
       end
 
       def within(url, collection)
-        food_url = menu_url? ? '/menu' : ''
-        products_category_url? ? "#{food_url}/categories/#{collection.to_param}#{url}" : url
+        food_url = menu_url?   ? '/menu' : ''
+        catalogs_category_url? ? "#{food_url}/categories/#{collection.to_param}#{url}" : url
       end
 
       private
