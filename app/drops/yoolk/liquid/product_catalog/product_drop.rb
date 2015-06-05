@@ -9,21 +9,11 @@ module Yoolk
         has_many    :photos,      with: 'Yoolk::Liquid::AttachmentDrop'
 
         def url
-          if products_category_url?
-            product_category_url(self)
-          else
-            product_url(self)
-          end
+          product_url(self)
         end
 
         def cover_photo
           photos[0]
-        end
-
-        private
-
-        def products_category_url?
-          @context['request.products_category_url?']
         end
       end
     end
