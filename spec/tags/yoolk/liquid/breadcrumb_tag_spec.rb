@@ -128,7 +128,9 @@ module Yoolk
 
       it '#breadcrumb renders inside /categories/:category_id/products' do
         allow(request_drop).to receive(:products_url?).and_return(true)
-        product_list = '<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta content="1" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span itemprop="name">Products</span><meta content="2" itemprop="position"></meta></li></ol>'
+        allow(request_drop).to receive(:products_category_url?).and_return(true)
+
+        product_list = '<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta content="1" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/products" itemprop="item"><span itemprop="name">Products</span></a><meta content="2" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span itemprop="name">Range Rover</span><meta content="3" itemprop="position"></meta></li></ol>'
 
         expect_template_result('{% breadcrumb %}', product_list, { 'request' => request_drop, 'product_category' => product_category })
       end
