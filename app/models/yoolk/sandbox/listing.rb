@@ -84,10 +84,7 @@ module Yoolk
         end
 
         food_categories.each do |food_category|
-          food_category.foods.each do |food|
-            food.category = food_category
-            food.listing  = self
-          end
+          food_category.listing = self
         end
         instant_website.listing = self if instant_website.present?
       end

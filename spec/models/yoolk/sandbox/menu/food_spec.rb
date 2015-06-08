@@ -40,6 +40,10 @@ module Yoolk
           expect(described_class).to have_attribute(:photos).of_type(Array, member_type: Yoolk::Sandbox::Attachment)
         end
 
+        it 'has :listing attribute' do
+          expect(described_class).to have_attribute(:listing).of_type(Yoolk::Sandbox::Listing)
+        end
+
         it 'has :category attribute' do
           expect(described_class).to have_attribute(:category).of_type(Yoolk::Sandbox::Menu::Category)
         end

@@ -9,13 +9,22 @@ module Yoolk
         "#{class_name}Drop".safe_constantize
       end
 
-      def self.find(name)
+      ## Load models from filename
+      ## @params: name[String or Array]
+      def self.find(names)
         directory  = self.name.underscore.split('/').last.pluralize
-        path       = Rails.root.join('db', 'samples', 'jsons', directory, "#{name}.json")
-        return nil unless File.exists? path
+        instances  = []
+        names      = Array.wrap(names)
 
-        attributes = Oj.load(File.read(path))
-        new(attributes)
+        names.each do |name|
+          path       = Rails.root.join('db', 'samples', 'jsons', directory, "#{name}.json")
+          return nil unless File.exists?(path)
+
+          attributes = Oj.load(File.read(path))
+          instances << new(attributes)
+        end
+
+        (instances.length == 1) ? instances.first : instances
       end
     end
   end
