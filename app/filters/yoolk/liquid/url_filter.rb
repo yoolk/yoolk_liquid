@@ -135,16 +135,15 @@ module Yoolk
       end
 
       def products_url?
-        # request.fullpath.start_with?(products_url.split('?')[0])
-        request.fullpath.split('?')[0] =~ /(\/categories\/.*)*\/products/
+        controller.controller_path.start_with? 'products'
       end
 
       def products_category_url?
-        request.fullpath =~ /^\/categories\/[1-9]+-.*\/products/
+        controller.controller_path == 'products/categories'
       end
 
       def catalogs_category_url?
-        request.fullpath =~ /\/categories\//
+        controller.controller_path.end_with? 'categories'
       end
 
       def products_all? # :nodoc:
