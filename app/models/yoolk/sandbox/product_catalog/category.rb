@@ -9,10 +9,18 @@ module Yoolk
         attribute :created_at,            DateTime
         attribute :updated_at,            DateTime
 
-        attribute :products,              Array[Yoolk::Sandbox::ProductCatalog::Product]
+        attribute :product_ids,           Array
+        attribute :listing,               Yoolk::Sandbox::Listing
 
         def to_param
           "#{id}-#{name.parameterize}"
+        end
+
+        def products
+          products = Product.find(product_ids)
+          products.each do |product|
+            product.listing = listing
+          end
         end
       end
     end

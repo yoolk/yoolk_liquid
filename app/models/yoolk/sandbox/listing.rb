@@ -72,15 +72,8 @@ module Yoolk
           end
         end
 
-        products.each do |product|
-          product_categories.each do |category|
-            if category.id.in? product.product_categories.map(&:id)
-              product.product_categories.delete_if do |cat|
-                cat.id == category.id
-              end.push(category)
-            end
-          end
-          product.listing = self
+        product_categories.each do |product_category|
+          product_category.listing = self
         end
 
         food_categories.each do |food_category|
@@ -118,7 +111,20 @@ module Yoolk
       end
 
       def products
-        @products       ||= paginate_array(product_categories.map(&:products).flatten.sort_by(&:updated_at).reverse)
+        product_collection = product_categories.map(&:products)
+        products ||= product_collection.flatten.each do |product|
+          product_categories.each do |category|
+            if category.id.in? product.product_categories.map(&:id)
+              product.product_categories.delete_if do |cate|
+                cate.id == category.id
+              end.push(category)
+            end
+          end
+
+          product.listing = self
+        end
+
+        @products       ||= paginate_array(products.sort_by(&:updated_at).reverse)
       end
 
       def services

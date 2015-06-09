@@ -26,6 +26,13 @@ module Yoolk
           return if price.nil?
           number_to_currency(price, unit: listing.currency.code, format: '%u %n')
         end
+
+        def product_categories
+          result = []
+          @product_categoies ||= listing.product_categories.each do |category|
+            result << category if category.id.in? super.map(&:id)
+          end
+        end
       end
     end
   end
