@@ -34,6 +34,7 @@ module Yoolk
           append_li li_announcements
           append_li li(span view.localize(announcement.updated_at, format: :long))  if announcement
         elsif request.products_url?
+
           append_li li_products
           append_li li_product_category       if request.products_category_url?
           append_li li(span product.name)     if product
@@ -78,7 +79,7 @@ module Yoolk
         end
 
         def li_product_category
-          li view.link_to_if(product, span(product_category.try(:name)), request.products_category_url(product_category), itemprop: "item")
+          li view.link_to_if(product, span(product_category.try(:name)), request.product_category_products_url(product_category), itemprop: "item")
         end
 
         def li_services
@@ -98,9 +99,6 @@ module Yoolk
         end
 
         def li(content)
-          # view.content_tag :li do
-          #   content
-          # end
           view.content_tag :li, itemscope: "", itemprop: "itemListElement", itemtype: "http://schema.org/ListItem" do
             content + meta_position
           end
@@ -126,18 +124,15 @@ module Yoolk
           @context['product']
         end
 
-        def product_category
-          if request.products_category_url?
-
-            if product
-              param_category = @context.registers[:controller].params[:category_id].to_i
-              @category = product.product_categories.detect do |category|
-                category.id.to_i == param_category
-              end
-            end
-
-            @product_category ||= product ? @category : @context['product_category']
+        def product_detail_category
+          product.product_categories.find do |category|
+            category.id.to_i ==  controller.params[:category_id].to_i
           end
+        end
+
+        def product_category
+          # ref
+          @product_category ||= product ? product_detail_category : @context['product_category']
         end
 
         def service
@@ -162,6 +157,10 @@ module Yoolk
 
         def request
           @context['request']
+        end
+
+        def controller
+          @context.registers[:controller]
         end
 
         def t(page_name)

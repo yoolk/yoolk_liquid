@@ -4,7 +4,12 @@ module Yoolk
 
       # These three belows use url_helpers to avoid conflict in the real app.
       def product_url(product)
-        url_helpers.product_path(product, default_url_options)
+        # ref
+        category = if products_category_url?
+          product.product_categories.detect { |c| c.id == request.params[:category_id] }
+        end
+
+        url_helpers.product_path(category, product, default_url_options)
       end
 
       def service_url(service)
@@ -15,8 +20,8 @@ module Yoolk
         url_helpers.menu_food_category_path(food.category, food, default_url_options)
       end
 
-      def products_category_url(product_category)
-        controller.products_category_path(product_category)
+      def product_category_products_url(product_category)
+        controller.product_category_products_path(product_category)
       end
 
       def services_category_url(service_category)
@@ -139,7 +144,7 @@ module Yoolk
       end
 
       def products_category_url?
-        controller.controller_path == 'products/categories'
+        controller.controller_path.start_with?('products') && controller.params[:category_id].present?
       end
 
       def catalogs_category_url?
@@ -214,9 +219,8 @@ module Yoolk
         request.fullpath.start_with?(videos_url.split('?')[0])
       end
 
-      def within(url, collection)
-        food_url = menu_url?   ? '/menu' : ''
-        catalogs_category_url? ? "#{food_url}/categories/#{collection.to_param}#{url}" : url
+      def within(path, collection)
+        catalogs_category_url? ? "/#{collection.prefix_path.concat(path)}" : path
       end
 
       private

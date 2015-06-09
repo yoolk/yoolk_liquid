@@ -7,7 +7,11 @@ module Yoolk
         has_many :products, with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
 
         def url
-          products_category_url(self)
+          product_category_products_url(self)
+        end
+
+        def prefix_path
+          "products-categories/#{to_param}"
         end
 
         def current?

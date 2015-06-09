@@ -16,7 +16,7 @@ module Yoolk
         subject { described_class.new(double(id: 33)) }
 
         it '#url' do
-          expect(subject).to receive(:products_category_url).with(subject)
+          expect(subject).to receive(:product_category_products_url).with(subject)
 
           subject.url
         end
