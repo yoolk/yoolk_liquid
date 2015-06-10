@@ -28,10 +28,7 @@ module Yoolk
         end
 
         def product_categories
-          result = []
-          @product_categoies ||= listing.product_categories.each do |category|
-            result << category if category.id.in? super.map(&:id)
-          end
+          listing.product_categories.select { |category| category.id.in? super.map(&:id) }
         end
       end
     end

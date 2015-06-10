@@ -111,19 +111,10 @@ module Yoolk
       end
 
       def products
-        product_collection = product_categories.map(&:products)
-        products ||= product_collection.flatten.each do |product|
+        product_collection = product_categories.map(&:products).flatten
+        product_collection.each do |product|
           product.listing = self
-          product_categories.each do |category|
-            if category.id.in? product.product_categories.map(&:id)
-              product.product_categories.delete_if do |cate|
-                cate.id == category.id
-              end.push(category)
-            end
-          end
         end
-
-        @products       ||= paginate_array(products.sort_by(&:updated_at).reverse)
       end
 
       def services
