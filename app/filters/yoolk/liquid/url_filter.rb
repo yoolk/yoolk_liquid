@@ -16,8 +16,8 @@ module Yoolk
         url_helpers.service_path(service.category, service, default_url_options)
       end
 
-      def menu_food_category_url(food)
-        url_helpers.menu_food_category_path(food.category, food, default_url_options)
+      def menu_url(food)
+        url_helpers.menu_path(food.category, food, default_url_options)
       end
 
       def product_category_products_url(product_category)
@@ -167,16 +167,16 @@ module Yoolk
         services_url == request.fullpath
       end
 
-      def menu_url
+      def menu_index_url
         menu_index_path
       end
 
-      def menu_url?
+      def menu_index_url?
         request.fullpath.split('?')[0] =~ /\/menu/
       end
 
       def foods_all?
-        menu_url == request.fullpath
+        menu_index_url == request.fullpath
       end
 
       def announcements_url

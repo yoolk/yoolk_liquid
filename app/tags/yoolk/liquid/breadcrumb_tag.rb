@@ -42,7 +42,7 @@ module Yoolk
           append_li li_services
           append_li li_service_category  if service_category || service
           append_li li(span service.name)     if service
-        elsif request.menu_url?
+        elsif request.menu_index_url?
           append_li li_menu
           append_li li_food_category     if food_category || food
           append_li li(span food.name)        if food
@@ -91,7 +91,7 @@ module Yoolk
         end
 
         def li_menu
-          li view.link_to_if(food || food_category, t("Menu"), request.menu_url, itemprop: "item")
+          li view.link_to_if(food || food_category, t("Menu"), request.menu_index_url, itemprop: "item")
         end
 
         def li_food_category
