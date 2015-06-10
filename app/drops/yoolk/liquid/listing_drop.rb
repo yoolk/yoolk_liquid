@@ -114,6 +114,10 @@ module Yoolk
         ENV['API_URL']
       end
 
+      def product_categories
+        @product_categories ||= ::Liquid::Rails::CollectionDrop.new(object.product_categories.select { |category| category.name != 'uncategorized' })
+      end
+
       ## Alias Method
       alias_method :videos, :medias
     end

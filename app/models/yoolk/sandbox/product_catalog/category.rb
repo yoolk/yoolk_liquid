@@ -18,7 +18,7 @@ module Yoolk
 
         def products
           products = Product.find(product_ids)
-          products.each do |product|
+          Array.wrap(products).each do |product|
             product.listing = listing
           end
         end
