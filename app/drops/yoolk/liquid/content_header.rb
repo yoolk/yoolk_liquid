@@ -20,8 +20,17 @@ module Yoolk
           csrf_meta_tags,
           google_analytics,
           alternate_link,
-          business_view_js
+          business_view_js,
+          canonical_link,
         ].compact.join("\n")
+      end
+
+      def canonical_link
+        if view_context.controller_path.start_with?('products') && request.params["id"]
+          %{
+            <link rel="canonical" href="#{view_context.product_url(nil, seo.object)}" />
+          }
+        end
       end
 
       def alternate_link
