@@ -50,6 +50,7 @@ module Yoolk
 
         it { should respond_to(:to_param) }
         it { should respond_to(:price_with_currency) }
+        it { should respond_to(:product_categories) }
       end
     end
   end

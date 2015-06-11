@@ -24,7 +24,12 @@ module Yoolk
           expect(described_class).to have_attribute(:food_ids).of_type(Array)
         end
 
+        it 'has :listing attribute' do
+          expect(described_class).to have_attribute(:listing).of_type(Yoolk::Sandbox::Listing)
+        end
+
         it { should respond_to(:to_param) }
+        it { should respond_to(:foods) }
       end
     end
   end
