@@ -95,7 +95,9 @@ module Yoolk
         end
 
         def li_food_category
-          li view.link_to_if(food, span(food_category.name), request.menu_category_url(food_category), itemprop: "item")
+          unless food_category.uncategorized?
+            li view.link_to_if(food, span(food_category.name), request.menu_category_url(food_category), itemprop: "item")
+          end
         end
 
         def li(content)

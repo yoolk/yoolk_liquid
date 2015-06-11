@@ -10,6 +10,10 @@ module Yoolk
           menu_category_url(self)
         end
 
+        def uncategorized?
+          name == 'Uncategorized'
+        end
+
         def current?
           @context.registers[:controller].params[:category_id].to_i == object.id
         end

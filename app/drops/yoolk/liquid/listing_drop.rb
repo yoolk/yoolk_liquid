@@ -115,7 +115,11 @@ module Yoolk
       end
 
       def product_categories
-        @product_categories ||= ::Liquid::Rails::CollectionDrop.new(object.product_categories.select { |category| category.name != 'uncategorized' })
+        @product_categories ||= ::Liquid::Rails::CollectionDrop.new(object.product_categories.select { |category| category.name != 'Uncategorized' })
+      end
+
+      def food_categories
+        @food_categories ||= ::Liquid::Rails::CollectionDrop.new(object.food_categories.select { |category| category.name != 'Uncategorized' })
       end
 
       ## Alias Method

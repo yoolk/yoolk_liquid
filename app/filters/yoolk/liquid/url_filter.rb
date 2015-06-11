@@ -17,7 +17,8 @@ module Yoolk
       end
 
       def menu_url(food)
-        url_helpers.menu_path(food.category, food, default_url_options)
+        food_category = food.category.uncategorized? ? nil : food.category
+        url_helpers.menu_path(food_category, food, default_url_options)
       end
 
       def product_category_products_url(product_category)
