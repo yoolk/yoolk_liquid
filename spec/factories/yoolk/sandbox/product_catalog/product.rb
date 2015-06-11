@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :product, class: Yoolk::Sandbox::ProductCatalog::Product do
     id        1
     name      'Rooftop'
+    product_categories []
 
     transient {
       url       '/samples/images/service/original/some-image.jpg'

@@ -33,6 +33,17 @@ module Yoolk
 
           expect(subject.current?).to eq(false)
         end
+
+        describe 'uncategorized?' do
+          it 'returns true' do
+            category = build(:category, name: 'Uncategorized')
+            expect(category.to_liquid.uncategorized?).to eq(true)
+          end
+          it 'returns false' do
+            category = build(:category, name: 'Khmer foods')
+            expect(category.to_liquid.uncategorized?).to eq(false)
+          end
+        end
       end
     end
   end

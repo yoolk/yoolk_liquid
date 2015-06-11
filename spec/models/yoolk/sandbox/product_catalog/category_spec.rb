@@ -33,7 +33,7 @@ module Yoolk
       end
 
       context 'methods' do
-        it '#products', focus: true do
+        it '#products' do
           category = build(:product_category, product_ids: [1], listing: build(:listing))
 
           expect(category.products.count).to eq(1)
