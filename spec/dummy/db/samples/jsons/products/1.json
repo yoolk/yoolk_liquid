@@ -1,0 +1,118 @@
+{
+  "id": 1,
+  "name": "SANDSTORM 001",
+  "price": 10.2,
+  "description": "The classic style of Spanish architecture popular in California Missions with distinct hue combinations that create a beautiful, rustic appearance with classic style and the durability of concrete.",
+  "delivery": false,
+  "created_at": "2014-08-13 08:59:54 UTC",
+  "updated_at": "2014-08-13 08:59:54 UTC",
+  "product_categories": [
+    { "id": 1 },
+    { "id": 2 }
+  ],
+  "features": [
+    {
+      "name": "TYPE",
+      "value": "HANDMADE"
+    }
+  ],
+  "brand": {
+    "id": 4155,
+    "name": "CHANEL"
+  },
+  "photos": [
+    {
+      "id": 1,
+      "content_type": "image/png",
+      "attachment_meta": {
+        "original": {
+          "width": 714,
+          "height": 639,
+          "url": "/attachments/images/products/original/101.jpeg"
+        },
+        "large": {
+          "width": 714,
+          "height": 639,
+          "url": "/attachments/images/products/large/101.jpeg"
+        },
+        "medium": {
+          "width": 350,
+          "height": 313,
+          "url": "/attachments/images/products/medium/101.jpeg"
+        },
+        "small": {
+          "width": 186,
+          "height": 166,
+          "url": "/attachments/images/products/small/101.jpeg"
+        },
+        "thumbnail": {
+          "width": 49,
+          "height": 44,
+          "url": "/attachments/images/products/thumbnail/101.jpeg"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "content_type": "image/jpeg",
+      "attachment_meta": {
+        "original": {
+          "width": 575,
+          "height": 575,
+          "url": "/attachments/images/products/original/102.jpeg"
+        },
+        "large": {
+          "width": 575,
+          "height": 575,
+          "url": "/attachments/images/products/large/102.jpeg"
+        },
+        "medium": {
+          "width": 350,
+          "height": 350,
+          "url": "/attachments/images/products/medium/102.jpeg"
+        },
+        "small": {
+          "width": 186,
+          "height": 186,
+          "url": "/attachments/images/products/small/102.jpeg"
+        },
+        "thumbnail": {
+          "width": 49,
+          "height": 49,
+          "url": "/attachments/images/products/thumbnail/102.jpeg"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "content_type": "image/jpeg",
+      "attachment_meta": {
+        "original": {
+          "width": 575,
+          "height": 575,
+          "url": "/attachments/images/products/original/103.jpeg"
+        },
+        "large": {
+          "width": 575,
+          "height": 575,
+          "url": "/attachments/images/products/large/103.jpeg"
+        },
+        "medium": {
+          "width": 350,
+          "height": 350,
+          "url": "/attachments/images/products/medium/103.jpeg"
+        },
+        "small": {
+          "width": 186,
+          "height": 186,
+          "url": "/attachments/images/products/small/103.jpeg"
+        },
+        "thumbnail": {
+          "width": 49,
+          "height": 49,
+          "url": "/attachments/images/products/thumbnail/103.jpeg"
+        }
+      }
+    }
+  ]
+}

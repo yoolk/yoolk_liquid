@@ -29,6 +29,18 @@ module Yoolk
         end
 
         it { should respond_to(:to_param) }
+        it { should respond_to(:products) }
+      end
+
+      context 'methods' do
+        it '#products', focus: true do
+          category = build(:product_category, product_ids: [1], listing: build(:listing))
+
+          expect(category.products.count).to eq(1)
+          expect(category.products).to all(be_a(Yoolk::Sandbox::ProductCatalog::Product))
+          expect(category.products.first.name).to eq('SANDSTORM 001')
+          expect(category.products.first.listing.name).to eq('Yellow Tower inc.')
+        end
       end
     end
   end
