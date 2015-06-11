@@ -52,7 +52,7 @@ module Yoolk
       end
 
       it '#link_to_menu' do
-        expect_template_result("{{ 'Menu' | link_to_menu }}", "<a href=\"/menu/foods\">Menu</a>")
+        expect_template_result("{{ 'Menu' | link_to_menu }}", "<a href=\"/menu\">Menu</a>")
       end
 
       it '#link_to_announcements' do

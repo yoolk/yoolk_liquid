@@ -22,7 +22,7 @@ module Yoolk
         let(:drop)      { described_class.new(double) }
 
         it '#url' do
-          expect(drop).to receive(:menu_food_category_url).with(drop)
+          expect(drop).to receive(:menu_url).with(drop)
 
           drop.url
         end

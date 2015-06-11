@@ -49,8 +49,8 @@ module Yoolk
         expect(subject.services_url).to eq('/services')
       end
 
-      it '#menu_url' do
-        expect(subject.menu_url).to eq('/menu/foods')
+      it '#menu_index_url' do
+        expect(subject.menu_index_url).to eq('/menu')
       end
 
       it '#announcements_url' do
@@ -120,7 +120,7 @@ module Yoolk
 
       context '#foods_all?' do
         it 'return true if request to menu_index_path' do
-          allow(subject.send(:request)).to receive(:fullpath).and_return('/menu/foods')
+          allow(subject.send(:request)).to receive(:fullpath).and_return('/menu')
           expect(subject.foods_all?).to eq(true)
         end
         it 'return false unless request to menu_index_path' do

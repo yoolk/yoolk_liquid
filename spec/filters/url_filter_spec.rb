@@ -16,7 +16,7 @@ module Yoolk
         food = build(:food, :category)
         food_drop = food.to_liquid
 
-        expected = "/menu/categories/1-ice-cream/foods/1-ice-cream"
+        expected = "/menu-categories/1-ice-cream/menu/1-ice-cream"
         expect_template_result("{{ food.url }}", expected, {'food' => food_drop})
       end
 
