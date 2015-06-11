@@ -26,7 +26,7 @@ module Yoolk
         end
 
         def url
-          menu_index_url? ? send(:"menu_index_url") : send(:"#{name_to_parameterize}_url")
+          send(:"#{name_to_parameterize.concat(postfix_url)}_url")
         end
 
         def show?
@@ -47,10 +47,12 @@ module Yoolk
           end
         end
 
-        def active?
-          aaa = name_to_parameterize == 'menu' ? '_index' : ''
+        def postfix_url
+          @postfix_url ||= name_to_parameterize == 'menu' ? '_index' : ''
+        end
 
-          @context['request'].send(:"#{name_to_parameterize.concat(aaa)}_url?")
+        def active?
+          @context['request'].send(:"#{name_to_parameterize.concat(postfix_url)}_url?")
         end
 
         protected
