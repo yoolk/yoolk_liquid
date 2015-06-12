@@ -9,7 +9,6 @@ module Yoolk
         it { should have_attribute(:to_param) }
 
         it { should have_many(:products).with('Yoolk::Liquid::ProductCatalog::ProductDrop') }
-        it { should respond_to(:prefix_path) }
       end
 
       describe CategoryDrop, 'methods' do
@@ -31,12 +30,6 @@ module Yoolk
           @context.registers[:controller].params[:category_id] = '112-furniture'
 
           expect(subject.current?).to eq(false)
-        end
-
-        it '#prefix_path' do
-          drop = build(:product_category, id: 1, name: 'ice cream').to_liquid
-
-          expect(drop.prefix_path).to eq('products-categories/1-ice-cream')
         end
       end
     end

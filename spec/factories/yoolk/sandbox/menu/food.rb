@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :food, class: Yoolk::Sandbox::Menu::Food do
     id        1
-    name      'ice-cream'
+    name      'chocolate-cream'
 
     transient {
       url       '/samples/images/food/original/some-image.jpg'
