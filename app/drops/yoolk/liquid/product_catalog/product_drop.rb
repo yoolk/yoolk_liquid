@@ -6,7 +6,7 @@ module Yoolk
                     :created_at, :updated_at
 
         has_many    :product_categories,  with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
-        has_many    :photos,      with: 'Yoolk::Liquid::AttachmentDrop'
+        has_many    :photos,              with: 'Yoolk::Liquid::AttachmentDrop'
 
         def url
           product_url(self)

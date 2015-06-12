@@ -4,19 +4,19 @@ module Yoolk
       class Product < Yoolk::Sandbox::Base
         include ActionView::Helpers
 
-        attribute :id,                Integer
-        attribute :name,              String
-        attribute :price,             Float
-        attribute :description,       String
-        attribute :delivery,          Boolean
-        attribute :features,          Array
-        attribute :created_at,        DateTime
-        attribute :updated_at,        DateTime
+        attribute :id,                  Integer
+        attribute :name,                String
+        attribute :price,               Float
+        attribute :description,         String
+        attribute :delivery,            Boolean
+        attribute :features,            Array
+        attribute :created_at,          DateTime
+        attribute :updated_at,          DateTime
 
-        attribute :brand,             Yoolk::Sandbox::ProductCatalog::Brand
-        attribute :product_categories,  Array[Yoolk::Sandbox::ProductCatalog::Category]
-        attribute :photos,            Array[Yoolk::Sandbox::Attachment]
-        attribute :listing,           Yoolk::Sandbox::Listing
+        attribute :brand,               Yoolk::Sandbox::ProductCatalog::Brand
+        attribute :product_category_ids,Array
+        attribute :photos,              Array[Yoolk::Sandbox::Attachment]
+        attribute :listing,             Yoolk::Sandbox::Listing
 
         def to_param
           "#{id}-#{name.parameterize}"
@@ -28,7 +28,7 @@ module Yoolk
         end
 
         def product_categories
-          listing.product_categories.select { |category| category.id.in? super.map(&:id) }
+          listing.product_categories.select { |category| category.id.in?(product_category_ids) }
         end
       end
     end

@@ -5,7 +5,6 @@ module Yoolk
 
         attribute :id,                    Integer
         attribute :name,                  String
-        attribute :name_path,             String
         attribute :created_at,            DateTime
         attribute :updated_at,            DateTime
 
@@ -17,9 +16,12 @@ module Yoolk
         end
 
         def products
-          products = Product.find(product_ids)
-          Array.wrap(products).each do |product|
-            product.listing = listing
+          @products ||= begin
+            products = Yoolk::Sandbox::ProductCatalog::Product.find(product_ids)
+            binding.pry if products.nil?
+            products.each do |product|
+              product.listing = listing
+            end
           end
         end
       end
