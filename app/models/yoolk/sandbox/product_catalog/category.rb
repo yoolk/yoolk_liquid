@@ -18,7 +18,6 @@ module Yoolk
         def products
           @products ||= begin
             products = Yoolk::Sandbox::ProductCatalog::Product.find(product_ids)
-            binding.pry if products.nil?
             products.each do |product|
               product.listing = listing
             end

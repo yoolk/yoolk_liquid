@@ -223,7 +223,7 @@ module Yoolk
         handle = path.split('/').last
 
         if collection.is_a?(Yoolk::Liquid::ProductCatalog::CategoryDrop)
-          product_category_products_path(collection, handle)
+          product_category_product_path(collection, handle)
         elsif collection.is_a?(Yoolk::Liquid::Menu::CategoryDrop)
           menu_category_food_path(collection, handle)
         elsif collection.is_a?(Yoolk::Liquid::ServiceCatalog::CategoryDrop)
