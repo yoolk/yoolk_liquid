@@ -12,6 +12,14 @@ module Yoolk
           expect(described_class).to have_attribute(:name).of_type(String)
         end
 
+        it 'has :foods_count attribute' do
+          expect(described_class).to have_attribute(:foods_count).of_type(Integer)
+        end
+
+        it 'has :display_order attribute' do
+          expect(described_class).to have_attribute(:display_order).of_type(Integer)
+        end
+
         it 'has :created_at attribute' do
           expect(described_class).to have_attribute(:created_at).of_type(DateTime)
         end

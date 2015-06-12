@@ -5,6 +5,8 @@ module Yoolk
 
         attribute :id,                    Integer
         attribute :name,                  String
+        attribute :display_order,         Integer
+        attribute :foods_count,           Integer
         attribute :food_ids,              Array
         attribute :created_at,            DateTime
         attribute :updated_at,            DateTime
@@ -28,7 +30,6 @@ module Yoolk
         def to_param
           "#{id}-#{name.parameterize}"
         end
-
       end
     end
   end
