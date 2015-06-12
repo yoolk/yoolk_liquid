@@ -28,8 +28,9 @@ module Yoolk
           expect(described_class).to have_attribute(:listing).of_type(Yoolk::Sandbox::Listing)
         end
 
-        it { should respond_to(:to_param) }
+        it { should respond_to(:uncategorized?) }
         it { should respond_to(:foods) }
+        it { should respond_to(:to_param) }
       end
     end
   end

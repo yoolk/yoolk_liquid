@@ -11,6 +11,10 @@ module Yoolk
 
         attribute :listing,               Yoolk::Sandbox::Listing
 
+        def uncategorized?
+          name == 'Uncategorized'
+        end
+
         def foods
           @foods ||= begin
             foods = Yoolk::Sandbox::Menu::Food.find(food_ids)

@@ -12,10 +12,6 @@ module Yoolk
           expect(described_class).to have_attribute(:name).of_type(String)
         end
 
-        it 'has :name_path attribute' do
-          expect(described_class).to have_attribute(:name_path).of_type(String)
-        end
-
         it 'has :created_at attribute' do
           expect(described_class).to have_attribute(:created_at).of_type(DateTime)
         end
@@ -32,8 +28,9 @@ module Yoolk
           expect(described_class).to have_attribute(:listing).of_type(Yoolk::Sandbox::Listing)
         end
 
-        it { should respond_to(:to_param) }
+        it { should respond_to(:uncategorized?) }
         it { should respond_to(:products) }
+        it { should respond_to(:to_param) }
       end
 
       context 'methods' do

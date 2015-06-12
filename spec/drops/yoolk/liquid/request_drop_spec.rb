@@ -9,7 +9,7 @@ module Yoolk
         let(:listing) { build(:listing, :groow) }
         it '#office_url' do
           context['listing'] = listing
-          expect(subject.office_url).to eq('https://groow.io/office')
+          expect(subject.office_url).to eq("#{ENV['GROOW_URL']}/office")
         end
       end
 
@@ -49,8 +49,8 @@ module Yoolk
         expect(subject.services_url).to eq('/services')
       end
 
-      it '#menu_index_url' do
-        expect(subject.menu_index_url).to eq('/menu')
+      it '#menu_url' do
+        expect(subject.menu_url).to eq('/menu')
       end
 
       it '#announcements_url' do
@@ -115,16 +115,6 @@ module Yoolk
         end
         it 'return false unless request to services_path' do
           expect(subject.services_all?).to eq(false)
-        end
-      end
-
-      context '#foods_all?' do
-        it 'return true if request to menu_index_path' do
-          allow(subject.send(:request)).to receive(:fullpath).and_return('/menu')
-          expect(subject.foods_all?).to eq(true)
-        end
-        it 'return false unless request to menu_index_path' do
-          expect(subject.foods_all?).to eq(false)
         end
       end
 

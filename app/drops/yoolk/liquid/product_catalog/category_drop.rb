@@ -2,7 +2,8 @@ module Yoolk
   module Liquid
     module ProductCatalog
       class CategoryDrop < BaseDrop
-        attributes  :id, :name, :to_param
+        attributes  :id, :name, :uncategorized?, :to_param,
+                    :created_at, :updated_at
 
         has_many    :products, with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
 

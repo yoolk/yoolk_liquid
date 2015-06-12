@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root        'home#index'
 
-  get         'menu',                                             to: 'menu#index',                as: :menu_index
-  get         '(menu-categories/:category_id)/menu/:id',          to: 'menu/foods#show',           as: :menu
-  get         'menu-categories/:category_id/menu',                to: 'menu/categories#show',      as: :menu_category
+  get         'menu',                                             to: 'menu#index',                as: :menu
+  get         'menu/:id',                                         to: 'menu/foods#show',           as: :menu_food
+  get         'menu-categories/:category_id/menu/:id',            to: 'menu/foods#show',           as: :menu_category_food
+  get         'menu-categories/:category_id/menu',                to: 'menu/categories#show',      as: :menu_category_foods
 
   get         'products',                                         to: 'products#index',            as: :products
   get         '(products-categories/:category_id)/products/:id',  to: 'products#show',             as: :product

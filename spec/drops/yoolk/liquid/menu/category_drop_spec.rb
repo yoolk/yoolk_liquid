@@ -16,10 +16,10 @@ module Yoolk
       describe CategoryDrop, 'methods' do
         subject { described_class.new(double(id: 12)) }
 
-        it '#url' do
-          expect(subject).to receive(:menu_category_url).with(subject)
+        it '#foods_url' do
+          expect(subject).to receive(:menu_category_foods_url).with(subject)
 
-          subject.url
+          subject.foods_url
         end
 
         it '#current? returns true' do
@@ -39,6 +39,7 @@ module Yoolk
             category = build(:category, name: 'Uncategorized')
             expect(category.to_liquid.uncategorized?).to eq(true)
           end
+
           it 'returns false' do
             category = build(:category, name: 'Khmer foods')
             expect(category.to_liquid.uncategorized?).to eq(false)

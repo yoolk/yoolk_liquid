@@ -16,9 +16,12 @@ module Yoolk
         url_helpers.service_path(service.category, service, default_url_options)
       end
 
-      def menu_url(food)
-        food_category = food.category.uncategorized? ? nil : food.category
-        url_helpers.menu_path(food_category, food, default_url_options)
+      def menu_food_url(food)
+        if food.category.uncategorized?
+          url_helpers.menu_food_path(food, default_url_options)
+        else
+          url_helpers.menu_category_food_path(food.category, food, default_url_options)
+        end
       end
 
       def product_category_products_url(product_category)
@@ -29,8 +32,8 @@ module Yoolk
         controller.services_category_path(service_category)
       end
 
-      def menu_category_url(food_category)
-        controller.menu_category_path(food_category)
+      def menu_category_foods_url(food_category)
+        controller.menu_category_foods_path(food_category)
       end
 
       def gallery_url(gallery)
@@ -168,16 +171,12 @@ module Yoolk
         services_url == request.fullpath
       end
 
-      def menu_index_url
-        menu_index_path
+      def menu_url
+        menu_path
       end
 
-      def menu_index_url?
+      def menu_url?
         request.fullpath.split('?')[0] =~ /\/menu/
-      end
-
-      def foods_all?
-        menu_index_url == request.fullpath
       end
 
       def announcements_url
@@ -227,18 +226,14 @@ module Yoolk
       private
 
         delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
-                  :products_path, :services_path, :menu_index_path, :announcements_path,
+                  :products_path, :services_path, :menu_path, :announcements_path,
                   :about_us_path, :contact_us_path, :reservation_index_path, :feedback_index_path,
                   :links_path, :videos_path, :attachments_path,
                   to: :controller
 
         def office_path
           if @context['listing'].from_groow?
-            if Rails.env.staging?
-              'http://staging.groow.io/office'
-            else
-              'https://groow.io/office'
-            end
+            "#{ENV['GROOW_URL']}/office"
           else
             '/office'
           end

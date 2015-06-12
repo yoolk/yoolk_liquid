@@ -11,8 +11,8 @@ module Yoolk
         attribute :product_ids,           Array
         attribute :listing,               Yoolk::Sandbox::Listing
 
-        def to_param
-          "#{id}-#{name.parameterize}"
+        def uncategorized?
+          name == 'Uncategorized'
         end
 
         def products
@@ -23,6 +23,10 @@ module Yoolk
               product.listing = listing
             end
           end
+        end
+
+        def to_param
+          "#{id}-#{name.parameterize}"
         end
       end
     end

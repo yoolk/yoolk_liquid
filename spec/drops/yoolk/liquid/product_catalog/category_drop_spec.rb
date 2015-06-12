@@ -6,7 +6,6 @@ module Yoolk
       describe CategoryDrop do
         it { should have_attribute(:id) }
         it { should have_attribute(:name) }
-        it { should have_attribute(:name_path) }
         it { should have_attribute(:to_param) }
 
         it { should have_many(:products).with('Yoolk::Liquid::ProductCatalog::ProductDrop') }

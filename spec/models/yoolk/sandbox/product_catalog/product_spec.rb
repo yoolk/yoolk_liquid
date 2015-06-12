@@ -33,7 +33,7 @@ module Yoolk
         end
 
         it 'has :product_categories attribute' do
-          expect(described_class).to have_attribute(:product_categories).of_type(Array, member_type: Yoolk::Sandbox::ProductCatalog::Category)
+          expect(described_class).to have_attribute(:product_category_ids).of_type(Array)
         end
 
         it 'has :created_at attribute' do
