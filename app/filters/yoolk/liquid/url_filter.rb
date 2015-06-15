@@ -3,13 +3,13 @@ module Yoolk
     module UrlFilter
 
       # These three belows use url_helpers to avoid conflict in the real app.
-      def product_url(product)
+      def product_category_product_url(product)
         # ref
         category = if products_category_url?
           product.product_categories.detect { |c| c.id == request.params[:category_id] }
         end
 
-        url_helpers.product_path(category, product, default_url_options)
+        url_helpers.product_category_product_path(category, product, default_url_options)
       end
 
       def service_url(service)
@@ -220,13 +220,15 @@ module Yoolk
       end
 
       def within(path, collection)
-        handle = path.split('/').last
+        handle = path.split('?').first.split('/').last
 
         if collection.is_a?(Yoolk::Liquid::ProductCatalog::CategoryDrop)
           product_category_product_path(collection, handle)
         elsif collection.is_a?(Yoolk::Liquid::Menu::CategoryDrop)
           menu_category_food_path(collection, handle)
         elsif collection.is_a?(Yoolk::Liquid::ServiceCatalog::CategoryDrop)
+        else
+          path
         end
       end
 
@@ -234,7 +236,7 @@ module Yoolk
 
         delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
                   :menu_path, :menu_food_path, :menu_category_food_path, :menu_category_foods_path,
-                  :products_path, :product_path, :product_category_product_path, :product_category_products_path,
+                  :products_path, :product_category_product_path, :product_category_products_path,
                   :services_path, :announcements_path,
                   :about_us_path, :contact_us_path, :reservation_index_path, :feedback_index_path,
                   :links_path, :videos_path, :attachments_path,

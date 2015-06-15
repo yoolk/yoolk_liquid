@@ -28,7 +28,7 @@ module Yoolk
       def canonical_link
         if view_context.controller_path.start_with?('products') && request.params["id"]
           %{
-            <link rel="canonical" href="#{view_context.product_url(nil, seo.object)}" />
+            <link rel="canonical" href="#{view_context.product_category_product_url(nil, seo.object)}" />
           }
         end
       end

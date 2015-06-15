@@ -24,7 +24,7 @@ module Yoolk
         let(:drop)      { described_class.new(double) }
 
         it '#url' do
-          expect(drop).to receive(:product_url).with(drop)
+          expect(drop).to receive(:product_category_product_url).with(drop)
           drop.url
         end
 

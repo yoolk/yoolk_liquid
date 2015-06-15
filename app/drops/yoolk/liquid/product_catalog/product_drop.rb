@@ -9,7 +9,7 @@ module Yoolk
         has_many    :photos,              with: 'Yoolk::Liquid::AttachmentDrop'
 
         def url
-          product_url(self)
+          product_category_product_url(self)
         end
 
         def cover_photo
