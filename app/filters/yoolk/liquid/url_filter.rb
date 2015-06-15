@@ -3,13 +3,8 @@ module Yoolk
     module UrlFilter
 
       # These three belows use url_helpers to avoid conflict in the real app.
-      def product_category_product_url(product)
-        # ref
-        category = if products_category_url?
-          product.product_categories.detect { |c| c.id == request.params[:category_id] }
-        end
-
-        url_helpers.product_category_product_path(category, product, default_url_options)
+      def product_url(product)
+        url_helpers.product_path(product, default_url_options)
       end
 
       def service_url(service)
