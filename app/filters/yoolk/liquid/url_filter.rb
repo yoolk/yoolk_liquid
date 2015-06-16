@@ -146,10 +146,6 @@ module Yoolk
         controller.controller_path.start_with?('products') && controller.params[:category_id].present?
       end
 
-      def catalogs_category_url?
-        controller.controller_path.end_with? 'categories'
-      end
-
       def products_all? # :nodoc:
         products_url == request.fullpath
       end

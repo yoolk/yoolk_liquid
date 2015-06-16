@@ -95,9 +95,7 @@ module Yoolk
         end
 
         def li_food_category
-          unless food_category.uncategorized?
-            li view.link_to_if(food, span(food_category.name), request.menu_category_foods_url(food_category), itemprop: "item")
-          end
+          li view.link_to_if(food, span(food_category.name), request.menu_category_foods_url(food_category), itemprop: "item") if food_category
         end
 
         def li(content)
@@ -126,15 +124,8 @@ module Yoolk
           @context['product']
         end
 
-        def product_detail_category
-          product.product_categories.find do |category|
-            category.id.to_i ==  controller.params[:category_id].to_i
-          end
-        end
-
         def product_category
-          # ref
-          @product_category ||= product ? product_detail_category : @context['product_category']
+          @context['product_category']
         end
 
         def service
@@ -150,7 +141,7 @@ module Yoolk
         end
 
         def food_category
-          @food_category ||= food ? food.category : @context['food_category']
+          @context['food_category']
         end
 
         def announcement
