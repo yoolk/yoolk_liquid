@@ -34,8 +34,9 @@ module Yoolk
           append_li li_announcements
           append_li li(span view.localize(announcement.updated_at, format: :long))  if announcement
         elsif request.products_url?
+
           append_li li_products
-          append_li li_product_category  if product_category || product
+          append_li li_product_category       if request.products_category_url?
           append_li li(span product.name)     if product
         elsif request.services_url?
           append_li li_services
@@ -78,7 +79,7 @@ module Yoolk
         end
 
         def li_product_category
-          li view.link_to_if(product, span(product_category.name), request.products_category_url(product_category), itemprop: "item")
+          li view.link_to_if(product, span(product_category.try(:name)), request.product_category_products_url(product_category), itemprop: "item")
         end
 
         def li_services
@@ -94,13 +95,10 @@ module Yoolk
         end
 
         def li_food_category
-          li view.link_to_if(food, span(food_category.name), request.menu_category_url(food_category), itemprop: "item")
+          li view.link_to_if(food, span(food_category.name), request.menu_category_foods_url(food_category), itemprop: "item") if food_category
         end
 
         def li(content)
-          # view.content_tag :li do
-          #   content
-          # end
           view.content_tag :li, itemscope: "", itemprop: "itemListElement", itemtype: "http://schema.org/ListItem" do
             content + meta_position
           end
@@ -127,7 +125,7 @@ module Yoolk
         end
 
         def product_category
-          @product_category ||= product ? product.category : @context['product_category']
+          @context['product_category']
         end
 
         def service
@@ -143,7 +141,7 @@ module Yoolk
         end
 
         def food_category
-          @food_category ||= food ? food.category : @context['food_category']
+          @context['food_category']
         end
 
         def announcement
@@ -152,6 +150,10 @@ module Yoolk
 
         def request
           @context['request']
+        end
+
+        def controller
+          @context.registers[:controller]
         end
 
         def t(page_name)

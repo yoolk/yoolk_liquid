@@ -66,20 +66,44 @@ module Yoolk
       it { should respond_to(:multilinguals) }
       it { should respond_to(:show_map?) }
       it { should respond_to(:videos) }
+      it { should respond_to(:product_categories) }
+      it { should respond_to(:food_categories) }
 
       it { should delegate(:email?).to(:object) }
       it { should delegate(:telephone?).to(:object) }
       it { should delegate(:website?).to(:object) }
 
-      describe 'api_url' do
-        it { should have_attribute(:api_url)}
+      context 'methods' do
+        describe 'api_url' do
+          it { should have_attribute(:api_url)}
 
-        it 'should eq value in ENV' do
-          expect(subject.api_url).to be_present
-          expect(subject.api_url).to eq(ENV['API_URL'])
+          it 'should eq value in ENV' do
+            expect(subject.api_url).to be_present
+            expect(subject.api_url).to eq(ENV['API_URL'])
+          end
+        end
+        describe 'Product' do
+          it 'collects non uncategorized categories' do
+            categor1 = build(:product_category, name: 'Uncategorized')
+            categor2 = build(:product_category, name: 'Spare parts')
+            listing  = build(:listing, product_categories: [categor1, categor2])
+
+            expect(listing.to_liquid.product_categories.count).to eq(1)
+            expect(listing.to_liquid.product_categories.first.name).to eq('Spare parts')
+          end
+        end
+
+        describe 'Menu' do
+          it 'collects non uncategorized categories' do
+            categor1 = build(:category, name: 'Uncategorized')
+            categor2 = build(:category, name: 'Ice Cream')
+            listing  = build(:listing, food_categories: [categor1, categor2])
+
+            expect(listing.to_liquid.food_categories.count).to eq(1)
+            expect(listing.to_liquid.food_categories.first.name).to eq('Ice Cream')
+          end
         end
       end
-
     end
   end
 end

@@ -71,17 +71,13 @@ module Yoolk
             service.listing  = self
           end
         end
+
         product_categories.each do |product_category|
-          product_category.products.each do |product|
-            product.category = product_category
-            product.listing  = self
-          end
+          product_category.listing = self
         end
+
         food_categories.each do |food_category|
-          food_category.foods.each do |food|
-            food.category = food_category
-            food.listing  = self
-          end
+          food_category.listing = self
         end
         instant_website.listing = self if instant_website.present?
       end
@@ -115,7 +111,10 @@ module Yoolk
       end
 
       def products
-        @products       ||= paginate_array(product_categories.map(&:products).flatten.sort_by(&:updated_at).reverse)
+        product_collection = product_categories.map(&:products).flatten
+        product_collection.each do |product|
+          product.listing = self
+        end
       end
 
       def services

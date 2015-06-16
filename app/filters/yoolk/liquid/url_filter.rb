@@ -4,7 +4,7 @@ module Yoolk
 
       # These three belows use url_helpers to avoid conflict in the real app.
       def product_url(product)
-        url_helpers.product_path(product.category, product, default_url_options)
+        url_helpers.product_path(product, default_url_options)
       end
 
       def service_url(service)
@@ -12,19 +12,23 @@ module Yoolk
       end
 
       def menu_food_url(food)
-        url_helpers.menu_food_path(food.category, food, default_url_options)
+        if food.category.uncategorized?
+          url_helpers.menu_food_path(food, default_url_options)
+        else
+          url_helpers.menu_category_food_path(food.category, food, default_url_options)
+        end
       end
 
-      def products_category_url(product_category)
-        controller.products_category_path(product_category)
+      def product_category_products_url(product_category)
+        controller.product_category_products_path(product_category)
       end
 
       def services_category_url(service_category)
         controller.services_category_path(service_category)
       end
 
-      def menu_category_url(food_category)
-        controller.menu_category_path(food_category)
+      def menu_category_foods_url(food_category)
+        controller.menu_category_foods_path(food_category)
       end
 
       def gallery_url(gallery)
@@ -135,7 +139,11 @@ module Yoolk
       end
 
       def products_url?
-        request.fullpath.start_with?(products_url.split('?')[0])
+        controller.controller_path.start_with? 'products'
+      end
+
+      def products_category_url?
+        controller.controller_path.start_with?('products') && controller.params[:category_id].present?
       end
 
       def products_all? # :nodoc:
@@ -155,15 +163,11 @@ module Yoolk
       end
 
       def menu_url
-        menu_index_path
+        menu_path
       end
 
       def menu_url?
-        request.fullpath.start_with?(menu_url.split('?')[0])
-      end
-
-      def foods_all?
-        menu_url == request.fullpath
+        request.fullpath.split('?')[0] =~ /\/menu/
       end
 
       def announcements_url
@@ -206,21 +210,32 @@ module Yoolk
         request.fullpath.start_with?(videos_url.split('?')[0])
       end
 
+      def within(path, collection)
+        handle = path.split('?').first.split('/').last
+
+        if collection.is_a?(Yoolk::Liquid::ProductCatalog::CategoryDrop)
+          product_category_product_path(collection, handle)
+        elsif collection.is_a?(Yoolk::Liquid::Menu::CategoryDrop)
+          menu_category_food_path(collection, handle)
+        elsif collection.is_a?(Yoolk::Liquid::ServiceCatalog::CategoryDrop)
+        else
+          path
+        end
+      end
+
       private
 
         delegate  :root_path, :galleries_path, :people_path, :brochures_path, :map_index_path,
-                  :products_path, :services_path, :menu_index_path, :announcements_path,
+                  :menu_path, :menu_food_path, :menu_category_food_path, :menu_category_foods_path,
+                  :products_path, :product_category_product_path, :product_category_products_path,
+                  :services_path, :announcements_path,
                   :about_us_path, :contact_us_path, :reservation_index_path, :feedback_index_path,
                   :links_path, :videos_path, :attachments_path,
                   to: :controller
 
         def office_path
           if @context['listing'].from_groow?
-            if Rails.env.staging?
-              'http://staging.groow.io/office'
-            else
-              'https://groow.io/office'
-            end
+            "#{ENV['GROOW_URL']}/office"
           else
             '/office'
           end

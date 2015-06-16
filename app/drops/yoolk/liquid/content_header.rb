@@ -20,8 +20,31 @@ module Yoolk
           csrf_meta_tags,
           google_analytics,
           alternate_link,
-          business_view_js
+          business_view_js,
+          canonical_link,
         ].compact.join("\n")
+      end
+
+      def canonical_link
+        if canonical_url?
+          %{
+            <link rel="canonical" href="#{canonical_url}" />
+          }
+        end
+      end
+
+      def canonical_url?
+        view_context.controller_path.in?(['products', 'menu/foods']) && request.params['id'].present?
+      end
+
+      def canonical_url
+        object = seo.object
+        if object.class.name.end_with?('ProductCatalog::Product')
+          view_context.product_url(object).split("?").first
+        elsif object.class.name.end_with?('Menu::Food')
+          view_context.menu_food_url(object).split("?").first
+        elsif object.class.name.end_with?('ServiceCatalog:Service')
+        end
       end
 
       def alternate_link

@@ -32,8 +32,8 @@ module Yoolk
           expect(described_class).to have_attribute(:brand).of_type(Yoolk::Sandbox::ProductCatalog::Brand)
         end
 
-        it 'has :category attribute' do
-          expect(described_class).to have_attribute(:category).of_type(Yoolk::Sandbox::ProductCatalog::Category)
+        it 'has :product_categories attribute' do
+          expect(described_class).to have_attribute(:product_category_ids).of_type(Array)
         end
 
         it 'has :created_at attribute' do
@@ -50,6 +50,7 @@ module Yoolk
 
         it { should respond_to(:to_param) }
         it { should respond_to(:price_with_currency) }
+        it { should respond_to(:product_categories) }
       end
     end
   end

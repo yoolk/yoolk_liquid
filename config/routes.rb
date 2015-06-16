@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   root        'home#index'
 
-  get         'menu',                       to: 'menu#index',                 as: :menu_index
-  get         'menu/:category_id/:id',      to: 'menu/foods#show',            as: :menu_food
-  get         'menu/:category_id',          to: 'menu/categories#show',       as: :menu_category
+  get         'menu',                                             to: 'menu#index',                as: :menu
+  get         'menu/:id',                                         to: 'menu/foods#show',           as: :menu_food
+  get         'menu-categories/:category_id/menu/:id',            to: 'menu/foods#show',           as: :menu_category_food
+  get         'menu-categories/:category_id/menu',                to: 'menu/categories#show',      as: :menu_category_foods
 
-  get         'products',                   to: 'products#index',             as: :products
-  get         'products/:category_id/:id',  to: 'products#show',              as: :product
-  get         'products/:category_id',      to: 'products/categories#show',   as: :products_category
+  get         'products',                                         to: 'products#index',            as: :products
+  get         'products/:id',                                     to: 'products#show',             as: :product
+  get         'products-categories/:category_id/products/:id',    to: 'products#show',             as: :product_category_product
+  get         'products-categories/:category_id/products',        to: 'products/categories#show',  as: :product_category_products
 
   get         'robots.txt',                 to: 'home#robots'
 

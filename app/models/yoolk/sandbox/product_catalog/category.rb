@@ -5,11 +5,24 @@ module Yoolk
 
         attribute :id,                    Integer
         attribute :name,                  String
-        attribute :name_path,             String
         attribute :created_at,            DateTime
         attribute :updated_at,            DateTime
 
-        attribute :products,              Array[Yoolk::Sandbox::ProductCatalog::Product]
+        attribute :product_ids,           Array
+        attribute :listing,               Yoolk::Sandbox::Listing
+
+        def uncategorized?
+          name == 'Uncategorized'
+        end
+
+        def products
+          @products ||= begin
+            products = Yoolk::Sandbox::ProductCatalog::Product.find(product_ids)
+            products.each do |product|
+              product.listing = listing
+            end
+          end
+        end
 
         def to_param
           "#{id}-#{name.parameterize}"

@@ -27,7 +27,7 @@ module Yoolk
       end
 
       def link_to_menu(value, options={})
-        link_to(value, menu_index_path, default_class_options(menu_url?, options))
+        link_to(value, menu_path, default_class_options(menu_url?, options))
       end
 
       def link_to_announcements(value, options={})
