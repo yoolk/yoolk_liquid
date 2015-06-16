@@ -26,11 +26,28 @@ module Yoolk
       end
 
       def canonical_link
-        if view_context.controller_path.start_with?('products') && request.params["id"]
+        if canonical_url?
           %{
-            <link rel="canonical" href="#{view_context.product_url(seo.object)}" />
+            <link rel="canonical" href="#{canonical_url}" />
           }
         end
+      end
+
+      def canonical_url?
+        (view_context.controller_path.start_with?('products') || view_context.controller_path.start_with?('menu')) && request.params["id"]
+      end
+
+      def canonical_url
+        if object.is_a?(Yoolk::Liquid::ProductCatalog::ProductDrop)
+          view_context.product_url(object)
+        elsif object.is_a?(Yoolk::Liquid::Menu::FoodDrop)
+          view_context.menu_food_url(object)
+        elsif object.is_a?(Yoolk::Liquid::ServiceCatalog::ServiceDrop)
+        end
+      end
+
+      def object
+        seo.object.to_liquid
       end
 
       def alternate_link
