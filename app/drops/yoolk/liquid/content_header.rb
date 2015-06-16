@@ -40,9 +40,9 @@ module Yoolk
       def canonical_url
         object = seo.object
         if object.class.name.end_with?('ProductCatalog::Product')
-          view_context.product_url(object)
+          view_context.product_url(object).split("?").first
         elsif object.class.name.end_with?('Menu::Food')
-          view_context.menu_food_url(object)
+          view_context.menu_food_url(object).split("?").first
         elsif object.class.name.end_with?('ServiceCatalog:Service')
         end
       end
