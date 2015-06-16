@@ -181,7 +181,7 @@ module Yoolk
         allow(request_drop).to receive(:menu_url?).and_return(true)
         menu_list = '<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta content="1" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/menu" itemprop="item"><span itemprop="name">Menu</span></a><meta content="2" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a href="/menu-categories/23-ice-cream/menu" itemprop="item"><span itemprop="name">Ice-cream</span></a><meta content="3" itemprop="position"></meta></li><li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span itemprop="name">Florida Strawberry Ice Cream</span><meta content="4" itemprop="position"></meta></li></ol>'
 
-        expect_template_result('{% breadcrumb %}', menu_list, { 'food' => food })
+        expect_template_result('{% breadcrumb %}', menu_list, { 'food' => food, 'food_category' => food_category })
       end
 
       context 'with website/pages' do
