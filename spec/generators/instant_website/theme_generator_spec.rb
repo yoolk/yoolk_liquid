@@ -69,9 +69,8 @@ describe InstantWebsite::Generators::ThemeGenerator do
     it { should contain(/\{\{ content_for_header \}\}/) }
     it { should contain(/\{\{ content_for_layout \}\}/) }
     it { should contain(/\{% draft_stamp %\}/) }
-    it { should contain(/\{% google_remarketing_tag %\}/) }
     it { should contain(/<body data-theme-name="{{ request.theme_name }}" data-listing-alias-id="{{ listing.alias_id }}" data-class-name="{{ request.js_class_name }}" data-template-id="{{ request.template.id }}">/) }
-    it { should contain(/\{% google_remarketing_tag %\}/) }
+    it { should contain(/\{\{ content_for_closing_body \}\}/) }
   end
 
   context "create pages" do

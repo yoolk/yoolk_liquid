@@ -8,6 +8,6 @@
   {% draft_stamp %}
   {{ content_for_layout }}
   {{ '<%= "#{theme_name}/all" %>' | javascript_include_tag }}
-  {% google_remarketing_tag %}
+  {{ content_for_closing_body }}
 </body>
 </html>

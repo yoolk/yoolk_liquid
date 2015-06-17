@@ -138,17 +138,13 @@ module Yoolk
         end
       end
 
-      context '#preview_mode?' do
-        it 'returns true' do
-          allow(subject.send(:request)).to receive(:host).and_return('iw.yoolk.com')
-          allow(subject.send(:request)).to receive(:params).and_return({ alias_id: 'kh2' })
-
-          expect(subject.preview_mode?).to be_truthy
+      it 'should delegate preview_mode? to controller' do
+        controller = subject.send(:controller)
+        def controller.preview_mode?
         end
 
-        it 'returns false' do
-          expect(subject.preview_mode?).to be_falsy
-        end
+        expect(subject.send(:controller)).to receive(:preview_mode?)
+        subject.preview_mode?
       end
 
       context '#host' do
@@ -170,6 +166,7 @@ module Yoolk
 
         expect(subject.query_parameters).to eq({'theme' => 'sample'})
       end
+
     end
   end
 end
