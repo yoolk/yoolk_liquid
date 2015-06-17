@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'themes_on_rails',       '~> 0.3.0'
   s.add_dependency 'liquid-rails',          '~> 0.1.2'
   s.add_dependency 'assets-rails',          '>= 0.2.0'
+  s.add_dependency 'sprockets',             '~> 2.12.3'
 
   # views
   s.add_dependency 'uglifier',              '>= 1.3.0'
