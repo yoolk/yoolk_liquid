@@ -9,7 +9,7 @@ module Yoolk
       end
 
       def preview_mode?
-        host.in?(['iw.yoolk.com', 'iwstaging.yoolk.com', 'localhost']) && request.params[:alias_id].present?
+        controller.preview_mode?
       end
 
       def previewed_template
