@@ -23,6 +23,7 @@ module Yoolk
       has_many    :listing_categories,    with: 'Yoolk::Liquid::Listing::CategoryDrop'
 
       has_many    :catalog_items,         scope: :published,
+                                          class_name: 'Yoolk::Liquid::Listing::CatalogItemsDrop',
                                           with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
 
       has_many    :galleries,             with: 'Yoolk::Liquid::Listing::ImageGalleryDrop'
