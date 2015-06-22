@@ -33,20 +33,6 @@ module Yoolk
         end
       end
 
-      def canonical_url?
-        view_context.controller_path.in?(['products', 'menu/foods']) && request.params['id'].present?
-      end
-
-      def canonical_url
-        object = seo.object
-        if object.class.name.end_with?('ProductCatalog::Product')
-          view_context.product_url(object).split("?").first
-        elsif object.class.name.end_with?('Menu::Food')
-          view_context.menu_food_url(object).split("?").first
-        elsif object.class.name.end_with?('ServiceCatalog:Service')
-        end
-      end
-
       def alternate_link
         if listing.to_liquid.multilinguals.present?
           listing.to_liquid.multilinguals.inject('') do |result, listing|
@@ -167,6 +153,28 @@ module Yoolk
 
         def owner_google_analytics_key
           listing.instant_website.owner_google_analytics_key
+        end
+
+        def canonical_url?
+          view_context.controller_path.in?(['products', 'menu/foods']) && request.params['id'].present?
+        end
+
+        def canonical_url
+          if original_object.class.name.end_with?('ProductCatalog::Product')
+            view_context.product_url(original_object).split("?").first
+          elsif original_object.class.name.end_with?('Menu::Food')
+            view_context.menu_food_url(original_object).split("?").first
+          elsif original_object.class.name.end_with?('ServiceCatalog::Service')
+          end
+        end
+
+        # hack
+        def original_object
+          if seo.object.respond_to?(:object)
+            seo.object.object
+          else
+            seo.object
+          end
         end
     end
   end
