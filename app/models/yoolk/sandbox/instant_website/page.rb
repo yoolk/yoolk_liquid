@@ -7,6 +7,9 @@ module Yoolk
       attribute :id,                    String
       attribute :name,                  String
       attribute :display_order,         Integer
+      attribute :meta_title,            String,  default: nil
+      attribute :meta_description,      String,  default: nil
+      attribute :meta_keyword,          String,  default: nil
       attribute :created_at,            DateTime
       attribute :updated_at,            DateTime
 

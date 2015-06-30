@@ -12,6 +12,7 @@ module Yoolk
         attribute :is_active,                    Boolean
         attribute :free_plan,                    Boolean
         attribute :color_name,                   String
+        attribute :google_webmaster_tag,         String
         attribute :created_at,                   DateTime
         attribute :updated_at,                   DateTime
 
