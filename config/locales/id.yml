@@ -119,5 +119,6 @@ id:
     activities:                 "kegiatan"
     price:                      "Harga"
     view_more:                  "Lihat Lebih"
+    view_detail:                "View Detail"
     see_more:                   "Lihat lebih lanjut"
     click_to_view_business_view: "Click to view a 360-degree virtual tour"
