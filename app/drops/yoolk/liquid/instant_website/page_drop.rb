@@ -3,7 +3,8 @@ module Yoolk
     module InstantWebsite
       class PageDrop < BaseDrop
 
-        attributes  :id, :name, :display_order, :created_at, :updated_at
+        attributes  :id, :name, :display_order,
+                    :meta_title, :meta_description, :meta_keyword, :created_at, :updated_at
 
         belongs_to  :website,       with: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
         belongs_to  :template_page, with: 'Yoolk::Liquid::InstantWebsite::TemplatePageDrop'
