@@ -12,6 +12,7 @@ module Yoolk
       def to_s
         [
           meta_base,
+          meta_google_webmaster_tag,
           meta_og,
           meta_twitter,
           webclip_link,
@@ -39,6 +40,10 @@ module Yoolk
             "<link href='#{ listing.instant_website.primary_domain.url }' hreflang='#{ listing.language.two_code }' rel='alternate' />"
           end
         end
+      end
+
+      def meta_google_webmaster_tag
+        listing.instant_website.google_webmaster_tag
       end
 
       def csrf_meta_tags
