@@ -16,7 +16,7 @@ module Yoolk
 
       private
       def home_page
-        listing.instant_website.pages.find {|page| page.template_page.home? }
+        listing.instant_website.pages.detect{ |page| page.template_page.home? }
       end
     end
   end
