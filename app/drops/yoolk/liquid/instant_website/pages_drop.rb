@@ -3,11 +3,11 @@ module Yoolk
     class InstantWebsite::PagesDrop < ::Liquid::Rails::CollectionDrop
 
       def primary
-        @primary ||= viewable_pages.take(6)
+        @primary ||= viewable_pages.take(5)
       end
 
       def more
-        @more ||= viewable_pages.drop(6)
+        @more ||= viewable_pages.drop(5)
       end
 
       def more?
