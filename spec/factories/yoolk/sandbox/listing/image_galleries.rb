@@ -5,5 +5,18 @@ FactoryGirl.define do
     transient {
       gallery_images []
     }
+
+    trait :gallery_images do
+      transient do
+        images_count 2
+      end
+
+      after(:build) do |galleries, evaluator|
+        evaluator.images_count.times.each do
+          galleries.images << build(:gallery_images)
+        end
+      end
+    end
+
   end
 end

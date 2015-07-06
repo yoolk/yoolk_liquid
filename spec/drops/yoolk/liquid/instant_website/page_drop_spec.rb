@@ -102,7 +102,7 @@ module Yoolk
           page.template_page.name = "Galleries"
           drop = page.to_liquid
 
-          @context['listing'] = build(:listing, image_galleries: [build(:image_galleries)])
+          @context['listing'] = build(:listing, image_galleries: [build(:image_galleries, :gallery_images)])
           drop.context = @context
 
           expect(drop.show?).to eq(true)

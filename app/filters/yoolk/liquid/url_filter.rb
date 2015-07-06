@@ -110,6 +110,10 @@ module Yoolk
         request.fullpath.start_with?(galleries_url.split('?')[0])
       end
 
+      def galleries_all?
+        galleries_url == request.fullpath
+      end
+
       def links_url
         links_path
       end

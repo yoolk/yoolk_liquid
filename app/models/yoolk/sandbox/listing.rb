@@ -32,7 +32,7 @@ module Yoolk
       attribute :people,                  Yoolk::Sandbox::Listing::People[Yoolk::Sandbox::Listing::Person]
       attribute :listing_categories,      Array[Yoolk::Sandbox::Listing::Category]
       attribute :catalog_items,           Yoolk::Sandbox::Listing::CatalogItems[Yoolk::Sandbox::Listing::CatalogItem]
-      attribute :image_galleries,         Array[Yoolk::Sandbox::Listing::ImageGallery]
+      attribute :image_galleries,         Yoolk::Sandbox::Listing::ImageGalleries[Yoolk::Sandbox::Listing::ImageGallery]
       attribute :artworks,                Yoolk::Sandbox::Listing::Artworks[Yoolk::Sandbox::Listing::Artwork]
 
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]

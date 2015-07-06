@@ -120,7 +120,7 @@ module Yoolk
       end
 
       it 'has :image_galleries attribute' do
-        expect(described_class).to have_attribute(:image_galleries).of_type(Array, member_type: Yoolk::Sandbox::Listing::ImageGallery)
+        expect(described_class).to have_attribute(:image_galleries).of_type(Yoolk::Sandbox::Listing::ImageGalleries, member_type: Yoolk::Sandbox::Listing::ImageGallery)
       end
 
       it 'has :artworks attribute' do

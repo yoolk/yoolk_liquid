@@ -62,10 +62,22 @@ module Yoolk
         request.query_parameters
       end
 
+      def active_more?
+        current_page.name.in? pages.more.map(&:name)
+      end
+
       private
 
         def action_name
           controller.action_name
+        end
+
+        def current_page
+          @context['listing.instant_website.current_page']
+        end
+
+        def pages
+          @context['listing.instant_website.pages']
         end
     end
   end

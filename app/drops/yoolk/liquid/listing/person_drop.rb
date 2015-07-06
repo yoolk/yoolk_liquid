@@ -8,7 +8,8 @@ module Yoolk
       belongs_to  :position_level,  with: 'Yoolk::Liquid::PositionLevelDrop'
       belongs_to  :photo,           with: 'Yoolk::Liquid::AttachmentDrop'
 
-      has_many    :communications,  with: 'Yoolk::Liquid::Listing::CommunicationDrop'
+      has_many    :communications,  class_name: 'Yoolk::Liquid::Listing::CommunicationsDrop',
+                                    with: 'Yoolk::Liquid::Listing::CommunicationDrop'
       has_many    :languages,       with: 'Yoolk::Liquid::LanguageDrop'
 
       delegate    :male?, :female?, :full_name, to: :object

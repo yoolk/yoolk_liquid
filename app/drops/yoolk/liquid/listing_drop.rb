@@ -23,9 +23,11 @@ module Yoolk
       has_many    :listing_categories,    with: 'Yoolk::Liquid::Listing::CategoryDrop'
 
       has_many    :catalog_items,         scope: :published,
+                                          class_name: 'Yoolk::Liquid::Listing::CatalogItemsDrop',
                                           with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
 
-      has_many    :galleries,             with: 'Yoolk::Liquid::Listing::ImageGalleryDrop'
+      has_many    :galleries,             scope: :with_images,
+                                          with: 'Yoolk::Liquid::Listing::ImageGalleryDrop'
       has_many    :images,                with: 'Yoolk::Liquid::Listing::GalleryImageDrop'
 
       has_many    :brochures,             scope: :actives,
@@ -115,11 +117,11 @@ module Yoolk
       end
 
       def product_categories
-        @product_categories ||= ::Liquid::Rails::CollectionDrop.new(object.product_categories.select { |category| !category.uncategorized? })
+        @product_categories ||= ::Liquid::Rails::CollectionDrop.new(object.product_categories.select { |category| !category.uncategorized? and category.products.present? })
       end
 
       def food_categories
-        @food_categories ||= ::Liquid::Rails::CollectionDrop.new(object.food_categories.select { |category| !category.uncategorized? })
+        @food_categories ||= ::Liquid::Rails::CollectionDrop.new(object.food_categories.select { |category| !category.uncategorized? and category.foods.present? })
       end
 
       ## Alias Method
