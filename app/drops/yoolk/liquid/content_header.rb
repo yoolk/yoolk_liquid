@@ -43,7 +43,7 @@ module Yoolk
       end
 
       def meta_google_webmaster_tag
-        listing.instant_website.google_webmaster_tag
+        listing.instant_website.try(:google_webmaster_tag)
       end
 
       def csrf_meta_tags

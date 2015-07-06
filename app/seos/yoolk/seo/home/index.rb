@@ -3,20 +3,22 @@ module Yoolk
     class Home::Index < Yoolk::Seo::Base
 
       def title
-        home_page.meta_title || super
+        home_page.try(:meta_title)       || super
       end
 
       def description
-        home_page.meta_description || super
+        home_page.try(:meta_description) || super
       end
 
       def keywords
-        home_page.meta_keyword || super
+        home_page.try(:meta_keyword)     || super
       end
 
       private
       def home_page
-        listing.instant_website.pages.detect{ |page| page.template_page.home? }
+        if listing.instant_website.present?
+          listing.instant_website.pages.detect{ |page| page.template_page.home? }
+        end
       end
     end
   end
