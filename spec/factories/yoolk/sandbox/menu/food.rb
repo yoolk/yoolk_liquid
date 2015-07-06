@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :food, class: Yoolk::Sandbox::Menu::Food do
+  factory :menu_food, class: Yoolk::Sandbox::Menu::Food do
     id        1
     name      'chocolate-cream'
 
@@ -8,12 +8,12 @@ FactoryGirl.define do
       dimension ''
     }
 
+    photos { build(:attachment, width: dimension.to_s.split('x').first, height: dimension.to_s.split('x').last, url: url) }
+
     trait :category do
       after(:build) do |food, evaluator|
-        food.category = build(:category)
+        food.category = build(:menu_category)
       end
     end
-
-    photos { build(:attachment, width: dimension.to_s.split('x').first, height: dimension.to_s.split('x').last, url: url) }
   end
 end

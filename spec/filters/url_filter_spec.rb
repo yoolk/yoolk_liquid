@@ -12,7 +12,7 @@ module Yoolk
       end
 
       it 'renders food url' do
-        food = build(:food, :category)
+        food = build(:menu_food, :category)
         food_drop = food.to_liquid
 
         expected = "/menu-categories/1-ice-cream/menu/1-chocolate-cream"
@@ -20,7 +20,7 @@ module Yoolk
       end
 
       context '#within' do
-        let(:food)          { build(:food, :category) }
+        let(:food)          { build(:menu_food, :category) }
         let(:food_drop)     { food.to_liquid }
         let(:category_drop) { food.category.to_liquid }
 

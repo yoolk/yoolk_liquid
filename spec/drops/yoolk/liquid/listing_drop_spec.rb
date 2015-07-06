@@ -84,9 +84,9 @@ module Yoolk
         end
         describe 'Product' do
           it 'collects non uncategorized categories' do
-            categor1 = build(:product_category, name: 'Uncategorized')
-            categor2 = build(:product_category, name: 'Spare parts')
-            listing  = build(:listing, product_categories: [categor1, categor2])
+            category1 = build(:product_category, :products, name: 'Uncategorized')
+            category2 = build(:product_category, :products, name: 'Spare parts')
+            listing   = build(:listing, product_categories: [category1, category2])
 
             expect(listing.to_liquid.product_categories.count).to eq(1)
             expect(listing.to_liquid.product_categories.first.name).to eq('Spare parts')
@@ -95,9 +95,9 @@ module Yoolk
 
         describe 'Menu' do
           it 'collects non uncategorized categories' do
-            categor1 = build(:category, name: 'Uncategorized')
-            categor2 = build(:category, name: 'Ice Cream')
-            listing  = build(:listing, food_categories: [categor1, categor2])
+            category1 = build(:menu_category, :foods, name: 'Uncategorized')
+            category2 = build(:menu_category, :foods, name: 'Ice Cream')
+            listing   = build(:listing, food_categories: [category1, category2])
 
             expect(listing.to_liquid.food_categories.count).to eq(1)
             expect(listing.to_liquid.food_categories.first.name).to eq('Ice Cream')
