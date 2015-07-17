@@ -13,10 +13,8 @@ module Yoolk
       # ellipsis: '...'
       # length_in_chars: false
       def html_truncator(html, length, options={})
-        HTML_Truncator.truncate(html, length, options.with_indifferent_access)
-        # html_truncator_without_indifferent_access(html, length, options.with_indifferent_access)
+        HTML_Truncator.truncate(html, length, options.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo})
       end
-      # alias_method_chain :html_truncator, :indifferent_access
     end
   end
 end
