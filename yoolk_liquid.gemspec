@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sass-rails',            '~> 5.0.1'
   s.add_dependency 'rails_autolink',        '~> 1.1.6'
   s.add_dependency 'truncate_html',         '~> 0.9.3'
+  s.add_dependency 'html_truncator',        '~> 0.2'
   s.add_dependency 'autoprefixer-rails',    '~> 5.2.0'
   s.add_dependency 'dotenv-rails',          '~> 2.0.1'
 
