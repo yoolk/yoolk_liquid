@@ -1,3 +1,6 @@
+# Thai unicode is not working properly (listing: th-th229574)
+# https://github.com/hgmnz/truncate_html/issues/35
+
 module Yoolk
   module Liquid
     module TruncateHtmlFilter
