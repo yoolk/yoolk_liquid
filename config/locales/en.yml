@@ -68,6 +68,8 @@ en:
     our_products:               "Our Products"
     our_services:               "Our Services"
     our_menu:                   "Our Menu"
+    add_to_cart:                "Add to cart"
+    out_of_stock:               "Out of stock"
 
   people:
     directors:                  "Directors"
