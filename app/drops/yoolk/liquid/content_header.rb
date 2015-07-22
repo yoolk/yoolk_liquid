@@ -22,6 +22,7 @@ module Yoolk
           google_analytics,
           alternate_link,
           business_view_js,
+          shopping_cart_assets,
           canonical_link,
         ].compact.join("\n")
       end
@@ -125,8 +126,16 @@ module Yoolk
           <script type="text/javascript">
             window.addEventListener("load", function() {
               $('body').data('api-url', "#{ENV['API_URL']}");
+              $('body').data('currency-code', "#{listing.currency.code}");
             });
           </script>
+        }
+      end
+
+      def shopping_cart_assets
+        %Q{
+          #{ view_context.javascript_include_tag 'yoolk/jquery.shopping-cart' }
+          #{ view_context.stylesheet_link_tag 'yoolk/shopping-cart' }
         }
       end
 

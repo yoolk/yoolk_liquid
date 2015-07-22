@@ -15,6 +15,18 @@ module Yoolk
         def cover_photo
           photos[0]
         end
+
+        def data_json
+          {
+            product: {
+              id: id,
+              name: name,
+              price: price,
+              url: url,
+              image_url: cover_photo.url(:small)
+            }
+          }.to_json
+        end
       end
     end
   end
