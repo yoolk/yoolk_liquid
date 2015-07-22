@@ -32,7 +32,7 @@
 }
 
 .shopping-cart .shop-badge.shop-badge i {
-  color: $primary-color;
+  color: blue;
   font-size: 15px;
   min-width: 25px;
   padding: 5px 15px;
