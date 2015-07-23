@@ -69,6 +69,14 @@ vi:
     our_services:               "Dịch vụ"
     our_menu:                   "Thực Đơn"
 
+  ecommerce:
+    add_to_cart:                "Add to cart"
+    out_of_stock:               "Out of stock"
+    shopping_cart:              "Shopping cart"
+    checkout:                   "Checkout"
+    subtotal:                   "Subtotal"
+    empty_cart:                 "Your Shopping Cart is empty."
+
   people:
     directors:                  "Giám đốc."
     managers:                   "Quản lý"

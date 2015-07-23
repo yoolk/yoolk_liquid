@@ -1,7 +1,7 @@
 /*Shop Badge
 ------------------------------------*/
 /*Badge Lists*/
-.shopping-cart .shop-badge.shop-badge {
+.js-shopping-cart .shop-badge.shop-badge {
   margin-bottom: 0;
 }
 
@@ -10,28 +10,28 @@
   z-index: 100;
 }
 
-.shopping-cart .shop-badge.shop-badge {
+.js-shopping-cart .shop-badge.shop-badge {
   padding: 10px 10px 0 0;
   position: fixed;
   right: 10px;
   top: 10px;
 }
 
-.shopping-cart .shop-badge.shop-badge span.badge {
+.js-shopping-cart .shop-badge.shop-badge span.badge {
   top: 3px;
   right: 3px;
   position: absolute;
 }
 
 /*Badge Icons*/
-.shopping-cart .shop-badge.shop-badge span.badge {
+.js-shopping-cart .shop-badge.shop-badge span.badge {
   min-width: 12px;
   padding: 3px 6px;
   font-size: 11px;
   line-height: 12px;
 }
 
-.shopping-cart .shop-badge.shop-badge i {
+.js-shopping-cart .shop-badge.shop-badge i {
   color: $primary-color;
   font-size: 15px;
   min-width: 25px;
@@ -41,37 +41,37 @@
   border: 1px solid #ddd;
 }
 
-.shopping-cart .shop-badge.shop-badge .empty-cart {
+.js-shopping-cart .shop-badge.shop-badge .empty-cart {
   color: #999999;
 }
 
 /*Badge*/
-.shopping-cart .shop-badge span.badge {
+.js-shopping-cart .shop-badge span.badge {
   font-weight: 400;
   padding: 4px 7px;  
 }
 
-.shopping-cart .fa-shopping-cart {
+.js-shopping-cart .fa-shopping-cart {
   color: $primary-color;
 }
 
-.shopping-cart .shop-badge span.badge {
+.js-shopping-cart .shop-badge span.badge {
   display: none;
   background: $primary-color;
 }
 
 /*Scrollbar*/
-.shopping-cart .mCustomScrollbar {
+.js-shopping-cart .mCustomScrollbar {
   max-height: 400px; 
 }
 
 /*Badge Open*/
-.shopping-cart .cart-empty {
+.js-shopping-cart .cart-empty {
   margin: 10px;
   text-align: center;
 }
 
-.shopping-cart .badge-open {
+.js-shopping-cart .badge-open {
   top: 60px;
   right: -300px;
   z-index: 50;
@@ -100,27 +100,27 @@
   transition: all 0.4s linear;
 }
 
-.shopping-cart .badge-open .header {
+.js-shopping-cart .badge-open .header {
   margin: 0 -14px 30px -14px;
   padding: 17px 20px;
   background-color: #f4f4f4;
   border-bottom: 1px solid #dedede;
   text-transform: uppercase;
 }
-.shopping-cart .badge-open .header h4 {
+.js-shopping-cart .badge-open .header h4 {
   margin: 0;
   padding: 0;
   font-size: 16px;
 }
 
-.shopping-cart .badge-open .empty-info {
+.js-shopping-cart .badge-open .empty-info {
   padding: 5px;
   font-size: 13px;
   margin-top: -15px;
   background-color: #f4f4f4;
 }
 
-.shopping-cart .badge-show {
+.js-shopping-cart .badge-show {
   right: 0;
   display: block;
   -webkit-transform: translate3d(0,0,0);
@@ -131,29 +131,29 @@
 }
 
 
-.shopping-cart .badge-open li {
+.js-shopping-cart .badge-open li {
   padding: 10px;
   margin-top: 10px;
   background-color: #fff;
 }
 
-.shopping-cart .badge-open li:first-child {
+.js-shopping-cart .badge-open li:first-child {
   margin-top: 0;
   border-top: none;
   padding-top: 20px;
 }
 
-.shopping-cart .badge-open li:after,
-.shopping-cart .badge-open li:before {
+.js-shopping-cart .badge-open li:after,
+.js-shopping-cart .badge-open li:before {
   content: " ";
   display: table;
 }
 
-.shopping-cart .badge-open li:after {
+.js-shopping-cart .badge-open li:after {
   clear: both;
 }
 
-.shopping-cart .badge-open .img-wrapper {
+.js-shopping-cart .badge-open .img-wrapper {
   width: 60px;
   height: 60px;
   display: table-cell;
@@ -163,69 +163,69 @@
   vertical-align: middle;
 }
 
-.shopping-cart .badge-open img {
+.js-shopping-cart .badge-open img {
   max-width: 60px;
   max-height: 60px;
 }
 
-.shopping-cart .badge-open .wrapper-left {
+.js-shopping-cart .badge-open .wrapper-left {
   float: left;
   margin-right: 15px;
 }
 
-.shopping-cart .badge-open .wrapper-right .overflow-h {
+.js-shopping-cart .badge-open .wrapper-right .overflow-h {
   padding-right: 10px;
 }
 
-.shopping-cart .badge-open .remove-from-cart {
+.js-shopping-cart .badge-open .remove-from-cart {
   outline: 0;
   line-height: 1;
   box-shadow: none;
 }
 
-.shopping-cart .badge-open .item-name {
+.js-shopping-cart .badge-open .item-name {
   margin: 0 0 7px 0;
   color: $primary-color;
   display: block;
   font-size: 13px;
 }
 
-.shopping-cart .badge-open small {
+.js-shopping-cart .badge-open small {
   color: #999;
   font-size: 13px;
 }
 
 /*Subtotal*/
-.shopping-cart li.subtotal {
+.js-shopping-cart li.subtotal {
   padding: 15px 0 80px;
   background-color: #f4f4f4;
 }
 
-.shopping-cart li.subtotal span {
+.js-shopping-cart li.subtotal span {
   color: $primary-color;
   font-size: 14px;
   font-weight: 600;
   display: inline-block;
 }
 
-.shopping-cart li.subtotal .overflow-h {
+.js-shopping-cart li.subtotal .overflow-h {
   margin-bottom: 10px;
 }
 
-.shopping-cart li.subtotal .subtotal-cost {
+.js-shopping-cart li.subtotal .subtotal-cost {
   color: $primary-color;
   float: right;
 }
 
-.shopping-cart li.subtotal .col-xs-6:first-child {
+.js-shopping-cart li.subtotal .col-xs-6:first-child {
   padding-right: 8px;
 }
 
-.shopping-cart li.subtotal .col-xs-6:last-child {
+.js-shopping-cart li.subtotal .col-xs-6:last-child {
   padding-left: 8px;
 }
 
-.shopping-cart .btn-checkout {
+.js-shopping-cart .btn-checkout {
   color: #fff;
   display: block;
   margin-top: 28px;
@@ -233,10 +233,10 @@
   background-color: $primary-color;
 }
 
-.shopping-cart .btn-checkout:hover {
+.js-shopping-cart .btn-checkout:hover {
   background-color: darken($primary-color, 5%);
 }
 
-.shopping-cart .overflow-h {
+.js-shopping-cart .overflow-h {
   overflow: hidden;
 }
