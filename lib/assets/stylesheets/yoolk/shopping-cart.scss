@@ -32,7 +32,7 @@
 }
 
 .shopping-cart .shop-badge.shop-badge i {
-  color: blue;
+  color: $primary-color;
   font-size: 15px;
   min-width: 25px;
   padding: 5px 15px;
@@ -52,12 +52,12 @@
 }
 
 .shopping-cart .fa-shopping-cart {
-  color: blue;
+  color: $primary-color;
 }
 
 .shopping-cart .shop-badge span.badge {
   display: none;
-  background: blue;
+  background: $primary-color;
 }
 
 /*Scrollbar*/
@@ -185,7 +185,7 @@
 
 .shopping-cart .badge-open .item-name {
   margin: 0 0 7px 0;
-  color: blue;
+  color: $primary-color;
   display: block;
   font-size: 13px;
 }
@@ -202,7 +202,7 @@
 }
 
 .shopping-cart li.subtotal span {
-  color: blue;
+  color: $primary-color;
   font-size: 14px;
   font-weight: 600;
   display: inline-block;
@@ -213,7 +213,7 @@
 }
 
 .shopping-cart li.subtotal .subtotal-cost {
-  color: blue;
+  color: $primary-color;
   float: right;
 }
 
@@ -230,11 +230,11 @@
   display: block;
   margin-top: 28px;
   border-radius: 4px;
-  background-color: blue;
+  background-color: $primary-color;
 }
 
 .shopping-cart .btn-checkout:hover {
-  background-color: darken(blue, 5%);
+  background-color: darken($primary-color, 5%);
 }
 
 .shopping-cart .overflow-h {
