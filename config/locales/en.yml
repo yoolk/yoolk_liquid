@@ -77,6 +77,9 @@ en:
     subtotal:                   "Subtotal"
     empty_cart:                 "Your Shopping Cart is empty."
     quantity:                   "Quantity"
+    in_stock:                   "In stock"
+    avalibility:                "Avalibility"
+    share_us:                   "Share Us"
 
   people:
     directors:                  "Directors"
