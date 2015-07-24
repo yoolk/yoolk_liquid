@@ -76,6 +76,7 @@ km:
     checkout:                   "Checkout"
     subtotal:                   "Subtotal"
     empty_cart:                 "Your Shopping Cart is empty."
+    quantity:                   "Quantity"
 
   people:
     directors:                  "នាយកគ្រប់គ្រង"
