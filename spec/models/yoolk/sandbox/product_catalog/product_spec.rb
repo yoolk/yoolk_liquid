@@ -16,6 +16,38 @@ module Yoolk
           expect(described_class).to have_attribute(:price).of_type(Float)
         end
 
+        it 'has :sale_price attribute' do
+          expect(described_class).to have_attribute(:sale_price).of_type(Float)
+        end
+
+        it 'has :show_price attribute' do
+          expect(described_class).to have_attribute(:show_price)
+        end
+
+        it 'has :sku attribute' do
+          expect(described_class).to have_attribute(:sku).of_type(String)
+        end
+
+        it 'has :storefront attribute' do
+          expect(described_class).to have_attribute(:storefront)
+        end
+
+        it 'has :published attribute' do
+          expect(described_class).to have_attribute(:published)
+        end
+
+        it 'has :tracked_inventory attribute' do
+          expect(described_class).to have_attribute(:tracked_inventory)
+        end
+
+        it 'has :storefront_order attribute' do
+          expect(described_class).to have_attribute(:storefront_order).of_type(Integer)
+        end
+
+        it 'has :quantity attribute' do
+          expect(described_class).to have_attribute(:quantity).of_type(Integer)
+        end
+
         it 'has :description attribute' do
           expect(described_class).to have_attribute(:description).of_type(String)
         end

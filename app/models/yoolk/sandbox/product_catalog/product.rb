@@ -7,6 +7,14 @@ module Yoolk
         attribute :id,                  Integer
         attribute :name,                String
         attribute :price,               Float
+        attribute :sale_price,          Float
+        attribute :show_price,          Boolean
+        attribute :sku,                 String
+        attribute :storefront,          Boolean
+        attribute :published,           Boolean
+        attribute :tracked_inventory,   Boolean
+        attribute :storefront_order,    Integer
+        attribute :quantity,            Integer
         attribute :description,         String
         attribute :delivery,            Boolean
         attribute :features,            Array
