@@ -40,6 +40,8 @@ module Yoolk
 
       has_many    :products,              with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
       has_many    :product_categories,    with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+      has_many    :product_deliveries,    with: 'Yoolk::Liquid::ProductCatalog::DeliveryDrop'
+      has_many    :product_payments,      with: 'Yoolk::Liquid::ProductCatalog::PaymentDrop'
 
       has_many    :foods,                 with: 'Yoolk::Liquid::Menu::FoodDrop'
       has_many    :food_categories,       with: 'Yoolk::Liquid::Menu::CategoryDrop'
@@ -122,6 +124,10 @@ module Yoolk
 
       def food_categories
         @food_categories ||= ::Liquid::Rails::CollectionDrop.new(object.food_categories.select { |category| !category.uncategorized? and category.foods.present? })
+      end
+
+      def shopping_cart?
+        product_deliveries.present? && product_payments.present?
       end
 
       ## Alias Method

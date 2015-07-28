@@ -29,6 +29,29 @@ module Yoolk
             }
           }.to_json
         end
+
+        def add_to_cart?
+          sellable? and (quantity.to_i > 0)
+        end
+        alias_method :in_stock?, :add_to_cart?
+
+        private
+
+        def sellable?
+          show_price && product_deliveries.present? && product_payments.present? && set_price?
+        end
+
+        def set_price?
+          (sale_price || price).present?
+        end
+
+        def product_deliveries
+          object.listing.product_deliveries
+        end
+
+        def product_payments
+          object.listing.product_payments
+        end
       end
     end
   end
