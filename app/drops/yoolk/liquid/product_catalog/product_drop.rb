@@ -3,7 +3,7 @@ module Yoolk
     module ProductCatalog
       class ProductDrop < BaseDrop
         attributes  :id, :name, :price, :sale_price, :quantity, :price_with_currency,
-                    :description, :delivery, :features, :brand, :to_param, :show_price,
+                    :description, :delivery, :features, :brand, :to_param, :hide_price,
                     :sku, :storefront, :published, :tracked_inventory, :storefront_order,
                     :created_at, :updated_at
 
@@ -38,7 +38,7 @@ module Yoolk
         private
 
         def sellable?
-          show_price && product_deliveries.present? && product_payments.present? && set_price?
+          !hide_price && product_deliveries.present? && product_payments.present? && set_price?
         end
 
         def set_price?
