@@ -25,6 +25,7 @@ module Yoolk
           </div>
           <script id="tmpl-checkout" type="x-tmpl-mustache">
             <form action="{{checkout_url}}" method="POST">
+              <input name="checkout[currency_code]" value="{{currency_code}}" type="hidden">
               {{#products}}
                 <input name="checkout[items][][id]" value="{{id}}" type="hidden">
                 <input name="checkout[items][][quantity]" value="{{quantity}}" type="hidden">
