@@ -30,6 +30,10 @@ module Yoolk
           }.to_json
         end
 
+        def show_price?
+          true
+        end
+
         def add_to_cart?
           sellable? and (quantity.to_i > 0)
         end
