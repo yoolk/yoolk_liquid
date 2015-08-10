@@ -38,6 +38,7 @@ module Yoolk
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]
       attribute :product_categories,      Array[Yoolk::Sandbox::ProductCatalog::Category]
       attribute :food_categories,         Array[Yoolk::Sandbox::Menu::Category]
+      attribute :product_deliveries,      Array[Yoolk::Sandbox::ProductCatalog::Delivery]
       attribute :announcements,           Array[Yoolk::Sandbox::Listing::Announcement]
       attribute :medias,                  Yoolk::Sandbox::Listing::Medias[Yoolk::Sandbox::Listing::Media]
       attribute :business_photos,         Array[Yoolk::Sandbox::Listing::BusinessPhoto]
