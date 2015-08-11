@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    yoolk_liquid (4.0.0.beta1)
+    yoolk_liquid (4.0.1)
       activemodel (~> 4.1.10)
       assets-rails (>= 0.2.0)
       autoprefixer-rails (~> 5.2.0)

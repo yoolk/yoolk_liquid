@@ -9,7 +9,7 @@ module Yoolk
         it { should have_attribute(:price) }
         it { should have_attribute(:price_with_currency) }
         it { should have_attribute(:sale_price) }
-        it { should have_attribute(:show_price) }
+        it { should have_attribute(:hide_price) }
         it { should have_attribute(:sku) }
         it { should have_attribute(:storefront) }
         it { should have_attribute(:published) }
