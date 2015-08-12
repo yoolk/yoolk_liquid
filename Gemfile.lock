@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/yoolk/liquid-rails.git
+  revision: fc8253a6c4825666ed14ca34786e31480f9ad29a
+  specs:
+    liquid-rails (0.1.2)
+      kaminari (~> 0.16.1)
+      liquid (>= 3.0.0)
+      rails (>= 3.2)
+
+GIT
   remote: git://github.com/yoolk/themes_on_rails.git
   revision: 3243b758e8250602ee1ae702a135759d3b7a280c
   specs:
@@ -66,7 +75,7 @@ GEM
     arel (5.0.1.20140414130214)
     assets-rails (0.2.0)
       railties (>= 3.2)
-    autoprefixer-rails (5.2.1)
+    autoprefixer-rails (5.2.1.1)
       execjs
       json
     axiom-types (0.1.1)
@@ -137,11 +146,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     libv8 (3.16.14.11)
-    liquid (3.0.3)
-    liquid-rails (0.1.2)
-      kaminari (~> 0.16.1)
-      liquid (>= 3.0.0)
-      rails (>= 3.2)
+    liquid (3.0.6)
     listen (2.8.5)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -283,6 +288,7 @@ DEPENDENCIES
   coveralls
   factory_girl_rails (>= 4.5.0)
   guard-rspec (~> 4.5.0)
+  liquid-rails!
   pry (~> 0.9.12.3)
   quiet_assets
   rake (~> 10.3.1)
@@ -293,3 +299,6 @@ DEPENDENCIES
   themes_on_rails!
   thin (~> 1.6.1)
   yoolk_liquid!
+
+BUNDLED WITH
+   1.10.5

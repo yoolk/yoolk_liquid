@@ -128,7 +128,7 @@ module Yoolk
       end
 
       it 'has :product_categories attribute' do
-        expect(described_class).to have_attribute(:product_categories).of_type(Array, member_type: Yoolk::Sandbox::ProductCatalog::Category)
+        expect(described_class).to have_attribute(:product_categories).of_type(Yoolk::Sandbox::ProductCatalog::Categories, member_type: Yoolk::Sandbox::ProductCatalog::Category)
       end
 
       it 'has :service_categories attribute' do

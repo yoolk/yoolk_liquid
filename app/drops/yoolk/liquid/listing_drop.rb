@@ -40,7 +40,9 @@ module Yoolk
 
       has_many    :products,              class_name: 'Yoolk::Liquid::ProductCatalog::ProductsDrop',
                                           with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
-      has_many    :product_categories,    with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+      has_many    :product_categories,    scope: :defaults,
+                                          with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop',
+                                          class_name: 'Yoolk::Liquid::ProductCatalog::CategoriesDrop'
       has_many    :product_deliveries,    with: 'Yoolk::Liquid::ProductCatalog::DeliveryDrop'
       has_many    :product_payments,      with: 'Yoolk::Liquid::ProductCatalog::PaymentDrop'
 
@@ -119,12 +121,8 @@ module Yoolk
         ENV['API_URL']
       end
 
-      def product_categories
-        @product_categories ||= ::Liquid::Rails::CollectionDrop.new(object.product_categories.select { |category| !category.uncategorized? and category.products.present? })
-      end
-
       def food_categories
-        @food_categories ||= ::Liquid::Rails::CollectionDrop.new(object.food_categories.select { |category| !category.uncategorized? and category.foods.present? })
+        @food_categories ||= ::Liquid::Rails::CollectionDrop.new(object.food_categories.select { |category| !category.uncategorized? && category.foods.present? })
       end
 
       def shopping_cart?

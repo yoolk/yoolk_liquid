@@ -36,7 +36,7 @@ module Yoolk
       attribute :artworks,                Yoolk::Sandbox::Listing::Artworks[Yoolk::Sandbox::Listing::Artwork]
 
       attribute :service_categories,      Array[Yoolk::Sandbox::ServiceCatalog::Category]
-      attribute :product_categories,      Array[Yoolk::Sandbox::ProductCatalog::Category]
+      attribute :product_categories,      Yoolk::Sandbox::ProductCatalog::Categories[Yoolk::Sandbox::ProductCatalog::Category]
       attribute :food_categories,         Array[Yoolk::Sandbox::Menu::Category]
       attribute :product_deliveries,      Array[Yoolk::Sandbox::ProductCatalog::Delivery]
       attribute :announcements,           Array[Yoolk::Sandbox::Listing::Announcement]

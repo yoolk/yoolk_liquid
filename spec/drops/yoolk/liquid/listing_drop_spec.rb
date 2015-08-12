@@ -49,7 +49,7 @@ module Yoolk
       it { should have_many(:announcements).with('Yoolk::Liquid::Listing::AnnouncementDrop') }
 
       it { should have_many(:products).class_name('Yoolk::Liquid::ProductCatalog::ProductsDrop').with('Yoolk::Liquid::ProductCatalog::ProductDrop') }
-      it { should have_many(:product_categories).with('Yoolk::Liquid::ProductCatalog::CategoryDrop') }
+      it { should have_many(:product_categories).class_name('Yoolk::Liquid::ProductCatalog::CategoriesDrop').with('Yoolk::Liquid::ProductCatalog::CategoryDrop').scope(:defaults) }
 
       it { should have_many(:services).with('Yoolk::Liquid::ServiceCatalog::ServiceDrop') }
       it { should have_many(:service_categories).with('Yoolk::Liquid::ServiceCatalog::CategoryDrop') }
@@ -88,7 +88,7 @@ module Yoolk
             category2 = build(:product_category, :products, name: 'Spare parts')
             listing   = build(:listing, product_categories: [category1, category2])
 
-            expect(listing.to_liquid.product_categories.count).to eq(1)
+            expect(listing.to_liquid.product_categories.length).to eq(1)
             expect(listing.to_liquid.product_categories.first.name).to eq('Spare parts')
           end
         end
