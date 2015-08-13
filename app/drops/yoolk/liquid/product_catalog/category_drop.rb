@@ -21,6 +21,14 @@ module Yoolk
           object.leaf?
         end
 
+        def self_and_siblings
+          object.siblings_and_self
+        end
+
+        def self_and_ancestors
+          object.ancestors_and_self
+        end
+
         def url
           product_category_products_url(self)
         end

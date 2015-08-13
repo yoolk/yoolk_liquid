@@ -42,7 +42,7 @@ module Yoolk
         alias_method :in_stock?, :add_to_cart?
 
         def out_of_stock?
-          sellable? and quantity.to_i > 0 unless quantity.nil?
+          sellable? and quantity.to_i == 0 unless quantity.nil?
         end
 
         def shopping_cart?
