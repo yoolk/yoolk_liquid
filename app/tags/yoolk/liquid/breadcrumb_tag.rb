@@ -34,9 +34,14 @@ module Yoolk
           append_li li_announcements
           append_li li(span view.localize(announcement.updated_at, format: :long))  if announcement
         elsif request.products_url?
-
           append_li li_products
-          append_li li_product_category       if request.products_category_url?
+
+          if request.products_category_url?
+            product_category.self_and_ancestors.each do |p_category|
+              append_li li_product_category(p_category)
+            end
+          end
+
           append_li li(span product.name)     if product
         elsif request.services_url?
           append_li li_services
@@ -78,8 +83,8 @@ module Yoolk
           li view.link_to_if(product || product_category, t("Products"), request.products_url, itemprop: "item")
         end
 
-        def li_product_category
-          li view.link_to_if(product, span(product_category.try(:name)), request.product_category_products_url(product_category), itemprop: "item")
+        def li_product_category(p_category)
+          li view.link_to_unless(p_category.id.eql?(product_category.id.to_i) && product.nil?, span(p_category.try(:name)), request.product_category_products_url(p_category), itemprop: "item")
         end
 
         def li_services
