@@ -45,10 +45,6 @@ module Yoolk
           sellable? and quantity.to_i == 0 unless quantity.nil?
         end
 
-        def shopping_cart?
-          product_deliveries.present? && product_payments.present?
-        end
-
         private
 
         def sellable?

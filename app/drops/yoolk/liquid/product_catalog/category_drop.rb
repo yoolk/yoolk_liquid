@@ -21,8 +21,12 @@ module Yoolk
           object.leaf?
         end
 
-        def self_and_siblings
-          object.siblings_and_self
+        def children?
+          object.children?
+        end
+
+        def nochildren?
+          !children?
         end
 
         def self_and_ancestors
