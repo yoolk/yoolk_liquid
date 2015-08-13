@@ -15,26 +15,28 @@ module Yoolk
       def render(context)
         @context = context
 
-        %Q{
-          <div class="js-shopping-cart shopping-cart-icon" data-ecommerce-locales='#{@ecommerce_locales.to_json}' data-checkout-url='/checkout'>
-            <div class="shop-badge">
-              <i class="fa fa-shopping-cart"></i>
-              <span id="total-items" class="badge"></span>
+        if context['listing.shopping_cart?']
+          %Q{
+            <div class="js-shopping-cart shopping-cart-icon" data-ecommerce-locales='#{@ecommerce_locales.to_json}' data-checkout-url='/checkout'>
+              <div class="shop-badge">
+                <i class="fa fa-shopping-cart"></i>
+                <span id="total-items" class="badge"></span>
+              </div>
+              <div id="shopping-cart-list"></div>
             </div>
-            <div id="shopping-cart-list"></div>
-          </div>
-          <script id="tmpl-checkout" type="x-tmpl-mustache">
-            <form action="{{checkout_url}}" method="POST">
-              <input name="checkout[currency_code]" value="{{currency_code}}" type="hidden">
-              {{#products}}
-                <input name="checkout[items][][id]" value="{{id}}" type="hidden">
-                <input name="checkout[items][][quantity]" value="{{quantity}}" type="hidden">
-              {{/products}}
-              <input name="authenticity_token" type="hidden" value="#{csrf_token}"/>
-              <input type="submit" class="btn btn-checkout" value="Checkout">
-            </form>
-          </script>
-        }
+            <script id="tmpl-checkout" type="x-tmpl-mustache">
+              <form action="{{checkout_url}}" method="POST">
+                <input name="checkout[currency_code]" value="{{currency_code}}" type="hidden">
+                {{#products}}
+                  <input name="checkout[items][][id]" value="{{id}}" type="hidden">
+                  <input name="checkout[items][][quantity]" value="{{quantity}}" type="hidden">
+                {{/products}}
+                <input name="authenticity_token" type="hidden" value="#{csrf_token}"/>
+                <input type="submit" class="btn btn-checkout" value="Checkout">
+              </form>
+            </script>
+          }
+        end
       end
 
       def csrf_token
