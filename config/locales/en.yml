@@ -80,6 +80,7 @@ en:
     in_stock:                   "In stock"
     avalibility:                "Avalibility"
     share_us:                   "Share Us"
+    product_id:                 "Product ID"
 
   people:
     directors:                  "Directors"
