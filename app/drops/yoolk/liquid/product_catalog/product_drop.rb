@@ -10,6 +10,10 @@ module Yoolk
         has_many    :product_categories,  with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
         has_many    :photos,              with: 'Yoolk::Liquid::AttachmentDrop'
 
+        ## Delegates
+        delegate    :add_to_cart?, :in_stock?, :out_of_stock?,
+                    to: :object
+
         def url
           product_url(self)
         end
@@ -32,39 +36,6 @@ module Yoolk
 
         def show_price?
           true
-        end
-
-        def add_to_cart?
-          has_quantity = quantity.nil? ? true : quantity.to_i > 0
-
-          sellable? and has_quantity
-        end
-        alias_method :in_stock?, :add_to_cart?
-
-        def out_of_stock?
-          sellable? and quantity.to_i == 0 unless quantity.nil?
-        end
-
-        private
-
-        def sellable?
-          !hide_price && product_deliveries.present? && product_payments.present? && has_price?
-        end
-
-        def has_price?
-          (sale_price || price).present?
-        end
-
-        def sellable_price
-          sale_price.presence || price
-        end
-
-        def product_deliveries
-          object.listing.product_deliveries
-        end
-
-        def product_payments
-          object.listing.product_payments
         end
       end
     end
