@@ -23,7 +23,7 @@ module Yoolk
             product: {
               id: id,
               name: name,
-              price: price,
+              price: sellable_price,
               url: url,
               image_url: cover_photo.url(:small)
             }
@@ -57,6 +57,10 @@ module Yoolk
 
         def has_price?
           (sale_price || price).present?
+        end
+
+        def sellable_price
+          sale_price.presence || price
         end
 
         def product_deliveries
