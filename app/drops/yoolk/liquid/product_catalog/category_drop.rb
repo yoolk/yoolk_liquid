@@ -5,10 +5,13 @@ module Yoolk
         attributes  :id, :name, :uncategorized?, :to_param,
                     :created_at, :updated_at
 
-        has_many    :products, with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
-        belongs_to  :parent,   with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
-        has_many    :children, with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
-        has_many    :siblings, with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+        has_many    :products,          with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
+        belongs_to  :parent,            with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+        has_many    :children,          with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+        has_many    :siblings,          with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+        has_many    :self_and_siblings, scope: :defaults,
+                                        with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop',
+                                        class_name: 'Yoolk::Liquid::ProductCatalog::CategoriesDrop'
 
         def root?
           object.root?
@@ -16,10 +19,6 @@ module Yoolk
 
         def leaf?
           object.leaf?
-        end
-
-        def self_and_siblings
-          object.siblings_and_self
         end
 
         def url

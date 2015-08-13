@@ -11,6 +11,7 @@ module Yoolk
         it { should belongs_to(:parent).with('Yoolk::Liquid::ProductCatalog::CategoryDrop') }
         it { should have_many(:products).with('Yoolk::Liquid::ProductCatalog::ProductDrop') }
         it { should have_many(:siblings).with('Yoolk::Liquid::ProductCatalog::CategoryDrop') }
+        it { should have_many(:self_and_siblings).with('Yoolk::Liquid::ProductCatalog::CategoryDrop').class_name('Yoolk::Liquid::ProductCatalog::CategoriesDrop').scope(:defaults) }
 
         it { should respond_to(:root?) }
         it { should respond_to(:leaf?) }
