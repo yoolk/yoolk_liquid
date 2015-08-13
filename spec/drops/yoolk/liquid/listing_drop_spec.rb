@@ -50,6 +50,8 @@ module Yoolk
 
       it { should have_many(:products).class_name('Yoolk::Liquid::ProductCatalog::ProductsDrop').with('Yoolk::Liquid::ProductCatalog::ProductDrop') }
       it { should have_many(:product_categories).class_name('Yoolk::Liquid::ProductCatalog::CategoriesDrop').with('Yoolk::Liquid::ProductCatalog::CategoryDrop').scope(:defaults) }
+      it { should have_many(:product_deliveries).with('Yoolk::Liquid::ProductCatalog::DeliveryDrop') }
+      it { should have_many(:product_payments).with('Yoolk::Liquid::ProductCatalog::PaymentDrop') }
 
       it { should have_many(:services).with('Yoolk::Liquid::ServiceCatalog::ServiceDrop') }
       it { should have_many(:service_categories).with('Yoolk::Liquid::ServiceCatalog::CategoryDrop') }

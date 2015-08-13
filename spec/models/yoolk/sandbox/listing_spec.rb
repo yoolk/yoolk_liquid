@@ -131,6 +131,14 @@ module Yoolk
         expect(described_class).to have_attribute(:product_categories).of_type(Yoolk::Sandbox::ProductCatalog::Categories, member_type: Yoolk::Sandbox::ProductCatalog::Category)
       end
 
+      it 'has :product_deliveries attribute' do
+        expect(described_class).to have_attribute(:product_deliveries).of_type(Array, member_type: Yoolk::Sandbox::ProductCatalog::Delivery)
+      end
+
+      it 'has :product_payments attribute' do
+        expect(described_class).to have_attribute(:product_payments).of_type(Array, member_type: Yoolk::Sandbox::ProductCatalog::Payment)
+      end
+
       it 'has :service_categories attribute' do
         expect(described_class).to have_attribute(:service_categories).of_type(Array, member_type: Yoolk::Sandbox::ServiceCatalog::Category)
       end

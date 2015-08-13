@@ -35,17 +35,27 @@ module Yoolk
         end
 
         def add_to_cart?
-          sellable? and (quantity.to_i > 0)
+          has_quantity = quantity.nil? ? true : quantity.to_i > 0
+
+          sellable? and has_quantity
         end
         alias_method :in_stock?, :add_to_cart?
+
+        def out_of_stock?
+          sellable? and quantity.to_i > 0 unless quantity.nil?
+        end
+
+        def shopping_cart?
+          product_deliveries.present? && product_payments.present?
+        end
 
         private
 
         def sellable?
-          !hide_price && product_deliveries.present? && product_payments.present? && set_price?
+          !hide_price && product_deliveries.present? && product_payments.present? && has_price?
         end
 
-        def set_price?
+        def has_price?
           (sale_price || price).present?
         end
 
