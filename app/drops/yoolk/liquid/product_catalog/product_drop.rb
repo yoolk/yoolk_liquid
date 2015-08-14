@@ -12,7 +12,7 @@ module Yoolk
         has_many    :photos,              with: 'Yoolk::Liquid::AttachmentDrop'
 
         ## Delegates
-        delegate    :add_to_cart?, to: :object
+        delegate    :add_to_cart?, :available_for_sale?, to: :object
 
         def url
           product_url(self)
