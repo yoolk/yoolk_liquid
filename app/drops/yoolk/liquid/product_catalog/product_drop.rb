@@ -5,14 +5,14 @@ module Yoolk
         attributes  :id, :name, :price, :sale_price, :quantity, :price_with_currency,
                     :description, :delivery, :features, :brand, :to_param, :hide_price,
                     :sku, :storefront, :published, :tracked_inventory, :storefront_order,
+                    :selling_price, :in_stock?, :out_of_stock?, :unlimited?,
                     :created_at, :updated_at
 
         has_many    :product_categories,  with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
         has_many    :photos,              with: 'Yoolk::Liquid::AttachmentDrop'
 
         ## Delegates
-        delegate    :add_to_cart?, :in_stock?, :out_of_stock?,
-                    to: :object
+        delegate    :add_to_cart?, to: :object
 
         def url
           product_url(self)
@@ -27,7 +27,7 @@ module Yoolk
             product: {
               id: id,
               name: name,
-              price: sellable_price,
+              price: selling_price,
               url: url,
               image_url: cover_photo.url(:small)
             }
