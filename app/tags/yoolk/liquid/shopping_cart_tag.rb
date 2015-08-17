@@ -17,16 +17,12 @@ module Yoolk
 
         if context['listing.shopping_cart?']
           %Q{
-            <div class="js-shopping-cart shopping-cart-icon" data-ecommerce-locales='#{@ecommerce_locales.to_json}' data-checkout-url='/checkout'>
+            <div class="js-shopping-cart shopping-cart-icon" data-ecommerce-locales='#{@ecommerce_locales.to_json}' data-checkout-url='/checkout/new'>
               <div class="shop-badge">
                 <i class="fa fa-shopping-cart"></i>
                 <span id="total-items" class="badge"></span>
               </div>
               <div id="shopping-cart-list"></div>
-            </div>
-                
-            <div id="tmpl-checkout">
-              <a href="#{context.registers[:view].new_checkout_path}" class="btn btn-checkout">Checkout</a>
             </div>
           }
         end
