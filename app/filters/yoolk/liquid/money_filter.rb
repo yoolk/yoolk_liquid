@@ -8,7 +8,7 @@ module Yoolk
 
       def money_with_currency(money)
         return '' if money.nil?
-        Yoolk::MoneyFormatter.new(money, currency_code).to_s("%n %u")
+        Yoolk::MoneyFormatter.new(money, currency_code).to_s
       end
 
       def currency_code
