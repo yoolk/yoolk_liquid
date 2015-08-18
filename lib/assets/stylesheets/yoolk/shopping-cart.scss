@@ -97,6 +97,7 @@
         margin: 0;
         padding: 0;
         font-size: 16px;
+        color: #333;
       }
     }
 
@@ -127,25 +128,35 @@
       margin-right: 15px;
     }
 
-    .wrapper-right .overflow-h {
-      padding-right: 10px;
+    .wrapper-right {
+      overflow: hidden;
+
+      .overflow-h {
+        padding-right: 10px;
+      }
     }
 
     .remove-from-cart {
       outline: 0;
       line-height: 1;
       box-shadow: none;
+      margin-top: -5px;
     }
 
     .item-name {
-      margin: 0 0 7px 0;
-      color: $primary-color;
       display: block;
       font-size: 13px;
+      margin: 0 0 7px 0;
+      line-height: normal;
+      color: #555;
+
+      &:hover {
+        color: $primary-color;
+      }
     }
 
     small {
-      color: #999;
+      color: #555;
       font-size: 13px;
     }
   }
