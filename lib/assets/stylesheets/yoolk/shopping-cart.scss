@@ -33,7 +33,7 @@
       min-width: 25px;
       padding: 5px 15px;
       background:rgba(255,255,255, 0.8);
-      border-radius: 15px;
+      border-radius: 15px !important;
       border: 1px solid #ddd;
     }
 
@@ -140,7 +140,6 @@
       outline: 0;
       line-height: 1;
       box-shadow: none;
-      margin-top: -5px;
     }
 
     .item-name {
