@@ -8,7 +8,11 @@ module Yoolk
 
       def money_with_currency(money)
         return '' if money.nil?
-        Yoolk::MoneyFormatter.new(money, currency_code).to_s
+        view.number_to_currency(money, unit: currency_code, format: "%u %n")
+      end    
+   
+      def view   
+        @context.registers[:view]
       end
 
       def currency_code

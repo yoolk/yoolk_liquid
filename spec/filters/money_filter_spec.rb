@@ -1,6 +1,4 @@
 require 'rails_helper'
-$:.unshift('../yoolk_engines/core/app/services/yoolk')
-require 'money_formatter.rb'
 
 module Yoolk
   module Liquid
