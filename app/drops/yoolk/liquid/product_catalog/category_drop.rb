@@ -2,15 +2,19 @@ module Yoolk
   module Liquid
     module ProductCatalog
       class CategoryDrop < BaseDrop
-        attributes  :id, :name, :uncategorized?, :to_param,
+        attributes  :id, :name, :uncategorized?, :to_param, :lft, :rgt, 
                     :created_at, :updated_at
 
-        has_many    :products,          scope: :published,
+        has_many    :products,          scope: :defaults,
                                         class_name: 'Yoolk::Liquid::ProductCatalog::ProductsDrop',
                                         with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
         belongs_to  :parent,            with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
-        has_many    :children,          with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
-        has_many    :siblings,          with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
+        has_many    :children,          scope: :defaults,
+                                        with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop',
+                                        class_name: 'Yoolk::Liquid::ProductCatalog::CategoriesDrop'
+        has_many    :siblings,          scope: :defaults,
+                                        with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop',
+                                        class_name: 'Yoolk::Liquid::ProductCatalog::CategoriesDrop'
         has_many    :self_and_siblings, scope: :defaults,
                                         with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop',
                                         class_name: 'Yoolk::Liquid::ProductCatalog::CategoriesDrop'
