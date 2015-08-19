@@ -1,5 +1,6 @@
 /*Shop Badge
 ------------------------------------*/
+$primary-color: #ef4135 !default;
 /*Badge Lists*/
 .js-shopping-cart {
   .shop-badge.shop-badge {
@@ -23,7 +24,7 @@
       min-width: 12px;
       padding: 3px 6px;
       font-size: 11px;
-      line-height: 12px;
+      line-height: 11px;
       position: absolute;
       border-radius: 10px !important;
     }
