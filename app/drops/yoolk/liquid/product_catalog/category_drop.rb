@@ -23,14 +23,6 @@ module Yoolk
           object.leaf?
         end
 
-        def children?
-          object.children?
-        end
-
-        def nochildren?
-          !children?
-        end
-
         def self_and_ancestors
           object.ancestors_and_self
         end
