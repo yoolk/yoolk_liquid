@@ -15,6 +15,10 @@ module Yoolk
           name == 'Uncategorized'
         end
 
+        def self_and_ancestors
+          []
+        end
+
         def products
           @products ||= begin
             products = Yoolk::Sandbox::ProductCatalog::Product.find(product_ids)
