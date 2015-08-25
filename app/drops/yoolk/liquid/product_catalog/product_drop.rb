@@ -29,7 +29,7 @@ module Yoolk
           {
             product: {
               id: id,
-              name: name,
+              name: name.gsub(/'/, "&#39;"),
               price: selling_price,
               url: url,
               image_url: cover_photo.url(:small)
