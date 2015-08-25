@@ -23,6 +23,7 @@ module Yoolk
           alternate_link,
           business_view_js,
           canonical_link,
+          cart_items
         ].compact.join("\n")
       end
 
@@ -127,6 +128,15 @@ module Yoolk
               $('body').data('api-url', "#{ENV['API_URL']}");
               $('body').data('currency-code', "#{listing.currency.code}");
             });
+          </script>
+        }
+      end
+
+      def cart_items
+        %Q{
+          <script type="text/javascript">
+            window.app = {};
+            window.app.cart_items = #{view_context.assigns['cart_items']};
           </script>
         }
       end
