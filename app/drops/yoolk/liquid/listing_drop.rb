@@ -38,7 +38,7 @@ module Yoolk
       has_many    :services,              with: 'Yoolk::Liquid::ServiceCatalog::ServiceDrop'
       has_many    :service_categories,    with: 'Yoolk::Liquid::ServiceCatalog::CategoryDrop'
 
-      has_many    :products,              scope: :defaults,
+      has_many    :products,              scope: :published,
                                           class_name: 'Yoolk::Liquid::ProductCatalog::ProductsDrop',
                                           with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
       has_many    :product_categories,    scope: :defaults,

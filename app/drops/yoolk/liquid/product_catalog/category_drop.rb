@@ -5,9 +5,6 @@ module Yoolk
         attributes  :id, :name, :uncategorized?, :to_param, :lft, :rgt,
                     :created_at, :updated_at
 
-        has_many    :products,          scope: :defaults,
-                                        class_name: 'Yoolk::Liquid::ProductCatalog::ProductsDrop',
-                                        with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
         belongs_to  :parent,            with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop'
         has_many    :children,          scope: :defaults,
                                         with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop',
@@ -28,6 +25,10 @@ module Yoolk
 
         def leaf?
           object.leaf?
+        end
+
+        def products
+          @products ||= Yoolk::Liquid::ProductCatalog::ProductsDrop.new(object.products.select(&:published))
         end
 
         def url

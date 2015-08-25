@@ -9,13 +9,13 @@ module Yoolk
         it { should have_attribute(:to_param) }
 
         it { should belongs_to(:parent).with('Yoolk::Liquid::ProductCatalog::CategoryDrop') }
-        it { should have_many(:products).with('Yoolk::Liquid::ProductCatalog::ProductDrop') }
         it { should have_many(:siblings).with('Yoolk::Liquid::ProductCatalog::CategoryDrop') }
         it { should have_many(:self_and_siblings).with('Yoolk::Liquid::ProductCatalog::CategoryDrop').class_name('Yoolk::Liquid::ProductCatalog::CategoriesDrop').scope(:defaults) }
         it { should have_many(:self_and_ancestors).with('Yoolk::Liquid::ProductCatalog::CategoryDrop').class_name('Yoolk::Liquid::ProductCatalog::CategoriesDrop').scope(:defaults) }
 
         it { should respond_to(:root?) }
         it { should respond_to(:leaf?) }
+        it { should respond_to(:products) }
       end
 
       describe CategoryDrop, 'methods' do
