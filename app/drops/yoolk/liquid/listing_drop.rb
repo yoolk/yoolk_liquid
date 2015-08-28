@@ -94,6 +94,13 @@ module Yoolk
         ::Yoolk::Liquid::Listing::PeopleDrop.new(@people)
       end
 
+      def products
+        return [] unless object.installed?(:store)
+
+        @products ||= object.products.published
+        ::Yoolk::Liquid::ProductCatalog::ProductsDrop.new(@products)
+      end
+
       def multilinguals
         @multilinguals ||= ::Liquid::Rails::CollectionDrop.new(object.multilinguals.select { |listing| listing.instant_website.try(:domain_name).present? })
       end
@@ -127,7 +134,7 @@ module Yoolk
       end
 
       def shopping_cart?
-        product_deliveries.present? && product_payments.present?
+        product_deliveries.present? && product_payments.present? && object.installed?(:store)
       end
 
       ## Alias Method
