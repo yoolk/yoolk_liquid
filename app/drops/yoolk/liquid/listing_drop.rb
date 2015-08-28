@@ -38,12 +38,12 @@ module Yoolk
       has_many    :services,              with: 'Yoolk::Liquid::ServiceCatalog::ServiceDrop'
       has_many    :service_categories,    with: 'Yoolk::Liquid::ServiceCatalog::CategoryDrop'
 
-      has_many    :products,              scope: :published,
-                                          class_name: 'Yoolk::Liquid::ProductCatalog::ProductsDrop',
+      has_many    :products,              class_name: 'Yoolk::Liquid::ProductCatalog::ProductsDrop',
                                           with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
-      has_many    :product_categories,    scope: :defaults,
-                                          with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop',
+
+      has_many    :product_categories,    with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop',
                                           class_name: 'Yoolk::Liquid::ProductCatalog::CategoriesDrop'
+                                          
       has_many    :product_deliveries,    with: 'Yoolk::Liquid::ProductCatalog::DeliveryDrop'
       has_many    :product_payments,      with: 'Yoolk::Liquid::ProductCatalog::PaymentDrop'
 
@@ -99,6 +99,13 @@ module Yoolk
 
         @products ||= object.products.published
         ::Yoolk::Liquid::ProductCatalog::ProductsDrop.new(@products)
+      end
+
+      def product_categories
+        return [] unless object.installed?(:store)
+
+        @product_categories ||= object.product_categories.defaults
+        ::Yoolk::Liquid::ProductCatalog::CategoriesDrop.new(@product_categories)
       end
 
       def multilinguals
