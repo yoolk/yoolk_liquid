@@ -48,8 +48,8 @@ module Yoolk
       it { should have_many(:brochures).with('Yoolk::Liquid::Listing::ArtworkDrop') }
       it { should have_many(:announcements).with('Yoolk::Liquid::Listing::AnnouncementDrop') }
 
-      it { should have_many(:products).class_name('Yoolk::Liquid::ProductCatalog::ProductsDrop').with('Yoolk::Liquid::ProductCatalog::ProductDrop').scope(:published) }
-      it { should have_many(:product_categories).class_name('Yoolk::Liquid::ProductCatalog::CategoriesDrop').with('Yoolk::Liquid::ProductCatalog::CategoryDrop').scope(:defaults) }
+      it { should have_many(:products).class_name('Yoolk::Liquid::ProductCatalog::ProductsDrop').with('Yoolk::Liquid::ProductCatalog::ProductDrop') }
+      it { should have_many(:product_categories).class_name('Yoolk::Liquid::ProductCatalog::CategoriesDrop').with('Yoolk::Liquid::ProductCatalog::CategoryDrop') }
       it { should have_many(:product_deliveries).with('Yoolk::Liquid::ProductCatalog::DeliveryDrop') }
       it { should have_many(:product_payments).with('Yoolk::Liquid::ProductCatalog::PaymentDrop') }
 

@@ -139,6 +139,10 @@ module Yoolk
         @apps           ||= app_ids.map { |app_id| Yoolk::Sandbox::App.find(app_id) }
       end
 
+      def installed?(app_name)
+        apps.find{ |app| app.name == app_name.capitalize.to_s }.present?
+      end
+
       def short_descriptions
         @short_descriptions ||= paginate_array(listing_categories.map(&:short_description).compact.uniq)
       end
