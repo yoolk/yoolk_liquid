@@ -72,7 +72,7 @@ module Yoolk
         end
 
         def li_galleries
-          li view.link_to_if(gallery, t("Galleries"), request.galleries_url, itemprop: "item")
+          li view.link_to_if(gallery, t("Photos"), request.galleries_url, itemprop: "item")
         end
 
         def li_announcements
@@ -162,11 +162,14 @@ module Yoolk
         end
 
         def t(page_name)
-          _page_name = @context['listing.instant_website.pages'].send(:objects).detect { |wp| wp.template_page.name == page_name }.try(:name)
+          _page = @context['listing.instant_website.pages'].send(:objects).detect { |wp| wp.template_page.name == page_name }
+          _page_name = if _page.present? && _page.name != _page.template_page.name
+            _page.name
+          end
           key        = page_name.to_s.parameterize.underscore
-          value      = _page_name.presence || I18n.t(:"#{request.theme_name}.breadcrumb.#{key}", default: :"breadcrumb.#{key}")
-
-          view.content_tag :span, value, itemprop: 'name'
+          value      = I18n.t(:"#{request.theme_name}.breadcrumb.#{key}", default: :"breadcrumb.#{key}")
+          
+          view.content_tag :span, _page_name || value, itemprop: 'name'
         end
 
         def view

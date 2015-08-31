@@ -105,14 +105,17 @@ module Yoolk
       def galleries_url
         galleries_path
       end
+      alias_method :photos_url, :galleries_url
 
       def galleries_url?
         request.fullpath.start_with?(galleries_url.split('?')[0])
       end
+      alias_method :photos_url?, :galleries_url?
 
       def galleries_all?
         galleries_url == request.fullpath
       end
+      alias_method :photos_all?, :galleries_all?
 
       def links_url
         links_path
