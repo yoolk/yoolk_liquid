@@ -141,7 +141,7 @@ module Yoolk
       end
 
       def shopping_cart?
-        product_deliveries.present? && product_payments.present? && object.installed?(:store)
+        product_deliveries.present? && product_payments.present? && object.installed?(:product_catalog)
       end
 
       ## Alias Method
