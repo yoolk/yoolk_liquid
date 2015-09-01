@@ -1,7 +1,7 @@
-.discount-tip {
+.ecommerce-discount-tip {
   position: relative;
 
-  .circle-shape, .teardrop-shape, .rectangle-shape {
+  .circle-shape, .waterdrop-shape, .rectangle-shape {
     z-index: 5;
     color: #fff;
     font-size: 14px;
@@ -11,9 +11,9 @@
     font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif;
   }
 
-  .circle-shape, .teardrop-shape {
-    top: 5px;
-    right: 5px;
+  .circle-shape, .waterdrop-shape {
+    top: 29px;
+    right: 24px;
     width: 48px;
     border: 0;
     height: 48px;
@@ -24,11 +24,27 @@
     display: inline-block;
   }
 
-  .teardrop-shape {
+  .waterdrop-shape {
     border-top-right-radius: 15px;
   }
 
-  .rectangle-shape-wrapper {
+  .rectangle-shape {
+    top: 29px;
+    left: 6px;
+    padding: 6px;
+    position: absolute;
+
+    &:after {
+      left: 0px;
+      content: '';
+      bottom: -11px;
+      position: absolute;
+      border-right: 11px solid #BC2815;
+      border-bottom: 11px solid transparent;
+    }
+  }
+
+  /*.rectangle-shape-wrapper {
     position: absolute;
     top: 20px;
     left: -10px;
@@ -52,5 +68,5 @@
     border-width: 9px;
     box-sizing: border-box;
     z-index: 1;
-  }
+  }*/
 }

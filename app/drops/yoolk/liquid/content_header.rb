@@ -23,7 +23,8 @@ module Yoolk
           alternate_link,
           business_view_js,
           canonical_link,
-          cart_items
+          cart_items,
+          discount_stylesheet
         ].compact.join("\n")
       end
 
@@ -33,6 +34,10 @@ module Yoolk
             <link rel="canonical" href="#{canonical_url}" />
           }
         end
+      end
+
+      def discount_stylesheet
+        view_context.stylesheet_link_tag 'yoolk/discount-tips'
       end
 
       def alternate_link

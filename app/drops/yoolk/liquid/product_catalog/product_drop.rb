@@ -14,7 +14,7 @@ module Yoolk
 
         ## Delegates
         delegate    :add_to_cart?, :available_for_sale?, :unavailable_for_sale?, 
-                    :show_price?, :visible_price?, 
+                    :show_price?, :visible_price?, :discount_in_percentage, 
                     to: :object
 
         def url
