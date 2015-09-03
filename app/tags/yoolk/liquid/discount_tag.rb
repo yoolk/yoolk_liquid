@@ -12,8 +12,6 @@
   #       {% discount shape = 'circle' %}
   #     </div>
 
-
-## TODO : logic
 module Yoolk
   module Liquid
     class DiscountTag < ::Liquid::Tag
@@ -32,18 +30,18 @@ module Yoolk
         elsif markup.blank?
           @shape_name = 'circle'
         else
-          raise SyntaxError.new("Syntax Error - Valid syntax: {% discount shape = 'circle' %}...{% enddiscount %}")
+          raise SyntaxError.new("Syntax Error - Valid syntax: {% discount shape = 'circle' %}")
         end
       end
 
       def render(context)
-        price = context["product.discount_in_percentage"]
+        discount_price = context["product.discount_in_percentage"]
 
         %Q{
           <span class="#{@shape_name}-shape" id="#{@shape_name}-shape">
-            #{price} <small>OFF</small>
+            #{discount_price} <small>OFF</small>
           </span>
-        } if price.present?
+        }.gsub(/^\s+|$\n/, '') if discount_price.present?
       end
     end
   end
