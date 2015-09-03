@@ -11,7 +11,7 @@ module Yoolk
 
 
         def self.all
-          ['Home', 'Products', 'Services', 'Menu', 'Galleries',
+          ['Home', 'Products', 'Services', 'Menu', 'Photos',
            'About Us', 'Contact Us', 'Reservation', 'Feedback',
            'Announcements', 'Videos', 'Attachments', 'Links',
            'People', 'Map', 'Brochures'

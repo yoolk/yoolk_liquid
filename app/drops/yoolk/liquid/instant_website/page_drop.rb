@@ -12,7 +12,7 @@ module Yoolk
         delegate    :home?, :announcements?, :brochures?, :videos?,
                     :map?, :about_us?, :people?, :links?, :menu?,
                     :feedback?, :reservation?, :photos?, :galleries?, 
-                    :contact_us?, :attachments?, :services?, 
+                    :contact_us?, :attachments?, :services?, :products?, 
                     to: :template_page
 
         # Returns the localized/translated name of that page

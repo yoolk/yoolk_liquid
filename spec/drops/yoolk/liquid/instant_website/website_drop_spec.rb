@@ -127,7 +127,7 @@ module Yoolk
     end
 
     describe InstantWebsite::WebsiteDrop, 'all pages' do
-      let(:page_names) { [  'Home', 'Products', 'Services', 'Menu', 'Galleries',
+      let(:page_names) { [  'Home', 'Products', 'Services', 'Menu', 'Photos',
                             'About Us', 'Contact Us', 'Reservation', 'Feedback',
                             'Announcements', 'Videos', 'Attachments', 'Links',
                             'People', 'Map', 'Brochures' ] }
