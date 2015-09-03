@@ -155,8 +155,8 @@ module Yoolk
         expect(drop.menu_page.send(:object).name).to eq('Menu')
       end
 
-      it '#galleries_page' do
-        expect(drop.galleries_page.send(:object).name).to eq('Galleries')
+      it '#photos_page' do
+        expect(drop.photos_page.send(:object).name).to eq('Photos')
       end
 
       it '#about_us_page' do

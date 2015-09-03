@@ -13,7 +13,7 @@ module Yoolk
       it { should delegate(:products?).to(:object) }
       it { should delegate(:services?).to(:object) }
       it { should delegate(:menu?).to(:object) }
-      it { should delegate(:galleries?).to(:object) }
+      it { should delegate(:photos?).to(:object) }
       it { should delegate(:about_us?).to(:object) }
       it { should delegate(:contact_us?).to(:object) }
       it { should delegate(:reservation?).to(:object) }
