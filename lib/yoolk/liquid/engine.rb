@@ -26,7 +26,10 @@ module Yoolk
     class Engine < ::Rails::Engine
       isolate_namespace Yoolk::Liquid
 
-      config.assets.precompile += %w( yoolk/jquery.business-view-overlay.js )
+      config.assets.precompile += %w(
+                                    yoolk/jquery.business-view-overlay.js
+                                    yoolk/discount-tips.css
+                                  )
 
       initializer 'yoolk_liquid.load_tags_and_filters' do
         Dir["#{Yoolk::Liquid::Engine.root}/app/{tags,filters}/**/*.rb"].each { |f| require f }

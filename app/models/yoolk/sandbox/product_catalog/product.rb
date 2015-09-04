@@ -38,6 +38,10 @@ module Yoolk
         def product_categories
           listing.product_categories.select { |category| category.id.in?(product_category_ids) }
         end
+
+        def discount_in_percentage
+          
+        end
       end
     end
   end
