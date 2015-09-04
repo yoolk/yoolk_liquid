@@ -17,6 +17,12 @@ module Yoolk
         end
       end
 
+      def value_with_http
+        return value if value =~ /^https?:\/\//
+
+        "http://#{value}"
+      end
+
       delegate :email?, :telephone?, :website?, :fax?,
                :facebook?, :twitter?, :address?,
                to: :object
@@ -67,13 +73,7 @@ module Yoolk
             value
           end
         end
-
-        def value_with_http
-          return value if value =~ /^https?:\/\//
-
-          "http://#{value}"
-        end
-
+        
         def h
           @context.registers[:helper]
         end
