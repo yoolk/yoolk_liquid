@@ -38,12 +38,6 @@ module Yoolk
       has_many    :services,              with: 'Yoolk::Liquid::ServiceCatalog::ServiceDrop'
       has_many    :service_categories,    with: 'Yoolk::Liquid::ServiceCatalog::CategoryDrop'
 
-      has_many    :products,              scope: :published,
-                                          class_name: 'Yoolk::Liquid::ProductCatalog::ProductsDrop',
-                                          with: 'Yoolk::Liquid::ProductCatalog::ProductDrop'
-      has_many    :product_categories,    scope: :defaults,
-                                          with: 'Yoolk::Liquid::ProductCatalog::CategoryDrop',
-                                          class_name: 'Yoolk::Liquid::ProductCatalog::CategoriesDrop'
       has_many    :product_deliveries,    with: 'Yoolk::Liquid::ProductCatalog::DeliveryDrop'
       has_many    :product_payments,      with: 'Yoolk::Liquid::ProductCatalog::PaymentDrop'
 
@@ -90,8 +84,19 @@ module Yoolk
       end
 
       def people
-        @people ||= object.people.actives.publics
-        ::Yoolk::Liquid::Listing::PeopleDrop.new(@people)
+        @people ||= ::Yoolk::Liquid::Listing::PeopleDrop.new(object.people.actives.publics)
+      end
+
+      def products
+        return [] unless object.installed?(:product_catalog)
+
+        @products ||= ::Yoolk::Liquid::ProductCatalog::ProductsDrop.new(object.products.published)
+      end
+
+      def product_categories
+        return [] unless object.installed?(:product_catalog)
+
+        @product_categories ||= ::Yoolk::Liquid::ProductCatalog::CategoriesDrop.new(object.product_categories.defaults)
       end
 
       def multilinguals
@@ -127,7 +132,7 @@ module Yoolk
       end
 
       def shopping_cart?
-        product_deliveries.present? && product_payments.present?
+        product_deliveries.present? && product_payments.present? && object.installed?(:product_catalog)
       end
 
       ## Alias Method
