@@ -238,11 +238,7 @@ module Yoolk
                   to: :controller
 
         def office_path
-          if @context['listing'].from_groow?
-            "#{ENV['GROOW_URL']}/office"
-          else
-            '/office'
-          end
+          "#{ENV['ENTERPRISE_URL']}/office"
         end
 
         def default_class_options(is_current_page, options={})

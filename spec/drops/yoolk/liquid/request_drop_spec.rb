@@ -9,7 +9,7 @@ module Yoolk
         let(:listing) { build(:listing, :groow) }
         it '#office_url' do
           context['listing'] = listing
-          expect(subject.office_url).to eq("#{ENV['GROOW_URL']}/office")
+          expect(subject.office_url).to eq("#{ENV['ENTERPRISE_URL']}/office")
         end
       end
 
@@ -17,7 +17,7 @@ module Yoolk
         let(:listing) { build(:listing) }
         it '#office_url' do
           context['listing'] = listing
-          expect(subject.office_url).to eq('/office')
+          expect(subject.office_url).to eq('http://staging.enterprise.center/office')
         end
       end
 
