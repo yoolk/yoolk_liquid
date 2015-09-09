@@ -21,7 +21,7 @@ module Yoolk
 
       # http://robots.thoughtbot.com/custom-tags-in-liquid
       def unknown_tag(name, params, tokens)
-        if name.in?(['facebook', 'twitter', 'counter'])
+        if name.in?(['facebook', 'twitter', 'g_plus', 'pinterest', 'counter'])
           handle_link_tag(name, params)
         else
           super
@@ -45,8 +45,10 @@ module Yoolk
       def link_builder
         @networks.inject('') do |links, option|
           case option[:name]
-          when 'facebook' then links.concat facebook_link( option )
-          when 'twitter'  then links.concat twitter_link ( option )
+          when 'facebook' then links.concat facebook_link(option)
+          when 'twitter'  then links.concat twitter_link(option)
+          when 'g_plus'   then links.concat g_plus_link(option)
+          when 'pinterest' then links.concat pinterest_link(option)
           when 'counter'  then links.concat addthis_counter
           end
         end
@@ -74,6 +76,14 @@ module Yoolk
 
         def twitter_link(option)
           h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_twitter')
+        end
+
+        def g_plus_link(option)
+          h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_google_plusone_share')
+        end
+        
+        def pinterest_link(option)
+          h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_pinterest')
         end
 
         def addthis_counter
