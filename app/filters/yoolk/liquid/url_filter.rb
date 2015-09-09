@@ -238,7 +238,7 @@ module Yoolk
                   to: :controller
 
         def office_path
-          "#{ENV['ENTERPRISE_URL']}/office"
+          "#{ENV['ENTERPRISE_URL']}/office/front_desk/#{@context['listing.alias_id']}/"
         end
 
         def default_class_options(is_current_page, options={})
