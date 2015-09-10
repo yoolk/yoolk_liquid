@@ -44,12 +44,12 @@ module Yoolk
 
       def link_builder
         @networks.inject('') do |links, option|
-          case option[:name]
-          when 'facebook'  then links.concat facebook_link(option)
-          when 'twitter'   then links.concat twitter_link(option)
-          when 'g_plus'    then links.concat g_plus_link(option)
-          when 'pinterest' then links.concat pinterest_link(option)
-          when 'counter'   then links.concat addthis_counter
+          name, url = option[:name], option[:url]
+          case name
+          when 'facebook'  then links.concat facebook_link(url)
+          when 'twitter'   then links.concat twitter_link(url)
+          when 'g_plus'    then links.concat g_plus_link(url)
+          when 'pinterest' then links.concat pinterest_link(url)
           end
         end
       end
@@ -65,28 +65,35 @@ module Yoolk
       end
 
       private
-      def image_tag(option)
-        option[:size].present? ? h.image_tag(view.asset_path(option[:url]), size: option[:size], alt: view.image_alt(option[:url])) : h.image_tag(option[:url])
+
+      def facebook_link(url)
+        h.content_tag(:a, embedded_svg(url, 'social-facebook'),  class: 'addthis_button_facebook')
       end
 
-      def facebook_link(option)
-        h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_facebook')
+      def twitter_link(url)
+        h.content_tag(:a, embedded_svg(url, 'social-twitter'),   class: 'addthis_button_twitter')
       end
 
-      def twitter_link(option)
-        h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_twitter')
-      end
-
-      def g_plus_link(option)
-        h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_google_plusone_share')
+      def g_plus_link(url)
+        h.content_tag(:a, embedded_svg(url, 'social-g-plus'),    class: 'addthis_button_google_plusone_share')
       end
       
-      def pinterest_link(option)
-        h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_pinterest_share')
+      def pinterest_link(url)
+        h.content_tag(:a, embedded_svg(url, 'social-pinterest'), class: 'addthis_button_pinterest_share')
       end
 
-      def addthis_counter
-        "<a class='addthis_counter addthis_bubble_style'></a>"
+      # https://robots.thoughtbot.com/organized-workflow-for-svg
+      def embedded_svg(url, id)
+        assets = Rails.application.assets
+        file = assets.find_asset(url).body.force_encoding("UTF-8")
+
+        doc = Nokogiri::HTML::DocumentFragment.parse file
+        svg = doc.at_css "svg"
+        
+        svg["class"] = 'social-share-icon'
+        svg["id"]    = id.presence
+        
+        view.raw(doc).html_safe.presence
       end
 
       def h
