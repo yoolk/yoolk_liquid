@@ -21,7 +21,7 @@ module Yoolk
 
       # http://robots.thoughtbot.com/custom-tags-in-liquid
       def unknown_tag(name, params, tokens)
-        if name.in?(['facebook', 'twitter', 'g_plus', 'pinterest', 'counter'])
+        if name.in?(['facebook', 'twitter', 'g_plus', 'pinterest'])
           handle_link_tag(name, params)
         else
           super
