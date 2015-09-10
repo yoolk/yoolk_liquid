@@ -45,11 +45,11 @@ module Yoolk
       def link_builder
         @networks.inject('') do |links, option|
           case option[:name]
-          when 'facebook' then links.concat facebook_link(option)
-          when 'twitter'  then links.concat twitter_link(option)
-          when 'g_plus'   then links.concat g_plus_link(option)
+          when 'facebook'  then links.concat facebook_link(option)
+          when 'twitter'   then links.concat twitter_link(option)
+          when 'g_plus'    then links.concat g_plus_link(option)
           when 'pinterest' then links.concat pinterest_link(option)
-          when 'counter'  then links.concat addthis_counter
+          when 'counter'   then links.concat addthis_counter
           end
         end
       end
@@ -65,35 +65,37 @@ module Yoolk
       end
 
       private
+      def image_tag(option)
+        option[:size].present? ? h.image_tag(view.asset_path(option[:url]), size: option[:size], alt: view.image_alt(option[:url])) : h.image_tag(option[:url])
+      end
 
-        def image_tag(option)
-          option[:size].present? ? h.image_tag(option[:url], size: option[:size]) : h.image_tag(option[:url])
-        end
+      def facebook_link(option)
+        h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_facebook')
+      end
 
-        def facebook_link(option)
-          h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_facebook')
-        end
+      def twitter_link(option)
+        h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_twitter')
+      end
 
-        def twitter_link(option)
-          h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_twitter')
-        end
+      def g_plus_link(option)
+        h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_google_plusone_share')
+      end
+      
+      def pinterest_link(option)
+        h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_pinterest_share')
+      end
 
-        def g_plus_link(option)
-          h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_google_plusone_share')
-        end
-        
-        def pinterest_link(option)
-          h.content_tag(:a, option[:url].present? ? image_tag(option) : nil, class: 'addthis_button_pinterest')
-        end
+      def addthis_counter
+        "<a class='addthis_counter addthis_bubble_style'></a>"
+      end
 
-        def addthis_counter
-          "<a class='addthis_counter addthis_bubble_style'></a>"
-        end
+      def h
+        @context.registers[:helper]
+      end
 
-        def h
-          @context.registers[:helper]
-        end
-
+      def view
+        @context.registers[:view]
+      end
     end
   end
 end
