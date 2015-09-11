@@ -3,6 +3,10 @@
     border: 1px solid #e8e8e8 !important;
   }
 
+  .zoomContainer {
+    z-index: 10;
+  }
+
   .big-image-wrapper-box {
     width: 352px;
     height: 352px;
