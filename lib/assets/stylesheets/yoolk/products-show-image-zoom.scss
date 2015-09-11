@@ -59,5 +59,9 @@
       max-width: 352px;
       margin-bottom: 30px;
     }
+
+    .zoomLens, .zoomContainer { 
+      display: none !important;
+    }
   }
 }
