@@ -1,6 +1,6 @@
 #products-show {
   .zoomLens {
-    border: 1px solid #e8e8e8 !important;
+    border: 1px solid #999 !important;
   }
 
   .zoomContainer {
@@ -16,7 +16,7 @@
     display: table-cell;
     vertical-align: middle;
     box-sizing: border-box;
-    border: 1px solid #e8e8e8;
+    border: 1px solid #999;
 
     img {
       max-width: 350px;
@@ -33,7 +33,7 @@
     margin-bottom: 5px;
     vertical-align: top;
     display: inline-block;
-    border: 1px solid #e8e8e8;
+    border: 1px solid #999;
   }
 
   .image-thumbnail {
