@@ -162,14 +162,19 @@ module Yoolk
         end
 
         def t(page_name)
-          _page = @context['listing.instant_website.pages'].send(:objects).detect { |wp| wp.template_page.name == page_name }
-          _page_name = if _page.present? && _page.name != _page.template_page.name
-            _page.name
-          end
+          view.content_tag :span, custom(page_name) || translate(page_name), itemprop: 'name'
+        end
+
+        private
+
+        def custom(page_name)
+          _page = @context['listing.instant_website.pages'].find_by(page_name)
+          _page.name if _page && _page.custom_name?
+        end
+
+        def translate(page_name)
           key        = page_name.to_s.parameterize.underscore
           value      = I18n.t(:"#{request.theme_name}.breadcrumb.#{key}", default: :"breadcrumb.#{key}")
-          
-          view.content_tag :span, _page_name || value, itemprop: 'name'
         end
 
         def view

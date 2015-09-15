@@ -23,13 +23,7 @@ module Yoolk
         end
 
         def current_page
-          page_name =  @context.registers[:controller].controller_path.split("::")[0]
-
-          page_name = page_name == 'galleries' ? 'photos' : page_name
-          pages.find do |page|
-            page.context = @context
-            page.template_page.send(:"#{page_name.underscore}?")
-          end
+          pages.find_by(controller.controller_path.split('/').first)
         end
 
         def self.page_names

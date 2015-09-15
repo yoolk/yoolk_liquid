@@ -35,7 +35,6 @@ module Yoolk
          it { should delegate_method(:products?).to(:template_page) }
          it { should delegate_method(:services?).to(:template_page) }
          it { should delegate_method(:menu?).to(:template_page) }
-         it { should delegate_method(:galleries?).to(:template_page) }
          it { should delegate_method(:about_us?).to(:template_page) }
          it { should delegate_method(:contact_us?).to(:template_page) }
          it { should delegate_method(:reservation?).to(:template_page) }
