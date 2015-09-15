@@ -64,4 +64,36 @@
       display: none !important;
     }
   }
+
+  @media (max-width: 360px) { 
+    .products-show-images {
+      max-width: 330px;
+    }
+
+    .big-image-wrapper-box {
+      width: 330px;
+      height: 330px;
+
+      img {
+        max-width: 330px;
+        max-height: 330px;
+      }
+    }
+  }
+
+  @media (max-width: 320px) { 
+    .products-show-images {
+      max-width: 290px;
+    }
+
+    .big-image-wrapper-box {
+      width: 290px;
+      height: 290px;
+
+      img {
+        max-width: 290px;
+        max-height: 290px;
+      }
+    }
+  }
 }
