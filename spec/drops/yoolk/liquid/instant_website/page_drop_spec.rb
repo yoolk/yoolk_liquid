@@ -79,7 +79,7 @@ module Yoolk
           expect(drop.show?).to be(true)
         end
 
-        it 'return true if collection exist and has app installed' do
+        it 'return true if collection exist and has service catalog app installed' do
           allow(page).to receive(:important?).and_return(false)
           @context['request'] = @context['request'].merge( 'preview_mode?' => false )
 
@@ -88,6 +88,48 @@ module Yoolk
           drop = page.to_liquid
 
           @context['listing'] = build(:listing, :services)
+          drop.context = @context
+
+          expect(drop.show?).to eq(true)
+        end
+
+        it 'return true if collection exist and has product catalog app installed' do
+          allow(page).to receive(:important?).and_return(false)
+          @context['request'] = @context['request'].merge( 'preview_mode?' => false )
+
+          page.name = "Our Products"
+          page.template_page.name = "Products"
+          drop = page.to_liquid
+
+          @context['listing'] = build(:listing, :products)
+          drop.context = @context
+
+          expect(drop.show?).to eq(true)
+        end
+
+        it 'return true if collection exist and has menu app installed' do
+          allow(page).to receive(:important?).and_return(false)
+          @context['request'] = @context['request'].merge( 'preview_mode?' => false )
+
+          page.name = "Our Food"
+          page.template_page.name = "Menu"
+          drop = page.to_liquid
+
+          @context['listing'] = build(:listing, :menu)
+          drop.context = @context
+
+          expect(drop.show?).to eq(true)
+        end
+
+        it 'return true if image galleries exist' do
+          allow(page).to receive(:important?).and_return(false)
+          @context['request'] = @context['request'].merge( 'preview_mode?' => false )
+
+          page.name = "Photos"
+          page.template_page.name = "Photos"
+          drop = page.to_liquid
+
+          @context['listing'] = build(:listing, :image_galleries)
           drop.context = @context
 
           expect(drop.show?).to eq(true)

@@ -36,7 +36,25 @@ module Yoolk
         drop2.context = context
       }
 
+      it { should respond_to(:color) }
       it { should respond_to(:office_url) }
+
+      context '#color' do
+        it 'returns color_name' do
+          website = build(:instant_website_website, color_name: 'blue')
+          drop    = website.to_liquid
+
+          expect(drop.color).to eq('blue')
+        end
+      end
+
+      context '#office_url' do
+        it 'returns office_path' do
+          allow(subject).to receive(:office_path).and_return('/office')
+
+          expect(subject.office_url).to eq('/office')
+        end
+      end
 
       context '#cover_photos' do
         it 'returns an instance of Liquid::Rails::CollectionDrop' do
