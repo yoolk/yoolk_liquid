@@ -72,21 +72,21 @@ module Yoolk
         communication.type  = "website"
         communication.value = "www.yellow-tower.com"
 
-        expect(subject.li).to eq("<li><span>website</span><span title=\"www.yellow-tower.com\"><a href=\"http://www.yellow-tower.com\" rel=\"tooltip\" title=\"www.yellow-tower.com\">www.yellow-tower.com</a></span></li>")
+        expect(subject.li).to eq("<li><span>website</span><span title=\"www.yellow-tower.com\"><a href=\"http://www.yellow-tower.com\" rel=\"tooltip\" target=\"_blank\" title=\"www.yellow-tower.com\">www.yellow-tower.com</a></span></li>")
       end
 
       it 'returns facebook link when type is facebook' do
         communication.type  = "facebook"
         communication.value = "http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642"
 
-        expect(subject.li).to eq("<li><span>facebook</span><span title=\"http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642\"><a href=\"http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642\" rel=\"tooltip\" title=\"Ladder-technology-industrial-sdn-bhd-03-3325-9415\">Ladder-technology-industria...</a></span></li>")
+        expect(subject.li).to eq("<li><span>facebook</span><span title=\"http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642\"><a href=\"http://www.facebook.com/pages/Ladder-technology-industrial-sdn-bhd-03-3325-9415/508871785815117?sk=app_442217585812642\" rel=\"tooltip\" target=\"_blank\" title=\"Ladder-technology-industrial-sdn-bhd-03-3325-9415\">Ladder-technology-industria...</a></span></li>")
       end
 
       it 'returns twitter link when type is twitter' do
         communication.type  = "twitter"
         communication.value = "http://www.twitter.com/chamnap"
 
-        expect(subject.li).to eq("<li><span>twitter</span><span title=\"http://www.twitter.com/chamnap\"><a href=\"http://www.twitter.com/chamnap\" rel=\"tooltip\" title=\"chamnap\">chamnap</a></span></li>")
+        expect(subject.li).to eq("<li><span>twitter</span><span title=\"http://www.twitter.com/chamnap\"><a href=\"http://www.twitter.com/chamnap\" rel=\"tooltip\" target=\"_blank\" title=\"chamnap\">chamnap</a></span></li>")
       end
 
       it 'returns simple list item with no link for none of the above condition' do

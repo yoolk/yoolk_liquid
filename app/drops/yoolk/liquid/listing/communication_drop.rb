@@ -60,7 +60,7 @@ module Yoolk
 
         def website_link(value, href)
           list_item do
-            h.content_tag(:a, h.truncate(value), href: href, rel: 'tooltip', title: value)
+            h.content_tag(:a, h.truncate(value), href: href, rel: 'tooltip', title: value, target: '_blank')
           end
         end
 
