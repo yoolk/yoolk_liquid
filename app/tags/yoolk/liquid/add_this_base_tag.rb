@@ -67,19 +67,19 @@ module Yoolk
       private
 
       def facebook_link(url)
-        h.content_tag(:a, embedded_svg(url, 'social-facebook'),  class: 'addthis_button_facebook')
+        h.content_tag(:a, url.present? ? embedded_svg(url, 'social-facebook') : nil,  class: 'addthis_button_facebook')
       end
 
       def twitter_link(url)
-        h.content_tag(:a, embedded_svg(url, 'social-twitter'),   class: 'addthis_button_twitter')
+        h.content_tag(:a, url.present? ? embedded_svg(url, 'social-twitter') : nil,   class: 'addthis_button_twitter')
       end
 
       def g_plus_link(url)
-        h.content_tag(:a, embedded_svg(url, 'social-g-plus'),    class: 'addthis_button_google_plusone_share')
+        h.content_tag(:a, url.present? ? embedded_svg(url, 'social-g-plus') : nil,    class: 'addthis_button_google_plusone_share')
       end
       
       def pinterest_link(url)
-        h.content_tag(:a, embedded_svg(url, 'social-pinterest'), class: 'addthis_button_pinterest_share')
+        h.content_tag(:a, url.present? ? embedded_svg(url, 'social-pinterest') : nil, class: 'addthis_button_pinterest_share')
       end
 
       # https://robots.thoughtbot.com/organized-workflow-for-svg
