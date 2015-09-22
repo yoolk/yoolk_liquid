@@ -108,7 +108,8 @@ module Yoolk
           <meta content='#{CGI.escapeHTML(seo.description)}'  property='og:description'>
           <meta content='website'                             property='og:type'>
           <meta content='#{seo.social_image}'                 property='og:image'>
-          <meta content='http://#{seo.social_url}/'           property='og:url'>
+          <meta content='#{seo.social_url}/'                  property='og:url'>
+          <meta content='#{listing.name}'                     property='og:site_name'>
         }
       end
 
