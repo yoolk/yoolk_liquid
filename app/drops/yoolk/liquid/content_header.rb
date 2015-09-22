@@ -24,8 +24,7 @@ module Yoolk
           business_view_js,
           canonical_link,
           cart_items,
-          discount_stylesheet,
-          elevate_zoom_stylesheet
+          ecommerce_stylesheet
         ].compact.join("\n")
       end
 
@@ -37,12 +36,8 @@ module Yoolk
         end
       end
 
-      def discount_stylesheet
-        view_context.stylesheet_link_tag 'yoolk/discount-tips'
-      end
-
-      def elevate_zoom_stylesheet
-        view_context.stylesheet_link_tag 'yoolk/products-show-image-zoom'
+      def ecommerce_stylesheet
+        view_context.stylesheet_link_tag 'yoolk/ecommerce'
       end
 
       def alternate_link

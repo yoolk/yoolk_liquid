@@ -28,8 +28,7 @@ module Yoolk
 
       config.assets.precompile += %w(
                                     yoolk/jquery.business-view-overlay.js
-                                    yoolk/discount-tips.css
-                                    yoolk/products-show-image-zoom.css
+                                    yoolk/ecommerce.css
                                   )
 
       initializer 'yoolk_liquid.load_tags_and_filters' do
