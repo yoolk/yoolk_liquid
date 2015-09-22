@@ -15,10 +15,6 @@ module Yoolk
         product.cover_photo.url(:medium)
       end
 
-      def social_url
-        Rails.application.routes.url_helpers.product_url(product, host: super)
-      end
-
       def product
         object
       end

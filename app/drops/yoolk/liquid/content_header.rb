@@ -103,11 +103,13 @@ module Yoolk
       end
 
       def meta_og
+        og_type = seo.respond_to?(:product) ? 'product' : 'website'
+
         %Q{
           <meta content='#{CGI.escapeHTML(seo.title)}'        property='og:title'>
           <meta content='#{CGI.escapeHTML(seo.description)}'  property='og:description'>
-          <meta content='website'                             property='og:type'>
-          <meta content='#{seo.social_image}'                 property='og:image'>
+          <meta content='#{og_type}'                          property='og:type'>
+          <meta content='http:#{seo.social_image}'            property='og:image'>
           <meta content='#{seo.social_url}/'                  property='og:url'>
           <meta content='#{listing.name}'                     property='og:site_name'>
         }
