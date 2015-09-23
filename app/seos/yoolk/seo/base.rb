@@ -29,7 +29,9 @@ module Yoolk
       end
 
       def social_url
-        listing.instant_website.try(:primary_domain).try(:name)
+        return unless listing.instant_website.try(:primary_domain)
+
+        "http://#{listing.instant_website.primary_domain.try(:name)}"
       end
 
     private

@@ -4,21 +4,11 @@ module Yoolk
   module Liquid
     describe RequestDrop do
       subject { described_class.new }
+      let(:listing) { build(:listing) }
 
-      describe 'listing from groow' do
-        let(:listing) { build(:listing, :groow) }
-        it '#office_url' do
-          context['listing'] = listing
-          expect(subject.office_url).to eq("#{ENV['ENTERPRISE_URL']}/office/front_desk/kh34363/")
-        end
-      end
-
-      describe 'listing from portal' do
-        let(:listing) { build(:listing) }
-        it '#office_url' do
-          context['listing'] = listing
-          expect(subject.office_url).to eq('http://staging.enterprise.center/office/front_desk/kh34363/')
-        end
+      it '#office_url' do
+        context['listing'] = listing
+        expect(subject.office_url).to eq("#{ENV['ENTERPRISE_URL']}/office/front_desk/kh34363/")
       end
 
       it '#root_url' do

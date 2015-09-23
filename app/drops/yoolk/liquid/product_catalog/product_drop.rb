@@ -14,15 +14,11 @@ module Yoolk
 
         ## Delegates
         delegate    :add_to_cart?, :available_for_sale?, :unavailable_for_sale?, 
-                    :show_price?, :visible_price?, :discount_in_percentage, 
+                    :show_price?, :visible_price?, :discount_in_percentage, :cover_photo, 
                     to: :object
 
         def url
           product_url(self)
-        end
-
-        def cover_photo
-          photos[0]
         end
       end
     end

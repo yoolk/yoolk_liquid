@@ -20,11 +20,11 @@ module Yoolk
         let(:listing) { build(:listing) }
 
         it '#link_to_office' do
-          expect_template_result("{{ 'Office' | link_to_office }}", "<a href=\"http://staging.enterprise.center/office/front_desk/kh34363/\" rel=\"nofollow\">Office</a>", { 'listing'=> listing })
+          expect_template_result("{{ 'Office' | link_to_office }}", "<a href=\"#{ENV['ENTERPRISE_URL']}/office/front_desk/kh34363/\" rel=\"nofollow\">Office</a>", { 'listing'=> listing })
         end
 
         it '#link_to_sign_in' do
-          expect_template_result("{{ 'Sign in' | link_to_sign_in }}", "<a href=\"http://staging.enterprise.center/office/front_desk/kh34363/\" rel=\"nofollow\">Sign in</a>", { 'listing' => listing})
+          expect_template_result("{{ 'Sign in' | link_to_sign_in }}", "<a href=\"#{ENV['ENTERPRISE_URL']}/office/front_desk/kh34363/\" rel=\"nofollow\">Sign in</a>", { 'listing' => listing})
         end
       end
 
