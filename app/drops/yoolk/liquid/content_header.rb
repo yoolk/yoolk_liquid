@@ -37,7 +37,7 @@ module Yoolk
       end
 
       def ecommerce_stylesheet
-        view_context.stylesheet_link_tag 'yoolk/ecommerce'
+        view_context.stylesheet_link_tag 'yoolk/liquid/ecommerce'
       end
 
       def alternate_link
