@@ -36,7 +36,25 @@ module Yoolk
         drop2.context = context
       }
 
+      it { should respond_to(:color) }
       it { should respond_to(:office_url) }
+
+      context '#color' do
+        it 'returns color_name' do
+          website = build(:instant_website_website, color_name: 'blue')
+          drop    = website.to_liquid
+
+          expect(drop.color).to eq('blue')
+        end
+      end
+
+      context '#office_url' do
+        it 'returns office_path' do
+          allow(subject).to receive(:office_path).and_return('/office')
+
+          expect(subject.office_url).to eq('/office')
+        end
+      end
 
       context '#cover_photos' do
         it 'returns an instance of Liquid::Rails::CollectionDrop' do
@@ -127,7 +145,7 @@ module Yoolk
     end
 
     describe InstantWebsite::WebsiteDrop, 'all pages' do
-      let(:page_names) { [  'Home', 'Products', 'Services', 'Menu', 'Galleries',
+      let(:page_names) { [  'Home', 'Products', 'Services', 'Menu', 'Photos',
                             'About Us', 'Contact Us', 'Reservation', 'Feedback',
                             'Announcements', 'Videos', 'Attachments', 'Links',
                             'People', 'Map', 'Brochures' ] }
@@ -155,8 +173,8 @@ module Yoolk
         expect(drop.menu_page.send(:object).name).to eq('Menu')
       end
 
-      it '#galleries_page' do
-        expect(drop.galleries_page.send(:object).name).to eq('Galleries')
+      it '#photos_page' do
+        expect(drop.photos_page.send(:object).name).to eq('Photos')
       end
 
       it '#about_us_page' do

@@ -23,14 +23,11 @@ module Yoolk
         end
 
         def current_page
-          pages.detect do |page|
-            page.context = @context
-            controller.controller_path.include? page.template_page.name.downcase.tr(' ', '_')
-          end
+          pages.find_by(controller.controller_path.split('/').first)
         end
 
         def self.page_names
-          ['Home', 'Products', 'Services', 'Menu', 'Galleries',
+          ['Home', 'Products', 'Services', 'Menu', 'Photos',
            'About Us', 'Contact Us', 'Reservation', 'Feedback',
            'Announcements', 'Videos', 'Attachments', 'Links',
            'People', 'Map', 'Brochures'

@@ -14,6 +14,13 @@ module Yoolk
         more.present?
       end
 
+      def find_by(tp_name)
+        self.detect do |page|
+          page.context = @context
+          page.template_page.send(:"#{tp_name.parameterize.underscore}?")
+        end
+      end
+
       private
       def viewable_pages
         self.class.new(objects).select do |page|

@@ -27,7 +27,9 @@ module Yoolk
                                           with: 'Yoolk::Liquid::Listing::CatalogItemDrop'
 
       has_many    :galleries,             scope: :with_images,
+                                          class_name: 'Yoolk::Liquid::Listing::ImageGalleriesDrop',
                                           with: 'Yoolk::Liquid::Listing::ImageGalleryDrop'
+                                          
       has_many    :images,                with: 'Yoolk::Liquid::Listing::GalleryImageDrop'
 
       has_many    :brochures,             scope: :actives,

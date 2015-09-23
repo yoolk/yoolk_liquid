@@ -4,6 +4,8 @@
   "price": 10.2,
   "description": "The classic style of Spanish architecture popular in California Missions with distinct hue combinations that create a beautiful, rustic appearance with classic style and the durability of concrete.",
   "delivery": false,
+  "storefront": true,
+  "published": true,
   "created_at": "2014-08-13 08:59:54 UTC",
   "updated_at": "2014-08-13 08:59:54 UTC",
   "product_categories": [

@@ -36,12 +36,11 @@ FactoryGirl.define do
     trait :image_galleries do
       transient do
         galleries_count 2
-        galleries_name  'Album'
       end
 
       after(:build) do |listing, evaluator|
         evaluator.galleries_count.times.each do
-          listing.image_galleries << build(:image_galleries, evaluator.galleries_name)
+          listing.image_galleries << build(:image_galleries, :gallery_images)
         end
       end
     end
@@ -75,6 +74,33 @@ FactoryGirl.define do
         listing.currency = build(:currency)
       end
     end
+
+    trait :products do
+      after(:build) do |listing, evaluator|
+        category = build(:product_category)
+        product  = build(:product)
+
+        category.product_ids = [product.id]
+        product.product_category_ids = [category.id]
+        product.listing = listing
+        product.storefront = true
+
+        listing.product_categories << category
+      end
+    end
+
+    trait :menu do
+      transient do
+        foods_count 2
+      end
+
+      after(:build) do |listing, evaluator|
+        evaluator.foods_count.times.each do
+          listing.foods << build(:menu_food)
+        end
+      end
+    end
+
 
   end
 end

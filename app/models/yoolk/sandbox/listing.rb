@@ -114,9 +114,8 @@ module Yoolk
 
       def products
         product_collection = product_categories.map(&:products).flatten
-        product_collection.each do |product|
-          product.listing = self
-        end
+
+        ::Yoolk::Sandbox::ProductCatalog::Products.new(product_collection.each { |product| product.listing = self })
       end
 
       def services

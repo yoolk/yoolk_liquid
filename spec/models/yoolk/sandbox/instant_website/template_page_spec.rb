@@ -48,9 +48,9 @@ module Yoolk
         expect(page.menu?).to eq(true)
       end
 
-      it '#galleries? return true when navigate to galleries page' do
-        page = InstantWebsite::TemplatePage.new(name: 'Galleries')
-        expect(page.galleries?).to eq(true)
+      it '#photos? return true when navigate to photos page' do
+        page = InstantWebsite::TemplatePage.new(name: 'Photos')
+        expect(page.photos?).to eq(true)
       end
 
       it '#about_us? return true when navigate to about us page' do

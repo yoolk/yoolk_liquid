@@ -9,20 +9,20 @@ module Yoolk
         belongs_to  :website,       with: 'Yoolk::Liquid::InstantWebsite::WebsiteDrop'
         belongs_to  :template_page, with: 'Yoolk::Liquid::InstantWebsite::TemplatePageDrop'
 
-        delegate :home?, :products?, :services?, :menu?, :galleries?,
-                 :about_us?, :contact_us?, :reservation?, :feedback?,
-                 :announcements?, :videos?, :attachments?, :links?,
-                 :people?, :map?, :brochures?,
-                 to: :template_page
+        delegate    :home?, :products?, :services?, :menu?, :photos?,
+                    :about_us?, :contact_us?, :reservation?, :feedback?,
+                    :announcements?, :videos?, :attachments?, :links?,
+                    :people?, :map?, :brochures?,
+                    to: :template_page
 
         # Returns the localized/translated name of that page
         # @note If user customized the page's name, it will returns that name. Otherwise, it returns the localized version from its template page's name.
         # @return [String] the localized name of the page
         def name
-          if object.name == object.template_page.name
-            translate("#{theme_name}.links.#{locale_key}")
-          else
+          if custom_name?
             object.name
+          else
+            translate("#{theme_name}.links.#{locale_key}")
           end
         end
 
@@ -43,6 +43,8 @@ module Yoolk
             listing_apps.include?("Product Catalog") && listing_products.present?
           elsif object.template_page.services?
             listing_apps.include?("Service Catalog") && listing_services.present?
+          elsif object.template_page.photos?
+            @context['listing'].galleries.present?
           else
             collection_exists?
           end
@@ -50,6 +52,10 @@ module Yoolk
 
         def active?
           @context['request'].send(:"#{name_to_parameterize}_url?")
+        end
+
+        def custom_name?
+          object.name != object.template_page.name
         end
 
         protected
