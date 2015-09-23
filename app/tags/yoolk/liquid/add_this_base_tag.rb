@@ -68,7 +68,7 @@ module Yoolk
       def g_plus_link(url)
         h.content_tag(:a, embedded_svg(url, 'social-g-plus'),    class: 'addthis_button_google_plusone_share')
       end
-      
+
       def pinterest_link(url)
         h.content_tag(:a, embedded_svg(url, 'social-pinterest'), class: 'addthis_button_pinterest_share')
       end
@@ -76,16 +76,16 @@ module Yoolk
       # https://robots.thoughtbot.com/organized-workflow-for-svg
       def embedded_svg(url, id)
         assets = Rails.application.assets
-        url    = "#{SOCIAL_PATH + id}.svg" if url.blank?
+        url    = "#{SOCIAL_PATH}#{id}.svg" if url.blank?
 
         file = assets.find_asset(url).body.force_encoding('UTF-8')
 
         doc = Nokogiri::HTML::DocumentFragment.parse file
         svg = doc.at_css('svg')
-        
+
         svg['class'] = 'social-share-icon'
         svg['id']    = id
-        
+
         view.raw(doc).html_safe.presence
       end
 
