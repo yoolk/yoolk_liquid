@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'themes_on_rails',    github: 'yoolk/themes_on_rails'
 
-gem 'liquid-rails',       github: 'yoolk/liquid-rails'
+gem 'liquid-rails',       path: '/Users/radinreth/Documents/devs/liquid-rails' #github: 'yoolk/liquid-rails'
 gem 'rake',               '~> 10.3.1'
 gem 'thin',               '~> 1.6.1'
 gem 'pry',                '~> 0.9.12.3'
