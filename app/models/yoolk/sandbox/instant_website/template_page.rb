@@ -11,7 +11,7 @@ module Yoolk
 
 
         def self.all
-          ['Home', 'Products', 'Services', 'Menu', 'Photos',
+          ['Home', 'Products', 'Services', 'Menu', 'Photos', 'Galleries', 
            'About Us', 'Contact Us', 'Reservation', 'Feedback',
            'Announcements', 'Videos', 'Attachments', 'Links',
            'People', 'Map', 'Brochures'
@@ -25,6 +25,9 @@ module Yoolk
           end
         end
 
+        def galleries?
+          name == 'Photos'
+        end
       end
     end
   end
