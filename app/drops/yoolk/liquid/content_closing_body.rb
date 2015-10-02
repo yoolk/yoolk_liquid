@@ -10,73 +10,77 @@ module Yoolk
 
       def to_s
         return [] if tracking_services.empty? #|| preview_mode?
+
         [
           adwords_remarketing_script,
           fb_custom_audience_pixels_script,
-          conversions_pixel_on_submitted_email_script
-        ].compact.join("\n")
+          conversions_script
+        ].flatten.join('\n').concat(added_a_product_to_cart).html_safe
       end
 
       private
 
       def adwords_remarketing_script
-        return [] if tracking_services.adwords_remarketing.empty?
-
-        %(
-          <!-- Adwords Remarketing Script -->
-          #{ tracking_services.adwords_remarketing.map(&:script).join("\n").html_safe }
-        )
+        tracking_services.adwords_remarketing.map(&:script)
       end
 
       def fb_custom_audience_pixels_script
-        return [] if tracking_services.fb_custom_audience_pixels.empty?
+        tracking_services.fb_custom_audience_pixels.map(&:script)
+      end
 
+      def array_wrap(array)
+        Array.wrap(array).flatten
+      end
+
+      def conversions_script
+        result =  []
+        result << tracking_services.visited_any_page
+        # result << tracking_services.added_a_product_to_cart
+        result << array_wrap(tracking_services.visited_my_homepage)  if controller_name.home?
+        result << tracking_services.clicked_on_checkout              if false
+        result << tracking_services.place_an_order                   if false
+        result << array_wrap(tracking_services.submitted_an_email)   if form_posted_successfully?
+
+        result.map { |r| r.map(&:script) }
+      end
+
+      def added_a_product_to_cart
         %(
-          <!-- Facebook Custom Audience Pixels Script -->
-          #{ tracking_services.fb_custom_audience_pixels.map(&:script).join("\n").html_safe }
+          \n
+          <!-- Google Code for Add to Cart Conversion Page
+          In your html page, add the snippet and call goog_report_conversion
+          when someone clicks on the chosen link or button. -->
+          <script type="text/javascript">
+            /* <![CDATA[ */
+            goog_snippet_vars = function() {
+              var w = window;
+              w.google_conversion_id = 952617082;
+              w.google_conversion_label = "x1ZVCPj0mWAQ-pCfxgM";
+              w.google_conversion_value = 13.00;
+              w.google_conversion_currency = "USD";
+              w.google_remarketing_only = false;
+            }
+            // DO NOT CHANGE THE CODE BELOW.
+            goog_report_conversion = function(url) {
+              goog_snippet_vars();
+              window.google_conversion_format = "3";
+              var opt = new Object();
+              opt.onload_callback = function() {
+              if (typeof(url) != 'undefined') {
+                window.location = url;
+              }
+            }
+            var conv_handler = window['google_trackConversion'];
+            if (typeof(conv_handler) == 'function') {
+              conv_handler(opt);
+            }
+          }
+          /* ]]> */
+          </script>
+          <script type="text/javascript"
+            src="//www.googleadservices.com/pagead/conversion_async.js">
+          </script>
         )
-      end
-
-      def conversions_pixel_on_submitted_email_script
-        return [] if no_services_for_submitted_an_email? || !form_posted_successfully?
-
-        [adwords_conversions_for_submitted_an_email, fb_conversion_pixels_for_submitted_an_email].flatten.map(&:script).join("\n".html_safe)
-      end
-
-      def no_services_for_submitted_an_email?
-        adwords_conversions_for_submitted_an_email.empty? && fb_conversion_pixels_for_submitted_an_email.empty?
-      end
-
-      def adwords_conversions_for_submitted_an_email
-        Array.wrap(tracking_services.adwords_conversions.try(:submitted_an_email))
-      end
-
-      def fb_conversion_pixels_for_submitted_an_email
-        Array.wrap(tracking_services.fb_conversion_pixels.try(:submitted_an_email))
-      end
-
-      def adwords_conversions_script
-        if    request.visited_any_page?
-          tracking_services.adwords_conversions.visited_my_homepages.map(&:script)
-        elsif request.added_a_product_to_cart?
-          tracking_services.adwords_conversions.added_a_product_to_cart.map(&:script)
-        elsif request.visited_my_homepage?
-          tracking_services.adwords_conversions.visited_my_homepage.map(&:script)
-        elsif request.clicked_on_checkout?
-          tracking_services.adwords_conversions.clicked_on_checkout.map(&:script)
-        elsif request.place_an_order?
-          tracking_services.adwords_conversions.place_an_order.map(&:script)
-        elsif request.submitted_an_email?
-          tracking_services.adwords_conversions.submitted_an_email.map(&:script)
-        end
-      end
-
-      def fb_conversion_pixels_script
-        return [] if tracking_services.fb_conversion_pixels.empty?
-        # Todo:: :visited_any_page, :added_a_product_to_cart, 
-        #        :visited_my_homepage, :clicked_on_checkout, 
-        #        :place_an_order, :submitted_an_email
-        tracking_services.fb_conversion_pixels.map(&:script)
       end
 
       def tracking_services
