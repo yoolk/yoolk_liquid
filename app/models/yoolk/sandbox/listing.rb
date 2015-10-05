@@ -139,7 +139,7 @@ module Yoolk
       end
 
       def installed?(app_name)
-        apps.find{ |app| app.name == app_name.capitalize.to_s }.present?
+        apps.find{ |app| app.name == app_name.to_s.titleize }.present?
       end
 
       def short_descriptions
