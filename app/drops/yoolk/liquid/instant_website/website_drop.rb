@@ -27,7 +27,7 @@ module Yoolk
         end
 
         def self.page_names
-          ['Home', 'Products', 'Services', 'Menu', 'Photos',
+          ['Home', 'Products', 'Services', 'Menu', 'Photos', 'Galleries', 
            'About Us', 'Contact Us', 'Reservation', 'Feedback',
            'Announcements', 'Videos', 'Attachments', 'Links',
            'People', 'Map', 'Brochures'
