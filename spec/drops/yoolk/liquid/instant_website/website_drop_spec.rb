@@ -145,7 +145,7 @@ module Yoolk
     end
 
     describe InstantWebsite::WebsiteDrop, 'all pages' do
-      let(:page_names) { [  'Home', 'Products', 'Services', 'Menu', 'Photos',
+      let(:page_names) { [  'Home', 'Products', 'Services', 'Menu', 'Photos', 'Galleries', 
                             'About Us', 'Contact Us', 'Reservation', 'Feedback',
                             'Announcements', 'Videos', 'Attachments', 'Links',
                             'People', 'Map', 'Brochures' ] }
@@ -219,6 +219,10 @@ module Yoolk
 
       it '#brochures_page' do
         expect(drop.brochures_page.send(:object).name).to eq('Brochures')
+      end
+
+      it '#galleries_page' do
+        expect(drop.galleries_page.send(:object).name).to eq('Photos')
       end
     end
   end
