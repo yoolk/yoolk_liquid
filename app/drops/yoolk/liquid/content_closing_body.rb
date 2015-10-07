@@ -1,3 +1,6 @@
+## Note
+# {% content_for_closing_body %} must be place before {{ 'theme_name/all' | stylesheet_link_tag }}
+
 module Yoolk
   module Liquid
     class ContentClosingBody
