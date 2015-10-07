@@ -4,7 +4,7 @@ module Yoolk
       class WebsiteDrop < BaseDrop
         attributes  :id, :google_analytics_key, :owner_google_analytics_key, :google_remarketing_tag,
                     :google_conversion_tag, :is_live, :is_active, :free_plan, :template_name, :color,
-                    :primary_domain, :google_webmaster_tag, :created_at, :updated_at
+                    :primary_domain, :google_webmaster_tag, :has_store, :created_at, :updated_at
 
         belongs_to  :favicon,       with: 'Yoolk::Liquid::AttachmentDrop'
         belongs_to  :webclip,       with: 'Yoolk::Liquid::AttachmentDrop'
@@ -27,7 +27,7 @@ module Yoolk
         end
 
         def self.page_names
-          ['Home', 'Products', 'Services', 'Menu', 'Photos', 'Galleries', 
+          ['Home', 'Products', 'Services', 'Menu', 'Photos', 'Galleries',
            'About Us', 'Contact Us', 'Reservation', 'Feedback',
            'Announcements', 'Videos', 'Attachments', 'Links',
            'People', 'Map', 'Brochures'
