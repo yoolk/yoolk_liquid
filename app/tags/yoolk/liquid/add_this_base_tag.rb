@@ -12,7 +12,7 @@ module Yoolk
 
       # http://robots.thoughtbot.com/custom-tags-in-liquid
       def unknown_tag(name, params, tokens)
-        if name.in?(['facebook', 'twitter', 'g_plus', 'pinterest'])
+        if name.in?(['facebook', 'twitter', 'g_plus', 'pinterest', 'linkedin'])
           handle_link_tag(name, params)
         else
           super
@@ -41,6 +41,7 @@ module Yoolk
           when 'twitter'   then links.concat twitter_link(url)
           when 'g_plus'    then links.concat g_plus_link(url)
           when 'pinterest' then links.concat pinterest_link(url)
+          when 'linkedin'  then links.concat linkedin_link(url)
           end
         end
       end
@@ -71,6 +72,10 @@ module Yoolk
 
       def pinterest_link(url)
         h.content_tag(:a, embedded_svg(url, 'social-pinterest'), class: 'addthis_button_pinterest_share')
+      end
+
+      def linkedin_link(url)
+        h.content_tag(:a, embedded_svg(url, 'social-linkedin'), class: 'addthis_button_linkedin')
       end
 
       # https://robots.thoughtbot.com/organized-workflow-for-svg
