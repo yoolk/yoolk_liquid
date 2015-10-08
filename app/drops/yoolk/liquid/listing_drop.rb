@@ -29,7 +29,7 @@ module Yoolk
       has_many    :galleries,             scope: :with_images,
                                           class_name: 'Yoolk::Liquid::Listing::ImageGalleriesDrop',
                                           with: 'Yoolk::Liquid::Listing::ImageGalleryDrop'
-                                          
+
       has_many    :images,                with: 'Yoolk::Liquid::Listing::GalleryImageDrop'
 
       has_many    :brochures,             scope: :actives,
@@ -134,7 +134,7 @@ module Yoolk
       end
 
       def shopping_cart?
-        product_deliveries.present? && product_payments.present? && object.installed?(:product_catalog)
+        product_deliveries.present? && product_payments.present? && object.installed?(:product_catalog) && object.has_instant_website_store?
       end
 
       ## Alias Method
