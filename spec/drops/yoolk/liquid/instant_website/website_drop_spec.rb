@@ -15,6 +15,8 @@ module Yoolk
       it { should have_attribute(:is_active) }
       it { should have_attribute(:free_plan) }
       it { should have_attribute(:primary_domain) }
+      it { should have_attribute(:return_policy) }
+      it { should have_attribute(:terms_and_conditions) }
       it { should have_attribute(:created_at) }
       it { should have_attribute(:updated_at) }
 
