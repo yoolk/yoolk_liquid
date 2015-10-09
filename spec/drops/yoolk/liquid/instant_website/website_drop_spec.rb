@@ -8,8 +8,6 @@ module Yoolk
       it { should have_attribute(:color) }
       it { should have_attribute(:google_analytics_key) }
       it { should have_attribute(:owner_google_analytics_key) }
-      it { should have_attribute(:google_remarketing_tag) }
-      it { should have_attribute(:google_conversion_tag) }
       it { should have_attribute(:google_webmaster_tag) }
       it { should have_attribute(:is_live) }
       it { should have_attribute(:is_active) }
@@ -22,6 +20,7 @@ module Yoolk
       it { should belongs_to(:webclip).with('Yoolk::Liquid::AttachmentDrop') }
       it { should belongs_to(:template).with('Yoolk::Liquid::InstantWebsite::TemplateDrop') }
       it { should have_many(:domains).with('Yoolk::Liquid::InstantWebsite::DomainDrop') }
+      it { should have_many(:tracking_services).class_name('Yoolk::Liquid::InstantWebsite::TrackingServicesDrop').with('Yoolk::Liquid::InstantWebsite::TrackingServiceDrop')}
     end
 
     describe InstantWebsite::WebsiteDrop, '#cover_photos' do

@@ -1,55 +1,77 @@
+# This class is inserted just before the closing body.
+# Currently, it is mainly used for google_adwords and facebook pixels.
+# However, we could add more if needed.
 module Yoolk
   module Liquid
     class ContentClosingBody
       attr_reader :listing, :view_context
 
+      # @params listing [Yoolk::Mongo::Listing]
+      # @params view_context Rails ViewContext
       def initialize(listing, view_context)
         @listing      = listing
         @view_context = view_context
       end
 
       def to_s
+        return [] if tracking_services.empty? #|| preview_mode?
         [
-          google_remarketing_tag,
-          google_conversion_tag
-        ].compact.join("\n")
+          adwords_remarketing_script,
+          fb_custom_audience_pixels_script,
+          conversions_script
+        ].compact.join("\n").html_safe
       end
-
 
       private
 
-      def google_conversion_tag
-        if !preview_mode? && instant_website.present? && contact_us_posted_successfully?
-          instant_website.google_conversion_tag
-        end
+      def adwords_remarketing_script
+        tracking_services.adwords_remarketing.map(&:script)
       end
 
-      def google_remarketing_tag
-        if !preview_mode? && instant_website.try(:google_remarketing_tag).present?
-          instant_website.google_remarketing_tag
-        end
+      def fb_custom_audience_pixels_script
+        tracking_services.fb_custom_audience_pixels.map(&:script)
       end
 
-      def instant_website
-        listing.instant_website
+      # It includes conversion scripts for adword and facebook
+      def conversions_script
+        result  = []
+        result += tracking_services.visited_any_page
+        result += tracking_services.visited_my_homepage       if home_page?
+        result += tracking_services.submitted_an_email        if email_posted_successfully?
+        result += tracking_services.added_a_product_to_cart   if view_context.assigns['cart_items'].present?
+        result += tracking_services.clicked_on_checkout       if checkout_page?
+        result += tracking_services.place_an_order            if orders_page? && flash.notice.present?
+
+        result.map(&:script)
+      end
+
+      def tracking_services
+        listing.instant_website.tracking_services
       end
 
       def preview_mode?
         view_context.preview_mode?
       end
 
-      def contact_us_posted_successfully?
-        controller_name == 'contact_us' && flash.notice.present?
+      def email_posted_successfully?
+        view_context.controller_name.in?(['contact_us', 'reservation', 'feedback']) && flash.notice.present?
       end
 
-      def controller_name
-        view_context.controller.controller_name
+      def home_page?
+        view_context.current_page?(controller: 'home', action: 'index')
+      end
+
+      def checkout_page?
+        view_context.current_page?(controller: 'checkouts', action: 'new')
+      end
+
+      def orders_page?
+        view_context.current_page?(controller: 'orders', action: 'show')
       end
 
       def flash
         view_context.flash
       end
-
     end
   end
 end

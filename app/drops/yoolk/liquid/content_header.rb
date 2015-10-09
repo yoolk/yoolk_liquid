@@ -144,7 +144,7 @@ module Yoolk
         %Q{
           <script type="text/javascript">
             window.app = {};
-            window.app.cart_items = #{view_context.assigns['cart_items']};
+            window.app.cart_items = #{view_context.assigns['cart_items'].to_json( methods: [:image_url, :url] )};
           </script>
         }
       end
