@@ -14,7 +14,8 @@ module Yoolk
       end
 
       def to_s
-        return [] if tracking_services.empty? #|| preview_mode?
+        return nil if tracking_services.empty? || preview_mode?
+
         [
           adwords_remarketing_script,
           fb_custom_audience_pixels_script,
