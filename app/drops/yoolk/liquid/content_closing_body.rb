@@ -40,6 +40,7 @@ module Yoolk
         result += tracking_services.submitted_an_email        if email_posted_successfully?
         result += tracking_services.added_a_product_to_cart   if view_context.assigns['cart_items'].present?
         result += tracking_services.clicked_on_checkout       if checkout_page?
+        result += tracking_services.place_an_order            if orders_page? && flash.notice.present?
 
         result.map(&:script)
       end
@@ -62,6 +63,10 @@ module Yoolk
 
       def checkout_page?
         view_context.current_page?(controller: 'checkouts', action: 'new')
+      end
+
+      def orders_page?
+        view_context.current_page?(controller: 'orders', action: 'show')
       end
 
       def flash
