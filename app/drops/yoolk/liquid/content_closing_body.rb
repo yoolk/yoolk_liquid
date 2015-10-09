@@ -1,24 +1,25 @@
-## Note
-# {% content_for_closing_body %} must be place before {{ 'theme_name/all' | stylesheet_link_tag }}
-
+# This class is inserted just before the closing body.
+# Currently, it is mainly used for google_adwords and facebook pixels.
+# However, we could add more if needed.
 module Yoolk
   module Liquid
     class ContentClosingBody
       attr_reader :listing, :view_context
 
+      # @params listing [Yoolk::Mongo::Listing]
+      # @params view_context Rails ViewContext
       def initialize(listing, view_context)
         @listing      = listing
         @view_context = view_context
       end
 
       def to_s
-        return [] if tracking_services.empty? || preview_mode?
-
+        return [] if tracking_services.empty? #|| preview_mode?
         [
           adwords_remarketing_script,
           fb_custom_audience_pixels_script,
           conversions_script
-        ].flatten.join('\n').html_safe
+        ].compact.join("\n").html_safe
       end
 
       private
@@ -31,35 +32,36 @@ module Yoolk
         tracking_services.fb_custom_audience_pixels.map(&:script)
       end
 
-      def array_wrap(array)
-        Array.wrap(array).flatten
-      end
-
+      # It includes conversion scripts for adword and facebook
       def conversions_script
-        result =  []
-        result << tracking_services.visited_any_page
-        result << tracking_services.adwords_conversions.added_a_product_to_cart
-        
-        result << array_wrap(tracking_services.visited_my_homepage)  if controller_name.home?
-        result << array_wrap(tracking_services.submitted_an_email)   if form_posted_successfully?
+        result  = []
+        result += tracking_services.visited_any_page
+        result += tracking_services.visited_my_homepage       if home_page?
+        result += tracking_services.submitted_an_email        if email_posted_successfully?
+        result += tracking_services.added_a_product_to_cart   if view_context.assigns['cart_items'].present?
+        result += tracking_services.clicked_on_checkout       if checkout_page?
 
-        result.map { |r| r.map(&:script) }
+        result.map(&:script)
       end
 
       def tracking_services
-        listing.instant_website.try(:tracking_services)
+        listing.instant_website.tracking_services
       end
 
       def preview_mode?
         view_context.preview_mode?
       end
 
-      def form_posted_successfully?
-        controller_name.in?(["contact_us", "reservation", "feedback"]) && flash.notice.present?
+      def email_posted_successfully?
+        view_context.controller_name.in?(['contact_us', 'reservation', 'feedback']) && flash.notice.present?
       end
 
-      def controller_name
-        view_context.controller.controller_name.inquiry
+      def home_page?
+        view_context.current_page?(controller: 'home', action: 'index')
+      end
+
+      def checkout_page?
+        view_context.current_page?(controller: 'checkouts', action: 'new')
       end
 
       def flash
