@@ -67,7 +67,7 @@ module Yoolk
       end
 
       def orders_page?
-        view_context.current_page?(controller: 'orders', action: 'show')
+        view_context.controller_name == 'orders' && view_context.action_name == 'show'
       end
 
       def flash
