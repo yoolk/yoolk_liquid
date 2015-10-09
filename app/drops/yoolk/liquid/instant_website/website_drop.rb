@@ -2,15 +2,17 @@ module Yoolk
   module Liquid
     module InstantWebsite
       class WebsiteDrop < BaseDrop
-        attributes  :id, :google_analytics_key, :owner_google_analytics_key, :google_remarketing_tag,
-                    :google_conversion_tag, :is_live, :is_active, :free_plan, :template_name, :color,
+        attributes  :id, :google_analytics_key, :owner_google_analytics_key,
+                    :is_live, :is_active, :free_plan, :template_name, :color,
                     :primary_domain, :google_webmaster_tag, :return_policy, :terms_and_conditions, :has_store,
                     :created_at, :updated_at
 
-        belongs_to  :favicon,       with: 'Yoolk::Liquid::AttachmentDrop'
-        belongs_to  :webclip,       with: 'Yoolk::Liquid::AttachmentDrop'
-        belongs_to  :template,      with: 'Yoolk::Liquid::InstantWebsite::TemplateDrop'
-        has_many    :domains,       with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
+        belongs_to  :favicon,           with: 'Yoolk::Liquid::AttachmentDrop'
+        belongs_to  :webclip,           with: 'Yoolk::Liquid::AttachmentDrop'
+        belongs_to  :template,          with: 'Yoolk::Liquid::InstantWebsite::TemplateDrop'
+        has_many    :domains,           with: 'Yoolk::Liquid::InstantWebsite::DomainDrop'
+        has_many    :tracking_services, class_name: 'Yoolk::Liquid::InstantWebsite::TrackingServicesDrop',
+                                        with: 'Yoolk::Liquid::InstantWebsite::TrackingServiceDrop'
 
         def pages
           return @pages if @pages
