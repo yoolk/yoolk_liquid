@@ -59,11 +59,11 @@ module Yoolk
       end
 
       def home_page?
-        view_context.current_page?(controller: 'home', action: 'index')
+        view_context.controller_name == 'home' && view_context.action_name == 'index'
       end
 
       def checkout_page?
-        view_context.current_page?(controller: 'checkouts', action: 'new')
+        view_context.controller_name == 'checkouts' && view_context.action_name == 'new'
       end
 
       def orders_page?
