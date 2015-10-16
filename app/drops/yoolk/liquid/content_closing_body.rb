@@ -37,10 +37,7 @@ module Yoolk
       def conversions_script
         result  = []
         result += tracking_services.visited_any_page
-
-        # added_a_product_to_cart always render, but google tracks only when invoke goog_report_conversion in add_to_cart button of IW
-        result += tracking_services.added_a_product_to_cart
-
+        result += tracking_services.added_a_product_to_cart   # this needs to be rendered on every pages because we track based on click NOT on pageload (click-based script).
         result += tracking_services.visited_my_homepage       if home_page?
         result += tracking_services.submitted_an_email        if email_posted_successfully?
         result += tracking_services.clicked_on_checkout       if checkout_page?
