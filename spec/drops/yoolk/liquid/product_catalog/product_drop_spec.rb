@@ -26,6 +26,13 @@ module Yoolk
 
         it { should have_many(:product_categories).with('Yoolk::Liquid::ProductCatalog::CategoryDrop') }
         it { should have_many(:photos).with('Yoolk::Liquid::AttachmentDrop') }
+
+        it { should delegate(:available_for_sale?).to(:object) }
+        it { should delegate(:unavailable_for_sale?).to(:object) }
+        it { should delegate(:show_price?).to(:object) }
+        it { should delegate(:visible_price?).to(:object) }
+        it { should delegate(:discount_in_percentage).to(:object) }
+        it { should delegate(:cover_photo).to(:object) }
       end
 
       describe ProductDrop, 'methods' do
