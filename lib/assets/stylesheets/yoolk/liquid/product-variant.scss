@@ -1,0 +1,49 @@
+#products-show {
+  .js-discount-badge {
+    display: none;
+  }
+  
+  .product-variant {
+    ul {
+      list-style: disc;
+    }
+
+    li {
+      position: relative;
+      background: #fff;
+      display: inline-block;
+      margin: 0 7px 7px 0;
+      zoom: 1;
+
+      .attr-checkbox {
+        padding: 1px 9px;
+        height: 15px;
+        line-height: 15px;
+        border: 1px solid #f64f7a;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    li.active {
+      .attr-checkbox {
+        background-color: #f64f7a;
+        color: #fff;
+      }
+    }
+
+    li.disabled {
+      .attr-checkbox {
+        background-color: #ccc;
+        color: #f0f0f0;
+        border-color: #ccc;
+
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+  }
+}

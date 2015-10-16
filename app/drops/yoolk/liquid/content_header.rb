@@ -24,7 +24,8 @@ module Yoolk
           business_view_js,
           canonical_link,
           cart_items,
-          ecommerce_stylesheet
+          ecommerce_stylesheet,
+          product_variant_js
         ].compact.join("\n")
       end
 
@@ -147,6 +148,12 @@ module Yoolk
             window.app = {};
             window.app.cart_items = #{view_context.assigns['cart_items'].to_json( methods: [:image_url, :url] )};
           </script>
+        }
+      end
+
+      def product_variant_js
+        %Q{
+          #{ view_context.javascript_include_tag 'yoolk/product-variant.js' }
         }
       end
 
