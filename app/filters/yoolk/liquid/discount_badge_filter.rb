@@ -9,7 +9,7 @@ module Yoolk
         return if value.blank? || value == '0%'
         
         %Q{
-          <span class="#{shape_name}-shape" id="#{shape_name}-shape">
+          <span class="#{shape_name}-shape">
             #{value} <small>OFF</small>
           </span>
         }.gsub(/^\s+|$\n/, '')
