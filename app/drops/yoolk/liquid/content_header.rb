@@ -95,7 +95,7 @@ module Yoolk
 
       def meta_twitter
         %Q{
-          <meta content='http://#{seo.social_url}/'           name='twitter:url'>
+          <meta content='#{seo.social_url}'                   name='twitter:url'>
           <meta content='#{CGI.escapeHTML(seo.title)}'        name='twitter:title'>
           <meta content='#{CGI.escapeHTML(seo.description)}'  name='twitter:description'>
           <meta content='#{seo.social_image}'                 name='twitter:image'>
