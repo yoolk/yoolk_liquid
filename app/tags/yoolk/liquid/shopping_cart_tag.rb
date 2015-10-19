@@ -15,7 +15,7 @@ module Yoolk
       def render(context)
         @context = context
 
-        if context['listing.shopping_cart?']
+        if context['listing.shopping_cart?'] && !context['request.preview_mode?']
           %Q{
             <div class="js-shopping-cart shopping-cart-icon" data-ecommerce-locales='#{@ecommerce_locales.to_json}' data-checkout-url='/checkout/new'>
               <div class="shop-badge">
