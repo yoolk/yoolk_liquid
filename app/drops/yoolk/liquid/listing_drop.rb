@@ -74,7 +74,7 @@ module Yoolk
       belongs_to  :currency,              class_name: 'Yoolk::Liquid::CurrencyDrop'
 
 
-      delegate    :email?, :telephone?, :website?,
+      delegate    :email?, :telephone?, :website?, :to_json_ld,
                   to: :object
 
       def facebook_page_url

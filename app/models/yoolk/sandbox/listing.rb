@@ -156,6 +156,11 @@ module Yoolk
         source_name == 'groow.io'
       end
 
+      # TODO temporary fake, will remove when move to engines
+      def to_json_ld
+        'render correct json ld format'
+      end
+
       private
 
         def paginate_array(value)

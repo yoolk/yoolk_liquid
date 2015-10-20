@@ -40,7 +40,12 @@ module Yoolk
         end
 
         def discount_in_percentage
-          
+
+        end
+
+        # TODO temporary fake, will remove when move to engines
+        def to_json_ld
+          'render correct json ld format'
         end
       end
     end

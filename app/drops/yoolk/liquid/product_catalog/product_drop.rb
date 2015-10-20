@@ -13,8 +13,8 @@ module Yoolk
         has_many    :photos,              with: 'Yoolk::Liquid::AttachmentDrop'
 
         ## Delegates
-        delegate    :available_for_sale?, :unavailable_for_sale?, 
-                    :show_price?, :visible_price?, :discount_in_percentage, :cover_photo, 
+        delegate    :available_for_sale?, :unavailable_for_sale?, :to_json_ld,
+                    :show_price?, :visible_price?, :discount_in_percentage, :cover_photo,
                     to: :object
 
         def url
