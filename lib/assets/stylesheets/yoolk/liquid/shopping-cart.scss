@@ -1,6 +1,5 @@
 /*Shop Badge
 ------------------------------------*/
-$primary-color: #ef4135 !default;
 /*Badge Lists*/
 .js-shopping-cart {
   .shop-badge.shop-badge {
@@ -30,7 +29,7 @@ $primary-color: #ef4135 !default;
     }
 
     i {
-      color: $primary-color;
+      color: #ef4135;
       font-size: 15px;
       min-width: 25px;
       padding: 5px 15px;
@@ -48,11 +47,11 @@ $primary-color: #ef4135 !default;
     font-weight: 400;
     padding: 4px 7px;  
     display: none;
-    background: $primary-color;
+    background: #ef4135;
   }
 
   .fa-shopping-cart {
-    color: $primary-color;
+    color: #ef4135;
   }
 
   .cart-empty {
@@ -152,7 +151,7 @@ $primary-color: #ef4135 !default;
       color: #555;
 
       &:hover {
-        color: $primary-color;
+        color: #ef4135;
       }
     }
 
@@ -200,7 +199,7 @@ $primary-color: #ef4135 !default;
     background-color: #f4f4f4;
 
     span {
-      color: $primary-color;
+      color: #ef4135;
       font-size: 14px;
       font-weight: 600;
       display: inline-block;
@@ -211,7 +210,7 @@ $primary-color: #ef4135 !default;
     }
 
     .subtotal-cost {
-      color: $primary-color;
+      color: #ef4135;
       float: right;
     }
 
@@ -229,11 +228,11 @@ $primary-color: #ef4135 !default;
       margin-top: 28px;
       border-radius: 4px !important;
       width: 100%;
-      background-color: $primary-color;
+      background-color: #ef4135;
     }
 
     .btn-checkout:hover {
-      background-color: darken($primary-color, 5%);
+      background-color: darken(#ef4135, 5%);
     }
 
     .overflow-h {

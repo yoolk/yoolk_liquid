@@ -21,9 +21,10 @@ module Yoolk
           csrf_meta_tags,
           google_analytics,
           alternate_link,
-          business_view_js,
+          global_js_files,
           canonical_link,
           cart_items,
+          ecommerce_javascript,
           ecommerce_stylesheet
         ].compact.join("\n")
       end
@@ -129,9 +130,13 @@ module Yoolk
         }
       end
 
-      def business_view_js
+      def ecommerce_javascript
+        view_context.javascript_include_tag 'yoolk/ecommerce'  
+      end
+
+      def global_js_files
         %Q{
-          #{ view_context.javascript_include_tag 'yoolk/jquery.business-view-overlay.js' }
+          #{ view_context.javascript_include_tag 'yoolk/global-js-files.js' }
           <script type="text/javascript">
             window.addEventListener("load", function() {
               $('body').data('api-url', "#{ENV['API_URL']}");

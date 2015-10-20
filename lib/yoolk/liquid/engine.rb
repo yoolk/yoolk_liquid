@@ -27,7 +27,8 @@ module Yoolk
       isolate_namespace Yoolk::Liquid
 
       config.assets.precompile += %w(
-                                    yoolk/jquery.business-view-overlay.js
+                                    yoolk/global-js-files.js
+                                    yoolk/ecommerce.js
                                     yoolk/liquid/ecommerce.css
                                   )
 
