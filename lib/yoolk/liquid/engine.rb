@@ -28,7 +28,7 @@ module Yoolk
 
       config.assets.precompile += %w(
                                     yoolk/global-js-files.js
-                                    yoolk/ecommerce.js
+                                    yoolk/liquid/ecommerce.js
                                     yoolk/liquid/ecommerce.css
                                   )
 

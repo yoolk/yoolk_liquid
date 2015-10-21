@@ -131,7 +131,7 @@ module Yoolk
       end
 
       def ecommerce_javascript
-        view_context.javascript_include_tag 'yoolk/ecommerce'  
+        view_context.javascript_include_tag 'yoolk/liquid/ecommerce'  
       end
 
       def global_js_files
