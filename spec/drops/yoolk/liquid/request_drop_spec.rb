@@ -157,6 +157,23 @@ module Yoolk
         expect(subject.query_parameters).to eq({'theme' => 'sample'})
       end
 
+      context '#lang' do
+        it 'returns locale' do
+          allow(subject).to receive(:query_parameters).and_return({'locale' => 'en'})
+
+          expect(subject.lang).to eq('en')
+        end
+
+        it 'returns listing\'s two code language' do
+          allow(subject.send(:request)).to receive(:query_parameters).and_return({})
+          portal = Yoolk::Sandbox::Portal.new(name: 'YP', language: {name: 'Khmer', two_code: 'km'})
+          listing.portal = portal
+          context['listing'] = listing.to_liquid
+
+          expect(subject.lang).to eq('km')
+        end
+      end
+
     end
   end
 end
