@@ -6,6 +6,9 @@
   .product-variant {
     ul {
       list-style: disc;
+      padding-left: 0px;
+
+
     }
 
     li {
@@ -43,6 +46,30 @@
         &:hover {
           cursor: default;
         }
+      }
+    }
+
+    .product-variant-items {
+      margin-left: 100px;
+    }
+
+    .product-variant-title {
+      float: left;
+      width: 100px;
+    }
+
+    .variant-message-error {
+      color: red;
+      display: none;
+    }
+
+    .product-variant-items.has-error {
+      .attr-checkbox {
+        border-color: red;
+      }
+
+      .variant-message-error {
+        display: block;
       }
     }
   }
