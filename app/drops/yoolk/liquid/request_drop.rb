@@ -66,6 +66,10 @@ module Yoolk
         current_page.name.in? pages.more.map(&:name)
       end
 
+      def lang
+        query_parameters['locale'] || @context['listing.language.two_code']
+      end
+
       private
 
         def action_name

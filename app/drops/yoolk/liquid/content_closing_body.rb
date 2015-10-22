@@ -37,9 +37,9 @@ module Yoolk
       def conversions_script
         result  = []
         result += tracking_services.visited_any_page
+        result += tracking_services.added_a_product_to_cart   # this needs to be rendered on every pages because we track based on click NOT on pageload (click-based script).
         result += tracking_services.visited_my_homepage       if home_page?
         result += tracking_services.submitted_an_email        if email_posted_successfully?
-        result += tracking_services.added_a_product_to_cart   if view_context.assigns['cart_items'].present?
         result += tracking_services.clicked_on_checkout       if checkout_page?
         result += tracking_services.place_an_order            if orders_page? && flash.notice.present?
 
@@ -59,15 +59,15 @@ module Yoolk
       end
 
       def home_page?
-        view_context.current_page?(controller: 'home', action: 'index')
+        view_context.controller_name == 'home' && view_context.action_name == 'index'
       end
 
       def checkout_page?
-        view_context.current_page?(controller: 'checkouts', action: 'new')
+        view_context.controller_name == 'checkouts' && view_context.action_name == 'new'
       end
 
       def orders_page?
-        view_context.current_page?(controller: 'orders', action: 'show')
+        view_context.controller_name == 'orders' && view_context.action_name == 'show'
       end
 
       def flash

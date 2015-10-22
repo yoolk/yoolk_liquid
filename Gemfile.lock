@@ -299,6 +299,3 @@ DEPENDENCIES
   themes_on_rails!
   thin (~> 1.6.1)
   yoolk_liquid!
-
-BUNDLED WITH
-   1.10.5

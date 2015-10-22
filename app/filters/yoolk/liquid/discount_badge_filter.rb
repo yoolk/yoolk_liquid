@@ -9,9 +9,9 @@ module Yoolk
         return if value.blank? || value == '0%'
         
         %Q{
-          <div class="#{shape_name}-shape js-discount-badge">
-            <span class='discount-percentage'>#{value}</span><small> OFF</small>
-          </div>
+          <span class="#{shape_name}-shape">
+            #{value} <small>OFF</small>
+          </span>
         }.gsub(/^\s+|$\n/, '')
       end
     end

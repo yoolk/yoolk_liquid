@@ -27,16 +27,16 @@ module Yoolk
               "medium" => {
                 "width" => 206,
                 "height" => 239,
-                "url" => view.asset_path("yoolk/default-images/people/medium/#{ gender.to_s.downcase }_#{ position_level.name.to_s.downcase }.png")
+                "url" => "yoolk/default-images/people/medium/#{ gender.to_s.downcase }_#{ position_level.name.to_s.downcase }.png"
               },
               "small" => {
                 "width" => 139,
                 "height" => 161,
-                "url" => view.asset_path("yoolk/default-images/people/small/#{ gender.to_s.downcase }_#{ position_level.name.to_s.downcase }.png")
+                "url" => "yoolk/default-images/people/small/#{ gender.to_s.downcase }_#{ position_level.name.to_s.downcase }.png"
               }
             }
           }
-
+          
           Yoolk::Sandbox::Attachment.new(h).to_liquid
         end
 
